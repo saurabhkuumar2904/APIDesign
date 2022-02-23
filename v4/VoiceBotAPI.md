@@ -16,6 +16,9 @@
   - `POST /voicebots/{chatbotId}/sessions` - [Create session](#create-session)
   - `POST /sessions/{sessionId}:recieveMessage` - [Recieved Message](#Recieved-Message)
 ## Twillio Adapter  
+- `Get /twilioadapterapi/phonenumber/available` - [Get available phonenumbers](#Get-Available-Phonenumbers)
+- `POST /twilioadapterapi/phonenumber` - [Create Phonenumber](#Create-Phonenumber)
+- `DELETE /twilioadapterapi/phonenumber/{pathSid}` - [Delete Phonenumber](#Delete-Phonenumber)
 
 ## Sip Adapter
 
@@ -92,6 +95,64 @@ Response
     }
 
   }
+```
+
+### Get available phonenumbers
+`Get /twilioadapterapi/phonenumber/available`
+
+#### Parameters
+Request url parameters
+
+The request body contains data with the follow structure:
+
+  | Name | Type | Required | Default | Description |    
+  | - | - | :-: | :-: | - | 
+  | `pathCountryCode` | string | yes | |  country code | |
+
+example:
+```url 
+  /phonenumber/available?pathCountryCode=US
+```
+
+#### Response
+The Response body contains data with the follow structure:
+
+  | Name | Type |  Description |    
+  | - | - | :-: | 
+  |`localResources`  |  [LocalResource](#LocalResource-object) Object  |no |   |  |  
+
+#### Example
+Using curl
+```
+curl -H "Content-Type: application/json" -d '' -X Get https://domain.comm100.com/api/v4/twilioadapterapi/phonenumber/available
+```
+Response
+```Json
+  HTTP/1.1 200 OK
+  Content-Type:  application/json
+
+  [
+    {
+      "friendlyName": "(510) 983-8431",
+      "phoneNumber": "+15109838431",
+      "lata": "722",
+      "locality": "Fremontnewark",
+      "rateCenter": "FRNK OLIVR",
+      "latitude": null,
+      "longitude": null,
+      "region": "CA",
+      "postalCode": null,
+      "isoCountry": "US",
+      "addressRequirements": "none",
+      "beta": false,
+      "capabilities": {
+        "mms": true,
+        "sms": true,
+        "voice": true,
+        "fax": false
+      }
+    }
+]
 ```
 
 # Model
@@ -308,3 +369,19 @@ Field is represented as simple flat json objects with the following keys:
 |`currentPageURL` | string |  |  |
 |`searchEngine` | string |  |  |
 |`searchKeywords` | string |  |  |
+
+### LocalResource Object
+
+|Name| Type|  Default |  Description     |
+| - | - | :-: |  - | 
+|`friedly_name` | string |  | A formatted version of the phone number |
+|`phoneNumber` | string |  | The phone number in E.164 format |
+|`lata` | string |  | The LATA of this phone number |
+|`locality` | string |  | The locality or city of this phone number's location |
+|`rateCenter` | string |  | The rate center of this phone number |
+|`longitude` | string |  |The longitude of this phone number's location  |
+|`region` | string |  | The two-letter state or province abbreviation of this phone number's location |
+|`postalCode` | string |  | The postal or ZIP code of this phone number's location |
+|`isoCountry` | string |  | The ISO country code of this phone number |
+|`addressRequirements` | string |  |  |
+|`beta` | bool |  |  |
