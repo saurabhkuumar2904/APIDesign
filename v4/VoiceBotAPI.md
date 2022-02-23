@@ -14,7 +14,7 @@
 
 
 ## Voice Bot API
-  - `POST /voicebots/{VoicebotId}/sessions` - [Create session](#create-A-New-VoiceBot-session)
+  - `POST /voicebots/{VoicebotId}/sessions` - [Create session](#create-session)
   - `POST /sessions/{sessionId}:recieveMessage` - [Recieved Message](#Recieved-Message)
 ## Twillio Adapter  
 
@@ -25,7 +25,7 @@
 # Endpoints
 
 ### Create A New VoiceBot Session
-`POST /bot/VoiceBotSessions`
+`POST /voicebots/{VoicebotId}/sessions`
 
 #### Parameters
 Request body
@@ -70,7 +70,7 @@ curl -H "Content-Type: application/json" -d '{
       "email":"kart@yahoo.com",
       "phone":"123-4355-212",
     }
-  }' -X POST https://domain.comm100.com/api/v4/bot/VoiceBotSessions
+  }' -X POST https://domain.comm100.com/api/v4/voicebots/{VoicebotId}/sessions
 ```
 Response
 ```Json
@@ -95,11 +95,128 @@ Response
   }
 ```
 
+### Recieved Message
+`POST /sessions/{sessionId}:recieveMessage`
+
+#### Parameters
+Path parameters
+
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+  | `sessionId` | Guid | yes  |  id of the chat or conversation |
+
+Request body
+
+The request body contains data with the follow structure:
+
+  | Name | Type | Required | Default | Description |    
+  | - | - | :-: | :-: | - | 
+  | `channel` | string  | yes | | eg: `Live Chat`, `Facebook Messenger`, `Twitter Direct Message`, `WeChat`, `WhatsApp`, `SMS`, `Voice` |
+  | `textInput` | string  | no | | text |
+  | `context` | [VoicebotSessionContext](#VoicebotSessionContext-Object) Object  | yes  |  |
+
+example:
+```Json 
+  {
+    "channel":"Facebook Messenger",
+    "textInput":"i want to buy NBN",
+    "context": {
+      "chatbotId": "a9928d68-92e6-4487-a2e8-8234fc9d1f48",
+      "customData": {
+        "name":"Kart",
+        "email":"kart@yahoo.com",
+        "phone":"123-4355-212",
+      }
+    },
+  }
+```
+
+#### Response
+the response is: [ChatbotSession](#ChatbotSession-Object) Object
+
+#### Example
+Using curl
+```
+curl -H "Content-Type: application/json" -d '{
+    "channel":"Facebook Messenger",
+    "textInput":"i want to buy NBN",
+    "context": {
+      "chatbotId": "a9928d68-92e6-4487-a2e8-8234fc9d1f48",
+      "customData": {
+        "name":"Kart",
+        "email":"kart@yahoo.com",
+        "phone":"123-4355-212",
+      }
+    },
+  }' -X POST https://domain.comm100.com/sessions/f9928d68-92e6-4487-a2e8-8234fc9d1f48:detectIntent
+```
+Response
+```Json
+  HTTP/1.1 200 OK
+  Content-Type:  application/json
+
+  {    
+    "channel":"Facebook Messenger",
+    "id": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
+    "context": {
+      "chatbotId": "a9928d68-92e6-4487-a2e8-8234fc9d1f48",
+      "currentIntentId": "8d6892e6-92e6-4487-a2e8-92e68d6892e6",
+      "customData": {
+        "name":"Kart",
+        "email":"kart@yahoo.com",
+        "phone":"123-4355-212",
+      }
+    },
+    "message":{
+      "id":"d3f5b968-ad51-42af-b759-64c0afc40b84",
+      "visitorQuestion":"i want to buy NBN",
+      "type":"highConfidenceAnswer",
+      "content":{
+        "intentId": "7534fdsca-92e6-4487-a2e8-92e68d6892e6",
+        "intentName": "buy nbn",
+        "score": 89.25,
+        "responses":[
+          {
+            "type":"htmlText",
+            "content": {
+              "text":"<div>Hi, what can i do for you?</div>",
+            }
+          },
+          {
+            "type":"image",
+            "content": {
+              "name":"greeting.png",
+              "url": "https://bot.comm100.com/botapi/images/greeting.png"
+            }
+          }
+        ]
+      }
+    }    
+  }
+```
+
+
 # Model
 
-### VoiceBotSession Object
-   
+### VoicebotSessionContext Object
+  VoicebotSessionContext Object is represented as simple flat JSON objects with the following keys:  
 
+  |Name| Type | Default | Description     | 
+  | - | - | :-: | - |   
+  | `VoicebotId` | Guid  | | VoicebotId |
+  | `currentIntentId` | Guid  | |  |
+  | `VoicebotResponseId` | Guid  | |  |
+  | `authentication` | string  | | authentication data |
+  | `location` | string  | | the longitude and latitude of the location, e.g. "-39.900000,116.300000" |
+  | `formValues` | [FieldValue](#FieldValue-object)[] |  | an array of [FieldValue](#FieldValue-object) objects |
+  | `isFormSubmitted` | bool  | false |  |
+  | `consecutiveTimesOfPossibleAnswers` | int  | 0 |  |
+  | `invalidInputTimes` | int  | 0 |  |
+  | `latestMessage` | [VoiceBotOutput](#VoiceBotOutput-Object) Object  | |  |
+  | `customData` | Object  |   | Custom data |
+
+### VoiceBotSession Object
+  
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
   | `id` | Guid  | | sessionId |
