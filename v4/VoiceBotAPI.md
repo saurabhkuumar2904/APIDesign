@@ -527,12 +527,12 @@ Response
   | `Location` | string  | | string |
   | `MessageGuid` | String |  | String |
   | `MessageId` | Int  |  | Int |
-  | `WebhookEventType` | Type  |  | Type |
+  | `WebhookEventType` | Type  |  |  |
   | `Extra` | Dictionary  |  | Dictionary |
   | `TextInput` | String  | | String |
   | `CurrentIntentId` | Guid  |   | Guid |
   | `VoicebotResponseId` | Guid  |   | Guid |
-  | `FormValues` | [FieldValue](#FieldValue-Object)[]  |   | Guid |
+  | `FormValues` | [FieldValue](#FieldValue-Object)[]  |   |  |
   | `IsFormSubmitted` | bool  |   | bool |
   | `InvalidInputTimes` | Int  |   | Int |
   | `PromptQuestion` | String  |   | String |
@@ -541,9 +541,9 @@ Response
   | `LatestMessage` | [VoicebotMessage](#VoicebotMessage-object)  |   |  |
   | `IsFlowComplete` | bool  |   | bool |
   | `IsTest` | bool  |   | bool |
-  | `Variables` | Dictionary  |   | Guid |
-  | `MessagesForSendMessageAction` | [VoicebotMessageData](#VoicebotMessageData-object)  |   | Guid |
-  | `LatestNextActionIds` | Guid[]  |   | List |
+  | `Variables` | Dictionary  |   |  |
+  | `MessagesForSendMessageAction` | [VoicebotMessageData](#VoicebotMessageData-object)  |   |  |
+  | `LatestNextActionIds` | Guid[]  |   |  |
   | `LastMessageType` | Type  |   | Type |
 
 ### VoiceBotSession Object
