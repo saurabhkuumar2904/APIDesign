@@ -113,7 +113,6 @@ The request body contains data with the follow structure:
   | - | - | :-: | :-: | - | 
   | `channel` | string  | yes | | eg: `Live Chat`, `Facebook Messenger`, `Twitter Direct Message`, `WeChat`, `WhatsApp`, `SMS`, `Voice` |
   | `textInput` | string  | no | | text |
-  | `context` | [VoicebotSessionContext](#VoicebotSessionContext-Object) Object  | yes  |  |
 
 example:
 ```Json 
@@ -121,7 +120,7 @@ example:
     "channel":"Facebook Messenger",
     "textInput":"i want to buy NBN",
     "context": {
-      "chatbotId": "a9928d68-92e6-4487-a2e8-8234fc9d1f48",
+      "VoicebotId": "a9928d68-92e6-4487-a2e8-8234fc9d1f48",
       "customData": {
         "name":"Kart",
         "email":"kart@yahoo.com",
@@ -132,7 +131,7 @@ example:
 ```
 
 #### Response
-the response is: [ChatbotSession](#ChatbotSession-Object) Object
+the response is: [VoicebotSession](#VoicebotSession-Object) Object
 
 #### Example
 Using curl
@@ -141,7 +140,7 @@ curl -H "Content-Type: application/json" -d '{
     "channel":"Facebook Messenger",
     "textInput":"i want to buy NBN",
     "context": {
-      "chatbotId": "a9928d68-92e6-4487-a2e8-8234fc9d1f48",
+      "VoicebotId": "a9928d68-92e6-4487-a2e8-8234fc9d1f48",
       "customData": {
         "name":"Kart",
         "email":"kart@yahoo.com",
@@ -159,7 +158,7 @@ Response
     "channel":"Facebook Messenger",
     "id": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
     "context": {
-      "chatbotId": "a9928d68-92e6-4487-a2e8-8234fc9d1f48",
+      "VoicebotId": "a9928d68-92e6-4487-a2e8-8234fc9d1f48",
       "currentIntentId": "8d6892e6-92e6-4487-a2e8-92e68d6892e6",
       "customData": {
         "name":"Kart",
@@ -565,5 +564,3 @@ Field is represented as simple flat json objects with the following keys:
 |`currentPageURL` | string |  |  |
 |`searchEngine` | string |  |  |
 |`searchKeywords` | string |  |  |
-
-
