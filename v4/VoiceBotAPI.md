@@ -523,71 +523,79 @@ Response
 
   |Name| Type | Default | Description     | 
   | - | - | :-: | - |   
+  | `SessionId` | Guid  | | SessionId |
   | `VoicebotId` | Guid  | | VoicebotId |
-  | `currentIntentId` | Guid  | |  |
-  | `VoicebotResponseId` | Guid  | |  |
-  | `authentication` | string  | | authentication data |
-  | `location` | string  | | the longitude and latitude of the location, e.g. "-39.900000,116.300000" |
-  | `formValues` | [FieldValue](#FieldValue-object)[] |  | an array of [FieldValue](#FieldValue-object) objects |
-  | `isFormSubmitted` | bool  | false |  |
-  | `consecutiveTimesOfPossibleAnswers` | int  | 0 |  |
-  | `invalidInputTimes` | int  | 0 |  |
-  | `latestMessage` | [VoiceBotOutput](#VoiceBotOutput-Object) Object  | |  |
-  | `customData` | Object  |   | Custom data |
+  | `VoicebotName` | String  | | String |
+  | `Channel` | String  | |  |
+  | `Authentication` | string  | | authentication data |
+  | `Location` | string  | | string |
+  | `MessageGuid` | String |  | String |
+  | `MessageId` | Int  |  | Int |
+  | `WebhookEventType` | Type  |  | Type |
+  | `Extra` | Dictionary  |  | Dictionary |
+  | `TextInput` | String  | | String |
+  | `CurrentIntentId` | Guid  |   | Guid |
+  | `VoicebotResponseId` | Guid  |   | Guid |
+  | `FormValues` | [FieldValue](#FieldValue-Object)  |   | Guid |
+  | `IsFormSubmitted` | bool  |   | bool |
+  | `InvalidInputTimes` | Int  |   | Int |
+  | `PromptQuestion` | String  |   | String |
+  | `VoicebotMessageRecordId` | Guid  |   | Guid |
+  | `CustomData` | object  |   | object |
+  | `LatestMessage` | [VoicebotMessage](#VoicebotMessage-object)[]  |   |  |
+  | `IsFlowComplete` | bool  |   | bool |
+  | `IsTest` | bool  |   | bool |
+  | `Variables` | [Dictionary](#Dictionary-object)[]  |   | Guid |
+  | `MessagesForSendMessageAction` | [VoicebotMessageData](#VoicebotMessageData-object)[]  |   | Guid |
+  | `LatestNextActionIds` | List[Guid]  |   | List |
+  | `LastMessageType` | Type  |   | Type |
 
 ### VoiceBotSession Object
   
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
   | `id` | Guid  | | sessionId |
-  | `intentactions` |  [VoiceBotIntentaction](#VoiceBotIntentaction-object)[] Object |  |  |
-  | `context` | VoiceBotSessionContext Object  |   |  |
-### VoiceBotIntentAction Object
+  | `Channel` | String  | | String |
+  | `Message` |  [VoicebotMessage](#VoicebotMessage-object)[] Object |  |  |
+  | `context` | [VoiceBotSessionContext](#VoiceBotIntentaction-object)[] Object  |   |  |
 
-  |Name| Type | Default | Description | 
-  | - | - | :-: | - | 
-  | `id` | Guid  | | dialogId |
-  | `input` |  [VoiceBotInput](#VoiceBotinput-object) Object|  |  |
-  | `output` |  [VoiceBotOutput](#VoiceBotoutput-object) Object |  |  |
-### VoiceBotInput Object
+### VoicebotMessage Object
+  VoicebotMessage Object is represented as simple flat JSON objects with the following keys:  
 
-  |Name| Type | Default | Description | 
-  | - | - | :-: | - | 
-  | `id` | Guid  | | questionId |
-  | `type` | String  | | 	type of the response,including`text`,`audio`,`location`,`option`,`form`,`transferchat`|
-  | `content` | object  | | [textInput](#textinput-object), [audioInput](#audioinput-object), [locationInput](#locationinput-object), [optionInput](#optioninput-object), [formInput](#forminput-object) , [Transferchat](#transferchat-object)|
-
-  ### TextInput Object
-  |Name| Type | Default | Description | 
-  | - | - | :-: | - | 
-  | `text` | String  | |  |
-  ### AudioInput Object
-  |Name| Type | Default | Description | 
-  | - | - | :-: | - | 
-  | `text` | String  | |  |
-  | `audio` | String  | |  |
-  ### LocationInput Object
-  |Name| Type | Default | Description | 
-  | - | - | :-: | - | 
-  | `location` | String  | | the longitude and latitude of the location, e.g. "-39.900000,116.300000" |
-  | `action` | string  | | submit, cancel |
-
-  ### OptionInput Object
-  |Name| Type | Default | Description | 
-  | - | - | :-: | - | 
-| `optionId` | String  | |optionId |
-  ### FormInput Object
-  |Name| Type | Default | Description | 
+  |Name| Type| Default | Description     |
   | - | - | :-: | - |
-  | `formValues` | [FieldValue](#FieldValue-object)[]  | |  an array of [FieldValue](#FieldValue-object) objects |
-  | `formId` | Guid  | |  |
- | `action` | string  | | submit, cancel |
+  | `id` | Guid  |  | the unique id of the response |
+  | `EnumVoicebotMessageType` | Type |  |  Type |
+  | `VisitorQuestion` | String |  |  String |
+  | `Content` | Object |  |  Object |
+  | `DisableChatInputArea` | bool |  |  bool |
+  | `IntentId` | Guid |  |  Id of the Intent. |
+  | `IntentName` | String |  |  Name of the Intent. |
+  | `Score` | Decimal |  |  Decimal |
+  | `Message` | [VoicebotMessageData](#VoicebotMessageData-object)[] |  |   |
+  | `VoicebotResponseId` | Guid |  |  the unique id of the response |
+  | `MessageGuid` | String |  |  String |
+  | `IsFlowComplete` | bool |  |  bool |
+  | `BotId` | Guid |  |  Id of the Voicebot. |
+  | `VoiceBotMessageId` | Guid |  |  Id of the Voicebot Message. |
+ 
+
+### VoicebotMessageData Object
+  VoicebotMessageData Object is represented as simple flat JSON objects with the following keys:  
+
+  |Name| Type| Default | Description     |
+  | - | - | :-: | - |
+  | `id` | Guid  |  | the unique id of the response |
+  | `EnumVoicebotActionType` | Type |  |  Type |
+  | `Content` | Object |  |  Object |
+
   
 ### FieldValue Object
 
 |Name| Type|  Default |  Description     |
 | - | - | :-: |  - | 
 |`name` | string |  | the name of a field in a form. |
+|`MappingFieldName` | string |  |  |
 |`value` | string |  | the value of a field. |
 ### VariableValue Object
 |Name| Type|  Default |  Description     |
@@ -595,12 +603,13 @@ Response
 |`name` | string |  | the name of a variable in a form. |
 |`value` | string |  | the value of a variable. |
 ### VoiceBotOutput Object
-  VoiceBotMessage Object is represented as simple flat JSON objects with the following keys:  
+  VoiceBotOutput Object is represented as simple flat JSON objects with the following keys:  
 
   |Name| Type| Default | Description     |
   | - | - | :-: | - |
   | `id` | Guid  |  | the unique id of the response |
   | `content` | [VoiceBotResponse](#VoiceBotresponse-object)[]|  |   |
+
 
 
 ### VoiceBotResponse Object
