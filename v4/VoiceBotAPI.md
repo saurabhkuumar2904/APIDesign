@@ -40,10 +40,8 @@ example:
 ```Json 
   {
     "VoiceBotId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
-    "channel": "LiveChat",
+    "channel": "Twillio",
     "visitor": {
-        "name":"Kart",
-        "email":"kart@yahoo.com",
         "phone":"123-4355-212",
       }
     }
@@ -56,7 +54,7 @@ The Response body contains data with the follow structure:
   | Name | Type |  Description |    
   | - | - | :-: | 
   |`sessionId` | Guid | the unique id of the session |
-  |`greeting`  |  [VoiceBotOutput](#VoiceBotoutput-object) Object    |  |
+  |`greeting`  |  [VoiceBotSession](#VoiceBotSession-object) Object    |  |
 
 
 #### Example
@@ -65,8 +63,6 @@ Using curl
 curl -H "Content-Type: application/json" -d '{
     "VoiceBotId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48", 
     "visitor": {
-      "name":"Kart",
-      "email":"kart@yahoo.com",
       "phone":"123-4355-212",
     }
   }' -X POST https://domain.comm100.com/api/v4/voicebots/{VoicebotId}/sessions
@@ -81,12 +77,10 @@ Response
     "greeting":{
           "id":"d3f5b968-ad51-42af-b759-64c0afc40b84",
           "content":[{
-              "type":"VoiceBotActionSendMessage",
+              "type":"playText",
               "content":{
-                      "VoiceBotActionSendMessageLinks": [],
                     "message": "Hi there! I'm a VoiceBot, here to help answer your questions.",
                     "nextActionId": "00000000-0000-0000-0000-000000000000",
-                    "typingDelay": 1
               }
     }]
     }
@@ -121,8 +115,6 @@ example:
     "context": {
       "VoicebotId": "a9928d68-92e6-4487-a2e8-8234fc9d1f48",
       "customData": {
-        "name":"Kart",
-        "email":"kart@yahoo.com",
         "phone":"123-4355-212",
       }
     },
@@ -141,8 +133,6 @@ curl -H "Content-Type: application/json" -d '{
     "context": {
       "VoicebotId": "a9928d68-92e6-4487-a2e8-8234fc9d1f48",
       "customData": {
-        "name":"Kart",
-        "email":"kart@yahoo.com",
         "phone":"123-4355-212",
       }
     },
@@ -160,8 +150,6 @@ Response
       "VoicebotId": "a9928d68-92e6-4487-a2e8-8234fc9d1f48",
       "currentIntentId": "8d6892e6-92e6-4487-a2e8-92e68d6892e6",
       "customData": {
-        "name":"Kart",
-        "email":"kart@yahoo.com",
         "phone":"123-4355-212",
       }
     },
@@ -175,17 +163,11 @@ Response
         "score": 89.25,
         "responses":[
           {
-            "type":"htmlText",
+            "type":"playText",
             "content": {
-              "text":"<div>Hi, what can i do for you?</div>",
+              "Message":"Hi, what can i do for you?",
             }
-          },
-          {
-            "type":"image",
-            "content": {
-              "name":"greeting.png",
-              "url": "https://bot.comm100.com/botapi/images/greeting.png"
-            }
+          }
           }
         ]
       }
@@ -527,13 +509,10 @@ Response
   | `Location` | string  | | string |
   | `MessageGuid` | String |  | String |
   | `MessageId` | Int  |  | Int |
-  | `WebhookEventType` | Type  |  |  |
   | `Extra` | Dictionary  |  | Dictionary |
   | `TextInput` | String  | | String |
   | `CurrentIntentId` | Guid  |   | Guid |
   | `VoicebotResponseId` | Guid  |   | Guid |
-  | `FormValues` | [FieldValue](#FieldValue-Object)[]  |   |  |
-  | `IsFormSubmitted` | bool  |   | bool |
   | `InvalidInputTimes` | Int  |   | Int |
   | `PromptQuestion` | String  |   | String |
   | `VoicebotMessageRecordId` | Guid  |   | Guid |
@@ -544,14 +523,14 @@ Response
   | `Variables` | Dictionary  |   |  |
   | `MessagesForSendMessageAction` | [VoicebotMessageData](#VoicebotMessageData-object)  |   |  |
   | `LatestNextActionIds` | Guid[]  |   |  |
-  | `LastMessageType` | Type  |   | Type |
+  | `LastMessageType` | String  |   | type of the response,including `PlayAudio`,`PlayText`,`ClearValue`,`CollectDTMFDigits`,`CollectSpeechResponse`,`Condition`,`EndCall`,`GoToIntent`,`IVRMenu`,`SetVariableValue`,`TransferChat`,`Webhook`  |
 
 ### VoiceBotSession Object
   
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
   | `id` | Guid  | | sessionId |
-  | `Channel` | String  | | String |
+  | `Channel` | String  | | type of the response,including  `Twillio`,`Sip`.|
   | `Message` |  [VoicebotMessage](#VoicebotMessage-object) Object |  |  |
   | `context` | [VoicebotSessionContext](#VoicebotSessionContext-object) Object  |   |  |
 
@@ -561,7 +540,7 @@ Response
   |Name| Type| Default | Description     |
   | - | - | :-: | - |
   | `id` | Guid  |  | the unique id of the response |
-  | `EnumVoicebotMessageType` | Type |  |  Type |
+  | `EnumVoicebotMessageType` | String |  |  type of the response,including `GreetingMessage`,`HighConfigdenceAnswer`,`NoAnswer`,`Prompt`.|
   | `VisitorQuestion` | String |  |  String |
   | `Content` | Object |  |  Object |
   | `DisableChatInputArea` | bool |  |  bool |
@@ -582,7 +561,7 @@ Response
   |Name| Type| Default | Description     |
   | - | - | :-: | - |
   | `id` | Guid  |  | the unique id of the response |
-  | `EnumVoicebotActionType` | Type |  |  Type |
+  | `EnumVoicebotActionType` | String |  |  type of the response,including `PlayAudio`,`PlayText`,`ClearValue`,`CollectDTMFDigits`,`CollectSpeechResponse`,`Condition`,`EndCall`,`GoToIntent`,`IVRMenu`,`SetVariableValue`,`TransferChat`,`Webhook` |
   | `Content` | [VoiceBotAction](#VoiceBotAction-object)  |  |   |
 
   
@@ -760,16 +739,16 @@ Text Response is represented as simple flat json objects with the following keys
   | - | - | :-: | - | 
   |`VoicebotActionId` | Guid |  |  Id of the Action. |
   |`Value` | String |  |  String |
-  |`SaveToType` | Type |  | Allowed values are "LiveChat", "CustomVariable", "Tick", "Variable". |
+  |`SaveToType` | Type |  | Allowed values are "Twillio", "CustomVariable", "Tick", "Variable". |
   |`FieldId` | Guid |  |  Id of the Field |
-  |`Field` | [LiveChatField[]](#LiveChatField-object) |  |   |
+  |`Field` | [TwillioField[]](#TwillioField-object) |  |   |
   |`CustomVariableId` | Guid |  | Id of the Custom Variable  |
   |`CustomVariable` | [CustomVariable[]](#CustomVariable-object) |  |   |
   |`TicketingFieldId` | Guid |  | Id of the Custom Ticket Field.  |
   |`TicketingField` | [TicketingField[]](#TicketingField-object) |  |   |
   |`Variable` | String |  |  String |
 
-#### LiveChatField Object
+#### TwillioField Object
 Text Response is represented as simple flat json objects with the following keys:
 
   |Name| Type| Default | Description     | 
@@ -872,16 +851,10 @@ Field is represented as simple flat json objects with the following keys:
 |Name| Type|  Default |  Description     |
 | - | - | :-: |  - | 
 |`name` | string |  |  |
-|`email` | string |  |  |
 |`phone` | string |  |  |
 |`state/province` | string |  |  |
 |`country/region` | string |  |  |
 |`city` | string |  |  |
-|`ip` | string |  |  |
-|`email` | string |  |  |
-|`currentPageURL` | string |  |  |
-|`searchEngine` | string |  |  |
-|`searchKeywords` | string |  |  |
 
 
 #### capabilities Object
