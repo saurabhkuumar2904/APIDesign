@@ -9,10 +9,6 @@
 # Summary
   - Voicebot
     - [VoiceBotSession](#VoiceBotsession-object)
-       - [VoiceBotResponse](#VoiceBotresponse-object) 
-          -[VoiceBotAction](#VoiceBotAction-object) 
-
-
 ## Voice Bot API
   - `POST /voicebots/{VoicebotId}/sessions` - [Create session](#Create-A-New-VoiceBot-Session)
   - `POST /sessions/{sessionId}:recieveMessage` - [Recieved Message](#Recieved-Message)
@@ -556,8 +552,8 @@ Response
   | - | - | :-: | - | 
   | `id` | Guid  | | sessionId |
   | `Channel` | String  | | String |
-  | `Message` |  [VoicebotMessage](#VoicebotMessage-object)[] Object |  |  |
-  | `context` | [VoicebotSessionContext](#VoicebotSessionContext-object)[] Object  |   |  |
+  | `Message` |  [VoicebotMessage](#VoicebotMessage-object) Object |  |  |
+  | `context` | [VoicebotSessionContext](#VoicebotSessionContext-object) Object  |   |  |
 
 ### VoicebotMessage Object
   VoicebotMessage Object is represented as simple flat JSON objects with the following keys:  
@@ -602,17 +598,10 @@ Response
 | - | - | :-: |  - | 
 |`name` | string |  | the name of a variable in a form. |
 |`value` | string |  | the value of a variable. |
-### VoiceBotOutput Object
-  VoiceBotOutput Object is represented as simple flat JSON objects with the following keys:  
-
-  |Name| Type| Default | Description     |
-  | - | - | :-: | - |
-  | `id` | Guid  |  | the unique id of the response |
-  | `content` | [VoiceBotResponse](#VoiceBotresponse-object)[]|  |   |
 
 
 
-### VoiceBotResponse Object
+### VoiceBotAction Object
   Response is represented as simple flat json objects with the following keys:
 
   |Name| Type| Default | Description     | 
