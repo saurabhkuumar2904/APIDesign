@@ -14,7 +14,7 @@
 
 
 ## Voice Bot API
-  - `POST /voicebots/{VoicebotId}/sessions` - [Create session](#Create A New VoiceBot Session-session)
+  - `POST /voicebots/{VoicebotId}/sessions` - [Create session](#Create-A-New-VoiceBot-Session)
   - `POST /sessions/{sessionId}:recieveMessage` - [Recieved Message](#Recieved-Message)
 ## Twillio Adapter  
   - `GET /phonenumber/available`
