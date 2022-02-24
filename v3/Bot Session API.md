@@ -40,7 +40,7 @@ example:
 ```Json 
   {
     "VoiceBotId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
-    "channel": "LiveChat",
+    "channel": "Twillio",
     "visitor": {
         "phone":"123-4355-212",
       }
@@ -54,7 +54,7 @@ The Response body contains data with the follow structure:
   | Name | Type |  Description |    
   | - | - | :-: | 
   |`sessionId` | Guid | the unique id of the session |
-  |`greeting`  |  [VoiceBotOutput](#VoiceBotoutput-object) Object    |  |
+  |`greeting`  |  [VoiceBotSession](#VoiceBotSession-object) Object    |  |
 
 
 #### Example
@@ -530,7 +530,7 @@ Response
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
   | `id` | Guid  | | sessionId |
-  | `Channel` | String  | | String |
+  | `Channel` | String  | | type of the response,including  `Twillio`,`Sip`.|
   | `Message` |  [VoicebotMessage](#VoicebotMessage-object) Object |  |  |
   | `context` | [VoicebotSessionContext](#VoicebotSessionContext-object) Object  |   |  |
 
@@ -739,16 +739,16 @@ Text Response is represented as simple flat json objects with the following keys
   | - | - | :-: | - | 
   |`VoicebotActionId` | Guid |  |  Id of the Action. |
   |`Value` | String |  |  String |
-  |`SaveToType` | Type |  | Allowed values are "LiveChat", "CustomVariable", "Tick", "Variable". |
+  |`SaveToType` | Type |  | Allowed values are "Twillio", "CustomVariable", "Tick", "Variable". |
   |`FieldId` | Guid |  |  Id of the Field |
-  |`Field` | [LiveChatField[]](#LiveChatField-object) |  |   |
+  |`Field` | [TwillioField[]](#TwillioField-object) |  |   |
   |`CustomVariableId` | Guid |  | Id of the Custom Variable  |
   |`CustomVariable` | [CustomVariable[]](#CustomVariable-object) |  |   |
   |`TicketingFieldId` | Guid |  | Id of the Custom Ticket Field.  |
   |`TicketingField` | [TicketingField[]](#TicketingField-object) |  |   |
   |`Variable` | String |  |  String |
 
-#### LiveChatField Object
+#### TwillioField Object
 Text Response is represented as simple flat json objects with the following keys:
 
   |Name| Type| Default | Description     | 
