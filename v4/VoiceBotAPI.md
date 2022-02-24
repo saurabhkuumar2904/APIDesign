@@ -104,13 +104,13 @@ The request body contains data with the follow structure:
 
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
-  | `channel` | string  | yes | | eg: `Live Chat`, `Facebook Messenger`, `Twitter Direct Message`, `WeChat`, `WhatsApp`, `SMS`, `Voice` |
+  | `channel` | string  | yes | | eg: `Twillio`, `Sip`. |
   | `textInput` | string  | no | | text |
 
 example:
 ```Json 
   {
-    "channel":"Facebook Messenger",
+    "channel":"Sip",
     "textInput":"i want to buy NBN",
     "context": {
       "VoicebotId": "a9928d68-92e6-4487-a2e8-8234fc9d1f48",
@@ -128,7 +128,7 @@ the response is: [VoicebotSession](#VoicebotSession-Object) Object
 Using curl
 ```
 curl -H "Content-Type: application/json" -d '{
-    "channel":"Facebook Messenger",
+    "channel":"Sip",
     "textInput":"i want to buy NBN",
     "context": {
       "VoicebotId": "a9928d68-92e6-4487-a2e8-8234fc9d1f48",
@@ -144,7 +144,7 @@ Response
   Content-Type:  application/json
 
   {    
-    "channel":"Facebook Messenger",
+    "channel":"Sip",
     "id": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
     "context": {
       "VoicebotId": "a9928d68-92e6-4487-a2e8-8234fc9d1f48",
@@ -504,7 +504,7 @@ Response
   | `SessionId` | Guid  | | SessionId |
   | `VoicebotId` | Guid  | | VoicebotId |
   | `VoicebotName` | String  | | String |
-  | `Channel` | String  | |  |
+  | `Channel` | String  | | eg: `Twillio`, `Sip`. |
   | `Authentication` | string  | | authentication data |
   | `Location` | string  | | string |
   | `MessageGuid` | String |  | String |
