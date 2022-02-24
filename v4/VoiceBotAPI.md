@@ -17,8 +17,9 @@
   - `POST /phonenumber` - [Create A New Phonenumber](#Create-A-New-Phonenumber)
   - `PUT /phonenumber/{pathSid}` - [Update Phonenumber](#Update-Phonenumber)
   - `DELETE /phonenumber/{pathSid}/VoiceUrl` - [Remove  Phonenumber](#Remove-Phonenumber)
+## Call Adapter
+  - `POST /Call` - [Call](#Call)
 ## Sip Adapter
-
 
 
 # Endpoints
@@ -161,7 +162,7 @@ Response
         "intentId": "7534fdsca-92e6-4487-a2e8-92e68d6892e6",
         "intentName": "buy nbn",
         "score": 89.25,
-        "responses":[
+        "Messages":[
           {
             "type":"playText",
             "content": {
@@ -488,10 +489,115 @@ Response
   HTTP/1.1 204 OK
   Content-Type:  application/json
 
-  {
-    true
-  }
 
+
+```
+
+### Call
+`POST /call/say`
+
+#### Parameters
+No parameters
+
+Request body
+
+The request body contains data with the follow structure:
+
+  | Name | Type | Required | Default | Description |    
+  | - | - | :-: | :-: | - | 
+  | `from` | string  | yes | | |
+  | `content` | string  | yes | | |
+  | `to` | string  | yes | | |
+
+example:
+```Json 
+{
+  "from": "string",
+  "content": "string",
+  "to": "string"
+}
+```
+
+#### Response
+The Response body contains data with the follow structure:
+
+  | Name  | Type | Description |     
+  | - | - | - |
+  | `accountSid` | String |   |
+  | `apiVersion` | String |   |
+  | `dateCreated` | datetime |   |
+  | `dateUpdated` | datetime |   |
+  | `sid` | String |   |
+  | `parentCallSid` | String |   |
+  | `to` | String |   |
+  | `toFormatted` | String |   |
+  | `from` | String |   |
+  | `fromFormatted` | String |   |
+  | `phoneNumberSid` | String |   |
+  | `status` | String |   |
+  | `startTime` | datetime |   |
+  | `endTime` | datetime |   |
+  | `duration` | String |   |
+  | `price` | String |   |
+  | `priceUnit` | String |   |
+  | `direction` | String |   |
+  | `answeredBy` | String |   |
+  | `annotation` | String |   |
+  | `forwardedFrom` | String |   |
+  | `groupSid` | String |   |
+  | `callerName` | String |   |
+  | `queueTime` | String |   |
+  | `trunkSid` | String |   |
+  | `uri` | String |   |
+  | `subresourceUris` | [subresourceUris](#subresourceUris-Object) |   |
+
+#### Example
+Using curl
+```
+curl -H "Content-Type: application/json" -d '{
+  "from": "string",
+  "content": "string",
+  "to": "string"
+}' -X POST https://domain.comm100.com/call/say
+```
+Response
+```Json
+  HTTP/1.1 200 OK
+  Content-Type:  application/json
+
+{
+  "sid": "string",
+  "dateCreated": "2022-02-24T11:16:26.626Z",
+  "dateUpdated": "2022-02-24T11:16:26.626Z",
+  "parentCallSid": "string",
+  "accountSid": "string",
+  "to": "string",
+  "toFormatted": "string",
+  "from": "string",
+  "fromFormatted": "string",
+  "phoneNumberSid": "string",
+  "status": {},
+  "startTime": "2022-02-24T11:16:26.626Z",
+  "endTime": "2022-02-24T11:16:26.626Z",
+  "duration": "string",
+  "price": "string",
+  "priceUnit": "string",
+  "direction": "string",
+  "answeredBy": "string",
+  "annotation": "string",
+  "apiVersion": "string",
+  "forwardedFrom": "string",
+  "groupSid": "string",
+  "callerName": "string",
+  "queueTime": "string",
+  "trunkSid": "string",
+  "uri": "string",
+  "subresourceUris": {
+    "additionalProp1": "string",
+    "additionalProp2": "string",
+    "additionalProp3": "string"
+  }
+}
 ```
 
 # Model
@@ -516,7 +622,7 @@ Response
   | `InvalidInputTimes` | Int  |   | Int |
   | `PromptQuestion` | String  |   | String |
   | `VoicebotMessageRecordId` | Guid  |   | Guid |
-  | `CustomData` | object  |   | object |
+  | `CustomData` | [Visitor](#Visitor-object)  |   |  |
   | `LatestMessage` | [VoicebotMessage](#VoicebotMessage-object)  |   |  |
   | `IsFlowComplete` | bool  |   | bool |
   | `IsTest` | bool  |   | bool |
@@ -610,7 +716,7 @@ Text Response is represented as simple flat json objects with the following keys
   |Name| Type| Default | Description     | 
   | - | - | :-: | - | 
   |`VoicebotActionId` | Guid |  | Id of the Action.  |
-  |`VariableId` | Guid|  | Id of the VariableId  |
+  |`VariableNames` | Srting[]|  | Id of the VariableId  |
   |`NextActionId` | Guid|  | Id of the  Next Action. |
  #### CollectDTMFDigits Object
 Text Response is represented as simple flat json objects with the following keys:
@@ -866,3 +972,12 @@ Text Response is represented as simple flat json objects with the following keys
   |`sms` | bool |  |  bool |
   |`voice` | bool |  |  bool |
   |`fax` | bool |  |   bool |
+  
+#### subresourceUris Object
+Text Response is represented as simple flat json objects with the following keys:
+
+  |Name| Type| Default | Description     | 
+  | - | - | :-: | - | 
+  |`additionalProp1` | string |  |  string |
+  |`additionalProp2` | string |  |  string |
+  |`additionalProp3` | string |  |  string |
