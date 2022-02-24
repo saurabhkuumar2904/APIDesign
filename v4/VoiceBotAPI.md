@@ -17,10 +17,10 @@
   - `POST /voicebots/{VoicebotId}/sessions` - [Create session](#Create-A-New-VoiceBot-Session)
   - `POST /sessions/{sessionId}:recieveMessage` - [Recieved Message](#Recieved-Message)
 ## Twillio Adapter  
-  - `GET /phonenumber/available`
-  - `POST /phonenumber`
-  - `PUT /phonenumber/{pathSid}`
-  - `DELETE /phonenumber/{pathSid}/VoiceUrl`
+  - `GET /phonenumber/available` - [Get Phonenumber](#Get-Phonenumber)
+  - `POST /phonenumber` - [Create A New Phonenumber](#Create-A-New-Phonenumber)
+  - `PUT /phonenumber/{pathSid}` - [Update Phonenumber](#Update-Phonenumber)
+  - `DELETE /phonenumber/{pathSid}/VoiceUrl` - [Remove  Phonenumber](#Remove-Phonenumber)
 ## Sip Adapter
 
 
@@ -197,6 +197,324 @@ Response
   }
 ```
 
+### Get Phonenumber
+`GET /phonenumber/available`
+
+#### Parameters
+Path parameters
+
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+  | `pathCountryCode` | String | yes  |   |
+
+#### Response
+The Response body contains data with the follow structure:
+
+  | Name  | Type | Description |     
+  | - | - | - | - | 
+  | `friendlyName` | String |   |
+  | `phoneNumber` | String |   |
+  | `lata` | String |   |
+  | `locality` | bool |   |
+  | `rateCenter` | String |   |
+  | `latitude` | String |   |
+  | `region` | String |   |
+  | `postalCode` | String |   |
+  | `isoCountry` | String |   |
+  | `addressRequirements` | String |   |
+  | `beta` | bool |   |
+  | `longitude` | bool |   |
+  | `capabilities` | [capabilities](#capabilities-Object) |   |
+#### Example
+Response
+```Json
+  HTTP/1.1 200 OK
+  Content-Type:  application/json
+
+[
+  {
+    "friendlyName": {},
+    "phoneNumber": {},
+    "lata": "string",
+    "locality": "string",
+    "rateCenter": "string",
+    "latitude": 0,
+    "longitude": 0,
+    "region": "string",
+    "postalCode": "string",
+    "isoCountry": "string",
+    "addressRequirements": "string",
+    "beta": true,
+    "capabilities": {
+      "mms": true,
+      "sms": true,
+      "voice": true,
+      "fax": true
+    }
+  }
+]
+```
+
+### Create A New Phonenumber
+`POST /phonenumber`
+
+#### Parameters
+No parameters
+
+Request body
+
+The request body contains data with the follow structure:
+
+  | Name | Type | Required | Default | Description |    
+  | - | - | :-: | :-: | - | 
+  | `phoneNumber` | string  | yes | | |
+
+example:
+```Json 
+{
+  "phoneNumber": "string"
+}
+```
+
+#### Response
+The Response body contains data with the follow structure:
+
+  | Name  | Type | Description |     
+  | - | - | - | - | 
+  | `accountSid` | String |   |
+  | `addressSid` | String |   |
+  | `addressRequirements` | String |   |
+  | `beta` | bool |   |
+  | `apiVersion` | String |   |
+  | `dateCreated` | datetime |   |
+  | `dateUpdated` | datetime |   |
+  | `friendlyName` | String |   |
+  | `identitySid` | String |   |
+  | `phoneNumber` | String |   |
+  | `sid` | String |   |
+  | `smsFallbackMethod` | String |   |
+  | `smsFallbackUrl` | String |   |
+  | `smsMethod` | String |   |
+  | `smsUrl` | String |   |
+  | `statusCallback` | String |   |
+  | `statusCallbackMethod` | String |   |
+  | `trunkSid` | String |   |
+  | `uri` | String |   |
+  | `smsApplicationSid` | String |   |
+  | `origin` | String |   |
+  | `capabilities` | [capabilities](#capabilities-Object) |   |
+  | `voiceReceiveMode` | String |   |
+  | `voiceApplicationSid` | String |   |
+  | `voiceCallerIdLookup` | bool |   |
+  | `voiceFallbackMethod` | String |   |
+  | `voiceFallbackUrl` | String |   |
+  | `voiceMethod` | String |   |
+  | `voiceUrl` | String |   |
+  | `emergencyStatus` | String |   |
+  | `emergencyAddressSid` | String |   |
+  | `emergencyAddressStatus` | String |   |
+  | `bundleSid` | String |   |
+  | `status` | String |   |
+#### Example
+Using curl
+```
+curl -H "Content-Type: application/json" -d '{
+  "phoneNumber": "string"
+}' -X POST https://domain.comm100.com/phonenumber
+```
+Response
+```Json
+  HTTP/1.1 200 OK
+  Content-Type:  application/json
+
+{
+  "accountSid": "string",
+  "addressSid": "string",
+  "addressRequirements": {},
+  "apiVersion": "string",
+  "beta": true,
+  "capabilities": {
+    "mms": true,
+    "sms": true,
+    "voice": true,
+    "fax": true
+  },
+  "dateCreated": "2022-02-24T02:48:50.323Z",
+  "dateUpdated": "2022-02-24T02:48:50.323Z",
+  "friendlyName": "string",
+  "identitySid": "string",
+  "phoneNumber": {},
+  "origin": "string",
+  "sid": "string",
+  "smsApplicationSid": "string",
+  "smsFallbackMethod": {},
+  "smsFallbackUrl": "string",
+  "smsMethod": {},
+  "smsUrl": "string",
+  "statusCallback": "string",
+  "statusCallbackMethod": {},
+  "trunkSid": "string",
+  "uri": "string",
+  "voiceReceiveMode": {},
+  "voiceApplicationSid": "string",
+  "voiceCallerIdLookup": true,
+  "voiceFallbackMethod": {},
+  "voiceFallbackUrl": "string",
+  "voiceMethod": {},
+  "voiceUrl": "string",
+  "emergencyStatus": {},
+  "emergencyAddressSid": "string",
+  "emergencyAddressStatus": {},
+  "bundleSid": "string",
+  "status": "string"
+}
+```
+
+### Update Phonenumber
+`PUT /phonenumber/{pathSid}`
+
+#### Parameters
+Path parameters
+
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+  | `pathSid` | String | yes  |   |
+
+Request body
+
+The request body contains data with the follow structure:
+
+  | Name | Type | Required | Default | Description |    
+  | - | - | :-: | :-: | - | 
+  | `voiceUrl` | string  | yes | | |
+
+example:
+```Json 
+{
+  "voiceUrl": "string"
+}
+```
+
+#### Response
+The Response body contains data with the follow structure:
+
+  | Name  | Type | Description |     
+  | - | - | - | - | 
+  | `accountSid` | String |   |
+  | `addressSid` | String |   |
+  | `addressRequirements` | String |   |
+  | `beta` | bool |   |
+  | `apiVersion` | String |   |
+  | `dateCreated` | datetime |   |
+  | `dateUpdated` | datetime |   |
+  | `friendlyName` | String |   |
+  | `identitySid` | String |   |
+  | `phoneNumber` | String |   |
+  | `sid` | String |   |
+  | `smsFallbackMethod` | String |   |
+  | `smsFallbackUrl` | String |   |
+  | `smsMethod` | String |   |
+  | `smsUrl` | String |   |
+  | `statusCallback` | String |   |
+  | `statusCallbackMethod` | String |   |
+  | `trunkSid` | String |   |
+  | `uri` | String |   |
+  | `smsApplicationSid` | String |   |
+  | `origin` | String |   |
+  | `capabilities` | [capabilities](#capabilities-Object) |   |
+  | `voiceReceiveMode` | String |   |
+  | `voiceApplicationSid` | String |   |
+  | `voiceCallerIdLookup` | bool |   |
+  | `voiceFallbackMethod` | String |   |
+  | `voiceFallbackUrl` | String |   |
+  | `voiceMethod` | String |   |
+  | `voiceUrl` | String |   |
+  | `emergencyStatus` | String |   |
+  | `emergencyAddressSid` | String |   |
+  | `emergencyAddressStatus` | String |   |
+  | `bundleSid` | String |   |
+  | `status` | String |   |
+#### Example
+Using curl
+```
+curl -H "Content-Type: application/json" -d '{
+  "voiceUrl": "string"
+}' -X PUT https://domain.comm100.com/phonenumber/{pathSid}
+```
+Response
+```Json
+  HTTP/1.1 200 OK
+  Content-Type:  application/json
+
+{
+  "accountSid": "string",
+  "addressSid": "string",
+  "addressRequirements": {},
+  "apiVersion": "string",
+  "beta": true,
+  "capabilities": {
+    "mms": true,
+    "sms": true,
+    "voice": true,
+    "fax": true
+  },
+  "dateCreated": "2022-02-24T02:48:50.323Z",
+  "dateUpdated": "2022-02-24T02:48:50.323Z",
+  "friendlyName": "string",
+  "identitySid": "string",
+  "phoneNumber": {},
+  "origin": "string",
+  "sid": "string",
+  "smsApplicationSid": "string",
+  "smsFallbackMethod": {},
+  "smsFallbackUrl": "string",
+  "smsMethod": {},
+  "smsUrl": "string",
+  "statusCallback": "string",
+  "statusCallbackMethod": {},
+  "trunkSid": "string",
+  "uri": "string",
+  "voiceReceiveMode": {},
+  "voiceApplicationSid": "string",
+  "voiceCallerIdLookup": true,
+  "voiceFallbackMethod": {},
+  "voiceFallbackUrl": "string",
+  "voiceMethod": {},
+  "voiceUrl": "string",
+  "emergencyStatus": {},
+  "emergencyAddressSid": "string",
+  "emergencyAddressStatus": {},
+  "bundleSid": "string",
+  "status": "string"
+}
+```
+
+### Delete Phonenumber
+`Delete /phonenumber/{pathSid}/VoiceUrl`
+
+#### Parameters
+Path parameters
+
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+  | `pathSid` | String | yes  |   |
+
+#### Example
+Using curl
+```
+curl -H "Content-Type: application/json" -d
+ -X Delete https://domain.comm100.com/phonenumber/{pathSid}/VoiceUrl
+```
+Response
+```Json
+  HTTP/1.1 204 OK
+  Content-Type:  application/json
+
+  {
+    true
+  }
+
+```
 
 # Model
 
@@ -222,9 +540,9 @@ Response
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
   | `id` | Guid  | | sessionId |
-  | `interactions` |  [VoiceBotInteraction](#VoiceBotinteraction-object)[] Object |  |  |
+  | `intentactions` |  [VoiceBotIntentaction](#VoiceBotIntentaction-object)[] Object |  |  |
   | `context` | VoiceBotSessionContext Object  |   |  |
-### VoiceBotInteraction Object
+### VoiceBotIntentAction Object
 
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
@@ -567,3 +885,14 @@ Field is represented as simple flat json objects with the following keys:
 |`currentPageURL` | string |  |  |
 |`searchEngine` | string |  |  |
 |`searchKeywords` | string |  |  |
+
+
+#### capabilities Object
+Text Response is represented as simple flat json objects with the following keys:
+
+  |Name| Type| Default | Description     | 
+  | - | - | :-: | - | 
+  |`mms` | bool |  |  bool |
+  |`sms` | bool |  |  bool |
+  |`voice` | bool |  |  bool |
+  |`fax` | bool |  |   bool |
