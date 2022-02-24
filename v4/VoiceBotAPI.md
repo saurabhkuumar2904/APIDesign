@@ -17,7 +17,10 @@
   - `POST /voicebots/{VoicebotId}/sessions` - [Create session](#create-session)
   - `POST /sessions/{sessionId}:recieveMessage` - [Recieved Message](#Recieved-Message)
 ## Twillio Adapter  
-
+  - `GET /phonenumber/available`
+  - `POST /phonenumber`
+  - `PUT /phonenumber/{pathSid}`
+  - `DELETE /phonenumber/{pathSid}/VoiceUrl`
 ## Sip Adapter
 
 
