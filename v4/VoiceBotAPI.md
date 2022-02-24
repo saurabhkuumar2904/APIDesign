@@ -583,7 +583,7 @@ Response
   | - | - | :-: | - |
   | `id` | Guid  |  | the unique id of the response |
   | `EnumVoicebotActionType` | Type |  |  Type |
-  | `Content` | Object |  |  Object |
+  | `Content` | [VoiceBotAction](#VoiceBotAction-object)  |  |   |
 
   
 ### FieldValue Object
