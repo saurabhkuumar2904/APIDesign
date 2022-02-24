@@ -211,7 +211,7 @@ Path parameters
 The Response body contains data with the follow structure:
 
   | Name  | Type | Description |     
-  | - | - | - | - | 
+  | - | - | - |
   | `friendlyName` | String |   |
   | `phoneNumber` | String |   |
   | `lata` | String |   |
@@ -280,7 +280,7 @@ example:
 The Response body contains data with the follow structure:
 
   | Name  | Type | Description |     
-  | - | - | - | - | 
+  | - | - | - |
   | `accountSid` | String |   |
   | `addressSid` | String |   |
   | `addressRequirements` | String |   |
@@ -399,7 +399,7 @@ example:
 The Response body contains data with the follow structure:
 
   | Name  | Type | Description |     
-  | - | - | - | - | 
+  | - | - | - |
   | `accountSid` | String |   |
   | `addressSid` | String |   |
   | `addressRequirements` | String |   |
@@ -489,7 +489,7 @@ Response
 }
 ```
 
-### Delete Phonenumber
+### Remove Phonenumber
 `Delete /phonenumber/{pathSid}/VoiceUrl`
 
 #### Parameters
