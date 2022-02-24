@@ -532,18 +532,18 @@ Response
   | `TextInput` | String  | | String |
   | `CurrentIntentId` | Guid  |   | Guid |
   | `VoicebotResponseId` | Guid  |   | Guid |
-  | `FormValues` | [FieldValue](#FieldValue-Object)  |   | Guid |
+  | `FormValues` | [FieldValue](#FieldValue-Object)[]  |   | Guid |
   | `IsFormSubmitted` | bool  |   | bool |
   | `InvalidInputTimes` | Int  |   | Int |
   | `PromptQuestion` | String  |   | String |
   | `VoicebotMessageRecordId` | Guid  |   | Guid |
   | `CustomData` | object  |   | object |
-  | `LatestMessage` | [VoicebotMessage](#VoicebotMessage-object)[]  |   |  |
+  | `LatestMessage` | [VoicebotMessage](#VoicebotMessage-object)  |   |  |
   | `IsFlowComplete` | bool  |   | bool |
   | `IsTest` | bool  |   | bool |
-  | `Variables` | [Dictionary](#Dictionary-object)[]  |   | Guid |
-  | `MessagesForSendMessageAction` | [VoicebotMessageData](#VoicebotMessageData-object)[]  |   | Guid |
-  | `LatestNextActionIds` | List[Guid]  |   | List |
+  | `Variables` | Dictionary  |   | Guid |
+  | `MessagesForSendMessageAction` | [VoicebotMessageData](#VoicebotMessageData-object)  |   | Guid |
+  | `LatestNextActionIds` | Guid[]  |   | List |
   | `LastMessageType` | Type  |   | Type |
 
 ### VoiceBotSession Object
