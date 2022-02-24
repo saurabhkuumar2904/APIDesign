@@ -557,7 +557,7 @@ Response
   | `id` | Guid  | | sessionId |
   | `Channel` | String  | | String |
   | `Message` |  [VoicebotMessage](#VoicebotMessage-object)[] Object |  |  |
-  | `context` | [VoiceBotSessionContext](#VoiceBotIntentaction-object)[] Object  |   |  |
+  | `context` | [VoicebotSessionContext](#VoicebotIntentaction-object)[] Object  |   |  |
 
 ### VoicebotMessage Object
   VoicebotMessage Object is represented as simple flat JSON objects with the following keys:  
