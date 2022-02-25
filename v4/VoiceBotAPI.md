@@ -153,18 +153,8 @@ The Response body contains data with the follow structure:
   | Name  | Type | Description |     
   | - | - | - |
   | `friendlyName` | String |   |
-  | `phoneNumber` | String |   |
-  | `lata` | String |   |
-  | `locality` | bool |   |
-  | `rateCenter` | String |   |
-  | `latitude` | String |   |
-  | `region` | String |   |
-  | `postalCode` | String |   |
-  | `isoCountry` | String |   |
-  | `addressRequirements` | String |   |
-  | `beta` | bool |   |
-  | `longitude` | bool |   |
-  | `capabilities` | [capabilities](#capabilities-Object) |   |
+  | `phoneNumber` | String |   |  
+  | `isoCountry` | String |   |  
 #### Example
 Response
 ```Json
@@ -173,24 +163,9 @@ Response
 
 [
   {
-    "friendlyName": {},
-    "phoneNumber": {},
-    "lata": "string",
-    "locality": "string",
-    "rateCenter": "string",
-    "latitude": 0,
-    "longitude": 0,
-    "region": "string",
-    "postalCode": "string",
-    "isoCountry": "string",
-    "addressRequirements": "string",
-    "beta": true,
-    "capabilities": {
-      "mms": true,
-      "sms": true,
-      "voice": true,
-      "fax": true
-    }
+    "friendlyName": string,
+    "phoneNumber": string,    
+    "isoCountry": "string",    
   }
 ]
 ```
@@ -220,41 +195,11 @@ example:
 The Response body contains data with the follow structure:
 
   | Name  | Type | Description |     
-  | - | - | - |
-  | `accountSid` | String |   |
-  | `addressSid` | String |   |
-  | `addressRequirements` | String |   |
-  | `beta` | bool |   |
-  | `apiVersion` | String |   |
-  | `dateCreated` | datetime |   |
-  | `dateUpdated` | datetime |   |
-  | `friendlyName` | String |   |
-  | `identitySid` | String |   |
+  | - | - | - |  
+  | `dateCreated` | datetime |   |  
+  | `friendlyName` | String |   |  
   | `phoneNumber` | String |   |
-  | `sid` | String |   |
-  | `smsFallbackMethod` | String |   |
-  | `smsFallbackUrl` | String |   |
-  | `smsMethod` | String |   |
-  | `smsUrl` | String |   |
-  | `statusCallback` | String |   |
-  | `statusCallbackMethod` | String |   |
-  | `trunkSid` | String |   |
-  | `uri` | String |   |
-  | `smsApplicationSid` | String |   |
-  | `origin` | String |   |
-  | `capabilities` | [capabilities](#capabilities-Object) |   |
-  | `voiceReceiveMode` | String |   |
-  | `voiceApplicationSid` | String |   |
-  | `voiceCallerIdLookup` | bool |   |
-  | `voiceFallbackMethod` | String |   |
-  | `voiceFallbackUrl` | String |   |
-  | `voiceMethod` | String |   |
-  | `voiceUrl` | String |   |
-  | `emergencyStatus` | String |   |
-  | `emergencyAddressSid` | String |   |
-  | `emergencyAddressStatus` | String |   |
-  | `bundleSid` | String |   |
-  | `status` | String |   |
+  | `sid` | String |   |  
 #### Example
 Using curl
 ```
@@ -267,167 +212,14 @@ Response
   HTTP/1.1 200 OK
   Content-Type:  application/json
 
-{
-  "accountSid": "string",
-  "addressSid": "string",
-  "addressRequirements": {},
-  "apiVersion": "string",
-  "beta": true,
-  "capabilities": {
-    "mms": true,
-    "sms": true,
-    "voice": true,
-    "fax": true
-  },
-  "dateCreated": "2022-02-24T02:48:50.323Z",
-  "dateUpdated": "2022-02-24T02:48:50.323Z",
-  "friendlyName": "string",
-  "identitySid": "string",
-  "phoneNumber": {},
-  "origin": "string",
-  "sid": "string",
-  "smsApplicationSid": "string",
-  "smsFallbackMethod": {},
-  "smsFallbackUrl": "string",
-  "smsMethod": {},
-  "smsUrl": "string",
-  "statusCallback": "string",
-  "statusCallbackMethod": {},
-  "trunkSid": "string",
-  "uri": "string",
-  "voiceReceiveMode": {},
-  "voiceApplicationSid": "string",
-  "voiceCallerIdLookup": true,
-  "voiceFallbackMethod": {},
-  "voiceFallbackUrl": "string",
-  "voiceMethod": {},
-  "voiceUrl": "string",
-  "emergencyStatus": {},
-  "emergencyAddressSid": "string",
-  "emergencyAddressStatus": {},
-  "bundleSid": "string",
-  "status": "string"
+{  
+  "dateCreated": "2022-02-24T02:48:50.323Z",  
+  "friendlyName": "string",  
+  "phoneNumber": "string",  
+  "sid": "string",  
 }
 ```
 
-### Update Phonenumber
-`PUT /phonenumber/{pathSid}`
-
-#### Parameters
-Path parameters
-
-  | Name  | Type | Required  | Description |     
-  | - | - | - | - | 
-  | `pathSid` | String | yes  |   |
-
-Request body
-
-The request body contains data with the follow structure:
-
-  | Name | Type | Required | Default | Description |    
-  | - | - | :-: | :-: | - | 
-  | `voiceUrl` | string  | yes | | |
-
-example:
-```Json 
-{
-  "voiceUrl": "string"
-}
-```
-
-#### Response
-The Response body contains data with the follow structure:
-
-  | Name  | Type | Description |     
-  | - | - | - |
-  | `accountSid` | String |   |
-  | `addressSid` | String |   |
-  | `addressRequirements` | String |   |
-  | `beta` | bool |   |
-  | `apiVersion` | String |   |
-  | `dateCreated` | datetime |   |
-  | `dateUpdated` | datetime |   |
-  | `friendlyName` | String |   |
-  | `identitySid` | String |   |
-  | `phoneNumber` | String |   |
-  | `sid` | String |   |
-  | `smsFallbackMethod` | String |   |
-  | `smsFallbackUrl` | String |   |
-  | `smsMethod` | String |   |
-  | `smsUrl` | String |   |
-  | `statusCallback` | String |   |
-  | `statusCallbackMethod` | String |   |
-  | `trunkSid` | String |   |
-  | `uri` | String |   |
-  | `smsApplicationSid` | String |   |
-  | `origin` | String |   |
-  | `capabilities` | [capabilities](#capabilities-Object) |   |
-  | `voiceReceiveMode` | String |   |
-  | `voiceApplicationSid` | String |   |
-  | `voiceCallerIdLookup` | bool |   |
-  | `voiceFallbackMethod` | String |   |
-  | `voiceFallbackUrl` | String |   |
-  | `voiceMethod` | String |   |
-  | `voiceUrl` | String |   |
-  | `emergencyStatus` | String |   |
-  | `emergencyAddressSid` | String |   |
-  | `emergencyAddressStatus` | String |   |
-  | `bundleSid` | String |   |
-  | `status` | String |   |
-#### Example
-Using curl
-```
-curl -H "Content-Type: application/json" -d '{
-  "voiceUrl": "string"
-}' -X PUT https://domain.comm100.com/phonenumber/{pathSid}
-```
-Response
-```Json
-  HTTP/1.1 200 OK
-  Content-Type:  application/json
-
-{
-  "accountSid": "string",
-  "addressSid": "string",
-  "addressRequirements": {},
-  "apiVersion": "string",
-  "beta": true,
-  "capabilities": {
-    "mms": true,
-    "sms": true,
-    "voice": true,
-    "fax": true
-  },
-  "dateCreated": "2022-02-24T02:48:50.323Z",
-  "dateUpdated": "2022-02-24T02:48:50.323Z",
-  "friendlyName": "string",
-  "identitySid": "string",
-  "phoneNumber": {},
-  "origin": "string",
-  "sid": "string",
-  "smsApplicationSid": "string",
-  "smsFallbackMethod": {},
-  "smsFallbackUrl": "string",
-  "smsMethod": {},
-  "smsUrl": "string",
-  "statusCallback": "string",
-  "statusCallbackMethod": {},
-  "trunkSid": "string",
-  "uri": "string",
-  "voiceReceiveMode": {},
-  "voiceApplicationSid": "string",
-  "voiceCallerIdLookup": true,
-  "voiceFallbackMethod": {},
-  "voiceFallbackUrl": "string",
-  "voiceMethod": {},
-  "voiceUrl": "string",
-  "emergencyStatus": {},
-  "emergencyAddressSid": "string",
-  "emergencyAddressStatus": {},
-  "bundleSid": "string",
-  "status": "string"
-}
-```
 
 ### Remove Phonenumber
 `Delete /phonenumber/{pathSid}/VoiceUrl`
@@ -483,34 +275,7 @@ example:
 The Response body contains data with the follow structure:
 
   | Name  | Type | Description |     
-  | - | - | - |
-  | `accountSid` | String |   |
-  | `apiVersion` | String |   |
-  | `dateCreated` | datetime |   |
-  | `dateUpdated` | datetime |   |
-  | `sid` | String |   |
-  | `parentCallSid` | String |   |
-  | `to` | String |   |
-  | `toFormatted` | String |   |
-  | `from` | String |   |
-  | `fromFormatted` | String |   |
-  | `phoneNumberSid` | String |   |
-  | `status` | String |   |
-  | `startTime` | datetime |   |
-  | `endTime` | datetime |   |
-  | `duration` | String |   |
-  | `price` | String |   |
-  | `priceUnit` | String |   |
-  | `direction` | String |   |
-  | `answeredBy` | String |   |
-  | `annotation` | String |   |
-  | `forwardedFrom` | String |   |
-  | `groupSid` | String |   |
-  | `callerName` | String |   |
-  | `queueTime` | String |   |
-  | `trunkSid` | String |   |
-  | `uri` | String |   |
-  | `subresourceUris` | [subresourceUris](#subresourceUris-Object) |   |
+  | - | - | - |  
 
 #### Example
 Using curl
@@ -526,38 +291,7 @@ Response
   HTTP/1.1 200 OK
   Content-Type:  application/json
 
-{
-  "sid": "string",
-  "dateCreated": "2022-02-24T11:16:26.626Z",
-  "dateUpdated": "2022-02-24T11:16:26.626Z",
-  "parentCallSid": "string",
-  "accountSid": "string",
-  "to": "string",
-  "toFormatted": "string",
-  "from": "string",
-  "fromFormatted": "string",
-  "phoneNumberSid": "string",
-  "status": {},
-  "startTime": "2022-02-24T11:16:26.626Z",
-  "endTime": "2022-02-24T11:16:26.626Z",
-  "duration": "string",
-  "price": "string",
-  "priceUnit": "string",
-  "direction": "string",
-  "answeredBy": "string",
-  "annotation": "string",
-  "apiVersion": "string",
-  "forwardedFrom": "string",
-  "groupSid": "string",
-  "callerName": "string",
-  "queueTime": "string",
-  "trunkSid": "string",
-  "uri": "string",
-  "subresourceUris": {
-    "additionalProp1": "string",
-    "additionalProp2": "string",
-    "additionalProp3": "string"
-  }
+{  
 }
 ```
 
