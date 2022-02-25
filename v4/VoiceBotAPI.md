@@ -7,11 +7,9 @@
 
 
 # Summary
-  - Voicebot
-    - [VoiceBotSession](#VoiceBotsession-object)
 ## Voice Bot API
-  - `POST /voicebots/{VoicebotId}/sessions` - [Create session](#Create-A-New-VoiceBot-Session)
-  - `POST /sessions/{sessionId}:recieveMessage` - [Recieved Message](#Recieved-Message)
+  - `POST /voicebots/{VoicebotId}/sessions` - [Create session](#create-a-new-voicebot-session)
+  - `POST /sessions/{sessionId}:recieveMessage` - [Recieved Message](#recieved-message)
 ## Twillio Adapter  
   - `GET /phonenumber/available` - [Get Phonenumber](#Get-Phonenumber)
   - `POST /phonenumber` - [Create A New Phonenumber](#Create-A-New-Phonenumber)
@@ -55,7 +53,7 @@ The Response body contains data with the follow structure:
   | Name | Type |  Description |    
   | - | - | :-: | 
   |`sessionId` | Guid | the unique id of the session |
-  |`greeting`  |  [VoiceBotSession](#VoiceBotSession-object) Object    |  |
+  |`content`  |  [VoiceBotAction](#voicebotaction-object)[]    |  |
 
 
 #### Example
@@ -74,9 +72,7 @@ Response
   Content-Type:  application/json
 
   {    
-    "sessionId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
-    "greeting":{
-          "id":"d3f5b968-ad51-42af-b759-64c0afc40b84",
+          "sessionId":"d3f5b968-ad51-42af-b759-64c0afc40b84",
           "content":[{
               "type":"playText",
               "content":{
@@ -84,7 +80,6 @@ Response
                     "nextActionId": "00000000-0000-0000-0000-000000000000",
               }
     }]
-    }
 
   }
 ```
@@ -105,38 +100,23 @@ The request body contains data with the follow structure:
 
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
-  | `channel` | string  | yes | | eg: `Twillio`, `Sip`. |
   | `textInput` | string  | no | | text |
 
 example:
 ```Json 
   {
-    "channel":"Sip",
-    "textInput":"i want to buy NBN",
-    "context": {
-      "VoicebotId": "a9928d68-92e6-4487-a2e8-8234fc9d1f48",
-      "customData": {
-        "phone":"123-4355-212",
-      }
-    },
+    "textInput":"i want to buy NBN"
   }
 ```
 
 #### Response
-the response is: [VoicebotSession](#VoicebotSession-Object) Object
+the response is: [VoicebotOutput](#voicebotoutput-object) Object
 
 #### Example
 Using curl
 ```
 curl -H "Content-Type: application/json" -d '{
-    "channel":"Sip",
-    "textInput":"i want to buy NBN",
-    "context": {
-      "VoicebotId": "a9928d68-92e6-4487-a2e8-8234fc9d1f48",
-      "customData": {
-        "phone":"123-4355-212",
-      }
-    },
+    "textInput":"i want to buy NBN"
   }' -X POST https://domain.comm100.com/sessions/f9928d68-92e6-4487-a2e8-8234fc9d1f48:detectIntent
 ```
 Response
@@ -145,34 +125,15 @@ Response
   Content-Type:  application/json
 
   {    
-    "channel":"Sip",
     "id": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
-    "context": {
-      "VoicebotId": "a9928d68-92e6-4487-a2e8-8234fc9d1f48",
-      "currentIntentId": "8d6892e6-92e6-4487-a2e8-92e68d6892e6",
-      "customData": {
-        "phone":"123-4355-212",
-      }
-    },
-    "message":{
-      "id":"d3f5b968-ad51-42af-b759-64c0afc40b84",
-      "visitorQuestion":"i want to buy NBN",
-      "type":"highConfidenceAnswer",
-      "content":{
-        "intentId": "7534fdsca-92e6-4487-a2e8-92e68d6892e6",
-        "intentName": "buy nbn",
-        "score": 89.25,
-        "Messages":[
+    "content": [
           {
             "type":"playText",
             "content": {
               "Message":"Hi, what can i do for you?",
             }
           }
-          }
         ]
-      }
-    }    
   }
 ```
 
@@ -601,98 +562,20 @@ Response
 ```
 
 # Model
-
-### VoicebotSessionContext Object
-  VoicebotSessionContext Object is represented as simple flat JSON objects with the following keys:  
-
-  |Name| Type | Default | Description     | 
-  | - | - | :-: | - |   
-  | `SessionId` | Guid  | | SessionId |
-  | `VoicebotId` | Guid  | | VoicebotId |
-  | `VoicebotName` | String  | | String |
-  | `Channel` | String  | | eg: `Twillio`, `Sip`. |
-  | `Authentication` | string  | | authentication data |
-  | `Location` | string  | | string |
-  | `MessageGuid` | String |  | String |
-  | `MessageId` | Int  |  | Int |
-  | `Extra` | Dictionary  |  | Dictionary |
-  | `TextInput` | String  | | String |
-  | `CurrentIntentId` | Guid  |   | Guid |
-  | `VoicebotResponseId` | Guid  |   | Guid |
-  | `InvalidInputTimes` | Int  |   | Int |
-  | `PromptQuestion` | String  |   | String |
-  | `VoicebotMessageRecordId` | Guid  |   | Guid |
-  | `CustomData` | [Visitor](#Visitor-object)  |   |  |
-  | `LatestMessage` | [VoicebotMessage](#VoicebotMessage-object)  |   |  |
-  | `IsFlowComplete` | bool  |   | bool |
-  | `IsTest` | bool  |   | bool |
-  | `Variables` | Dictionary  |   |  |
-  | `MessagesForSendMessageAction` | [VoicebotMessageData](#VoicebotMessageData-object)  |   |  |
-  | `LatestNextActionIds` | Guid[]  |   |  |
-  | `LastMessageType` | String  |   | type of the response,including `PlayAudio`,`PlayText`,`ClearValue`,`CollectDTMFDigits`,`CollectSpeechResponse`,`Condition`,`EndCall`,`GoToIntent`,`IVRMenu`,`SetVariableValue`,`TransferChat`,`Webhook`  |
-
-### VoiceBotSession Object
+### VoicebotOutput Object
   
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
-  | `id` | Guid  | | sessionId |
-  | `Channel` | String  | | type of the response,including  `Twillio`,`Sip`.|
-  | `Message` |  [VoicebotMessage](#VoicebotMessage-object) Object |  |  |
-  | `context` | [VoicebotSessionContext](#VoicebotSessionContext-object) Object  |   |  |
-
-### VoicebotMessage Object
-  VoicebotMessage Object is represented as simple flat JSON objects with the following keys:  
-
-  |Name| Type| Default | Description     |
-  | - | - | :-: | - |
-  | `id` | Guid  |  | the unique id of the response |
-  | `EnumVoicebotMessageType` | String |  |  type of the response,including `GreetingMessage`,`HighConfigdenceAnswer`,`NoAnswer`,`Prompt`.|
-  | `VisitorQuestion` | String |  |  String |
-  | `Content` | Object |  |  Object |
-  | `DisableChatInputArea` | bool |  |  bool |
-  | `IntentId` | Guid |  |  Id of the Intent. |
-  | `IntentName` | String |  |  Name of the Intent. |
-  | `Score` | Decimal |  |  Decimal |
-  | `Message` | [VoicebotMessageData](#VoicebotMessageData-object)[] |  |   |
-  | `VoicebotResponseId` | Guid |  |  the unique id of the response |
-  | `MessageGuid` | String |  |  String |
-  | `IsFlowComplete` | bool |  |  bool |
-  | `BotId` | Guid |  |  Id of the Voicebot. |
-  | `VoiceBotMessageId` | Guid |  |  Id of the Voicebot Message. |
- 
-
-### VoicebotMessageData Object
-  VoicebotMessageData Object is represented as simple flat JSON objects with the following keys:  
-
-  |Name| Type| Default | Description     |
-  | - | - | :-: | - |
-  | `id` | Guid  |  | the unique id of the response |
-  | `EnumVoicebotActionType` | String |  |  type of the response,including `PlayAudio`,`PlayText`,`ClearValue`,`CollectDTMFDigits`,`CollectSpeechResponse`,`Condition`,`EndCall`,`GoToIntent`,`IVRMenu`,`SetVariableValue`,`TransferChat`,`Webhook` |
-  | `Content` | [VoiceBotAction](#VoiceBotAction-object)  |  |   |
-
-  
-### FieldValue Object
-
-|Name| Type|  Default |  Description     |
-| - | - | :-: |  - | 
-|`name` | string |  | the name of a field in a form. |
-|`MappingFieldName` | string |  |  |
-|`value` | string |  | the value of a field. |
-### VariableValue Object
-|Name| Type|  Default |  Description     |
-| - | - | :-: |  - | 
-|`name` | string |  | the name of a variable in a form. |
-|`value` | string |  | the value of a variable. |
-
-
+  | `id` | Guid  | | |
+  |`content`  |  [VoiceBotAction](#voicebotaction-object)[]    |  |
 
 ### VoiceBotAction Object
   Response is represented as simple flat json objects with the following keys:
 
   |Name| Type| Default | Description     | 
   | - | - | :-: | - | 
-  |`type` | string | | type of the response,including `PlayAudio`,`PlayText`,`ClearValue`,`CollectDTMFDigits`,`CollectSpeechResponse`,`Condition`,`EndCall`,`GoToIntent`,`IVRMenu`,`SetVariableValue`,`TransferChat`,`Webhook`|
-  | `content` | object | |  response's content. when type is `PlayAudio`, it represents [PlayAudio](#PlayAudio-object); when type is `PlayText`,it represents [PlayText](#PlayText-object);when type is `ClearValue`,it represents [ClearValue](#ClearValue-object);when type is `CollectDTMFDigits`,it represents [CollectDTMFDigits](#CollectDTMFDigits-object); when type is `CollectSpeechResponse`, it represents [CollectSpeechResponse](#CollectSpeechResponse-object);when type is `Condition`, it represents [Condition](#Condition-object);when type is `EndCall`, it represents [EndCall](#EndCall-object);when type is `GoToIntent`, it represents [GoToIntent](#GoToIntent-object);when type is `IVRMenu`, it represents [IVRMenu](#IVRMenu-object);when type is `SetVariableValue`, it represents [SetVariableValue](#SetVariableValue-object);when type is `TransferChat`, it represents [TransferChat](#TransferChat-object);when type is `Webhook`, it represents [Webhook](#Webhook-object);|
+  |`type` | string | | type of the response,including `PlayAudio`,`PlayText`,`CollectDTMFDigits`,`CollectSpeechResponse`,`IVRMenu`,`TransferChat`, `EndCall`|
+  | `content` | object | |  response's content. when type is `PlayAudio`, it represents [PlayAudio](#PlayAudio-object); when type is `PlayText`,it represents [PlayText](#PlayText-object);when type is `CollectDTMFDigits`,it represents [CollectDTMFDigits](#CollectDTMFDigits-object); when type is `CollectSpeechResponse`, it represents [CollectSpeechResponse](#CollectSpeechResponse-object);when type is `EndCall`, it represents [EndCall](#EndCall-object);when type is `IVRMenu`, it represents [IVRMenu](#IVRMenu-object);when type is `TransferChat`, it represents [TransferChat](#TransferChat-object);|
 
 #### PlayAudio Object
   Text Response is represented as simple flat json objects with the following keys:
@@ -710,14 +593,7 @@ Response
   |`VoicebotActionId` | Guid |  | Id of the Action.  |
   |`Message` | String|  | String  |
   |`NextActionId` | Guid|  | Id of the  Next Action. |
-#### ClearValue Object
-Text Response is represented as simple flat json objects with the following keys:
 
-  |Name| Type| Default | Description     | 
-  | - | - | :-: | - | 
-  |`VoicebotActionId` | Guid |  | Id of the Action.  |
-  |`VariableNames` | Srting[]|  | Id of the VariableId  |
-  |`NextActionId` | Guid|  | Id of the  Next Action. |
  #### CollectDTMFDigits Object
 Text Response is represented as simple flat json objects with the following keys:
 
@@ -807,14 +683,6 @@ Text Response is represented as simple flat json objects with the following keys
   | - | - | :-: | - | 
   |`VoicebotActionId` | Guid |  |  Id of the Action. |
   
-#### GoToIntent Object
-Text Response is represented as simple flat json objects with the following keys:
-
-  |Name| Type| Default | Description     | 
-  | - | - | :-: | - | 
-  |`VoicebotActionId` | Guid |  |  Id of the Action. |
-  |`IntentId` | Guid |  |  Id of the Intent. |
-
 #### IVRMenu Object
 Text Response is represented as simple flat json objects with the following keys:
 
@@ -838,22 +706,6 @@ Text Response is represented as simple flat json objects with the following keys
   |`VoicebotActionId` | Int |  |   Id of the Action. |
   |`Order` | Int |  |  Int |
   
-#### SetVariableValue Object
-Text Response is represented as simple flat json objects with the following keys:
-
-  |Name| Type| Default | Description     | 
-  | - | - | :-: | - | 
-  |`VoicebotActionId` | Guid |  |  Id of the Action. |
-  |`Value` | String |  |  String |
-  |`SaveToType` | Type |  | Allowed values are "Twillio", "CustomVariable", "Tick", "Variable". |
-  |`FieldId` | Guid |  |  Id of the Field |
-  |`Field` | [TwillioField[]](#TwillioField-object) |  |   |
-  |`CustomVariableId` | Guid |  | Id of the Custom Variable  |
-  |`CustomVariable` | [CustomVariable[]](#CustomVariable-object) |  |   |
-  |`TicketingFieldId` | Guid |  | Id of the Custom Ticket Field.  |
-  |`TicketingField` | [TicketingField[]](#TicketingField-object) |  |   |
-  |`Variable` | String |  |  String |
-
 #### TwillioField Object
 Text Response is represented as simple flat json objects with the following keys:
 
@@ -878,80 +730,6 @@ Text Response is represented as simple flat json objects with the following keys
   |`Id` | Guid |  |  Id of the TicketingField. |
   |`Name` | String |  |  Name of the TicketingField. |
   
-#### Webhook Object
-Text Response is represented as simple flat json objects with the following keys:
-
-  |Name| Type| Default | Description     | 
-  | - | - | :-: | - | 
-  |`VoicebotActionId` | Guid |  |  Id of the Action. |
-  |`Url` | Srting |  |  Url of the Webhook. |
-  |`IfSendChatTranscript` | bool |  |   |
-  |`AdditionalPostBody` | String |  |   |
-  |`OtherResponseToActionId` | Guid |  |   |
-  |`VoicebotActionWebhookHeaders` | [VoicebotActionWebhookHeaders[]](#VoicebotActionWebhookHeaders-object) |  |   |
-  |`VoicebotActionWebhookResponseCodeToActions` | [VoicebotActionWebhookResponseCodeToActions[]](#VoicebotActionWebhookResponseCodeToActions-object) |  |   |
-  |`VoicebotActionWebhookResponseToVariables` | [VoicebotActionWebhookResponseToVariables[]](#VoicebotActionWebhookResponseToVariables-object) |  |   |
-  
-#### VoicebotActionWebhookHeaders Object
-Text Response is represented as simple flat json objects with the following keys:
-
-  |Name| Type| Default | Description     | 
-  | - | - | :-: | - | 
-  |`Id` | Guid |  |  Id of the WebhookHeaders. |
-  |`VoicebotActionId` | String |  |  Id of the Action. |
-  |`Key` | String |  |  String |
-  |`Value` | String |  |  String |
-  |`Order` | Int |  |  Int |
-
-#### VoicebotActionWebhookResponseCodeToActions Object
-Text Response is represented as simple flat json objects with the following keys:
-
-  |Name| Type| Default | Description     | 
-  | - | - | :-: | - | 
-  |`Id` | Guid |  |  Id of the WebhookHeaders. |
-  |`VoicebotActionId` | String |  |  Id of the Action. |
-  |`ResponseCode` | String |  |  String |
-  |`NextActionId` | Guid |  |   Id of the Next Action. |
-  |`Order` | Int |  |  Int |
-
-#### VoicebotActionWebhookResponseToVariables Object
-Text Response is represented as simple flat json objects with the following keys:
-
-  |Name| Type| Default | Description     | 
-  | - | - | :-: | - | 
-  |`Id` | Guid |  |  Id of the WebhookHeaders. |
-  |`VoicebotActionId` | String |  |  Id of the Action. |
-  |`ResponseKey` | String |  |  String |
-  |`VariableName` | String |  |  String |
-  |`Order` | Int |  |  Int |
-
-### Form Object
-FormReplyResponse is represented as simple flat json objects with the following keys:
-
-|Name| Type| Default | Description     | 
-| - | - | :-: | - | 
-|`message` | string |   | A separate message which is sent before the button is sent.|
-|`title` | string |  | when a button is sent to visitor, clicking this button will open a form that contains information bot wants to collect from the visitor. the title refers to the title of that form, and it is also placed on the button as a name.|
-|`isConfirmationRequired` | bool |   | whether visitor needs to click confirm after filling out the information in a form.|
-|`fields` | [Field](#field-object)[] | | an array of [Field](#field-object) Object |
-|`submitButtonText` | string |   | |
-|`cancelButtonText` | string |   | |
-|`confirmButtonText` | string |   | |
-
-
-### Field Object
-Field is represented as simple flat json objects with the following keys:
-
-|Name| Type| Default | Description     | 
-| - | - | :-: | - | 
-|`type` | string | | enums: `text` ,`textArea`,`radio` ,`checkBox` ,`dropDownList` ,`checkBoxList`,`email` type refers to the different kinds of fields which can be used in a form. |
-|`name` | string |  | a field’s name in a form. |
-|`defaultValue` | string | | a field’s value |
-|`isRequired` | bool |  | to mark whether a field in a form is required or not. |
-|`isMasked` | bool |  | if this is true, visitor information will be masked with symbols in chat logs. |
-|`options` | string[] |  | an array of of string when the fieldType is `radio` ,`dropDownList` ,`checkBoxList`|
-|`order` | integer |  | must greater than or equal 0, ascending sort |
-
 ### Visitor Object
 
 |Name| Type|  Default |  Description     |
