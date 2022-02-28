@@ -6,16 +6,17 @@
 
 # Summary
 ## Voice Bot API
-  - `POST /voicebots/{VoicebotId}/sessions` - [Create session](#create-a-new-voicebot-session)
-  - `POST /sessions/{sessionId}:recieveMessage` - [Recieved Message](#recieved-message)
+  - `POST /voicebots/{VoicebotId}/sessions` - [Create session](#create-a-new-voicebot-session)Voice Bot receives requests and creates sessions
+  - `POST /sessions/{sessionId}:recieveMessage` - [Recieved Message](#recieved-message)Voice Bot receives the message and gives the output message
 ## Twillio PhoneNumber API  
+The twillio adapter provides phone number registration services
   - `GET /phonenumber/available` - [Get Phonenumber](#Get-Phonenumber)
   - `POST /phonenumber` - [Create A New Phonenumber](#Create-A-New-Phonenumber)
   - `PUT /phonenumber/{pathSid}` - [Update Phonenumber](#Update-Phonenumber)
   - `DELETE /phonenumber/{pathSid}/VoiceUrl` - [Remove  Phonenumber](#Remove-Phonenumber)
 ## Twillio&Sip Adapter Call API
-  - `POST /Call` - [Call](#Call) 
-
+  Voice BOT actively sends messages to the Adapter
+  - `POST /sessions/{sessionId}:sendMessage` - [sendMessage](#sendMessage) 
 
 # Endpoints
 
@@ -24,9 +25,7 @@
 
 #### Parameters
 Request body
-
 The request body contains data with the follow structure:
-
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
   | `VoiceBotId` | Guid | yes | |  the unique id of the bot |
@@ -247,8 +246,8 @@ Response
 
 ```
 
-### Call
-`POST /call/say`
+### SendMessage
+`POST /sessions/{sessionId}:sendMessage` 
 
 #### Parameters
 No parameters
