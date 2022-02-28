@@ -9,15 +9,15 @@
 ## Voice Bot API
 The API is implemented by the Voice Bot API Module.
   - `POST /voicebots/{VoicebotId}/sessions` - [Create session](#create-a-new-voicebot-session)Voice Bot receives requests and creates sessions
-  - `POST /sessions/{sessionId}:recieveMessage` - [Recieved Message](#recieved-message)Voice Bot receives the message and gives the output message
+  - `POST /sessions/{sessionId}:receiveMessage` - [Receive Message](#receive-message)Voice Bot receives the message and gives the output message
 ## Twillio&Sip Adapter Call API
   Voice BOT actively sends messages to the Adapter，the API is implemented by the Adapter Module.
   - `POST /sessions/{sessionId}:sendMessage` - [SendMessage](#SendMessage) 
 ## Twillio PhoneNumber API  
 The Twillio Adapter provides phone number registration services API.
-  - `GET /phonenumber/available` - [Get Phonenumber](#Get-Phonenumber)
-  - `POST /phonenumber` - [Create A New Phonenumber](#Create-A-New-Phonenumber)
-  - `DELETE /phonenumber/{pathSid}/VoiceUrl` - [Remove  Phonenumber](#Remove-Phonenumber)
+  - `GET /phonenumbers` - [Get Phonenumbers](#Get-Phonenumbers)
+  - `POST /phonenumbers` - [Create A New Phonenumber](#Create-A-New-Phonenumber)
+  - `DELETE /phonenumbers/{sid}` - [Remove a Phonenumber](#Remove-Phonenumbers)
 
 # Endpoints
 
@@ -30,7 +30,7 @@ The request body contains data with the follow structure:
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
   | `voiceBotId` | Guid | yes | |  the unique id of the voice bot |
-  |`channel`  |  string  |yes |   | type of the response,including`Twilio` , `SIP` |
+  |`channel`  |  string  |yes |   | type of the response,including `Twilio` , `SIP` |
   |`visitor`  |  [Visitor](#visitor-object) Object  |no |   |  |
 
 example:
@@ -81,8 +81,8 @@ Response
   }
 ```
 
-### Recieved Message
-`POST /sessions/{sessionId}:recieveMessage`
+### Receive Message
+`POST /sessions/{sessionId}:receiveMessage`
 
 #### Parameters
 Path parameters
@@ -119,7 +119,7 @@ Using curl
 ```
 curl -H "Content-Type: application/json" -d '{
     "textInput":"i want to buy NBN"
-  }' -X POST https://domain.comm100.com/sessions/f9928d68-92e6-4487-a2e8-8234fc9d1f48:recieveMessage
+  }' -X POST https://domain.comm100.com/sessions/f9928d68-92e6-4487-a2e8-8234fc9d1f48:receiveMessage
 ```
 Response
 ```Json
