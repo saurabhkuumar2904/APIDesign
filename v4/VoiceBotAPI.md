@@ -105,7 +105,7 @@ The request body contains data with the follow structure:
 example:
 ```Json 
   {
-    "textInput":"i want to buy NBN",
+    "textInput":"I want to buy NBN",
     "isLowSTTConfidence": "false",
     "isTransferFailed": "false",
   }
@@ -118,13 +118,13 @@ the response is: [VoicebotOutput](#voicebotoutput-object) Object
 Using curl
 ```
 curl -H "Content-Type: application/json" -d '{
-    "textInput":"i want to buy NBN"
+    "textInput":"I want to buy NBN"
   }' -X POST https://domain.comm100.com/sessions/f9928d68-92e6-4487-a2e8-8234fc9d1f48:receiveMessage
 ```
 Response
 ```Json
   HTTP/1.1 200 OK
-  Content-Type:  application/json
+  Content-Type:application/json
 
   {    
     "id": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
@@ -132,7 +132,7 @@ Response
           {
             "type":"playText",
             "content": {
-              "Message":"Hi, what can i do for you?",
+              "message":"Hi, what can I do for you?",
             }
           }
         ]
@@ -146,7 +146,7 @@ No parameters
 
 Request body
 
-The request body contains data with the follow structure:
+The request body contains data with the following structure:
 
   | Name | Type |  Description |    
   | - | - | :-: | 
@@ -160,14 +160,14 @@ example:
           "content":[{
               "type":"playText",
               "content":{
-                    "message": "Hi there! I'm a VoiceBot, here to help answer your questions.",
+                    "message": "Hi there! I'm a Voice Bot, here to help answer your questions.",
               }
     }]
   }
 ```
 
 #### Response
-The Response body contains data with the follow structure:
+The Response body contains data with the following structure:
 
   | Name  | Type | Description |     
   | - | - | - |  
@@ -180,7 +180,7 @@ curl -H "Content-Type: application/json" -d '{
           "content":[{
               "type":"playText",
               "content":{
-                    "message": "Hi there! I'm a VoiceBot, here to help answer your questions.",
+                    "message": "Hi there! I'm a Voice Bot, here to help answer your questions.",
               }
     }]
   }' -X POST https://domain.comm100.com/sipadapterapi/sessions/f9928d68-92e6-4487-a2e8-8234fc9d1f48:sendmessage
@@ -203,11 +203,11 @@ Path parameters
   | `CountryCode` | String | yes  |   |
 
 #### Response
-The Response body contains data with the follow structure:
+The Response body contains data with the following structure:
 
   | Name  | Type | Description |     
   | - | - | - | 
-  | `phoneNumberList`  | PhoneNumber(#PhoneNumber-object)[] | - | 
+  | `phoneNumberList`  | [PhoneNumber](#PhoneNumber-object)[] | - | 
   
   ### PhoneNumber Object
 |Name| Type|  Default |  Description     |
@@ -238,7 +238,7 @@ No parameters
 
 Request body
 
-The request body contains data with the follow structure:
+The request body contains data with the following structure:
 
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
@@ -252,7 +252,7 @@ example:
 ```
 
 #### Response
-The Response body contains data with the follow structure:
+The Response body contains data with the following structure:
 
   | Name  | Type | Description |     
   | - | - | - | 
