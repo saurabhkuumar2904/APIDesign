@@ -1,8 +1,6 @@
   | Change Version | API Version | Change nots | Change Date | Author |
   | - | - | - | - | - |
-  | 2.0 | v1 | Voice Bot API | 2022-2-22 | Leon |  
-  | 2.0 | v1 | Voice Bot API | 2022-2-23 | Carl |  
- 
+  | 2.0 | v1 | Voice Bot API | 2022-2-22 | Leon，Carl，Page，Zack |  
 
 
 
@@ -100,7 +98,9 @@ The request body contains data with the follow structure:
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
   | `textInput` | string  | no | | text |
-  | `isLowSTTConfidence` | bool  | false | |  |
+  | `isLowSTTConfidence` | bool  | false | | We set a default STT Confidence Score for all Voice Bots in system level,When the STT score is lower than the Confidence Score,set true. |
+  | `isTransferFailed` | bool  | false | | If the bot Transfer Chat to agent failed |
+
 
 example:
 ```Json 
