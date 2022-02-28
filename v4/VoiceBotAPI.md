@@ -29,7 +29,7 @@ Request body
 The request body contains data with the follow structure:
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
-  | `VoiceBotId` | Guid | yes | |  the unique id of the bot |
+  | `voiceBotId` | Guid | yes | |  the unique id of the voice bot |
   |`channel`  |  string  |yes |   | type of the response,including`Twilio` , `SIP` |
   |`visitor`  |  [Visitor](#visitor-object) Object  |no |   |  |
 
