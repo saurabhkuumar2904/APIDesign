@@ -17,7 +17,6 @@ The API is implemented by the Voice Bot API Module.
 The Twillio Adapter provides phone number registration services API.
   - `GET /phonenumber/available` - [Get Phonenumber](#Get-Phonenumber)
   - `POST /phonenumber` - [Create A New Phonenumber](#Create-A-New-Phonenumber)
-  - `PUT /phonenumber/{pathSid}` - [Update Phonenumber](#Update-Phonenumber)
   - `DELETE /phonenumber/{pathSid}/VoiceUrl` - [Remove  Phonenumber](#Remove-Phonenumber)
 
 # Endpoints
@@ -200,29 +199,34 @@ Path parameters
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
-  | `pathCountryCode` | String | yes  |   |
+  | `CountryCode` | String | yes  |   |
 
 #### Response
 The Response body contains data with the follow structure:
 
   | Name  | Type | Description |     
-  | - | - | - |
-  | `friendlyName` | String |   |
-  | `phoneNumber` | String |   |  
-  | `isoCountry` | String | two-letter country codes which are also used to create the ISO 3166-2 country subdivision codes and the Internet country code top-level domains.  |  
+  | - | - | - | 
+  | `phoneNumberList`  | PhoneNumber(#PhoneNumber-object)[] | - | 
+  
+  ### PhoneNumber Object
+|Name| Type|  Default |  Description     |
+| - | - | :-: |  - | 
+  | `phoneNumber` | String ||sample: 604) xx0-8183  |  
+  | `countryCode` | String | |two-letter country codes which are also used to create the ISO 3166-2 country subdivision codes and the Internet country code top-level domains.  |  
+
 #### Example
 Response
 ```Json
   HTTP/1.1 200 OK
   Content-Type:  application/json
-
-[
-  {
-    "friendlyName": string,
-    "phoneNumber": string,    
-    "isoCountry": "string",    
-  }
-]
+{
+  phoneNumberList:[
+    {
+      "phoneNumber": "604) xx0-8183",    
+      "CountryCode": "US",    
+    }
+  ]
+}
 ```
 
 ### Create A New Phonenumber
@@ -242,7 +246,7 @@ The request body contains data with the follow structure:
 example:
 ```Json 
 {
-  "phoneNumber": "string"
+  "phoneNumber": "(604) xx0-8183"
 }
 ```
 
@@ -250,16 +254,13 @@ example:
 The Response body contains data with the follow structure:
 
   | Name  | Type | Description |     
-  | - | - | - |  
-  | `dateCreated` | datetime |   |  
-  | `friendlyName` | String |   |  
-  | `phoneNumber` | String |   |
-  | `sid` | String |   |  
+  | - | - | - | 
+  | `sid` | String | Twilio phone number identification id   |  
 #### Example
 Using curl
 ```
 curl -H "Content-Type: application/json" -d '{
-  "phoneNumber": "string"
+  "phoneNumber": "604) xx0-8183"
 }' -X POST https://domain.comm100.com/phonenumber
 ```
 Response
@@ -268,23 +269,20 @@ Response
   Content-Type:  application/json
 
 {  
-  "dateCreated": "2022-02-24T02:48:50.323Z",  
-  "friendlyName": "string",  
-  "phoneNumber": "string",  
-  "sid": "string",  
+  "sid": "CA6cf29f28b03b9dbfad8ce758fa66xxx",  
 }
 ```
 
 
 ### Remove Phonenumber
-`Delete /phonenumber/{pathSid}/VoiceUrl`
+`Delete /phonenumber/{sid}/VoiceUrl`
 
 #### Parameters
 Path parameters
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
-  | `pathSid` | String | yes  |   |
+  | `sid` | String | yes  |   |
 
 #### Example
 Using curl
@@ -323,43 +321,43 @@ Response
 
   |Name| Type| Default | Description     | 
   | - | - | :-: | - | 
-  |`AudioPath` | String|  | String  |
+  |`audioPath` | String|  | String  |
 
 #### PlayText Object
   Text Response is represented as simple flat json objects with the following keys:
 
   |Name| Type| Default | Description     | 
   | - | - | :-: | - | 
-  |`Message` | String|  | String  |
+  |`message` | String|  | String  |
 
  #### CollectDTMFDigits Object
 Text Response is represented as simple flat json objects with the following keys:
 
   |Name| Type| Default | Description     | 
   | - | - | :-: | - | 
-  |`Message` | String|  | String  |
-  |`NumberOfDigits` | Int|  | Enumeration. 1, 2, … 29, 30, Variable. The number of digits entered by the caller in dialer. Default: Not sure.   |
-  |`StopGatherAfterPresskey` | int|  | int  | Enumeration. *, #. Available when Number of Digits is Not sure.|
+  |`message` | String|  | String  |
+  |`numberOfDigits` | Int|  | Enumeration. 1, 2, … 29, 30, Variable. The number of digits entered by the caller in dialer. Default: Not sure.   |
+  |`stopGatherAfterPresskey` | int|  | int  | Enumeration. *, #. Available when Number of Digits is Not sure.|
 
 #### CollectSpeechResponse Object
   Text Response is represented as simple flat json objects with the following keys:
 
   |Name| Type| Default | Description     | 
   | - | - | :-: | - | 
-  |`Message` | String|  | String  |
-  |`LowSTTConfidenceMessage` | String|  | We set a default STT Confidence Score for all Voice Bots in system level, customers cannot change in this version.   |
-  |`LowSTTConfidenceRepeatTimes` | Int|  | Available value: 0 - 9. Default: 2.   |
-  |`IsConfirmationRequired` | Bool|  | If the bot will reply to the answer to the caller to confirm.    |
-  |`ConfirmationMessage` | String|  | Only available when Is Confirmation Required is “true”.   |
-  |`ConfirmationText` | String|  | Visitor can speak the text to confirm the input. This text will not be read to visitors.   |
-  |`ConfirmationKey` | int|  | Enumeration. 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, *, #. Visitor can press the key to confirm.   |
+  |`message` | String|  | String  |
+  |`lowSTTConfidenceMessage` | String|  | We set a default STT Confidence Score for all Voice Bots in system level, customers cannot change in this version.   |
+  |`lowSTTConfidenceRepeatTimes` | Int|  | Available value: 0 - 9. Default: 2.   |
+  |`isConfirmationRequired` | Bool|  | If the bot will reply to the answer to the caller to confirm.    |
+  |`confirmationMessage` | String|  | Only available when Is Confirmation Required is “true”.   |
+  |`confirmationText` | String|  | Visitor can speak the text to confirm the input. This text will not be read to visitors.   |
+  |`confirmationKey` | int|  | Enumeration. 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, *, #. Visitor can press the key to confirm.   |
 
 #### TransferChat Object
 Text Response is represented as simple flat json objects with the following keys:
 
   |Name| Type| Default | Description     | 
   | - | - | :-: | - | 
-  |`TransferTo` | String |  | Support Phone Number and URI.  |
+  |`transferTo` | String |  | Support Phone Number and URI.  |
 
 #### EndCall Object
 Text Response is represented as simple flat json objects with the following keys:
@@ -372,7 +370,7 @@ Text Response is represented as simple flat json objects with the following keys
 
   |Name| Type| Default | Description     | 
   | - | - | :-: | - | 
-  |`Message` | String |  |  String |
+  |`message` | String |  |  String |
     
 ### Visitor Object
 
