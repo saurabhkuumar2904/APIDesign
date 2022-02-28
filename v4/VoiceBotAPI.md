@@ -100,6 +100,7 @@ The request body contains data with the follow structure:
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
   | `textInput` | string  | no | | text |
+  | `isLowSTTConfidence` | bool  | false | |  |
 
 example:
 ```Json 
@@ -316,154 +317,57 @@ Response
 
   |Name| Type| Default | Description     | 
   | - | - | :-: | - | 
-  |`VoicebotActionId` | Guid |  | Id of the Action.  |
   |`AudioPath` | String|  | String  |
-  |`NextActionId` | Guid|  | Id of the  Next Action. |
+
 #### PlayText Object
   Text Response is represented as simple flat json objects with the following keys:
 
   |Name| Type| Default | Description     | 
   | - | - | :-: | - | 
-  |`VoicebotActionId` | Guid |  | Id of the Action.  |
   |`Message` | String|  | String  |
-  |`NextActionId` | Guid|  | Id of the  Next Action. |
 
  #### CollectDTMFDigits Object
 Text Response is represented as simple flat json objects with the following keys:
 
   |Name| Type| Default | Description     | 
   | - | - | :-: | - | 
-  |`VoicebotActionId` | Guid |  | Id of the Action.  |
   |`Message` | String|  | String  |
-  |`VariableName` | String|  | String  |
-  |`NumberOfDigits` | Int|  | DTMF Digits  |
-  |`StopGatherAfterPresskey` | int|  | int  |
-  |`NextActionId` | Guid|  | Id of the  Next Action. |
+  |`NumberOfDigits` | Int|  | Enumeration. 1, 2, … 29, 30, Variable. The number of digits entered by the caller in dialer. Default: Not sure.   |
+  |`StopGatherAfterPresskey` | int|  | int  | Enumeration. *, #. Available when Number of Digits is Not sure.|
+
 #### CollectSpeechResponse Object
   Text Response is represented as simple flat json objects with the following keys:
 
   |Name| Type| Default | Description     | 
   | - | - | :-: | - | 
-  |`VoicebotActionId` | Guid |  | Id of the Action.  |
   |`Message` | String|  | String  |
-  |`VariableName` | String|  | String  |
-  |`LowSTTConfidenceMessage` | String|  | String  |
-  |`LowSTTConfidenceRepeatTimes` | Int|  | Int  |
-  |`IsConfirmationRequired` | Bool|  | int  |
-  |`ConfirmationMessage` | String|  | String  |
-  |`ConfirmationText` | String|  | String  |
-  |`ConfirmationKey` | int|  | int  |
-  |`ActionIdWhenLowSTTConfidence` | Guid|  | int  |
-  |`NextActionId` | Guid|  | Id of the  Next Action. |
-#### Condition Object
-  Text Response is represented as simple flat json objects with the following keys:
+  |`LowSTTConfidenceMessage` | String|  | We set a default STT Confidence Score for all Voice Bots in system level, customers cannot change in this version.   |
+  |`LowSTTConfidenceRepeatTimes` | Int|  | Available value: 0 - 9. Default: 2.   |
+  |`IsConfirmationRequired` | Bool|  | If the bot will reply to the answer to the caller to confirm.    |
+  |`ConfirmationMessage` | String|  | Only available when Is Confirmation Required is “true”.   |
+  |`ConfirmationText` | String|  | Visitor can speak the text to confirm the input. This text will not be read to visitors.   |
+  |`ConfirmationKey` | int|  | Enumeration. 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, *, #. Visitor can press the key to confirm.   |
 
-  |Name| Type| Default | Description     | 
-  | - | - | :-: | - | 
-  |`VoicebotActionId` | Guid |  | Id of the Action.  |
-  |`OtherCaseActionId` | Guid |  | Id of the other case Action.  |
-  |`VoicebotActionConditionCase` | [VoicebotActionConditionCase[]](#VoicebotActionConditionCase-object) |  |   |
-#### VoicebotActionConditionCase Object
-Text Response is represented as simple flat json objects with the following keys:
-
-  |Name| Type| Default | Description     | 
-  | - | - | :-: | - | 
-  |`VoicebotActionId` | Guid |  | Id of the Action.  |
-  |`Order` | Int |  | Int  |
-  |`ConditionExpressionType` | Type |  | Allowed values are "all", "any", "logicalExpression".  |
-  |`LogicalExpression` | string |  | string  |
-  |`GoToActionId` | Guid |  | Id of the Action.  |
-  |`Id` | Guid |  | Id of the Condition Case.  |
-  |`VoicebotActionConditionCaseConditions` | [VoicebotActionConditionCaseConditions[]](#VoicebotActionConditionCaseConditions-object) |  |   |
-
-#### VoicebotActionConditionCaseConditions Object
-Text Response is represented as simple flat json objects with the following keys:
-
-  |Name| Type| Default | Description     | 
-  | - | - | :-: | - | 
-  |`VoicebotActionConditionCaseId` | Guid |  | Id of the Condition Case.  |
-  |`FieldName` | [FieldName](#FieldName-object) |  |   |
-  |`operator` | Type |  | Allowed values are "is", "contains", "notContains", "isMoreThan", "isLessThan", "isNot", "isNotLessThan", "isNotMoreThan", "regularExpression", "isOneOf", "isNotIn", "dateNotEqualTo", "before", "after", "dateEqualTo".  |
-  |`Value` | string |  | string  |
-  |`Order` | Int |  | Int  |
-  |`Id` | Guid |  | Guid  |
-  |`Items` | List |  | List  |
-
-
-#### FieldName Object
-Text Response is represented as simple flat json objects with the following keys:
-
-  |Name| Operator|
-  | - | - |
-  |`{!Visitor.Country/Region}` | is/isNot/contains/notContains/regularExpression |
-  |`{!Visitor.State/Province}` | is/isNot/contains/notContains/regularExpression |
-  |`{!Visitor.City}` | is/isNot/contains/notContains/regularExpression |
-  |`{!Visitor.Time Zone}` | isOneOf/isNotIn |
-  |`{!Visitor.Language}` | is/isNot/contains/notContains/regularExpression |
-  |`{!Visitor.CardId}` | is/isNot/contains/notContains/regularExpression |
 #### TransferChat Object
 Text Response is represented as simple flat json objects with the following keys:
 
   |Name| Type| Default | Description     | 
   | - | - | :-: | - | 
-  |`VoicebotActionId` | Guid |  |  Id of the Action. |
-  |`TransferTo` | String |  | String |
-  |`ActionIdWhenTransferFailed` | Guid |  | Guid  |
+  |`TransferTo` | String |  | Support Phone Number and URI.  |
 
 #### EndCall Object
 Text Response is represented as simple flat json objects with the following keys:
 
   |Name| Type| Default | Description     | 
   | - | - | :-: | - | 
-  |`VoicebotActionId` | Guid |  |  Id of the Action. |
   
 #### IVRMenu Object
 Text Response is represented as simple flat json objects with the following keys:
 
   |Name| Type| Default | Description     | 
   | - | - | :-: | - | 
-  |`VoicebotActionId` | Guid |  |  Id of the Action. |
   |`Message` | String |  |  String |
-  |`InvalidInputMessage` | String |  |  String |
-  |`InvalidInputRepeatTime` | Int |  |  Int |
-  |`ActionIdWhenInvalidInput` | Guid |  |  Guid |
-  |`VoicebotActionIVRMenuOptions` | [VoicebotActionIVRMenuOptions[]](#VoicebotActionIVRMenuOptions-object) |  |  List |
-  
-#### VoicebotActionIVRMenuOptions Object
-Text Response is represented as simple flat json objects with the following keys:
-
-  |Name| Type| Default | Description     | 
-  | - | - | :-: | - | 
-  |`Text` | String |  |  String |
-  |`Key` | Int |  |  Int |
-  |`NextActionId` | Guid |  |  Id of the Next Action. |
-  |`VoicebotActionId` | Int |  |   Id of the Action. |
-  |`Order` | Int |  |  Int |
-  
-#### TwillioField Object
-Text Response is represented as simple flat json objects with the following keys:
-
-  |Name| Type| Default | Description     | 
-  | - | - | :-: | - | 
-  |`Id` | Guid |  |  Id of the Field. |
-  |`Name` | String |  |  Name of the Field. |
- 
-#### CustomVariable Object
-Text Response is represented as simple flat json objects with the following keys:
-
-  |Name| Type| Default | Description     | 
-  | - | - | :-: | - | 
-  |`Id` | Guid |  |  Id of the CustomVariable. |
-  |`Name` | String |  |  Name of the CustomVariable. |
-  
-#### TicketingField Object
-Text Response is represented as simple flat json objects with the following keys:
-
-  |Name| Type| Default | Description     | 
-  | - | - | :-: | - | 
-  |`Id` | Guid |  |  Id of the TicketingField. |
-  |`Name` | String |  |  Name of the TicketingField. |
-  
+    
 ### Visitor Object
 
 |Name| Type|  Default |  Description     |
@@ -473,23 +377,3 @@ Text Response is represented as simple flat json objects with the following keys
 |`state/province` | string |  |  |
 |`country/region` | string |  |  |
 |`city` | string |  |  |
-
-
-#### capabilities Object
-Text Response is represented as simple flat json objects with the following keys:
-
-  |Name| Type| Default | Description     | 
-  | - | - | :-: | - | 
-  |`mms` | bool |  |  bool |
-  |`sms` | bool |  |  bool |
-  |`voice` | bool |  |  bool |
-  |`fax` | bool |  |   bool |
-  
-#### subresourceUris Object
-Text Response is represented as simple flat json objects with the following keys:
-
-  |Name| Type| Default | Description     | 
-  | - | - | :-: | - | 
-  |`additionalProp1` | string |  |  string |
-  |`additionalProp2` | string |  |  string |
-  |`additionalProp3` | string |  |  string |
