@@ -13,8 +13,8 @@
   - `POST /phonenumber` - [Create A New Phonenumber](#Create-A-New-Phonenumber)
   - `PUT /phonenumber/{pathSid}` - [Update Phonenumber](#Update-Phonenumber)
   - `DELETE /phonenumber/{pathSid}/VoiceUrl` - [Remove  Phonenumber](#Remove-Phonenumber)
-## Adapter Call API
-  - `POST /Call` - [Call](#Call)
+## Twillio&Sip Adapter Call API
+  - `POST /Call` - [Call](#Call) 
 
 
 # Endpoints
