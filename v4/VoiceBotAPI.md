@@ -31,7 +31,7 @@ The request body contains data with the follow structure:
   | - | - | :-: | :-: | - | 
   | `voiceBotId` | Guid | yes | |  the unique id of the voice bot |
   |`channel`  |  string  |yes |   | type of the response,including `Twilio` , `SIP` |
-  |`visitor`  |  [Visitor](#visitor-object) Object  |no |   |  |
+  |`visitor`  |  [Visitor](#visitor-object) Object  |no |   | visitor information |
 
 example:
 ```Json 
@@ -89,7 +89,7 @@ Path parameters
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
-  | `sessionId` | Guid | yes  |  id of the chat or conversation |
+  | `sessionId` | Guid | yes  | Session id of the voice conversation |
 
 Request body
 
@@ -151,7 +151,7 @@ The request body contains data with the following structure:
   | Name | Type |  Description |    
   | - | - | :-: | 
   |`sessionId` | Guid | the unique id of the session |
-  |`content`  |  [VoiceBotAction](#voicebotaction-object)[]    |  |
+  |`content`  |  [VoiceBotAction](#voicebotaction-object)[]    |The list of Voice Bot Actions  |
 
 example:
 ```Json 
@@ -193,7 +193,7 @@ Response
 ```
 
 ### Get Phonenumber
-`GET /phonenumber/available`
+`GET /phonenumbers`
 
 #### Parameters
 Path parameters
@@ -231,7 +231,7 @@ Response
 ```
 
 ### Create A New Phonenumber
-`POST /phonenumber`
+`POST /phonenumbers`
 
 #### Parameters
 No parameters
@@ -262,7 +262,7 @@ Using curl
 ```
 curl -H "Content-Type: application/json" -d '{
   "phoneNumber": "604) xx0-8183"
-}' -X POST https://domain.comm100.com/phonenumber
+}' -X POST https://domain.comm100.com/twillioadapter/phonenumbers
 ```
 Response
 ```Json
@@ -276,7 +276,7 @@ Response
 
 
 ### Remove Phonenumber
-`Delete /phonenumber/{sid}/VoiceUrl`
+`Delete /phonenumber/{sid}`
 
 #### Parameters
 Path parameters
@@ -289,7 +289,7 @@ Path parameters
 Using curl
 ```
 curl -H "Content-Type: application/json" -d
- -X Delete https://domain.comm100.com/phonenumber/{pathSid}/VoiceUrl
+ -X Delete https://domain.comm100.com/twillioadapter/phonenumber/{sid}
 ```
 Response
 ```Json
@@ -337,8 +337,8 @@ Text Response is represented as simple flat json objects with the following keys
   |Name| Type| Default | Description     | 
   | - | - | :-: | - | 
   |`message` | String|  | String  |
-  |`numberOfDigits` | Int|  | Enumeration. 1, 2, … 29, 30, Variable. The number of digits entered by the caller in dialer. Default: Not sure.   |
-  |`stopGatherAfterPresskey` | int|  | int  | Enumeration. *, #. Available when Number of Digits is Not sure.|
+  |`numberOfDigits` | String|  | Enumeration. 1, 2, … 29, 30, Variable. The number of digits entered by the caller in dialer. Default: Not sure.   |
+  |`stopGatherAfterPresskey` | String|    | Enumeration. *, #. Available when Number of Digits is Not sure.|
 
 #### CollectSpeechResponse Object
   Text Response is represented as simple flat json objects with the following keys:
