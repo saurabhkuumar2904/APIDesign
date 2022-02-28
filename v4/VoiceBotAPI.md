@@ -97,7 +97,7 @@ The request body contains data with the follow structure:
 
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
-  | `textInput` | string  | no | | text |
+  | `textInput` | string  | no | | Text input to voice robot |
   | `isLowSTTConfidence` | bool  | false | | We set a default STT Confidence Score for all Voice Bots in system level,When the STT score is lower than the Confidence Score,set true. |
   | `isTransferFailed` | bool  | false | | If the bot Transfer Chat to agent failed |
 
