@@ -282,7 +282,7 @@ Path parameters
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
-  | `sid` | String | yes  |   |
+  | `sid` | String | yes  | Twilio phone number identification id  |
 
 #### Example
 Using curl
