@@ -10,14 +10,13 @@
 ## Voice Bot API
   - `POST /voicebots/{VoicebotId}/sessions` - [Create session](#create-a-new-voicebot-session)
   - `POST /sessions/{sessionId}:recieveMessage` - [Recieved Message](#recieved-message)
-## Twillio Adapter  
+## Twillio PhoneNumber API  
   - `GET /phonenumber/available` - [Get Phonenumber](#Get-Phonenumber)
   - `POST /phonenumber` - [Create A New Phonenumber](#Create-A-New-Phonenumber)
   - `PUT /phonenumber/{pathSid}` - [Update Phonenumber](#Update-Phonenumber)
   - `DELETE /phonenumber/{pathSid}/VoiceUrl` - [Remove  Phonenumber](#Remove-Phonenumber)
-## Call Adapter
+## Adapter Call API
   - `POST /Call` - [Call](#Call)
-## Sip Adapter
 
 
 # Endpoints
