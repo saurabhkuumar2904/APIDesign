@@ -5,7 +5,6 @@
 
 
 # Summary
-![image](https://user-images.githubusercontent.com/8872646/155951476-1b3bf8a4-0cbe-4999-af4b-190d8fc87287.png)
 
 ## Voice Bot API
 The API is implemented by the Voice Bot API Module.
@@ -63,7 +62,7 @@ curl -H "Content-Type: application/json" -d '{
     "visitor": {
       "phone":"123-4355-212",
     }
-  }' -X POST https://domain.comm100.com/api/v4/voicebots/{VoicebotId}/sessions
+  }' -X POST https://domain.comm100.com/api/voicebots/{VoicebotId}/sessions
 ```
 Response
 ```Json
@@ -76,7 +75,6 @@ Response
               "type":"playText",
               "content":{
                     "message": "Hi there! I'm a VoiceBot, here to help answer your questions.",
-                    "nextActionId": "00000000-0000-0000-0000-000000000000",
               }
     }]
 
@@ -121,7 +119,7 @@ Using curl
 ```
 curl -H "Content-Type: application/json" -d '{
     "textInput":"i want to buy NBN"
-  }' -X POST https://domain.comm100.com/sessions/f9928d68-92e6-4487-a2e8-8234fc9d1f48:detectIntent
+  }' -X POST https://domain.comm100.com/sessions/f9928d68-92e6-4487-a2e8-8234fc9d1f48:recieveMessage
 ```
 Response
 ```Json
@@ -183,7 +181,6 @@ curl -H "Content-Type: application/json" -d '{
               "type":"playText",
               "content":{
                     "message": "Hi there! I'm a VoiceBot, here to help answer your questions.",
-                    "nextActionId": "00000000-0000-0000-0000-000000000000",
               }
     }]
   }' -X POST https://domain.comm100.com/sipadapterapi/sessions/f9928d68-92e6-4487-a2e8-8234fc9d1f48:sendmessage
@@ -193,8 +190,6 @@ Response
   HTTP/1.1 200 OK
   Content-Type:  application/json
 
-{  
-}
 ```
 
 ### Get Phonenumber
@@ -214,7 +209,7 @@ The Response body contains data with the follow structure:
   | - | - | - |
   | `friendlyName` | String |   |
   | `phoneNumber` | String |   |  
-  | `isoCountry` | String |   |  
+  | `isoCountry` | String | two-letter country codes which are also used to create the ISO 3166-2 country subdivision codes and the Internet country code top-level domains.  |  
 #### Example
 Response
 ```Json
