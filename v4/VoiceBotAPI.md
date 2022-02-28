@@ -5,18 +5,21 @@
 
 
 # Summary
+![image](https://user-images.githubusercontent.com/8872646/155951476-1b3bf8a4-0cbe-4999-af4b-190d8fc87287.png)
+
 ## Voice Bot API
+The API is implemented by the Voice Bot API Module.
   - `POST /voicebots/{VoicebotId}/sessions` - [Create session](#create-a-new-voicebot-session)Voice Bot receives requests and creates sessions
   - `POST /sessions/{sessionId}:recieveMessage` - [Recieved Message](#recieved-message)Voice Bot receives the message and gives the output message
+## Twillio&Sip Adapter Call API
+  Voice BOT actively sends messages to the Adapter，the API is implemented by the Adapter Module.
+  - `POST /sessions/{sessionId}:sendMessage` - [SendMessage](#SendMessage) 
 ## Twillio PhoneNumber API  
-The twillio adapter provides phone number registration services
+The Twillio Adapter provides phone number registration services API.
   - `GET /phonenumber/available` - [Get Phonenumber](#Get-Phonenumber)
   - `POST /phonenumber` - [Create A New Phonenumber](#Create-A-New-Phonenumber)
   - `PUT /phonenumber/{pathSid}` - [Update Phonenumber](#Update-Phonenumber)
   - `DELETE /phonenumber/{pathSid}/VoiceUrl` - [Remove  Phonenumber](#Remove-Phonenumber)
-## Twillio&Sip Adapter Call API
-  Voice BOT actively sends messages to the Adapter
-  - `POST /sessions/{sessionId}:sendMessage` - [sendMessage](#sendMessage) 
 
 # Endpoints
 
@@ -104,7 +107,9 @@ The request body contains data with the follow structure:
 example:
 ```Json 
   {
-    "textInput":"i want to buy NBN"
+    "textInput":"i want to buy NBN",
+    "isLowSTTConfidence": "false",
+    "isTransferFailed": "false",
   }
 ```
 
@@ -256,19 +261,22 @@ Request body
 
 The request body contains data with the follow structure:
 
-  | Name | Type | Required | Default | Description |    
-  | - | - | :-: | :-: | - | 
-  | `from` | string  | yes | | |
-  | `content` | string  | yes | | |
-  | `to` | string  | yes | | |
+  | Name | Type |  Description |    
+  | - | - | :-: | 
+  |`sessionId` | Guid | the unique id of the session |
+  |`content`  |  [VoiceBotAction](#voicebotaction-object)[]    |  |
 
 example:
 ```Json 
-{
-  "from": "string",
-  "content": "string",
-  "to": "string"
-}
+  {    
+          "sessionId":"d3f5b968-ad51-42af-b759-64c0afc40b84",
+          "content":[{
+              "type":"playText",
+              "content":{
+                    "message": "Hi there! I'm a VoiceBot, here to help answer your questions.",
+              }
+    }]
+  }
 ```
 
 #### Response
@@ -280,11 +288,16 @@ The Response body contains data with the follow structure:
 #### Example
 Using curl
 ```
-curl -H "Content-Type: application/json" -d '{
-  "from": "string",
-  "content": "string",
-  "to": "string"
-}' -X POST https://domain.comm100.com/call/say
+curl -H "Content-Type: application/json" -d '{    
+          "sessionId":"d3f5b968-ad51-42af-b759-64c0afc40b84",
+          "content":[{
+              "type":"playText",
+              "content":{
+                    "message": "Hi there! I'm a VoiceBot, here to help answer your questions.",
+                    "nextActionId": "00000000-0000-0000-0000-000000000000",
+              }
+    }]
+  }' -X POST https://domain.comm100.com/sipadapterapi/sessions/f9928d68-92e6-4487-a2e8-8234fc9d1f48:sendmessage
 ```
 Response
 ```Json
