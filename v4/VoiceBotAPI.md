@@ -140,6 +140,62 @@ Response
         ]
   }
 ```
+### SendMessage
+`POST /sessions/{sessionId}:sendMessage` 
+
+#### Parameters
+No parameters
+
+Request body
+
+The request body contains data with the follow structure:
+
+  | Name | Type |  Description |    
+  | - | - | :-: | 
+  |`sessionId` | Guid | the unique id of the session |
+  |`content`  |  [VoiceBotAction](#voicebotaction-object)[]    |  |
+
+example:
+```Json 
+  {    
+          "sessionId":"d3f5b968-ad51-42af-b759-64c0afc40b84",
+          "content":[{
+              "type":"playText",
+              "content":{
+                    "message": "Hi there! I'm a VoiceBot, here to help answer your questions.",
+              }
+    }]
+  }
+```
+
+#### Response
+The Response body contains data with the follow structure:
+
+  | Name  | Type | Description |     
+  | - | - | - |  
+
+#### Example
+Using curl
+```
+curl -H "Content-Type: application/json" -d '{    
+          "sessionId":"d3f5b968-ad51-42af-b759-64c0afc40b84",
+          "content":[{
+              "type":"playText",
+              "content":{
+                    "message": "Hi there! I'm a VoiceBot, here to help answer your questions.",
+                    "nextActionId": "00000000-0000-0000-0000-000000000000",
+              }
+    }]
+  }' -X POST https://domain.comm100.com/sipadapterapi/sessions/f9928d68-92e6-4487-a2e8-8234fc9d1f48:sendmessage
+```
+Response
+```Json
+  HTTP/1.1 200 OK
+  Content-Type:  application/json
+
+{  
+}
+```
 
 ### Get Phonenumber
 `GET /phonenumber/available`
@@ -249,63 +305,6 @@ Response
   }
 
 
-```
-
-### SendMessage
-`POST /sessions/{sessionId}:sendMessage` 
-
-#### Parameters
-No parameters
-
-Request body
-
-The request body contains data with the follow structure:
-
-  | Name | Type |  Description |    
-  | - | - | :-: | 
-  |`sessionId` | Guid | the unique id of the session |
-  |`content`  |  [VoiceBotAction](#voicebotaction-object)[]    |  |
-
-example:
-```Json 
-  {    
-          "sessionId":"d3f5b968-ad51-42af-b759-64c0afc40b84",
-          "content":[{
-              "type":"playText",
-              "content":{
-                    "message": "Hi there! I'm a VoiceBot, here to help answer your questions.",
-              }
-    }]
-  }
-```
-
-#### Response
-The Response body contains data with the follow structure:
-
-  | Name  | Type | Description |     
-  | - | - | - |  
-
-#### Example
-Using curl
-```
-curl -H "Content-Type: application/json" -d '{    
-          "sessionId":"d3f5b968-ad51-42af-b759-64c0afc40b84",
-          "content":[{
-              "type":"playText",
-              "content":{
-                    "message": "Hi there! I'm a VoiceBot, here to help answer your questions.",
-                    "nextActionId": "00000000-0000-0000-0000-000000000000",
-              }
-    }]
-  }' -X POST https://domain.comm100.com/sipadapterapi/sessions/f9928d68-92e6-4487-a2e8-8234fc9d1f48:sendmessage
-```
-Response
-```Json
-  HTTP/1.1 200 OK
-  Content-Type:  application/json
-
-{  
-}
 ```
 
 # Model
