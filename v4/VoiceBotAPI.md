@@ -696,6 +696,7 @@ Response
   |Name| Type| Default | Description     | 
   | - | - | :-: | - | 
   |`message` | String|  | String  |
+  |`delayTime` | int |  | second  |
 
  #### CollectDTMFDigits Object
 Text Response is represented as simple flat json objects with the following keys:
