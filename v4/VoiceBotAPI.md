@@ -12,25 +12,29 @@ The API is implemented by the Voice Bot API Module.
   - `DELETE /voicebot/sessions/{sessionId}` - [Delete Session](#delete-a-voicebot-session) Voice Bot receives the sessionId and delete the session.
 ## PhoneNumber Service API  (Twillio PhoneNumber API ) 
 The PhoneNumber Service API provides phone number manager services API.
-  - `GET /phonenumbers` - [Get Phonenumbers](#Get-Phonenumbers)
-  - `POST /phonenumbers` - [Create A New Phonenumber](#Create-A-New-Phonenumber)
-  - `DELETE /phonenumbers/{phonenumber}` - [Remove a Phonenumber](#Remove-Phonenumbers)
+  - `GET /phonenumber/phonenumbers` - [Get Phonenumbers](#Get-Phonenumbers)
+  - `POST /phonenumber/phonenumbers` - [Create A New Phonenumber](#Create-A-New-Phonenumber)
+  - `DELETE /phonenumber/phonenumbers/{phonenumber}` - [Remove a Phonenumber](#Remove-Phonenumber)
 ## Dialog Flow Adapter API
-### Voice bot Dialog Flow Adapter API
-  - `Put /dialogflow/voicebots/{voicebotId}` - [UPDATE Voicebot](#Put-Voicebot)
+Synchronize Voice Bot information to thirdparty Intent engine
+  - `PUT /dialogflow/voicebots/{voicebotId}` - [UPDATE Voicebot](#Update-Voicebot)
   - `POST /dialogflow/voicebots/{voicebotId}` - [Create A New Voicebot](#Create-A-New-Voicebot)
   - `DELETE /dialogflow/voicebots/{voicebotId}` - [Remove a Voicebot](#Remove-a-Voicebot)
-### Intents Dialog Flow Adapter API  
-  - `Put /dialogflow/intents/{intentId}` - [UPDATE Intent](#Put-Intent)
+   
+Synchronize Voice Bot Intents information to thirdparty Intent engine
+  - `PUT /dialogflow/intents/{intentId}` - [UPDATE Intent](#Update-Intent)
   - `POST /dialogflow/intents/{intentId}` - [Create A New Intent](#Create-A-New-Intent)
   - `DELETE /dialogflow/intents/{intentId}` - [Remove a Intent](#Remove-a-Intent)
-### entities Dialog Flow Adapter API    
-  - `Put /dialogflow/entities/{entityId}` - [UPDATE Entities](#Put-Entities)
+   
+Synchronize Voice Bot Entities information to thirdparty Intent engine  
+  - `PUT /dialogflow/entities/{entityId}` - [UPDATE Entities](#Update-Entities)
   - `POST /dialogflow/entities/{entityId}` - [Create A New Entities](#Create-A-New-Entities)
   - `DELETE /dialogflow/entities/{entityId}` - [Remove a Entities](#Remove-a-Entities)
   
 ## STT & TTS Adatper API
 
+  - `POST /stt/speech:recognize` - [Speech To Text](#Speech-To-Text)
+  - `POST /tts/text:synthesize`  - [Text To Speech](#Text-To-Speech)
 # Endpoints
 
 ### Create A New VoiceBot Session
@@ -335,8 +339,8 @@ Response
   }
 ```
 
-### Put Voicebot
-`Update /dialogflow/voicebots/{voicebotId}?Siteid={SiteId}`
+### Update Voicebot
+`PUT /dialogflow/voicebots/{voicebotId}?Siteid={SiteId}`
 
 #### Parameters
 Path parameters
@@ -358,8 +362,15 @@ example:
 {
   "VoicebotImportRestoreRequest": 
   {
-    "Entities":"f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
-	  "Intents":"e11203f5-1d97-4c48-8fc2-fc6257d4e13b"
+    "Entities"
+    [
+      "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db"
+    ],
+	
+    "Intents"
+    [
+      "e11203f5-1d97-4c48-8fc2-fc6257d4e13b"
+    ]
   }
 }
 ```
@@ -373,14 +384,17 @@ Using curl
 curl -H "Content-Type: application/json" -d '{
   "VoicebotImportRestoreRequest": 
   {
-    "Entities":"f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
-	"Intents":"e11203f5-1d97-4c48-8fc2-fc6257d4e13b",
-	"IsRestore":true,
-	"DeletedIntents":[],
-	"DeletedIntentDialogflowIds":[],
-	"SiteId":1000
+    "Entities"
+    [
+      "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db"
+    ],
+	
+    "Intents"
+    [
+      "e11203f5-1d97-4c48-8fc2-fc6257d4e13b"
+    ]
   }
-}' -X UPDATE https://domain.comm100.com/dialogflow/voicebots/{voicebotId}?Siteid=1000`
+}' -X PUT https://domain.comm100.com/dialogflow/voicebots/{voicebotId}?Siteid=1000`
 ```
 Response
 ```Json
@@ -415,15 +429,6 @@ No Response
 Using curl
 ```
 curl -H "Content-Type: application/json" -d '{
-  "VoicebotImportRestoreRequest": 
-  {
-    "Entities":"f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
-	"Intents":"e11203f5-1d97-4c48-8fc2-fc6257d4e13b",
-	"IsRestore":true,
-	"DeletedIntents":[],
-	"DeletedIntentDialogflowIds":[],
-	"SiteId":1000
-  }
 }' -X POST https://domain.comm100.com/dialogflow/voicebots/{voicebotId}?Siteid=1000`
 ```
 Response
@@ -458,12 +463,15 @@ example:
 {
   "VoicebotImportRestoreRequest": 
   {
-    "Entities":"f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
-	"Intents":"e11203f5-1d97-4c48-8fc2-fc6257d4e13b",
-	"IsRestore":true,
-	"DeletedIntents":[],
-	"DeletedIntentDialogflowIds":[],
-	"SiteId":1000
+    "Entities"
+    [
+      "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db"
+    ],
+	
+    "Intents"
+    [
+      "e11203f5-1d97-4c48-8fc2-fc6257d4e13b"
+    ]
   }
 }
 ```
@@ -477,12 +485,15 @@ Using curl
 curl -H "Content-Type: application/json" -d '{
   "VoicebotImportRestoreRequest": 
   {
-    "Entities":"f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
-	"Intents":"e11203f5-1d97-4c48-8fc2-fc6257d4e13b",
-	"IsRestore":true,
-	"DeletedIntents":[],
-	"DeletedIntentDialogflowIds":[],
-	"SiteId":1000
+    "Entities"
+    [
+      "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db"
+    ],
+	
+    "Intents"
+    [
+      "e11203f5-1d97-4c48-8fc2-fc6257d4e13b"
+    ]
   }
 }' -X DELETE https://domain.comm100.com/dialogflow/voicebots/{voicebotId}?Siteid=1000`
 ```
@@ -490,13 +501,12 @@ Response
 ```Json
   HTTP/1.1 204 OK
   Content-Type:  application/json
-
 {   
 }
 ```
 
-### Put Intent
-`Update /dialogflow/Intents/{IntentId}?Siteid={SiteId}`
+### Update Intent
+`PUT /dialogflow/Intents/{IntentId}?Siteid={SiteId}`
 
 #### Parameters
 Path parameters
@@ -513,7 +523,7 @@ No Response
 Using curl
 ```
 curl -H "Content-Type: application/json" -d '{
-}' -X Put https://domain.comm100.com/dialogflow/Intents/{IntentId}?Siteid=1000`
+}' -X PUT https://domain.comm100.com/dialogflow/Intents/{IntentId}?Siteid=1000`
 ```
 Response
 ```Json
@@ -541,7 +551,7 @@ No Response
 Using curl
 ```
 curl -H "Content-Type: application/json" -d '{
-}' -X Put https://domain.comm100.com/dialogflow/Intents/{IntentId}?Siteid=1000`
+}' -X POST https://domain.comm100.com/dialogflow/Intents/{IntentId}?Siteid=1000`
 ```
 Response
 ```Json
@@ -562,7 +572,6 @@ Path parameters
   | `IntentId` | Guid | yes  | Intent id  |
   | `SiteId` | Int | yes  | Site id  |
   | `VoicebotId` | Guid | yes  | Voice bot id  |
-  | `DialogFlowId` | String | yes  | DialogFlow id  |
 
 #### Response
 No Response 
@@ -571,7 +580,7 @@ No Response
 Using curl
 ```
 curl -H "Content-Type: application/json" -d '{
-}' -X DELETE https://domain.comm100.com/dialogflow/Intents/{IntentId}?Siteid=1000&VoicebotId='f8383a83-48e9-4d0d-a3bd-fb19ce5c12db'&DialogFlowId=''`
+}' -X DELETE https://domain.comm100.com/dialogflow/Intents/{IntentId}?Siteid=1000&VoicebotId='f8383a83-48e9-4d0d-a3bd-fb19ce5c12db'`
 ```
 Response
 ```Json
@@ -581,8 +590,8 @@ Response
 }
 ```
 
-### Put Entities ActionResult
-`Update /dialogflow/entities/{entityId}?Siteid={SiteId}`
+### Update Entities
+`PUT /dialogflow/entities/{entityId}?Siteid={SiteId}`
 
 #### Parameters
 Path parameters
@@ -599,7 +608,7 @@ No Response
 Using curl
 ```
 curl -H "Content-Type: application/json" -d '{
-}' -X Put https://domain.comm100.com/dialogflow/entities/{entityId}?Siteid=1000`
+}' -X PUT https://domain.comm100.com/dialogflow/entities/{entityId}?Siteid=1000`
 ```
 Response
 ```Json
@@ -609,7 +618,7 @@ Response
 }
 ```
 
-### Create A New Entities ActionResult
+### Create A New Entities
 `POST /dialogflow/entities/{entityId}?Siteid={SiteId}`
 
 #### Parameters
@@ -627,7 +636,7 @@ No Response
 Using curl
 ```
 curl -H "Content-Type: application/json" -d '{
-}' -X UPDATE https://domain.comm100.com/dialogflow/entities/{entityId}?Siteid=1000`
+}' -X POST https://domain.comm100.com/dialogflow/entities/{entityId}?Siteid=1000`
 ```
 Response
 ```Json
@@ -637,7 +646,7 @@ Response
 }
 ```
 
-### Remove a Entities ActionResult
+### Remove a Entities
 `DELETE /dialogflow/entities/{entityId}?Siteid={SiteId}&VoicebotId={VoicebotId}`
 
 #### Parameters
