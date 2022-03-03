@@ -233,7 +233,7 @@ Response
 ```
 
 ### Get Phonenumber
-`GET /phonenumbers`
+`GET /phonenumber/phonenumbers`
 
 #### Parameters
 Path parameters
@@ -271,7 +271,7 @@ Response
 ```
 
 ### Create A New Phonenumber
-`POST /phonenumbers`
+`POST /phonenumber/phonenumbers`
 
 #### Parameters
 No parameters
@@ -296,13 +296,13 @@ The Response body contains data with the following structure:
 
   | Name  | Type | Description |     
   | - | - | - | 
-  | `sid` | String | Twilio phone number identification id   |  
+  | `phoneNumber` | String |   |  
 #### Example
 Using curl
 ```
 curl -H "Content-Type: application/json" -d '{
-  "phoneNumber": "604) xx0-8183"
-}' -X POST https://domain.comm100.com/twillioadapter/phonenumbers
+  "phoneNumber": "(604) xx0-8183"
+}' -X POST https://domain.comm100.com/phonenumber/phonenumbers
 ```
 Response
 ```Json
@@ -310,20 +310,20 @@ Response
   Content-Type:  application/json
 
 {  
-  "sid": "CA6cf29f28b03b9dbfad8ce758fa66xxx",  
+  "phoneNumber": "(604)xx0-8183",  
 }
 ```
 
 
 ### Remove Phonenumber
-`Delete /phonenumber/{sid}`
+`Delete /phonenumber/phonenumbers/{phonenumber}`
 
 #### Parameters
 Path parameters
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
-  | `sid` | String | yes  | Twilio phone number identification id  |
+  | `phonenumber` | String | yes  |  phone number |
 
 #### Example
 Using curl
@@ -712,7 +712,6 @@ The Response body contains data with the follow structure:
   | Name | Type |  Description |    
   | - | - | :-: | 
   |`results[]` | [SpeechRecognitionResult](#SpeechRecognitionResult) | Sequential list of transcription results corresponding to sequential portions of audio. |
-  |`totalBilledTime`  |  string    | When available, billed audio seconds for the corresponding request.A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s" |
 
 
 #### Example
@@ -752,8 +751,7 @@ Response
         "languageCode": string
         
       }
-    ],
-   "totalBilledTime": string
+    ]
 
   }
 ```
@@ -811,7 +809,6 @@ The Response body contains data with the follow structure:
   | Name | Type |  Description |    
   | - | - | :-: | 
   |`audioContent` | string  | The audio data bytes encoded as specified in the request, including the header for encodings that are wrapped in containers (e.g. MP3, OGG_OPUS). For LINEAR16 audio, we include the WAV header. Note: as with all bytes fields, protobuffers use a pure binary representation, whereas JSON representations use base64.A base64-encoded string. |
-  |`timepoints[]`  |  [Timepoint](#Timepoint)    | A link between a position in the original request input and a corresponding time in the output audio. It's only supported via <mark> of SSML input. |
   |`audioConfig`  |  [AudioConfig](#AudioConfig)    | A link between a position in the original request input and a corresponding time in the output audio. It's only supported via <mark> of SSML input. |
 
 
@@ -852,12 +849,6 @@ Response
   Content-Type:  application/json
   {
   "audioContent": string,
-  "timepoints": [
-    {
-      "markName": string,
-      "timeSeconds": number
-    }
-  ],
   "audioConfig": {
     "audioEncoding": enum ,
     "speakingRate": number,
@@ -1021,7 +1012,7 @@ Contains text input to be synthesized. Either text or ssml must be supplied. Sup
   |Name| Type| Default | Description     | 
   | - | - | :-: | - | 
   |`text` | String |  |  The raw text to be synthesized. |
-  |`ssml` | String |  |  The SSML document to be synthesized. The SSML document must be valid and well-formed. Otherwise the RPC will fail and return google.rpc.Code.INVALID_ARGUMENT. For more information, see SSML. |
+  |`ssml` | String |  |  The SSML document to be synthesized. The SSML document must be valid and well-formed.  For more information, see SSML. |
 
 ### VoiceSelectionParams
 Description of which voice to use for a synthesis request.
