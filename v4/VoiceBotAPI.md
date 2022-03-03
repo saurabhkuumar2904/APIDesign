@@ -17,17 +17,17 @@ The PhoneNumber Service API provides phone number manager services API.
   - `DELETE /phonenumber/phonenumbers/{phonenumber}` - [Remove a Phonenumber](#Remove-Phonenumber)
 ## Voice Bot Intent Engine Adapter API
 Synchronize Voice Bot information to thirdparty Intent engine
-  - `PUT /dialogflow/voicebots/{voicebotId}` - [UPDATE Voicebot](#Update-Voicebot)
+  - `PUT /dialogflow/voicebots/{voicebotId}` - [Update Voicebot](#Update-Voicebot)
   - `POST /dialogflow/voicebots/{voicebotId}` - [Create A New Voicebot](#Create-A-New-Voicebot)
   - `DELETE /dialogflow/voicebots/{voicebotId}` - [Remove a Voicebot](#Remove-a-Voicebot)
    
 Synchronize Voice Bot Intents information to thirdparty Intent engine
-  - `PUT /dialogflow/intents/{intentId}` - [UPDATE Intent](#Update-Intent)
+  - `PUT /dialogflow/intents/{intentId}` - [Update Intent](#Update-Intent)
   - `POST /dialogflow/intents/{intentId}` - [Create A New Intent](#Create-A-New-Intent)
   - `DELETE /dialogflow/intents/{intentId}` - [Remove a Intent](#Remove-a-Intent)
    
 Synchronize Voice Bot Entities information to thirdparty Intent engine  
-  - `PUT /dialogflow/entities/{entityId}` - [UPDATE Entities](#Update-Entities)
+  - `PUT /dialogflow/entities/{entityId}` - [Update Entities](#Update-Entities)
   - `POST /dialogflow/entities/{entityId}` - [Create A New Entities](#Create-A-New-Entities)
   - `DELETE /dialogflow/entities/{entityId}` - [Remove a Entities](#Remove-a-Entities)
   
