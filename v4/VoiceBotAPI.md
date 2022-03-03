@@ -42,7 +42,7 @@ Provide STT(Speech To Text) and TTS(Text To Speech) capabilities.
 
 #### Parameters
 Request body
-The request body contains data with the follow structure:
+The request body contains data with the following structure:
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
   | `voiceBotId` | Guid | yes | |  the unique id of the voice bot |
@@ -62,7 +62,7 @@ example:
 ```
 
 #### Response
-The Response body contains data with the follow structure:
+The Response body contains data with the following structure:
 
   | Name | Type |  Description |    
   | - | - | :-: | 
@@ -109,7 +109,7 @@ Path parameters
 
 Request body
 
-The request body contains data with the follow structure:
+The request body contains data with the following structure:
 
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
@@ -779,22 +779,12 @@ example:
     },
    "voice": {
       "languageCode": string,
-      "name": string,
-      "ssmlGender": enum ,
-      "customVoice": {
-        "model": string,
-        "reportedUsage": enum
-      }
+      "gender": enum ,
     },
     "audioConfig":{
       "audioEncoding": enum ,
       "speakingRate": number,
-      "pitch": number,
-      "volumeGainDb": number,
-      "sampleRateHertz": integer,
-      "effectsProfileId": [
-        string
-      ]
+      "pitch": number
 }
 }
 ```
@@ -825,11 +815,6 @@ curl -H "Content-Type: application/json" -d '{
       "audioEncoding": enum ,
       "speakingRate": number,
       "pitch": number,
-      "volumeGainDb": number,
-      "sampleRateHertz": integer,
-      "effectsProfileId": [
-        string
-      ]
 }
 }' -X POST https://domain.comm100.com/tts/text:synthesize
 ```
@@ -842,12 +827,7 @@ Response
   "audioConfig": {
     "audioEncoding": enum ,
     "speakingRate": number,
-    "pitch": number,
-    "volumeGainDb": number,
-    "sampleRateHertz": integer,
-    "effectsProfileId": [
-      string
-    ]
+    "pitch": number
   }
 }
 ```
