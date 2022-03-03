@@ -15,7 +15,7 @@ The PhoneNumber Service API provides phone number manager services API.
   - `GET /phonenumber/phonenumbers` - [Get Phonenumbers](#Get-Phonenumbers)
   - `POST /phonenumber/phonenumbers` - [Create A New Phonenumber](#Create-A-New-Phonenumber)
   - `DELETE /phonenumber/phonenumbers/{phonenumber}` - [Remove a Phonenumber](#Remove-Phonenumber)
-## Dialog Flow Adapter API
+## Bot Intent Engine Adapter API
 Synchronize Voice Bot information to thirdparty Intent engine
   - `PUT /dialogflow/voicebots/{voicebotId}` - [UPDATE Voicebot](#Update-Voicebot)
   - `POST /dialogflow/voicebots/{voicebotId}` - [Create A New Voicebot](#Create-A-New-Voicebot)
@@ -32,7 +32,7 @@ Synchronize Voice Bot Entities information to thirdparty Intent engine
   - `DELETE /dialogflow/entities/{entityId}` - [Remove a Entities](#Remove-a-Entities)
   
 ## STT & TTS Adatper API
-
+Provide STT(Speech To Text) and TTS(Text To Speech) capabilities.
   - `POST /stt/speech:recognize` - [Speech To Text](#Speech-To-Text)
   - `POST /tts/text:synthesize`  - [Text To Speech](#Text-To-Speech)
 # Endpoints
