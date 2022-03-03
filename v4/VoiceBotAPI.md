@@ -815,17 +815,11 @@ curl -H "Content-Type: application/json" -d '{
     "input": {
       // Union field input_source can be only one of the following:
       "text": string,
-      "ssml": string
        // End of list of possible types for union field input_source.
     },
    "voice": {
       "languageCode": string,
-      "name": string,
-      "ssmlGender": enum ,
-      "customVoice": {
-        "model": string,
-        "reportedUsage": enum
-      }
+      "gender": enum 
     },
     "audioConfig":{
       "audioEncoding": enum ,
@@ -1005,7 +999,6 @@ Contains text input to be synthesized. Either text or ssml must be supplied. Sup
   |Name| Type| Default | Description     | 
   | - | - | :-: | - | 
   |`text` | String |  |  The raw text to be synthesized. |
-  |`config` | [VoiceSelectionParams](#VoiceSelectionParams) object |  |  The SSML document to be synthesized. The SSML document must be valid and well-formed.  For more information, see SSML. |
 
 ### VoiceSelectionParams
 Description of which voice to use for a synthesis request.
