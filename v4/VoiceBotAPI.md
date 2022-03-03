@@ -12,19 +12,19 @@ The API is implemented by the Voice Bot API Module.
   - `DELETE /voicebot/sessions/{sessionId}` - [Delete Session](#delete-a-voicebot-session) Voice Bot receives the sessionId and delete the session.
 ## PhoneNumber Service API  (Twillio PhoneNumber API ) 
 The PhoneNumber Service API provides phone number manager services API.
-  - `GET /phonenumbers` - [Get Phonenumbers](#Get-Phonenumbers)
-  - `POST /phonenumbers` - [Create A New Phonenumber](#Create-A-New-Phonenumber)
-  - `DELETE /phonenumbers/{phonenumber}` - [Remove a Phonenumber](#Remove-Phonenumber)
+  - `GET /phonenumber/phonenumbers` - [Get Phonenumbers](#Get-Phonenumbers)
+  - `POST /phonenumber/phonenumbers` - [Create A New Phonenumber](#Create-A-New-Phonenumber)
+  - `DELETE /phonenumber/phonenumbers/{phonenumber}` - [Remove a Phonenumber](#Remove-Phonenumber)
 ## Dialog Flow Adapter API
-### Voice bot Dialog Flow Adapter API
+Synchronize Voice Bot information to thirdparty Intent engine
   - `PUT /dialogflow/voicebots/{voicebotId}` - [UPDATE Voicebot](#Update-Voicebot)
   - `POST /dialogflow/voicebots/{voicebotId}` - [Create A New Voicebot](#Create-A-New-Voicebot)
   - `DELETE /dialogflow/voicebots/{voicebotId}` - [Remove a Voicebot](#Remove-a-Voicebot)
-### Intents Dialog Flow Adapter API  
+Synchronize Voice Bot Intent information to thirdparty Intent engine
   - `PUT /dialogflow/intents/{intentId}` - [UPDATE Intent](#Update-Intent)
   - `POST /dialogflow/intents/{intentId}` - [Create A New Intent](#Create-A-New-Intent)
   - `DELETE /dialogflow/intents/{intentId}` - [Remove a Intent](#Remove-a-Intent)
-### entities Dialog Flow Adapter API    
+Synchronize Voice Bot Intent information to thirdparty Intent engine  
   - `PUT /dialogflow/entities/{entityId}` - [UPDATE Entities](#Update-Entities)
   - `POST /dialogflow/entities/{entityId}` - [Create A New Entities](#Create-A-New-Entities)
   - `DELETE /dialogflow/entities/{entityId}` - [Remove a Entities](#Remove-a-Entities)
