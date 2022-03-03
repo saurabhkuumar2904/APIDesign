@@ -16,7 +16,19 @@ The PhoneNumber Service API provides phone number manager services API.
   - `POST /phonenumbers` - [Create A New Phonenumber](#Create-A-New-Phonenumber)
   - `DELETE /phonenumbers/{phonenumber}` - [Remove a Phonenumber](#Remove-Phonenumbers)
 ## Dialog Flow Adapter API
-
+###Voice bot Dialog Flow Adapter API
+  - `Update /api/v1/voicebots/{voicebotId}` - [Put Voicebot ActionResult](#Put-Voicebot-ActionResult)
+  - `POST /api/v1/voicebots/{voicebotId}` - [Create A New Voicebot ActionResult](#Create-A-New-Voicebot-ActionResult)
+  - `DELETE /api/v1/voicebots/{voicebotId}` - [Remove a Voicebot ActionResult](#Remove-Voicebot-ActionResult)
+###Intents Dialog Flow Adapter API  
+  - `Update /api/v1/intents/{intentId}` - [Put Intent ActionResult](#Put-Intent-ActionResult)
+  - `POST /api/v1/intents/{intentId}` - [Create A New Intent ActionResult](#Create-A-New-Intent-ActionResult)
+  - `DELETE /api/v1/intents/{intentId}` - [Remove a Intent ActionResult](#Remove-Intent-ActionResult)
+###entities Dialog Flow Adapter API    
+  - `Update /api/v1/entities/{entityId}` - [Put Entities ActionResult](#Put-Entities-ActionResult)
+  - `POST /api/v1/entities/{entityId}` - [Create A New Entities ActionResult](#Create-A-New-Entities-ActionResult)
+  - `DELETE /api/v1/entities/{entityId}` - [Remove a Entities ActionResult](#Remove-Entities-ActionResult)
+  
 ## STT & TTS Adatper API
 
 # Endpoints
@@ -192,6 +204,30 @@ Response
 
 ```
 
+### delete a voicebot session
+`DELETE /voicebot/sessions/{sessionId}`
+
+#### Parameters
+Path parameters
+
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+  | `sessionId` | Guid | yes  | Session id  |
+
+#### Example
+Using curl
+```
+curl -H "Content-Type: application/json" -d
+ -X Delete https://domain.comm100.com/voicebot/sessions/{sessionId}
+```
+Response
+```Json
+  HTTP/1.1 204 OK
+  Content-Type:  application/json
+  {  
+  }
+```
+
 ### Get Phonenumber
 `GET /phonenumbers`
 
@@ -297,9 +333,360 @@ Response
   Content-Type:  application/json
   {  
   }
-
-
 ```
+
+### Put Voicebot ActionResult
+`Update /api/v1/voicebots/{voicebotId}?Siteid={SiteId}`
+
+#### Parameters
+Path parameters
+
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+  | `voicebotId` | Guid | yes  | Voice Bot id  |
+  | `SiteId` | Int | yes  | Site id  |
+Request body
+
+The request body contains data with the following structure:
+
+  | Name  | Type | Description |     
+  | - | - | - | 
+  | `VoicebotImportRestoreRequest` | [VoicebotImportRestoreRequest](#VoicebotImportRestoreRequest) |  |  
+
+example:
+```Json 
+{
+  "VoicebotImportRestoreRequest": 
+  {
+    "Entities":"f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
+	"Intents":"e11203f5-1d97-4c48-8fc2-fc6257d4e13b",
+	"IsRestore":true,
+	"DeletedIntents":[],
+	"DeletedIntentDialogflowIds":[],
+	"SiteId":1000
+  }
+}
+```
+
+#### Response
+No Response 
+
+#### Example
+Using curl
+```
+curl -H "Content-Type: application/json" -d '{
+  "VoicebotImportRestoreRequest": 
+  {
+    "Entities":"f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
+	"Intents":"e11203f5-1d97-4c48-8fc2-fc6257d4e13b",
+	"IsRestore":true,
+	"DeletedIntents":[],
+	"DeletedIntentDialogflowIds":[],
+	"SiteId":1000
+  }
+}' -X UPDATE https://domain.comm100.com/api/v1/voicebots/{voicebotId}?Siteid=1000`
+```
+Response
+```Json
+  HTTP/1.1 200 OK
+  Content-Type:  application/json
+
+{   
+}
+```
+
+### Create A New Voicebot ActionResult
+`POST /api/v1/voicebots/{voicebotId}?Siteid={SiteId}`
+
+#### Parameters
+Path parameters
+
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+  | `voicebotId` | Guid | yes  | Voice Bot id  |
+  | `SiteId` | Int | yes  | Site id  |
+Request body
+
+The request body contains data with the following structure:
+
+  | Name  | Type | Description |     
+  | - | - | - | 
+  | `VoicebotImportRestoreRequest` | [VoicebotImportRestoreRequest](#VoicebotImportRestoreRequest) |  |  
+
+example:
+```Json 
+{
+  "VoicebotImportRestoreRequest": 
+  {
+    "Entities":"f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
+	"Intents":"e11203f5-1d97-4c48-8fc2-fc6257d4e13b",
+	"IsRestore":true,
+	"DeletedIntents":[],
+	"DeletedIntentDialogflowIds":[],
+	"SiteId":1000
+  }
+}
+```
+
+#### Response
+No Response 
+
+#### Example
+Using curl
+```
+curl -H "Content-Type: application/json" -d '{
+  "VoicebotImportRestoreRequest": 
+  {
+    "Entities":"f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
+	"Intents":"e11203f5-1d97-4c48-8fc2-fc6257d4e13b",
+	"IsRestore":true,
+	"DeletedIntents":[],
+	"DeletedIntentDialogflowIds":[],
+	"SiteId":1000
+  }
+}' -X POST https://domain.comm100.com/api/v1/voicebots/{voicebotId}?Siteid=1000`
+```
+Response
+```Json
+  HTTP/1.1 200 OK
+  Content-Type:  application/json
+
+{   
+}
+```
+
+### Remove a Voicebot ActionResult
+`DELETE /api/v1/voicebots/{voicebotId}?Siteid={SiteId}`
+
+#### Parameters
+Path parameters
+
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+  | `voicebotId` | Guid | yes  | Voice Bot id  |
+  | `SiteId` | Int | yes  | Site id  |
+Request body
+
+The request body contains data with the following structure:
+
+  | Name  | Type | Description |     
+  | - | - | - | 
+  | `VoicebotImportRestoreRequest` | [VoicebotImportRestoreRequest](#VoicebotImportRestoreRequest) |  |  
+
+example:
+```Json 
+{
+  "VoicebotImportRestoreRequest": 
+  {
+    "Entities":"f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
+	"Intents":"e11203f5-1d97-4c48-8fc2-fc6257d4e13b",
+	"IsRestore":true,
+	"DeletedIntents":[],
+	"DeletedIntentDialogflowIds":[],
+	"SiteId":1000
+  }
+}
+```
+
+#### Response
+No Response 
+
+#### Example
+Using curl
+```
+curl -H "Content-Type: application/json" -d '{
+  "VoicebotImportRestoreRequest": 
+  {
+    "Entities":"f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
+	"Intents":"e11203f5-1d97-4c48-8fc2-fc6257d4e13b",
+	"IsRestore":true,
+	"DeletedIntents":[],
+	"DeletedIntentDialogflowIds":[],
+	"SiteId":1000
+  }
+}' -X DELETE https://domain.comm100.com/api/v1/voicebots/{voicebotId}?Siteid=1000`
+```
+Response
+```Json
+  HTTP/1.1 204 OK
+  Content-Type:  application/json
+
+{   
+}
+```
+
+### Put Intent ActionResult
+`Update /api/v1/Intents/{IntentId}?Siteid={SiteId}`
+
+#### Parameters
+Path parameters
+
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+  | `IntentId` | Guid | yes  | Intent id  |
+  | `SiteId` | Int | yes  | Site id  |
+
+#### Response
+No Response 
+
+#### Example
+Using curl
+```
+curl -H "Content-Type: application/json" -d '{
+}' -X UPDATE https://domain.comm100.com/api/v1/Intents/{IntentId}?Siteid=1000`
+```
+Response
+```Json
+  HTTP/1.1 200 OK
+  Content-Type:  application/json
+{   
+}
+```
+
+### Create A New Intent ActionResult
+`POST /api/v1/Intents/{IntentId}?Siteid={SiteId}`
+
+#### Parameters
+Path parameters
+
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+  | `IntentId` | Guid | yes  | Intent id  |
+  | `SiteId` | Int | yes  | Site id  |
+
+#### Response
+No Response 
+
+#### Example
+Using curl
+```
+curl -H "Content-Type: application/json" -d '{
+}' -X UPDATE https://domain.comm100.com/api/v1/Intents/{IntentId}?Siteid=1000`
+```
+Response
+```Json
+  HTTP/1.1 200 OK
+  Content-Type:  application/json
+{   
+}
+```
+
+### Remove a Intent ActionResult
+`DELETE /api/v1/Intents/{IntentId}?Siteid={SiteId}`
+
+#### Parameters
+Path parameters
+
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+  | `IntentId` | Guid | yes  | Intent id  |
+  | `SiteId` | Int | yes  | Site id  |
+  | `VoicebotId` | Guid | yes  | Voice bot id  |
+  | `DialogFlowId` | String | yes  | DialogFlow id  |
+
+#### Response
+No Response 
+
+#### Example
+Using curl
+```
+curl -H "Content-Type: application/json" -d '{
+}' -X DELETE https://domain.comm100.com/api/v1/Intents/{IntentId}?Siteid=1000&VoicebotId='f8383a83-48e9-4d0d-a3bd-fb19ce5c12db'&DialogFlowId=''`
+```
+Response
+```Json
+  HTTP/1.1 204 OK
+  Content-Type:  application/json
+{   
+}
+```
+
+### Put Entities ActionResult
+`Update /api/v1/entities/{entityId}?Siteid={SiteId}`
+
+#### Parameters
+Path parameters
+
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+  | `entityId` | Guid | yes  | Intent id  |
+  | `SiteId` | Int | yes  | Site id  |
+
+#### Response
+No Response 
+
+#### Example
+Using curl
+```
+curl -H "Content-Type: application/json" -d '{
+}' -X UPDATE https://domain.comm100.com/api/v1/entities/{entityId}?Siteid=1000`
+```
+Response
+```Json
+  HTTP/1.1 200 OK
+  Content-Type:  application/json
+{   
+}
+```
+
+### Create A New Intent ActionResult
+`POST /api/v1/entities/{entityId}?Siteid={SiteId}`
+
+#### Parameters
+Path parameters
+
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+  | `entityId` | Guid | yes  | Intent id  |
+  | `SiteId` | Int | yes  | Site id  |
+
+#### Response
+No Response 
+
+#### Example
+Using curl
+```
+curl -H "Content-Type: application/json" -d '{
+}' -X UPDATE https://domain.comm100.com/api/v1/entities/{entityId}?Siteid=1000`
+```
+Response
+```Json
+  HTTP/1.1 200 OK
+  Content-Type:  application/json
+{   
+}
+```
+
+### Remove a Intent ActionResult
+`DELETE /api/v1/entities/{entityId}?Siteid={SiteId}&VoicebotId={VoicebotId}&DialogFlowId={DialogFlowId}`
+
+#### Parameters
+Path parameters
+
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+  | `IntentId` | Guid | yes  | Intent id  |
+  | `SiteId` | Int | yes  | Site id  |
+  | `VoicebotId` | Guid | yes  | Voice bot id  |
+  | `DialogFlowId` | String | yes  | DialogFlow id  |
+
+#### Response
+No Response 
+
+#### Example
+Using curl
+```
+curl -H "Content-Type: application/json" -d '{
+}' -X DELETE https://domain.comm100.com/api/v1/entities/{entityId}?Siteid=1000&VoicebotId='f8383a83-48e9-4d0d-a3bd-fb19ce5c12db'&DialogFlowId=''`
+```
+Response
+```Json
+  HTTP/1.1 204 OK
+  Content-Type:  application/json
+{   
+}
+```
+
 
 # Model
 ### VoicebotOutput Object
@@ -382,3 +769,14 @@ Text Response is represented as simple flat json objects with the following keys
 |`state/province` | string |  |  |
 |`country/region` | string |  |  |
 |`city` | string |  |  |
+
+### VoicebotImportRestoreRequest
+
+|Name| Type|  Default |  Description     |
+| - | - | :-: |  - | 
+|`Entities` | Guid |  |  |
+|`Intents` | Guid |  |  |
+|`IsRestore` | bool |  |  |
+|`DeletedIntents` | string[] |  |  |
+|`DeletedIntentDialogflowIds` | string[] |  |  |
+|`SiteId` | int |  |  |
