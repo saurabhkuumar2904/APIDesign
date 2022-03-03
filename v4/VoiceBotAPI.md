@@ -16,15 +16,15 @@ The PhoneNumber Service API provides phone number manager services API.
   - `POST /phonenumbers` - [Create A New Phonenumber](#Create-A-New-Phonenumber)
   - `DELETE /phonenumbers/{phonenumber}` - [Remove a Phonenumber](#Remove-Phonenumbers)
 ## Dialog Flow Adapter API
-###Voice bot Dialog Flow Adapter API
+### Voice bot Dialog Flow Adapter API
   - `Update /api/v1/voicebots/{voicebotId}` - [Put Voicebot ActionResult](#Put-Voicebot-ActionResult)
   - `POST /api/v1/voicebots/{voicebotId}` - [Create A New Voicebot ActionResult](#Create-A-New-Voicebot-ActionResult)
   - `DELETE /api/v1/voicebots/{voicebotId}` - [Remove a Voicebot ActionResult](#Remove-Voicebot-ActionResult)
-###Intents Dialog Flow Adapter API  
+### Intents Dialog Flow Adapter API  
   - `Update /api/v1/intents/{intentId}` - [Put Intent ActionResult](#Put-Intent-ActionResult)
   - `POST /api/v1/intents/{intentId}` - [Create A New Intent ActionResult](#Create-A-New-Intent-ActionResult)
   - `DELETE /api/v1/intents/{intentId}` - [Remove a Intent ActionResult](#Remove-Intent-ActionResult)
-###entities Dialog Flow Adapter API    
+### entities Dialog Flow Adapter API    
   - `Update /api/v1/entities/{entityId}` - [Put Entities ActionResult](#Put-Entities-ActionResult)
   - `POST /api/v1/entities/{entityId}` - [Create A New Entities ActionResult](#Create-A-New-Entities-ActionResult)
   - `DELETE /api/v1/entities/{entityId}` - [Remove a Entities ActionResult](#Remove-Entities-ActionResult)
