@@ -21,18 +21,20 @@ Synchronize Voice Bot information to thirdparty Intent engine
   - `POST /dialogflow/voicebots/{voicebotId}` - [Create A New Voicebot](#Create-A-New-Voicebot)
   - `DELETE /dialogflow/voicebots/{voicebotId}` - [Remove a Voicebot](#Remove-a-Voicebot)
    
-Synchronize Voice Bot Intent information to thirdparty Intent engine
+Synchronize Voice Bot Intents information to thirdparty Intent engine
   - `PUT /dialogflow/intents/{intentId}` - [UPDATE Intent](#Update-Intent)
   - `POST /dialogflow/intents/{intentId}` - [Create A New Intent](#Create-A-New-Intent)
   - `DELETE /dialogflow/intents/{intentId}` - [Remove a Intent](#Remove-a-Intent)
    
-Synchronize Voice Bot Intent information to thirdparty Intent engine  
+Synchronize Voice Bot Entities information to thirdparty Intent engine  
   - `PUT /dialogflow/entities/{entityId}` - [UPDATE Entities](#Update-Entities)
   - `POST /dialogflow/entities/{entityId}` - [Create A New Entities](#Create-A-New-Entities)
   - `DELETE /dialogflow/entities/{entityId}` - [Remove a Entities](#Remove-a-Entities)
   
 ## STT & TTS Adatper API
 
+  - `POST /stt/speech:recognize` - [Speech To Text](#Speech-To-Text)
+  - `POST /tts/text:synthesize`  - [Text To Speech](#Text-To-Speech)
 # Endpoints
 
 ### Create A New VoiceBot Session
