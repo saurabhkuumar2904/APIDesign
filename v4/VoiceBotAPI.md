@@ -3,21 +3,21 @@
   | 2.0 | v1 | Voice Bot API | 2022-2-22 | Leon，Carl，Page，Zack |  
 
 
-
 # Summary
 
 ## Voice Bot API
 The API is implemented by the Voice Bot API Module.
-  - `POST /voicebots/{VoicebotId}/sessions` - [Create session](#create-a-new-voicebot-session)Voice Bot receives requests and creates sessions
-  - `POST /sessions/{sessionId}:receiveMessage` - [Receive Message](#receive-message)Voice Bot receives the message and gives the output message
-## Twillio&Sip Adapter Call API
-  Voice BOT actively sends messages to the Adapter，the API is implemented by the Adapter Module.
-  - `POST /sessions/{sessionId}:sendMessage` - [SendMessage](#SendMessage) 
-## Twillio PhoneNumber API  
-The Twillio Adapter provides phone number registration services API.
+  - `POST /voicebot/voicebots/{VoicebotId}/sessions` - [Create session](#create-a-new-voicebot-session)Voice Bot receives requests and creates session
+  - `POST /voicebot/sessions/{sessionId}:receiveMessage` - [Receive Message](#receive-message)Voice Bot receives the message and gives the output message
+  - `DELETE /voicebot/sessions/{sessionId}` - [Delete Message](#delete-a-voicebot-session) Voice Bot receives the sessionId and delete the session.
+## PhoneNumber Service API  (Twillio PhoneNumber API ) 
+The PhoneNumber Service API provides phone number manager services API.
   - `GET /phonenumbers` - [Get Phonenumbers](#Get-Phonenumbers)
   - `POST /phonenumbers` - [Create A New Phonenumber](#Create-A-New-Phonenumber)
-  - `DELETE /phonenumbers/{sid}` - [Remove a Phonenumber](#Remove-Phonenumbers)
+  - `DELETE /phonenumbers/{phonenumber}` - [Remove a Phonenumber](#Remove-Phonenumbers)
+## Dialog Flow Adapter API
+
+## STT & TTS Adatper API
 
 # Endpoints
 
