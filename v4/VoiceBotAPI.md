@@ -7,9 +7,9 @@
 
 ## Voice Bot API
 The API is implemented by the Voice Bot API Module.
-  - `POST /voicebot/voicebots/{VoicebotId}/sessions` - [Create session](#create-a-new-voicebot-session)Voice Bot receives requests and creates session
+  - `POST /voicebot/voicebots/{VoicebotId}/sessions` - [Create Session](#create-a-new-voicebot-session)Voice Bot receives requests and creates session
   - `POST /voicebot/sessions/{sessionId}:receiveMessage` - [Receive Message](#receive-message)Voice Bot receives the message and gives the output message
-  - `DELETE /voicebot/sessions/{sessionId}` - [Delete Message](#delete-a-voicebot-session) Voice Bot receives the sessionId and delete the session.
+  - `DELETE /voicebot/sessions/{sessionId}` - [Delete Session](#delete-a-voicebot-session) Voice Bot receives the sessionId and delete the session.
 ## PhoneNumber Service API  (Twillio PhoneNumber API ) 
 The PhoneNumber Service API provides phone number manager services API.
   - `GET /phonenumbers` - [Get Phonenumbers](#Get-Phonenumbers)
