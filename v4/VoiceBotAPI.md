@@ -261,7 +261,7 @@ Response
   HTTP/1.1 200 OK
   Content-Type:  application/json
 {
-  phoneNumberList:[
+  "phoneNumberList":[
     {
       "phoneNumber": "604) xx0-8183",    
       "CountryCode": "US",    
@@ -675,6 +675,201 @@ Response
 }
 ```
 
+### Speech To Text
+Performs synchronous speech recognition: receive results after all audio has been sent and processed.
+
+`POST /stt/speech:recognize`
+
+#### Parameters
+Request body
+The request body contains data with the follow structure:
+  | Name | Type | Required | Default | Description |    
+  | - | - | :-: | :-: | - | 
+  | `config` | [RecognitionConfig](#RecognitionConfig) | yes | |  Provides information to the recognizer that specifies how to process the request. |
+  |`audio`  |  [RecognitionAudio](#RecognitionAudio)  |yes |   | The audio data to be recognized. |
+
+example:
+```Json 
+  {
+    "config":{
+      "encoding": enum [(AudioEncoding)](#AudioEncoding),
+      "sampleRateHertz": integer,
+      "audioChannelCount": integer,
+      "languageCode": string,
+    },
+    "audio": {
+      // Union field audio_source can be only one of the following:
+      "content": string,
+      "uri": string
+      // End of list of possible types for union field audio_source.
+    },
+  }
+```
+
+#### Response
+The Response body contains data with the follow structure:
+
+  | Name | Type |  Description |    
+  | - | - | :-: | 
+  |`results[]` | [SpeechRecognitionResult](#SpeechRecognitionResult) | Sequential list of transcription results corresponding to sequential portions of audio. |
+  |`totalBilledTime`  |  string    | When available, billed audio seconds for the corresponding request.A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s" |
+
+
+#### Example
+Using curl
+```
+curl -H "Content-Type: application/json" -d '  {
+    "config":{
+      "encoding": enum [(AudioEncoding)](#AudioEncoding),
+      "sampleRateHertz": integer,
+      "audioChannelCount": integer,
+      "languageCode": string,
+    },
+    "audio": {
+      // Union field audio_source can be only one of the following:
+      "content": string,
+      "uri": string
+      // End of list of possible types for union field audio_source.
+    },
+  }' -X POST https://domain.comm100.com/stt/speech:recognize
+```
+Response
+```Json
+  HTTP/1.1 200 OK
+  Content-Type:  application/json
+  {    
+    "results": [
+      {
+        
+        "alternatives": [
+          {
+            "transcript": string,
+            "confidence": number,
+          }
+        ],
+        "channelTag": integer,
+        "resultEndTime": string,
+        "languageCode": string
+        
+      }
+    ],
+   "totalBilledTime": string
+
+  }
+```
+
+
+
+### Text To Speech
+Synthesizes speech synchronously: receive results after all text input has been processed.
+
+`POST /tts/text:synthesize`
+
+#### Parameters
+Request body
+The request body contains data with the follow structure:
+  | Name | Type | Required | Default | Description |    
+  | - | - | :-: | :-: | - | 
+  | `input` | [SynthesisInput](#SynthesisInput) | yes | |  The Synthesizer requires either plain text or SSML as input. |
+  |`voice`  |  [VoiceSelectionParams](#VoiceSelectionParams)  |yes |   | The desired voice of the synthesized audio. |
+  |`audioConfig`  |  [AudioConfig](#AudioConfig)  |yes |   | The configuration of the synthesized audio. |
+
+example:
+```Json 
+  {
+    "input": {
+      // Union field input_source can be only one of the following:
+      "text": string,
+      "ssml": string
+       // End of list of possible types for union field input_source.
+    },
+   "voice": {
+      "languageCode": string,
+      "name": string,
+      "ssmlGender": enum ,
+      "customVoice": {
+        "model": string,
+        "reportedUsage": enum
+      }
+    },
+    "audioConfig":{
+      "audioEncoding": enum ,
+      "speakingRate": number,
+      "pitch": number,
+      "volumeGainDb": number,
+      "sampleRateHertz": integer,
+      "effectsProfileId": [
+        string
+      ]
+}
+}
+```
+
+#### Response
+The Response body contains data with the follow structure:
+
+  | Name | Type |  Description |    
+  | - | - | :-: | 
+  |`audioContent` | string  | The audio data bytes encoded as specified in the request, including the header for encodings that are wrapped in containers (e.g. MP3, OGG_OPUS). For LINEAR16 audio, we include the WAV header. Note: as with all bytes fields, protobuffers use a pure binary representation, whereas JSON representations use base64.A base64-encoded string. |
+  |`timepoints[]`  |  [Timepoint](#Timepoint)    | A link between a position in the original request input and a corresponding time in the output audio. It's only supported via <mark> of SSML input. |
+  |`audioConfig`  |  [AudioConfig](#AudioConfig)    | A link between a position in the original request input and a corresponding time in the output audio. It's only supported via <mark> of SSML input. |
+
+
+#### Example
+Using curl
+```
+curl -H "Content-Type: application/json" -d '{
+    "input": {
+      // Union field input_source can be only one of the following:
+      "text": string,
+      "ssml": string
+       // End of list of possible types for union field input_source.
+    },
+   "voice": {
+      "languageCode": string,
+      "name": string,
+      "ssmlGender": enum ,
+      "customVoice": {
+        "model": string,
+        "reportedUsage": enum
+      }
+    },
+    "audioConfig":{
+      "audioEncoding": enum ,
+      "speakingRate": number,
+      "pitch": number,
+      "volumeGainDb": number,
+      "sampleRateHertz": integer,
+      "effectsProfileId": [
+        string
+      ]
+}
+}' -X POST https://domain.comm100.com/tts/text:synthesize
+```
+Response
+```Json
+  HTTP/1.1 200 OK
+  Content-Type:  application/json
+  {
+  "audioContent": string,
+  "timepoints": [
+    {
+      "markName": string,
+      "timeSeconds": number
+    }
+  ],
+  "audioConfig": {
+    "audioEncoding": enum ,
+    "speakingRate": number,
+    "pitch": number,
+    "volumeGainDb": number,
+    "sampleRateHertz": integer,
+    "effectsProfileId": [
+      string
+    ]
+  }
+}
+```
 
 # Model
 ### VoicebotOutput Object
@@ -765,3 +960,133 @@ Text Response is represented as simple flat json objects with the following keys
 | - | - | :-: |  - | 
 |`Entities` | Guid[] |  |  |
 |`Intents` | Guid[] |  |  |
+
+### RecognitionConfig
+|Name| Type|  Default |  Description     |
+| - | - | :-: |  - | 
+|`encoding` | enum([AudioEncoding](#AudioEncoding-request))  |  | Encoding of audio data sent in all RecognitionAudio messages. This field is optional for FLAC and WAV audio files and required for all other audio formats. For details, see [AudioEncoding](#AudioEncoding-request). |
+|`sampleRateHertz` | Int |  | Sample rate in Hertz of the audio data sent in all RecognitionAudio messages. Valid values are: 8000-48000. 16000 is optimal. For best results, set the sampling rate of the audio source to 16000 Hz. If that's not possible, use the native sample rate of the audio source (instead of re-sampling). This field is optional for FLAC and WAV audio files, but is required for all other audio formats. For details, see [AudioEncoding](#AudioEncoding-request). |
+|`audioChannelCount` | Int |  | The number of channels in the input audio data. ONLY set this for MULTI-CHANNEL recognition. Valid values for LINEAR16 and FLAC are 1-8. Valid values for OGG_OPUS are '1'-'254'. Valid value for MULAW, AMR, AMR_WB and SPEEX_WITH_HEADER_BYTE is only 1. If 0 or omitted, defaults to one channel (mono). Note: We only recognize the first channel by default. To perform independent recognition on each channel set enableSeparateRecognitionPerChannel to 'true'. |
+|`languageCode` | string |  | Required. The language of the supplied audio as a BCP-47 language tag. Example: "en-US". See Language Support for a list of the currently supported language codes. |
+
+### AudioEncoding request
+The encoding of the audio data sent in the request.
+
+All encodings support only 1 channel (mono) audio, unless the audioChannelCount and enableSeparateRecognitionPerChannel fields are set.
+
+For best results, the audio source should be captured and transmitted using a lossless encoding (FLAC or LINEAR16). The accuracy of the speech recognition can be reduced if lossy codecs are used to capture or transmit audio, particularly if background noise is present. Lossy codecs include MULAW, AMR, AMR_WB, OGG_OPUS, SPEEX_WITH_HEADER_BYTE, MP3, and WEBM_OPUS.
+
+The FLAC and WAV audio file formats include a header that describes the included audio content. You can request recognition for WAV files that contain either LINEAR16 or MULAW encoded audio. If you send FLAC or WAV audio file format in your request, you do not need to specify an AudioEncoding; the audio encoding format is determined from the file header. If you specify an AudioEncoding when you send send FLAC or WAV audio, the encoding configuration must match the encoding described in the audio header; otherwise the request returns an google.rpc.Code.INVALID_ARGUMENT error code.
+|Enums| | 
+| - | - | 
+|`ENCODING_UNSPECIFIED` | Not specified. | 
+|`LINEAR16` | 	Uncompressed 16-bit signed little-endian samples (Linear PCM). | 
+|`FLAC` | FLAC (Free Lossless Audio Codec) is the recommended encoding because it is lossless--therefore recognition is not compromised--and requires only about half the bandwidth of LINEAR16. FLAC stream encoding supports 16-bit and 24-bit samples, however, not all fields in STREAMINFO are supported. | 
+|`MULAW` | 8-bit samples that compand 14-bit audio samples using G.711 PCMU/mu-law. | 
+|`AMR` | Adaptive Multi-Rate Narrowband codec. sampleRateHertz must be 8000. | 
+|`AMR_WB` | Adaptive Multi-Rate Wideband codec. sampleRateHertz must be 16000.| 
+|`OGG_OPUS` | Opus encoded audio frames in Ogg container (OggOpus). sampleRateHertz must be one of 8000, 12000, 16000, 24000, or 48000. | 
+|`SPEEX_WITH_HEADER_BYTE` | Although the use of lossy encodings is not recommended, if a very low bitrate encoding is required, OGG_OPUS is highly preferred over Speex encoding. The Speex encoding supported by Cloud Speech API has a header byte in each block, as in MIME type audio/x-speex-with-header-byte. It is a variant of the RTP Speex encoding defined in RFC 5574. The stream is a sequence of blocks, one block per RTP packet. Each block starts with a byte containing the length of the block, in bytes, followed by one or more frames of Speex data, padded to an integral number of bytes (octets) as specified in RFC 5574. In other words, each RTP header is replaced with a single byte containing the block length. Only Speex wideband is supported. sampleRateHertz must be 16000. | 
+|`WEBM_OPUS` | Opus encoded audio frames in WebM container (OggOpus). sampleRateHertz must be one of 8000, 12000, 16000, 24000, or 48000. | 
+
+### RecognitionAudio
+Contains audio data in the encoding specified in the RecognitionConfig. Either content or uri must be supplied. Supplying both or neither returns google.rpc.Code.INVALID_ARGUMENT. See content limits.
+
+|Name| Type|  Default |  Description     |
+| - | - | :-: |  - | 
+|`content` | string  |  | The audio data bytes encoded as specified in RecognitionConfig. Note: as with all bytes fields, proto buffers use a pure binary representation, whereas JSON representations use base64.A base64-encoded string. |
+|`uri` | string |  | URI that points to a file that contains audio data bytes as specified in RecognitionConfig. The file must not be compressed (for example, gzip). Currently, only Google Cloud Storage URIs are supported, which must be specified in the following format: gs://bucket_name/object_name (other URI formats return google.rpc.Code.INVALID_ARGUMENT). For more information, see Request URIs. |
+
+### SpeechRecognitionResult
+A speech recognition result corresponding to a portion of the audio.
+|Name| Type|  Default |  Description     |
+| - | - | :-: |  - | 
+|`alternatives` | [SpeechRecognitionAlternative](#SpeechRecognitionAlternative) |  | May contain one or more recognition hypotheses (up to the maximum specified in maxAlternatives). These alternatives are ordered in terms of accuracy, with the top (first) alternative being the most probable, as ranked by the recognizer. |
+|`channelTag` | Int |  | For multi-channel audio, this is the channel number corresponding to the recognized result for the audio from that channel. For audioChannelCount = N, its output values can range from '1' to 'N'. |
+|`resultEndTime` | String |  | Time offset of the end of this result relative to the beginning of the audio.A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". |
+|`languageCode` | String |  | Output only. The BCP-47 language tag of the language in this result. This language code was detected to have the most likelihood of being spoken in the audio. |
+
+#### SpeechRecognitionAlternative
+Alternative hypotheses (a.k.a. n-best list).
+
+  |Name| Type| Default | Description     | 
+  | - | - | :-: | - | 
+  |`transcript` | String |  |  Transcript text representing the words that the user spoke. |
+  |`confidence` | Number |  |  The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated greater likelihood that the recognized words are correct. This field is set only for the top alternative of a non-streaming result or, of a streaming result where isFinal=true. This field is not guaranteed to be accurate and users should not rely on it to be always provided. The default of 0.0 is a sentinel value indicating confidence was not set. |
+
+
+#### SynthesisInput
+Contains text input to be synthesized. Either text or ssml must be supplied. Supplying both or neither returns google.rpc.Code.INVALID_ARGUMENT. The input size is limited to 5000 characters.
+
+  |Name| Type| Default | Description     | 
+  | - | - | :-: | - | 
+  |`text` | String |  |  The raw text to be synthesized. |
+  |`ssml` | String |  |  The SSML document to be synthesized. The SSML document must be valid and well-formed. Otherwise the RPC will fail and return google.rpc.Code.INVALID_ARGUMENT. For more information, see SSML. |
+
+#### VoiceSelectionParams
+Description of which voice to use for a synthesis request.
+
+  |Name| Type| Default | Description     | 
+  | - | - | :-: | - | 
+  |`languageCode` | String |  |  The language (and potentially also the region) of the voice expressed as a BCP-47 language tag, e.g. "en-US". This should not include a script tag (e.g. use "cmn-cn" rather than "cmn-Hant-cn"), because the script will be inferred from the input provided in the SynthesisInput. The TTS service will use this parameter to help choose an appropriate voice. Note that the TTS service may choose a voice with a slightly different language code than the one selected; it may substitute a different region (e.g. using en-US rather than en-CA if there isn't a Canadian voice available), or even a different language, e.g. using "nb" (Norwegian Bokmal) instead of "no" (Norwegian)". |
+  |`name` | String |  |  The name of the voice. If not set, the service will choose a voice based on the other parameters such as languageCode and gender. |
+  |`ssmlGender` | enum([SsmlVoiceGender](#SsmlVoiceGender)) |  |  The preferred gender of the voice. If not set, the service will choose a voice based on the other parameters such as languageCode and name. Note that this is only a preference, not requirement; if a voice of the appropriate gender is not available, the synthesizer should substitute a voice with a different gender rather than failing the request. |
+  |`customVoice` | [CustomVoiceParams](#CustomVoiceParams) |  |  The configuration for a custom voice. If [CustomVoiceParams.model] is set, the service will choose the custom voice matching the specified configuration. |
+
+### SsmlVoiceGender
+Gender of the voice as described in SSML voice element.
+|Enums| | 
+| - | - | 
+|`SSML_VOICE_GENDER_UNSPECIFIED` | An unspecified gender. In VoiceSelectionParams, this means that the client doesn't care which gender the selected voice will have. In the Voice field of ListVoicesResponse, this may mean that the voice doesn't fit any of the other categories in this enum, or that the gender of the voice isn't known. | 
+|`MALE` | 	A male voice. | 
+|`FEMALE` | A female voice. | 
+|`NEUTRAL` | A gender-neutral voice. This voice is not yet supported. | 
+
+#### CustomVoiceParams
+Description of the custom voice to be synthesized.
+
+  |Name| Type| Default | Description     | 
+  | - | - | :-: | - | 
+  |`model` | String |  |  Required. The name of the AutoML model that synthesizes the custom voice.|
+  |`reportedUsage` | enum([ReportedUsage](#ReportedUsage)) |  |  Optional. The usage of the synthesized audio to be reported. |
+
+
+### ReportedUsage
+The usage of the synthesized audio. You must report your honest and correct usage of the service as it's regulated by contract and will cause significant difference in billing.
+|Enums| | 
+| - | - | 
+|`REPORTED_USAGE_UNSPECIFIED` | Request with reported usage unspecified will be rejected. | 
+|`REALTIME` | 	For scenarios where the synthesized audio is not downloadable and can only be used once. For example, real-time request in IVR system. | 
+|`OFFLINE` | For scenarios where the synthesized audio is downloadable and can be reused. For example, the synthesized audio is downloaded, stored in customer service system and played repeatedly. | 
+
+#### AudioConfig
+Description of audio data to be synthesized.
+
+  |Name| Type| Default | Description     | 
+  | - | - | :-: | - | 
+  |`audioEncoding` | enum([AudioEncoding](#AudioEncoding-Response)) |  |  Required. The format of the audio byte stream. |
+  |`speakingRate` | number |  |  Optional. Input only. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal native speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is half as fast. If unset(0.0), defaults to the native 1.0 speed. Any other values < 0.25 or > 4.0 will return an error. |
+  |`pitch` | number |  |  Optional. Input only. Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch. |
+  |`volumeGainDb` | number |  |  Optional. Input only. Volume gain (in dB) of the normal native volume supported by the specific voice, in the range [-96.0, 16.0]. If unset, or set to a value of 0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB) will play at approximately half the amplitude of the normal native signal amplitude. A value of +6.0 (dB) will play at approximately twice the amplitude of the normal native signal amplitude. Strongly recommend not to exceed +10 (dB) as there's usually no effective increase in loudness for any value greater than that. |
+  |`sampleRateHertz` | int |  |  Optional. The synthesis sample rate (in hertz) for this audio. When this is specified in SynthesizeSpeechRequest, if this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality), unless the specified sample rate is not supported for the encoding chosen, in which case it will fail the request and return google.rpc.Code.INVALID_ARGUMENT. |
+  |`effectsProfileId[]` | string |  |  Optional. Input only. An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given. See audio profiles for current supported profile ids. |
+
+#### Timepoint
+This contains a mapping between a certain point in the input text and a corresponding time in the output audio.
+
+  |Name| Type| Default | Description     | 
+  | - | - | :-: | - | 
+  |`markName` | string |  |  Timepoint name as received from the client within <mark> tag. |
+  |`timeSeconds` | number |  |  Time offset in seconds from the start of the synthesized audio. |
+
+### AudioEncoding Response
+Configuration to set up audio encoder. The encoding determines the output audio format that we'd like.
+|Enums| | 
+| - | - | 
+|`AUDIO_ENCODING_UNSPECIFIED` |Not specified. Will return result google.rpc.Code.INVALID_ARGUMENT. | 
+|`LINEAR16` | 	Uncompressed 16-bit signed little-endian samples (Linear PCM). Audio content returned as LINEAR16 also contains a WAV header. | 
+|`MP3` | MP3 audio at 32kbps. | 
+|`MP3_64_KBPS` | MP3 at 64kbps. | 
+|`OGG_OPUS` | Opus encoded audio wrapped in an ogg container. The result will be a file which can be played natively on Android, and in browsers (at least Chrome and Firefox). The quality of the encoding is considerably higher than MP3 while using approximately the same bitrate. | 
+|`MULAW` | 8-bit samples that compand 14-bit audio samples using G.711 PCMU/mu-law. Audio content returned as MULAW also contains a WAV header. | 
+|`ALAW` | 8-bit samples that compand 14-bit audio samples using G.711 PCMU/A-law. Audio content returned as ALAW also contains a WAV header. | 
