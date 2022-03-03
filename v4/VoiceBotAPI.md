@@ -14,7 +14,7 @@ The API is implemented by the Voice Bot API Module.
 The PhoneNumber Service API provides phone number manager services API.
   - `GET /phonenumbers` - [Get Phonenumbers](#Get-Phonenumbers)
   - `POST /phonenumbers` - [Create A New Phonenumber](#Create-A-New-Phonenumber)
-  - `DELETE /phonenumbers/{phonenumber}` - [Remove a Phonenumber](#Remove-Phonenumbers)
+  - `DELETE /phonenumbers/{phonenumber}` - [Remove a Phonenumber](#Remove-Phonenumber)
 ## Dialog Flow Adapter API
 ### Voice bot Dialog Flow Adapter API
   - `PUT /dialogflow/voicebots/{voicebotId}` - [UPDATE Voicebot](#Update-Voicebot)
@@ -642,7 +642,7 @@ Response
 }
 ```
 
-### Remove a Entities ActionResult
+### Remove a Entities
 `DELETE /dialogflow/entities/{entityId}?Siteid={SiteId}&VoicebotId={VoicebotId}`
 
 #### Parameters
