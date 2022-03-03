@@ -1005,43 +1005,16 @@ Contains text input to be synthesized. Either text or ssml must be supplied. Sup
   |Name| Type| Default | Description     | 
   | - | - | :-: | - | 
   |`text` | String |  |  The raw text to be synthesized. |
-  |`ssml` | String |  |  The SSML document to be synthesized. The SSML document must be valid and well-formed.  For more information, see SSML. |
+  |`config` | [VoiceSelectionParams](#VoiceSelectionParams) object |  |  The SSML document to be synthesized. The SSML document must be valid and well-formed.  For more information, see SSML. |
 
 ### VoiceSelectionParams
 Description of which voice to use for a synthesis request.
 
   |Name| Type| Default | Description     | 
   | - | - | :-: | - | 
-  |`languageCode` | String |  |  The language (and potentially also the region) of the voice expressed as a BCP-47 language tag, e.g. "en-US". This should not include a script tag (e.g. use "cmn-cn" rather than "cmn-Hant-cn"), because the script will be inferred from the input provided in the SynthesisInput. The TTS service will use this parameter to help choose an appropriate voice. Note that the TTS service may choose a voice with a slightly different language code than the one selected; it may substitute a different region (e.g. using en-US rather than en-CA if there isn't a Canadian voice available), or even a different language, e.g. using "nb" (Norwegian Bokmal) instead of "no" (Norwegian)". |
-  |`name` | String |  |  The name of the voice. If not set, the service will choose a voice based on the other parameters such as languageCode and gender. |
-  |`ssmlGender` | enum([SsmlVoiceGender](#SsmlVoiceGender)) |  |  The preferred gender of the voice. If not set, the service will choose a voice based on the other parameters such as languageCode and name. Note that this is only a preference, not requirement; if a voice of the appropriate gender is not available, the synthesizer should substitute a voice with a different gender rather than failing the request. |
-  |`customVoice` | [CustomVoiceParams](#CustomVoiceParams) |  |  The configuration for a custom voice. If [CustomVoiceParams.model] is set, the service will choose the custom voice matching the specified configuration. |
+  |`languageCode` | String |  |  The language  of the voice expressed as a BCP-47 language tag, e.g. "en-US".  |
+  |`Gender` | enum|  |`MALE`,`FEMALE` . |
 
-### SsmlVoiceGender
-Gender of the voice as described in SSML voice element.
-|Enums| | 
-| - | - | 
-|`SSML_VOICE_GENDER_UNSPECIFIED` | An unspecified gender. In VoiceSelectionParams, this means that the client doesn't care which gender the selected voice will have. In the Voice field of ListVoicesResponse, this may mean that the voice doesn't fit any of the other categories in this enum, or that the gender of the voice isn't known. | 
-|`MALE` | 	A male voice. | 
-|`FEMALE` | A female voice. | 
-|`NEUTRAL` | A gender-neutral voice. This voice is not yet supported. | 
-
-### CustomVoiceParams
-Description of the custom voice to be synthesized.
-
-  |Name| Type| Default | Description     | 
-  | - | - | :-: | - | 
-  |`model` | String |  |  Required. The name of the AutoML model that synthesizes the custom voice.|
-  |`reportedUsage` | enum([ReportedUsage](#ReportedUsage)) |  |  Optional. The usage of the synthesized audio to be reported. |
-
-
-### ReportedUsage
-The usage of the synthesized audio. You must report your honest and correct usage of the service as it's regulated by contract and will cause significant difference in billing.
-|Enums| | 
-| - | - | 
-|`REPORTED_USAGE_UNSPECIFIED` | Request with reported usage unspecified will be rejected. | 
-|`REALTIME` | 	For scenarios where the synthesized audio is not downloadable and can only be used once. For example, real-time request in IVR system. | 
-|`OFFLINE` | For scenarios where the synthesized audio is downloadable and can be reused. For example, the synthesized audio is downloaded, stored in customer service system and played repeatedly. | 
 
 ### AudioConfig
 Description of audio data to be synthesized.
@@ -1055,13 +1028,6 @@ Description of audio data to be synthesized.
   |`sampleRateHertz` | int |  |  Optional. The synthesis sample rate (in hertz) for this audio. When this is specified in SynthesizeSpeechRequest, if this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality), unless the specified sample rate is not supported for the encoding chosen, in which case it will fail the request and return google.rpc.Code.INVALID_ARGUMENT. |
   |`effectsProfileId[]` | string |  |  Optional. Input only. An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given. See audio profiles for current supported profile ids. |
 
-### Timepoint
-This contains a mapping between a certain point in the input text and a corresponding time in the output audio.
-
-  |Name| Type| Default | Description     | 
-  | - | - | :-: | - | 
-  |`markName` | string |  |  Timepoint name as received from the client within <mark> tag. |
-  |`timeSeconds` | number |  |  Time offset in seconds from the start of the synthesized audio. |
 
 ### AudioEncoding Response
 Configuration to set up audio encoder. The encoding determines the output audio format that we'd like.
