@@ -629,7 +629,7 @@ Response
 }
 ```
 
-### Create A New Intent ActionResult
+### Create A New Entities ActionResult
 `POST /api/v1/entities/{entityId}?Siteid={SiteId}`
 
 #### Parameters
@@ -657,7 +657,7 @@ Response
 }
 ```
 
-### Remove a Intent ActionResult
+### Remove a Entities ActionResult
 `DELETE /api/v1/entities/{entityId}?Siteid={SiteId}&VoicebotId={VoicebotId}&DialogFlowId={DialogFlowId}`
 
 #### Parameters
@@ -665,7 +665,7 @@ Path parameters
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
-  | `IntentId` | Guid | yes  | Intent id  |
+  | `entityId` | Guid | yes  | Intent id  |
   | `SiteId` | Int | yes  | Site id  |
   | `VoicebotId` | Guid | yes  | Voice bot id  |
   | `DialogFlowId` | String | yes  | DialogFlow id  |
