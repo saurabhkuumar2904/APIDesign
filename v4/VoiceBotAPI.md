@@ -15,7 +15,7 @@ The PhoneNumber Service API provides phone number manager services API.
   - `GET /phonenumber/phonenumbers` - [Get Phonenumbers](#Get-Phonenumbers)
   - `POST /phonenumber/phonenumbers` - [Create A New Phonenumber](#Create-A-New-Phonenumber)
   - `DELETE /phonenumber/phonenumbers/{phonenumber}` - [Remove a Phonenumber](#Remove-Phonenumber)
-## Bot Intent Engine Adapter API
+## Voice Bot Intent Engine Adapter API
 Synchronize Voice Bot information to thirdparty Intent engine
   - `PUT /dialogflow/voicebots/{voicebotId}` - [UPDATE Voicebot](#Update-Voicebot)
   - `POST /dialogflow/voicebots/{voicebotId}` - [Create A New Voicebot](#Create-A-New-Voicebot)
