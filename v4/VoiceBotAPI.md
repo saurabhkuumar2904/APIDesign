@@ -576,7 +576,7 @@ No Response
 Using curl
 ```
 curl -H "Content-Type: application/json" -d '{
-}' -X DELETE https://domain.comm100.com/dialogflow/Intents/{IntentId}?Siteid=1000&VoicebotId='f8383a83-48e9-4d0d-a3bd-fb19ce5c12db'&DialogFlowId=''`
+}' -X DELETE https://domain.comm100.com/dialogflow/Intents/{IntentId}?Siteid=1000&VoicebotId='f8383a83-48e9-4d0d-a3bd-fb19ce5c12db'`
 ```
 Response
 ```Json
