@@ -952,11 +952,9 @@ Text Response is represented as simple flat json objects with the following keys
 ### AudioEncoding request
 The encoding of the audio data sent in the request.
 
-All encodings support only 1 channel (mono) audio, unless the audioChannelCount and enableSeparateRecognitionPerChannel fields are set.
-
 For best results, the audio source should be captured and transmitted using a lossless encoding (FLAC or LINEAR16). The accuracy of the speech recognition can be reduced if lossy codecs are used to capture or transmit audio, particularly if background noise is present. Lossy codecs include MULAW, AMR, AMR_WB, OGG_OPUS, SPEEX_WITH_HEADER_BYTE, MP3, and WEBM_OPUS.
 
-The FLAC and WAV audio file formats include a header that describes the included audio content. You can request recognition for WAV files that contain either LINEAR16 or MULAW encoded audio. If you send FLAC or WAV audio file format in your request, you do not need to specify an AudioEncoding; the audio encoding format is determined from the file header. If you specify an AudioEncoding when you send send FLAC or WAV audio, the encoding configuration must match the encoding described in the audio header; otherwise the request returns an google.rpc.Code.INVALID_ARGUMENT error code.
+The FLAC and WAV audio file formats include a header that describes the included audio content. You can request recognition for WAV files that contain either LINEAR16 or MULAW encoded audio. If you send FLAC or WAV audio file format in your request, you do not need to specify an AudioEncoding; the audio encoding format is determined from the file header. If you specify an AudioEncoding when you send send FLAC or WAV audio, the encoding configuration must match the encoding described in the audio header; 
 |Enums| | 
 | - | - | 
 |`ENCODING_UNSPECIFIED` | Not specified. | 
@@ -970,12 +968,11 @@ The FLAC and WAV audio file formats include a header that describes the included
 |`WEBM_OPUS` | Opus encoded audio frames in WebM container (OggOpus). sampleRateHertz must be one of 8000, 12000, 16000, 24000, or 48000. | 
 
 ### RecognitionAudio
-Contains audio data in the encoding specified in the RecognitionConfig. Either content or uri must be supplied. Supplying both or neither returns google.rpc.Code.INVALID_ARGUMENT. See content limits.
+Contains audio data in the encoding specified in the RecognitionConfig. Either content or uri must be supplied.  
 
 |Name| Type|  Default |  Description     |
 | - | - | :-: |  - | 
 |`content` | string  |  | The audio data bytes encoded as specified in RecognitionConfig. Note: as with all bytes fields, proto buffers use a pure binary representation, whereas JSON representations use base64.A base64-encoded string. |
-|`uri` | string |  | URI that points to a file that contains audio data bytes as specified in RecognitionConfig. The file must not be compressed (for example, gzip). Currently, only Google Cloud Storage URIs are supported, which must be specified in the following format: gs://bucket_name/object_name (other URI formats return google.rpc.Code.INVALID_ARGUMENT). For more information, see Request URIs. |
 
 ### SpeechRecognitionResult
 A speech recognition result corresponding to a portion of the audio.
@@ -994,7 +991,7 @@ Alternative hypotheses (a.k.a. n-best list).
 
 
 ### SynthesisInput
-Contains text input to be synthesized. Either text or ssml must be supplied. Supplying both or neither returns google.rpc.Code.INVALID_ARGUMENT. The input size is limited to 5000 characters.
+Contains text input to be synthesized. The input size is limited to 5000 characters.
 
   |Name| Type| Default | Description     | 
   | - | - | :-: | - | 
@@ -1017,16 +1014,12 @@ Description of audio data to be synthesized.
   |`audioEncoding` | enum([AudioEncoding](#AudioEncoding-Response)) |  |  Required. The format of the audio byte stream. |
   |`speakingRate` | number |  |  Optional. Input only. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal native speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is half as fast. If unset(0.0), defaults to the native 1.0 speed. Any other values < 0.25 or > 4.0 will return an error. |
   |`pitch` | number |  |  Optional. Input only. Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch. |
-  |`volumeGainDb` | number |  |  Optional. Input only. Volume gain (in dB) of the normal native volume supported by the specific voice, in the range [-96.0, 16.0]. If unset, or set to a value of 0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB) will play at approximately half the amplitude of the normal native signal amplitude. A value of +6.0 (dB) will play at approximately twice the amplitude of the normal native signal amplitude. Strongly recommend not to exceed +10 (dB) as there's usually no effective increase in loudness for any value greater than that. |
-  |`sampleRateHertz` | int |  |  Optional. The synthesis sample rate (in hertz) for this audio. When this is specified in SynthesizeSpeechRequest, if this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality), unless the specified sample rate is not supported for the encoding chosen, in which case it will fail the request and return google.rpc.Code.INVALID_ARGUMENT. |
-  |`effectsProfileId[]` | string |  |  Optional. Input only. An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given. See audio profiles for current supported profile ids. |
 
 
 ### AudioEncoding Response
 Configuration to set up audio encoder. The encoding determines the output audio format that we'd like.
 |Enums| | 
 | - | - | 
-|`AUDIO_ENCODING_UNSPECIFIED` |Not specified. Will return result google.rpc.Code.INVALID_ARGUMENT. | 
 |`LINEAR16` | 	Uncompressed 16-bit signed little-endian samples (Linear PCM). Audio content returned as LINEAR16 also contains a WAV header. | 
 |`MP3` | MP3 audio at 32kbps. | 
 |`MP3_64_KBPS` | MP3 at 64kbps. | 
