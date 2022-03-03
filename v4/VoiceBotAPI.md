@@ -694,7 +694,6 @@ example:
     "config":{
       "encoding": enum [(AudioEncoding)](#AudioEncoding),
       "sampleRateHertz": integer,
-      "audioChannelCount": integer,
       "languageCode": string,
     },
     "audio": {
@@ -721,7 +720,6 @@ curl -H "Content-Type: application/json" -d '  {
     "config":{
       "encoding": enum [(AudioEncoding)](#AudioEncoding),
       "sampleRateHertz": integer,
-      "audioChannelCount": integer,
       "languageCode": string,
     },
     "audio": {
@@ -746,8 +744,6 @@ Response
             "confidence": number,
           }
         ],
-        "channelTag": integer,
-        "resultEndTime": string,
         "languageCode": string
         
       }
@@ -957,7 +953,6 @@ Text Response is represented as simple flat json objects with the following keys
 | - | - | :-: |  - | 
 |`encoding` | enum([AudioEncoding](#AudioEncoding-request))  |  | Encoding of audio data sent in all RecognitionAudio messages. This field is optional for FLAC and WAV audio files and required for all other audio formats. For details, see [AudioEncoding](#AudioEncoding-request). |
 |`sampleRateHertz` | Int |  | Sample rate in Hertz of the audio data sent in all RecognitionAudio messages. Valid values are: 8000-48000. 16000 is optimal. For best results, set the sampling rate of the audio source to 16000 Hz. If that's not possible, use the native sample rate of the audio source (instead of re-sampling). This field is optional for FLAC and WAV audio files, but is required for all other audio formats. For details, see [AudioEncoding](#AudioEncoding-request). |
-|`audioChannelCount` | Int |  | The number of channels in the input audio data. ONLY set this for MULTI-CHANNEL recognition. Valid values for LINEAR16 and FLAC are 1-8. Valid values for OGG_OPUS are '1'-'254'. Valid value for MULAW, AMR, AMR_WB and SPEEX_WITH_HEADER_BYTE is only 1. If 0 or omitted, defaults to one channel (mono). Note: We only recognize the first channel by default. To perform independent recognition on each channel set enableSeparateRecognitionPerChannel to 'true'. |
 |`languageCode` | string |  | Required. The language of the supplied audio as a BCP-47 language tag. Example: "en-US". See Language Support for a list of the currently supported language codes. |
 
 ### AudioEncoding request
@@ -993,8 +988,6 @@ A speech recognition result corresponding to a portion of the audio.
 |Name| Type|  Default |  Description     |
 | - | - | :-: |  - | 
 |`alternatives` | [SpeechRecognitionAlternative](#SpeechRecognitionAlternative) |  | May contain one or more recognition hypotheses (up to the maximum specified in maxAlternatives). These alternatives are ordered in terms of accuracy, with the top (first) alternative being the most probable, as ranked by the recognizer. |
-|`channelTag` | Int |  | For multi-channel audio, this is the channel number corresponding to the recognized result for the audio from that channel. For audioChannelCount = N, its output values can range from '1' to 'N'. |
-|`resultEndTime` | String |  | Time offset of the end of this result relative to the beginning of the audio.A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". |
 |`languageCode` | String |  | Output only. The BCP-47 language tag of the language in this result. This language code was detected to have the most likelihood of being spoken in the audio. |
 
 ### SpeechRecognitionAlternative
