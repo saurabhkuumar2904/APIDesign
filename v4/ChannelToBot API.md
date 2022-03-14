@@ -28,7 +28,7 @@ Create a new Chatbot in the Comm100 Control panel and configure it as follows
 # API Description
 ## ChatbotSession
   - `POST /chatbotSessions` - [Create a new Chatbot Session](#create-a-new-chatbot-session)
-<!--    - `DELETE /chatbotSessions/{id}` - [Delete the Chatbot Session](#delete-the-chatbot-session) -->
+  - `DELETE /chatbotSessions/{chatbotSessionId}` - [Delete the Chatbot Session](#delete-the-chatbot-session)
 ## ChatbotInteraction  
   - `POST /chatbotSessions/{id}/interactions` - [Send a  Chatbot Input and get a Chatbot Output](#create-a-chatbot-interaction)
 <!-- ## ChatbotSessionVariable -->
