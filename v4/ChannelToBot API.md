@@ -449,7 +449,7 @@ Text Response is represented as simple flat json objects with the following keys
   |`type` | string |  | type:`transferToAgent`,`transferToDepartment`,`transferRoutingRules`  |
   |`messageWhenAgentOffline` | string |  | Message when agent is offline  |
 
-### OutputPlayAudio Object
+### OutputAudio Object
   Text Response is represented as simple flat json objects with the following keys:
 
   |Name| Type| Default | Description     | 
