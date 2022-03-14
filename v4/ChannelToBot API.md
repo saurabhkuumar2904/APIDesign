@@ -28,7 +28,7 @@ Create a new Chatbot in the Comm100 Control panel and configure it as follows
 # API Description
 ## ChatbotSession
   - `POST /chatbotSessions` - [Create a new Chatbot Session](#create-a-new-chatbot-session)
-  - `DELETE /chatbotSessions/{chatbotSessionId}` - [Delete the Chatbot Session](#delete-the-chatbot-session)
+  - `DELETE /chatbotSessions/{SessionId}` - [Delete the Chatbot Session](#delete-the-chatbot-session)
 ## ChatbotInteraction  
   - `POST /chatbotSessions/{id}/interactions` - [Send a  Chatbot Input and get a Chatbot Output](#create-a-chatbot-interaction)
 <!-- ## ChatbotSessionVariable -->
@@ -386,7 +386,8 @@ Response
   |Name| Type| Default | Description     | 
   | - | - | :-: | - | 
   |`type` | string | | type of the response,including `Text`,`QuickReply`、 `Image`、`Video`、`Authentication`,`Location`,`VariableData`,`Form`,`TransferChat`|
-  | `content` | object | |  response's content. when type is `Text`, it represents [OutputText](#outputtext-object); when type is `QuickReply`,it represents [OutputQuickReply](#outputquickreply-object);when type is `Image`,it represents [OutputImage](#outputimage-object);when type is `Video`,it represents [OutputVideo](#outputvideo-object); when type is `Location`, it represents [OutputLocation](#outputLocation-object);when type is `Form`, it represents [OutputForm](#form-object);when type is `TransferChat`, it represents [OutputTransferChat](#transferchat-object); when type is `OutputAudio`, it represents [OutputAudio](#OutputAudio-object);when type is `OutputEndCall`, it represents [OutputEndCall](#OutputEndCall-object);when type is `OutputIVRMenu`, it represents [OutputIVRMenu](#OutputIVRMenu-object);|
+  | `content` | object | |  response's content. when type is `Text`, it represents [OutputText](#outputtext-object); when type is `QuickReply`,it represents [OutputQuickReply](#outputquickreply-object);when type is `Image`,it represents [OutputImage](#outputimage-object);when type is `Video`,it represents [OutputVideo](#outputvideo-object); when type is `Location`, it represents [OutputLocation](#outputLocation-object);when type is `Form`, it represents [OutputForm](#form-object);when type is `TransferChat`, it represents [OutputTransferChat](#transferchat-object); when type is `OutputAudio`, it represents [OutputAudio](#OutputAudio-object);when type is `OutputEndCall`, it represents [OutputEndCall](#OutputEndCall-object);|
+<!--   when type is `OutputIVRMenu`, it represents [OutputIVRMenu](#OutputIVRMenu-object);| -->
   |`delayTime` | decimal | 1 | how many seconds delay to show  |
 
 ### OutputText Object
@@ -462,12 +463,12 @@ Text Response is represented as simple flat json objects with the following keys
   |Name| Type| Default | Description     | 
   | - | - | :-: | - | 
   
-### OutputIVRMenu Object
+<!-- ### OutputIVRMenu Object
 Text Response is represented as simple flat json objects with the following keys:
 
   |Name| Type| Default | Description     | 
   | - | - | :-: | - | 
-  |`message` | String |  |  String |
+  |`message` | String |  |  String | -->
   
 agentid can obtain from there
 
