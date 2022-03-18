@@ -267,7 +267,7 @@ The request body contains data with the follow structure:
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
   | `visitor` | [Visitor Object](#Visitor-Object)  | No | |  Visitor information.   |
-  | `variables`  |  [Variable []](#Variable-Object)   | No  |   | Variables    |
+  | `variables`  |  [Variable[]](#Variable-Object)   | No  |   | Variables    |
 
 
 #### example:
@@ -387,7 +387,7 @@ Request body
 The request body contains data with the follow structure:  
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
-  | `variables` | [Variable Object[]](#Variable-Object)  | Yes | |  Variables    |
+  | `variables` | [Variable[]](#Variable-Object)  | Yes | |  Variables    |
 
 
 #### example:
