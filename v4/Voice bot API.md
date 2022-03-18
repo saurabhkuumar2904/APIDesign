@@ -12,14 +12,14 @@ The ChannelURI can be any valid URI that implements this API, and it is configur
   - POST /voiceservice/sessions - [Create Session](#Create-Sessions). Voice service creates a session 
   - POST /voiceservice/sessions/{sessionId}/questions - [Receive a question](#Receive-a-question).  Voice service receives call question.
   - DELETE /voiceservice/sessions/{sessionId} - [Delete a session](#Delete-a-session). Voice service deletes a session.
-  - POST /voiceservice/sessions/{sessionId}/variables - [Update Variables](#Update-Variables).Receive the variables of the Voice Bot Session
+<!--   - POST /voiceservice/sessions/{sessionId}/variables - [Update Variables](#Update-Variables).Receive the variables of the Voice Bot Session -->
 ## Voice Service Input API   
   - POST /voiceservice/sessions/{sessionId}/answers - [Voice Service receives answers](#Voice-Service-receives-answers)
 ## Voice Bot Service API 
   - POST /voicebot/voicebots/{VoicebotId}/sessions  - [Create Session Voice Bot creates session](#Create-A-New-Voice-Bot-Session)
   - POST /voicebot/sessions/{sessionId}/messages - [Voice Bot receive a message](#Voice-Bot-receive-a-message). Voice Bot receives input   
   - DELETE /voicebot/sessions/{sessionId} - [Delete Session Voice Bot deletes the session](#Delete-Voice-Bot-session)
-  - POST /voicebot/sessions/{sessionId}/variables - [Update Variables](#Update-Variable).Receive the variables of the Voice Bot Session
+<!--   - POST /voicebot/sessions/{sessionId}/variables - [Update Variables](#Update-Variable).Receive the variables of the Voice Bot Session -->
 ## STT & TTS API 
 Provide STT (Speech to Text) and TTS (Text to Speech) capabilities. 
   - POST /stttts/stt:speechToText - [Speech To Text](#Speech-To-Text) 
@@ -190,7 +190,7 @@ Path parameters
  HTTP/1.1 200 OK 
 
 
-### Update variables
+<!-- ### Update variables
 `POST /voiceservice/sessions/{sessionId}/variables`
 
 #### Parameters
@@ -219,7 +219,7 @@ The request body contains data with the follow structure:
 
 #### Response
   HTTP/1.1 200 OK 
-
+ -->
 
 ## Voice Service Input API
 ### Voice Service receives answers 
