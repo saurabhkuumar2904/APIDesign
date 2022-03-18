@@ -61,6 +61,61 @@ example:
 Response 
 HTTP/1.1 200 OK 
 
+## Voice Service API 
+### Create Sessions 
+`POST /voiceservice/sessions`
+
+#### Parameters
+Request body 
+Request body the request body contains data with the following structure: 
+  | Name | Type | Required | Default | Description |    
+  | - | - | :-: | :-: | - | 
+  | `channel` | string | yes | |  type of the response, including `Twilio`, `SIP`  |
+  |`channelIdentifier`  |  string  |yes |   | The Unique ID corresponding to voicebotId,such as phone number，SIP URI  |
+  |`visitor`  |  [Visitor Object](#Visitor-Object)  |no |   | visitor information |
+  |`variables`  |  [Variable[]](#Variable-Object)  |no |   | Variables |
+
+example:
+```Json 
+ {    
+    "channel": "Twilio", 
+    "channelIdentifier": "q3f5b438-xw31-44af-b729-64swaf3d0b56", 
+    "visitor": { 
+        "phone":"123-4355-212", 
+      }， 
+    "variables": [{ 
+                  "name":"string", 
+                  "value": "string", 
+      }]  
+  } 
+```
+
+#### Response
+The Response body contains data with the following structure:
+
+  | Name | Type |  Description |    
+  | - | - | :-: | 
+  |`sessionId` | Guid | the unique id of the call  |
+  |`content`  |  [VoiceBotAction[]](#VoiceBotAction-Object)[]    | Greeting output  |
+
+Response
+```Json
+HTTP/1.1 200 OK 
+  Content-Type:  application/json 
+ 
+  {     
+          "sessionId":"d3f5b968-ad51-42af-b759-64c0afc40b84", 
+          "content": [{ 
+              "voice":"string", 
+    	        "voiceConfig":{ 
+      		          "audioEncoding": enum , 
+      		          "speakingRate": number, 
+      		          "pitch": number 
+	            } 
+    		}] 
+  } 
+```
+
 
 # Model
 ### VoicebotOutput Object
