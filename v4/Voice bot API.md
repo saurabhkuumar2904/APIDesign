@@ -7,23 +7,23 @@
 
 ## Channel Adapter API 
 The ChannelURI can be any valid URI that implements this API, and it is configured in the system when a new channel needs to access. 
-  - POST /{channelURI}/input - Channel Adapter receives input. 
+  - POST /{channelURI}/input - [Channel Adapter receives input](#Channel-Adapter-receives-input). 
 ## Voice Service API  
-  - POST /voiceservice/sessions - Create Session. Voice service creates a session 
-  - POST /voiceservice/sessions/{sessionId}/questions - Receive a question.  Voice service receives call question.  
-  - DELETE /voiceservice/sessions/{sessionId} - Delete a session. Voice service deletes a session. 
-  - POST /voiceservice/sessions/{sessionId}/variables - Receive the variables of the Voice Bot Session  
+  - POST /voiceservice/sessions - [Create Session](#Create-Sessions). Voice service creates a session 
+  - POST /voiceservice/sessions/{sessionId}/questions - [Receive a question](#Receive-a-question).  Voice service receives call question.
+  - DELETE /voiceservice/sessions/{sessionId} - [Delete a session](#Delete-a-session). Voice service deletes a session.
+  - POST /voiceservice/sessions/{sessionId}/variables - [Update Variables](#Update-Variables).Receive the variables of the Voice Bot Session
 ## Voice Service Input API   
-  - POST /voiceservice/sessions/{sessionId}/answers - Voice Service receives answers. 
+  - POST /voiceservice/sessions/{sessionId}/answers - [Voice Service receives answers](#Voice-Service-receives-answers)
 ## Voice Bot Service API 
-  - POST /voicebot/voicebots/{VoicebotId}/sessions  - Create Session Voice Bot creates session 
-  - POST /voicebot/sessions/{sessionId}/messages - Receive an input. Voice Bot receives input.    
-  - DELETE /voicebot/sessions/{sessionId} - Delete Session Voice Bot deletes the session. 
-  - POST /voicebot/sessions/{sessionId}/variables - Receive the variables of the Voice Bot Session  
+  - POST /voicebot/voicebots/{VoicebotId}/sessions  - [Create Session Voice Bot creates session](#Create-A-New-Voice-Bot-Session)
+  - POST /voicebot/sessions/{sessionId}/messages - [Voice Bot receive a message](#Voice-Bot-receive-a-message). Voice Bot receives input   
+  - DELETE /voicebot/sessions/{sessionId} - [Delete Session Voice Bot deletes the session](#Delete-Voice-Bot-session)
+  - POST /voicebot/sessions/{sessionId}/variables - [Update Variables](#Update-variables).Receive the variables of the Voice Bot Session
 ## STT & TTS API 
 Provide STT (Speech to Text) and TTS (Text to Speech) capabilities. 
-  - POST /stttts/stt:speechToText - Speech To Text 
-  - POST /stttts/tts:textToSpeech - Text To Speech 
+  - POST /stttts/stt:speechToText - [Speech To Text](#Speech-To-Text) 
+  - POST /stttts/tts:textToSpeech - [Text To Speech](#Text-To-Speech)
 
 
 # Endpoints
@@ -119,7 +119,7 @@ HTTP/1.1 200 OK
 
 
 
-### Receive Speech  
+### Receive a question 
 `POST /voiceservice/sessions/{sessionId}/questions`
 
 #### Parameters
