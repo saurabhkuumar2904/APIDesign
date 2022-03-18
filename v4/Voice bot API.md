@@ -1,15 +1,29 @@
   | Change Version | API Version | Change nots | Change Date | Author |
   | - | - | - | - | - |
-  | 2.0 | v1 | Voice Bot API | 2022-2-22 | Leon，Carl，Page，Zack |  
+  | 2.0 | v1 | Voice Bot API | 2022-3-18 | Leon，Carl，Page，Zack |  
 
 
 # Summary
 
-## Voice Bot API
-The API is implemented by the Voice Bot API Module.
-  - `POST /voicebot/voicebots/{VoicebotId}/sessions` - [Create Session](#create-a-new-voicebot-session)Voice Bot receives requests and creates session
-  - `POST /voicebot/sessions/{sessionId}:receiveMessage` - [Receive Message](#receive-message)Voice Bot receives the message and gives the output message
-  - `DELETE /voicebot/sessions/{sessionId}` - [Delete Session](#delete-a-voicebot-session) Voice Bot receives the sessionId and delete the session.
+## Channel Adapter API 
+The ChannelURI can be any valid URI that implements this API, and it is configured in the system when a new channel needs to access. 
+  - POST /{channelURI}/input - Channel Adapter receives input. 
+## Voice Service API  
+  - POST /voiceservice/sessions - Create Session. Voice service creates a session 
+  - POST /voiceservice/sessions/{sessionId}/questions - Receive a question.  Voice service receives call question.  
+  - DELETE /voiceservice/sessions/{sessionId} - Delete a session. Voice service deletes a session. 
+  - POST /voiceservice/sessions/{sessionId}/variables - Receive the variables of the Voice Bot Session  
+## Voice Service Input API   
+  - POST /voiceservice/sessions/{sessionId}/answers - Voice Service receives answers. 
+## Voice Bot Service API 
+  - POST /voicebot/voicebots/{VoicebotId}/sessions  - Create Session Voice Bot creates session 
+  - POST /voicebot/sessions/{sessionId}/messages - Receive an input. Voice Bot receives input.    
+  - DELETE /voicebot/sessions/{sessionId} - Delete Session Voice Bot deletes the session. 
+  - POST /voicebot/sessions/{sessionId}/variables - Receive the variables of the Voice Bot Session  
+## STT & TTS API 
+Provide STT (Speech to Text) and TTS (Text to Speech) capabilities. 
+  - POST /stttts/stt:speechToText - Speech To Text 
+  - POST /stttts/tts:textToSpeech - Text To Speech 
 
 
 # Endpoints
