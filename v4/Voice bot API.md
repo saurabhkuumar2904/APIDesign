@@ -235,7 +235,7 @@ Request body
 The Request body contains data with the following structure:  
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
-  | `content` | [VoiceBotAction[] Object](#VoiceBotAction-Object) | yes | |    |
+  | `content` | [VoiceBotAction[]](#VoiceBotAction-Object) | yes | |    |
 
 #### example:
 ```Json 
