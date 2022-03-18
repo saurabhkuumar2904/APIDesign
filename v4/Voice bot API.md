@@ -27,9 +27,14 @@ Provide STT (Speech to Text) and TTS (Text to Speech) capabilities.
 
 
 # Endpoints
-
-### Create A New VoiceBot Session
+##Channel Adapter API 
+The ChannelURI can be any valid URI that implements this API, and it is configured in the system when a new channel needs to access.  
+### Channel Adapter receives Input. 
 `POST /voicebots/{VoicebotId}/sessions`
+
+Path:   /{channelURI}/input 
+Method： POST 
+Api Description: Channel Adapter receives Input. 
 
 #### Parameters
 Request body
