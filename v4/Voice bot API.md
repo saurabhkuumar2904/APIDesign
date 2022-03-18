@@ -32,9 +32,9 @@ The ChannelURI can be any valid URI that implements this API, and it is configur
 ### Channel Adapter receives Input. 
 `POST /voicebots/{VoicebotId}/sessions`
 
-Path:   /{channelURI}/input 
-Method： POST 
-Api Description: Channel Adapter receives Input. 
+`Path: /{channelURI}/input`
+`Method：POST`
+`Api Description: Channel Adapter receives Input.`
 
 #### Parameters
 Request body
