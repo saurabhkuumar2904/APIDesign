@@ -116,6 +116,62 @@ HTTP/1.1 200 OK
   } 
 ```
 
+### Receive Speech  
+`POST /voiceservice/sessions/{sessionId}/questions`
+
+#### Parameters
+Path parameters 
+  | Name | Type | Required |  | Description |    
+  | - | - | :-: | - | 
+  | `sessionId` | Guid | yes |  |
+Request body 
+The request body contains data with the follow structure:  
+  | Name | Type | Required | Default | Description |    
+  | - | - | :-: | :-: | - | 
+  | `type` | string | yes | |  type of the response, including textInput, voiceInput, chatTransferStatus   |
+  | `textInput`  |  string  | When type is textInput  |   | Text input to voice robot   |
+  | `voiceInput`  |  string  | When type is voiceInput  |   | The audio data bytes encoded as specified in VoiceConfig. Note: as with all bytes fields, proto buffers use a pure binary representation, whereas JSON representations use base64.A base64-encoded string.  |
+  | `voiceConfig`  |  [VoiceConfig Object](#VoiceConfig-Object)  | When type is voiceInput  |   | Provides information to the recognizer that specifies how to process the request.  |
+  | `isTransferFailed`  |  bool  | When type is chatTransferStatus  |   | If the bot Transfer Chat to agent failed  |
+
+example:
+```Json 
+{  
+	"type":"voiceInput",  
+	"voiceInput":"string", 
+    	"voiceConfig":{ 
+      		"audioEncoding": enum , 
+      		"speakingRate": number, 
+      		"pitch": number 
+	   } 
+} 
+```
+
+#### Response
+The Response body contains data with the following structure:
+
+  | Name | Type |  Description |    
+  | - | - | :-: | 
+  |`sessionId` | Guid | the unique id of the call  |
+  |`content`  |  [VoiceBotAction[]](#VoiceBotAction-Object)[]    | output  |
+
+Response
+```Json
+ HTTP/1.1 200 OK 
+  Content-Type:  application/json 
+ 
+  {     
+          "content": [{ 
+              "voice":"string", 
+              "voiceConfig":{ 
+      				"audioEncoding": enum , 
+      				"speakingRate": number, 
+      				"pitch": number 
+					} 
+    		}] 
+  }
+```
+
 
 # Model
 ### VoicebotOutput Object
