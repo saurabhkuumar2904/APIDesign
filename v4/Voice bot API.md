@@ -472,7 +472,7 @@ The request body contains data with the follow structure:
   | - | - | :-: | :-: | - | 
   | `input` | [SynthesisInput](#SynthesisInput)  | yes | |  The Synthesizer requires plain text as input.     |
   | `voice`  |  [VoiceSelectionParams](#VoiceSelectionParams)   | yes  |   | The desired voice of the synthesized audio.     |
-  | `voiceConfig`  |  [voiceConfig Object](#voiceConfig-Object)   | yes  |   | The configuration of the synthesized audio.     |
+  | `voiceConfig`  |  [VoiceConfig Object](#voiceConfig-Object)   | yes  |   | The configuration of the synthesized audio.     |
 
 
 #### example:
