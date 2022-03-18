@@ -289,7 +289,7 @@ The Response body contains data with the following structure:
   | Name | Type |  Description |    
   | - | - | :-: | 
   |`sessionId` | Guid | the unique id of the session   |
-  |`content`  |  [VoiceBotAction[]](#VoiceBotAction-Object)[]    |   |
+  |`content`  |  [VoiceBotAction[]](#VoiceBotAction-Object)  |   |
 
 Response
 ```Json
