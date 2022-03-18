@@ -19,7 +19,7 @@ The ChannelURI can be any valid URI that implements this API, and it is configur
   - POST /voicebot/voicebots/{VoicebotId}/sessions  - [Create Session Voice Bot creates session](#Create-A-New-Voice-Bot-Session)
   - POST /voicebot/sessions/{sessionId}/messages - [Voice Bot receive a message](#Voice-Bot-receive-a-message). Voice Bot receives input   
   - DELETE /voicebot/sessions/{sessionId} - [Delete Session Voice Bot deletes the session](#Delete-Voice-Bot-session)
-  - POST /voicebot/sessions/{sessionId}/variables - [Update Variables](#Update-variables).Receive the variables of the Voice Bot Session
+  - POST /voicebot/sessions/{sessionId}/variables - [Update Variables](#Update-variables ).Receive the variables of the Voice Bot Session
 ## STT & TTS API 
 Provide STT (Speech to Text) and TTS (Text to Speech) capabilities. 
   - POST /stttts/stt:speechToText - [Speech To Text](#Speech-To-Text) 
@@ -190,7 +190,7 @@ Path parameters
  HTTP/1.1 200 OK 
 
 
-### Update variables   
+### Update variables
 `POST /voiceservice/sessions/{sessionId}/variables`
 
 #### Parameters
