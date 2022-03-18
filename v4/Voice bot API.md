@@ -203,7 +203,7 @@ Request body
 The request body contains data with the follow structure:  
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
-  | `variables` | [Variable[] Object](#Variable-Object)  | yes | |  Variables  |
+  | `variables` | [Variable[]](#Variable-Object)  | yes | |  Variables  |
 
 #### example:
 ```Json 
