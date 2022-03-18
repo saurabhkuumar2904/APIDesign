@@ -532,7 +532,7 @@ Response
   | `id` | Guid  | | |
   | `content`  |  [VoiceBotAction](#voicebotaction-object)[]    |  |
 
-## VoicebotOutput Object 
+## VoicebotAction Object 
   |Name| Type| Default | Description     | 
   | - | - | :-: | - | 
   | `type` | string | | type of the response,including `PlayAudio`,`PlayText`,`CollectDTMFDigits`,`CollectSpeechResponse`,`IVRMenu`,`TransferChat`, `EndCall`|
