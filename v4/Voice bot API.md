@@ -30,70 +30,38 @@ Provide STT (Speech to Text) and TTS (Text to Speech) capabilities.
 ##Channel Adapter API 
 The ChannelURI can be any valid URI that implements this API, and it is configured in the system when a new channel needs to access.  
 ### Channel Adapter receives Input. 
-`POST /voicebots/{VoicebotId}/sessions`
+`POST /{channelURI}/input`
 
-`Path: /{channelURI}/input`
-
-`Method：POST`
-
-`Api Description: Channel Adapter receives Input.`
 
 #### Parameters
 Request body
-The request body contains data with the following structure:
+Request body the request body contains data with the following structure: 
+Request body is Voice Message Object 
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
-  | `voiceBotId` | Guid | yes | |  the unique id of the voice bot |
-  |`channel`  |  string  |yes |   | type of the response,including `Twilio` , `SIP` |
-  |`visitor`  |  [Visitor](#visitor-object) Object  |no |   | visitor information |
+  | `sessionId` | string | yes | |  session Id .  |
+  |`content`  |  [VoiceBotAction[]](#VoiceBotAction-Object)  |yes |   | type of the response,including `Twilio` , `SIP` |
 
 example:
 ```Json 
-  {
-    "VoiceBotId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
-    "channel": "Twillio",
-    "visitor": {
-        "phone":"123-4355-212",
-      }
-    }
-  }
+  {     
+          "sessionId":"d3f5b968-ad51-42af-b759-64c0afc40b84", 
+          "content": [{ 
+              "voice":"string", 
+    	        "voiceConfig":{ 
+                  "audioEncoding": enum , 
+                  "speakingRate": number, 
+                  "pitch": number 
+               } 
+         }] 
+} 
 ```
 
 #### Response
-The Response body contains data with the following structure:
-
-  | Name | Type |  Description |    
-  | - | - | :-: | 
-  |`sessionId` | Guid | the unique id of the session |
-  |`content`  |  [VoiceBotAction](#voicebotaction-object)[]    |  |
+Response 
+HTTP/1.1 200 OK 
 
 
-#### Example
-Using curl
-```
-curl -H "Content-Type: application/json" -d '{
-    "VoiceBotId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48", 
-    "visitor": {
-      "phone":"123-4355-212",
-    }
-  }' -X POST https://domain.comm100.com/api/voicebots/{VoicebotId}/sessions
-```
-Response
-```Json
-  HTTP/1.1 200 OK
-  Content-Type:  application/json
-
-  {    
-          "sessionId":"d3f5b968-ad51-42af-b759-64c0afc40b84",
-          "content":[{
-              "type":"playText",
-              "content":{
-                    "message": "Hi there! I'm a VoiceBot, here to help answer your questions.",
-              }
-    }]
-
-  }
-```
 # Model
 ### VoicebotOutput Object
   
