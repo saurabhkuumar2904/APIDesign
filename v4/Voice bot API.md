@@ -547,7 +547,7 @@ Response
   | - | - | :-: | - | 
   | `audioPath` | String  | | String |
   
-## PlayAudio Object  
+## PlayText Object  
   Text Response is represented as simple flat json objects with the following keys: 
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
