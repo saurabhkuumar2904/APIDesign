@@ -124,6 +124,7 @@ Path parameters
   | Name | Type | Required |  | Description |    
   | - | - | :-: | - | 
   | `sessionId` | Guid | yes |  |
+
 Request body 
 The request body contains data with the follow structure:  
   | Name | Type | Required | Default | Description |    
