@@ -6,8 +6,8 @@
 # Summary
 
 ## Channel Adapter API 
-The ChannelURI can be any valid URI that implements this API, and it is configured in the system when a new channel needs to access. 
-  - POST /{channelURI}/input - [Channel Adapter receives input](#Channel-Adapter-receives-input). 
+The channelURL can be any valid URL that implements this API, and it is configured in the system when a new channel needs to access. 
+  - POST /{channelURL} - [Channel Adapter receives input](#Channel-Adapter-receives-input). 
 ## Voice Service API  
   - POST /voiceservice/sessions - [Create Session](#Create-Sessions). Voice service creates a session 
   - POST /voiceservice/sessions/{sessionId}/questions - [Receive a question](#Receive-a-question).  Voice service receives call question.
@@ -97,7 +97,7 @@ The Response body contains data with the following structure:
   | Name | Type |  Description |    
   | - | - | :-: | 
   |`sessionId` | Guid | the unique id of the call  |
-  |`content`  |  [VoiceBotAction[]](#VoiceBotAction-Object)  | Greeting output  |
+  |`content`  |  [VoiceServiceAction[]](#VoiceServiceAction-Object)  | Greeting output  |
 
 Response
 ```Json
@@ -134,11 +134,11 @@ Request body
 The request body contains data with the follow structure:  
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
-  | `type` | string | yes | |  type of the response, including textInput, voiceInput, chatTransferStatus   |
+  | `type` | string | yes | |  type of the response, including textInput, voiceInput   |
   | `textInput`  |  string  | When type is textInput  |   | Text input to voice robot   |
   | `voiceInput`  |  string  | When type is voiceInput  |   | The audio data bytes encoded as specified in VoiceConfig. Note: as with all bytes fields, proto buffers use a pure binary representation, whereas JSON representations use base64.A base64-encoded string.  |
   | `voiceConfig`  |  [VoiceConfig Object](#VoiceConfig-Object)  | When type is voiceInput  |   | Provides information to the recognizer that specifies how to process the request.  |
-  | `isTransferFailed`  |  bool  | When type is chatTransferStatus  |   | If the bot Transfer Chat to agent failed  |
+<!--   | `isTransferFailed`  |  bool  | When type is chatTransferStatus  |   | If the bot Transfer Chat to agent failed  | -->
 
 #### example:
 ```Json 
@@ -158,8 +158,8 @@ The Response body contains data with the following structure:
 
   | Name | Type |  Description |    
   | - | - | :-: | 
-  |`sessionId` | Guid | the unique id of the call  |
-  |`content`  |  [VoiceBotAction[]](#VoiceBotAction-Object)  | output  |
+<!--   |`sessionId` | Guid | the unique id of the call  | -->
+  |`content`  |  [VoiceServiceAction[]](#VoiceServiceAction-Object)  | output  |
 
 Response
 ```Json
