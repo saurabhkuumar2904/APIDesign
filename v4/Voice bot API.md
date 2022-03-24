@@ -52,7 +52,6 @@ Request body is Voice Message Object
     	        "voiceConfig":{ 
                   "encoding": "LINEAR16" , 
                   "sampleRateHertz": 8000, 
-                  "languageCode": "en-US" 
                } 
          }] 
 } 
@@ -112,7 +111,6 @@ HTTP/1.1 200 OK
     	        "voiceConfig":{ 
 			  "encoding": "LINEAR16" , 
 			  "sampleRateHertz": 8000, 
-			  "languageCode": "en-US" 
 	            } 
     		}] 
   } 
@@ -148,7 +146,6 @@ The request body contains data with the follow structure:
     	"voiceConfig":{ 
       		"encoding": "AMR" , 
       		"sampleRateHertz": 8000, 
-      		"languageCode": "en-US" 
 	   } 
 } 
 ```
@@ -172,7 +169,6 @@ Response
               "voiceConfig":{ 
 			"encoding": "AMR" , 
 			"sampleRateHertz": 8000, 
-			"languageCode": "en-US" 
 					} 
     		}] 
   }
@@ -429,7 +425,6 @@ The request body contains data with the follow structure:
     "config": { 
 	"encoding": "AMR" , 
 	"sampleRateHertz": 8000, 
-	"languageCode": "en-US" 
     }, 
     "audio": "string"
   } 
@@ -483,10 +478,13 @@ The request body contains data with the follow structure:
     "input": { 
       "text": "string", 
     }, 
+    "voice":{ 
+	"languageCode": "en-US", 
+	"gender": "MALE", 
+    }
     "voiceConfig":{ 
 	"encoding": "AMR" , 
 	"sampleRateHertz": 8000, 
-	"languageCode": "en-US" 
     }
 } 
 ```
@@ -508,7 +506,6 @@ Response
   "voiceConfig": { 
 	"encoding": "AMR" , 
 	"sampleRateHertz": 8000, 
-	"languageCode": "en-US" 
   } 
 } 
 ```
@@ -611,7 +608,7 @@ Response
   | - | - | :-: | - | 
   | `encoding` | enum([AudioEncoding](#AudioEncoding-request))   | | Encoding of audio data sent in all RecognitionAudio messages. This field is optional for FLAC and WAV audio files and required for all other audio formats. For details, see AudioEncoding.   |
   | `sampleRateHertz` | Int   | | Sample rate in Hertz of the audio data sent in all RecognitionAudio messages. Valid values are: 8000-48000. 16000 is optimal. For best results, set the sampling rate of the audio source to 16000 Hz. If that is not possible, use the native sample rate of the audio source (instead of re-sampling). This field is optional for FLAC and WAV audio files, but is required for all other audio formats. For details, see AudioEncoding.   |
-  | `languageCode` | string   | | Optional. The language of the supplied audio as a BCP-47 language tag. Example: "en-US". See Language Support for a list of the currently supported language codes.    |
+
 
 ## AudioEncoding request   
 The encoding of the audio data sent in the request. 
