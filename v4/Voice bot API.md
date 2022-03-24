@@ -99,10 +99,10 @@ The Response body contains data with the following structure:
   |`content`  |  [VoiceServiceAction[]](#VoiceServiceAction-Object)  | Greeting output  |
 
 Response
-```Json
 HTTP/1.1 200 OK 
   Content-Type:  application/json 
- 
+```Json
+
   {     
           "sessionId":"d3f5b968-ad51-42af-b759-64c0afc40b84", 
           "content": [{ 
