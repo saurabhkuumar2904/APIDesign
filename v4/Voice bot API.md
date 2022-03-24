@@ -576,7 +576,7 @@ Response
   Text Response is represented as simple flat json objects with the following keys: 
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
-  | `transferTo` | String  | | Support Phone Number and URI.  |
+  | `transferTo` | String  | | Support Phone Number and Sip URI.  |
 
 
 ## EndCall Object   
@@ -606,16 +606,16 @@ Response
   Text Response is represented as simple flat json objects with the following keys: 
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
-  | `encoding` | enum([AudioEncoding](#AudioEncoding-request))   | | Encoding of audio data sent in all RecognitionAudio messages. This field is optional for FLAC and WAV audio files and required for all other audio formats. For details, see AudioEncoding.   |
-  | `sampleRateHertz` | Int   | | Sample rate in Hertz of the audio data sent in all RecognitionAudio messages. Valid values are: 8000-48000. 16000 is optimal. For best results, set the sampling rate of the audio source to 16000 Hz. If that is not possible, use the native sample rate of the audio source (instead of re-sampling). This field is optional for FLAC and WAV audio files, but is required for all other audio formats. For details, see AudioEncoding.   |
+  | `encoding` | enum([AudioEncoding](#AudioEncoding-request))   | | Encoding of audio data. For details, see AudioEncoding.   |
+  | `sampleRateHertz` | Int   | | Sample rate in Hertz of the audio data. Valid values are: 8000-48000. 16000 is optimal. For best results, set the sampling rate of the audio source to 16000 Hz. If that is not possible, use the native sample rate of the audio source (instead of re-sampling). This field is optional for FLAC and WAV audio files, but is required for all other audio formats. For details, see AudioEncoding.   |
 
 
 ## AudioEncoding request   
-The encoding of the audio data sent in the request. 
+The encoding of the audio data . 
 
 For best results, the audio source should be captured and transmitted using a lossless encoding (FLAC or LINEAR16). The accuracy of the speech recognition can be reduced if lossy codecs are used to capture or transmit audio, particularly if background noise is present. Lossy codecs include MULAW, AMR, AMR_WB, OGG_OPUS, SPEEX_WITH_HEADER_BYTE, MP3, and WEBM_OPUS. 
 
-The FLAC and WAV audio file formats include a header that describes the included audio content. You can request recognition for WAV files that contain either LINEAR16 or MULAW encoded audio. If you send FLAC or WAV audio file format in your request, you do not need to specify an AudioEncoding; the audio encoding format is determined from the file header. If you specify an AudioEncoding when you send FLAC or WAV audio, the encoding configuration must match the encoding described in the audio header; 
+The FLAC and WAV audio file formats include a header that describes the included audio content. You can request recognition for WAV files that contain either LINEAR16 or MULAW encoded audio. If you specify an AudioEncoding when you send FLAC or WAV audio, the encoding configuration must match the encoding described in the audio header; 
   |Enums|   |
   | - | - | 
   | `ENCODING_UNSPECIFIED` | Not specified.   |
