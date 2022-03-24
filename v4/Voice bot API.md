@@ -451,8 +451,8 @@ Response
       {   
         "alternatives": [ 
           { 
-            "transcript": string, 
-            "confidence": number, 
+            "transcript": "string", 
+            "confidence": 0.8, 
           } 
         ], 
         "languageCode": string      
@@ -504,7 +504,7 @@ Response
  HTTP/1.1 200 OK 
   Content-Type:  application/json 
   { 
-  "voiceContent": string, 
+  "voiceContent": "string", 
   "voiceConfig": { 
 	"encoding": "AMR" , 
 	"sampleRateHertz": 8000, 
