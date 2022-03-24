@@ -155,8 +155,8 @@ The Response body contains data with the following structure:
 
   | Name | Type |  Description |    
   | - | - | :-: | 
-<!--   |`sessionId` | Guid | the unique id of the call  | -->
-  |`content`  |  [VoiceServiceAction[]](#VoiceServiceAction-Object)  | output  |
+  |`content`  |  [VoiceServiceAction[]](#VoiceServiceAction-Object)  |   |
+  <!--   |`sessionId` | Guid | the unique id of the call  | -->
 
 Response
 ```Json
