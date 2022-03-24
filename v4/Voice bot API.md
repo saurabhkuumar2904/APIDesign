@@ -47,11 +47,12 @@ Request body is Voice Message Object
   {     
           "sessionId":"d3f5b968-ad51-42af-b759-64c0afc40b84", 
           "content": [{ 
-              "voice":"string", 
+	        "type":"playAudio"
+                "voice":"string", 
     	        "voiceConfig":{ 
                   "encoding": "LINEAR16" , 
-                  "speakingRate": 8000, 
-                  "pitch": number 
+                  "sampleRateHertz": 8000, 
+                  "languageCode": "en-US" 
                } 
          }] 
 } 
@@ -106,11 +107,12 @@ HTTP/1.1 200 OK
   {     
           "sessionId":"d3f5b968-ad51-42af-b759-64c0afc40b84", 
           "content": [{ 
-              "voice":"string", 
+	  	"type":"playAudio",
+                "voice":"string", 
     	        "voiceConfig":{ 
-      		          "audioEncoding": enum , 
-      		          "speakingRate": number, 
-      		          "pitch": number 
+			  "encoding": "LINEAR16" , 
+			  "sampleRateHertz": 8000, 
+			  "languageCode": "en-US" 
 	            } 
     		}] 
   } 
@@ -479,13 +481,7 @@ The request body contains data with the follow structure:
 ```Json 
  { 
     "input": { 
-      // Union field input_source can be only one of the following: 
-      "text": string, 
-       // End of list of types for union field input_source. 
-    }, 
-   "voice": { 
-      "languageCode": string, 
-      "gender": "" , 
+      "text": "string", 
     }, 
     "voiceConfig":{ 
 	"encoding": "AMR" , 
@@ -510,9 +506,9 @@ Response
   { 
   "voiceContent": string, 
   "voiceConfig": { 
-    "audioEncoding": enum , 
-    "speakingRate": number, 
-    "pitch": number, 
+	"encoding": "AMR" , 
+	"sampleRateHertz": 8000, 
+	"languageCode": "en-US" 
   } 
 } 
 ```
@@ -524,7 +520,7 @@ Response
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
   | `id` | Guid  | | |
-  |`content`  |  [VoiceBotAction](#voicebotaction-object)[]    |  |
+  |`content`  |  [VoiceSerivceAction](#voiceserviceaction-object)[]    |  |
 
 ## VoicebotOutput Object 
   |Name| Type | Default | Description | 
@@ -537,9 +533,14 @@ Response
   | - | - | :-: | - | 
   | `type` | string | | type of the response,including `PlayAudio`,`PlayText`,`CollectDTMFDigits`,`CollectSpeechResponse`,`IVRMenu`,`TransferChat`, `EndCall`|
   | `content` | object | |  response's content. when type is `PlayAudio`, it represents [PlayAudio](#PlayAudio-object); when type is `PlayText`,it represents [PlayText](#PlayText-object);when type is `CollectDTMFDigits`,it represents [CollectDTMFDigits](#CollectDTMFDigits-object); when type is `CollectSpeechResponse`, it represents [CollectSpeechResponse](#CollectSpeechResponse-object);when type is `EndCall`, it represents [EndCall](#EndCall-object);when type is `IVRMenu`, it represents [IVRMenu](#IVRMenu-object);when type is `TransferChat`, it represents [TransferChat](#TransferChat-object);|
+  
+  ## VoiceServiceAction Object 
+  |Name| Type| Default | Description     | 
+  | - | - | :-: | - | 
+  | `type` | string | | type of the response,including `PlayAudio`,`PlayText`,`CollectDTMFDigits`,`CollectSpeechResponse`,`IVRMenu`,`TransferChat`, `EndCall`|
+  | `content` | object | |  response's content. when type is `PlayAudio`, it represents [PlayAudio](#PlayAudio-object); when type is `PlayText`,it represents [PlayText](#PlayText-object);when type is `CollectDTMFDigits`,it represents [CollectDTMFDigits](#CollectDTMFDigits-object); when type is `CollectSpeechResponse`, it represents [CollectSpeechResponse](#CollectSpeechResponse-object);when type is `EndCall`, it represents [EndCall](#EndCall-object);when type is `IVRMenu`, it represents [IVRMenu](#IVRMenu-object);when type is `TransferChat`, it represents [TransferChat](#TransferChat-object);|
   | `voiceConfig` | [VoiceConfig Object](#VoiceConfig-Object)  | | The encoding of the voice data sent in the request. |
   | `voice` | string | | The audio data bytes encoded as specified in VoiceConfig. Note: as with all bytes fields, proto buffers use a pure binary representation, whereas JSON representations use base64.A base64-encoded string. |
-  
 
 ## PlayAudio Object  
   Text Response is represented as simple flat json objects with the following keys: 
@@ -610,7 +611,7 @@ Response
   | - | - | :-: | - | 
   | `encoding` | enum([AudioEncoding](#AudioEncoding-request))   | | Encoding of audio data sent in all RecognitionAudio messages. This field is optional for FLAC and WAV audio files and required for all other audio formats. For details, see AudioEncoding.   |
   | `sampleRateHertz` | Int   | | Sample rate in Hertz of the audio data sent in all RecognitionAudio messages. Valid values are: 8000-48000. 16000 is optimal. For best results, set the sampling rate of the audio source to 16000 Hz. If that is not possible, use the native sample rate of the audio source (instead of re-sampling). This field is optional for FLAC and WAV audio files, but is required for all other audio formats. For details, see AudioEncoding.   |
-  | `languageCode` | string   | | Required. The language of the supplied audio as a BCP-47 language tag. Example: "en-US". See Language Support for a list of the currently supported language codes.    |
+  | `languageCode` | string   | | Optional. The language of the supplied audio as a BCP-47 language tag. Example: "en-US". See Language Support for a list of the currently supported language codes.    |
 
 ## AudioEncoding request   
 The encoding of the audio data sent in the request. 
@@ -663,3 +664,4 @@ The FLAC and WAV audio file formats include a header that describes the included
   | - | - | :-: | - | 
   | `name` | String   | | the name of a variable in a form.  |
   | `value` | String  | | the value of a variable.  |
+  
