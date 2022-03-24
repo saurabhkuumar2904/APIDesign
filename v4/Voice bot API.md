@@ -28,9 +28,9 @@ Provide STT (Speech to Text) and TTS (Text to Speech) capabilities.
 
 # Endpoints
 ## Channel Adapter API 
-The ChannelURI can be any valid URI that implements this API, and it is configured in the system when a new channel needs to access.  
+The ChannelURL can be any valid URL that implements this API, and it is configured in the system when a new channel needs to access.  
 ### Channel Adapter receives Input. 
-`POST /{channelURI}/input`
+`POST /{channelURL}`
 
 
 #### Parameters
@@ -40,7 +40,7 @@ Request body is Voice Message Object
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
   | `sessionId` | string | yes | |  session Id .  |
-  |`content`  |  [VoiceBotAction[]](#VoiceBotAction-Object)  |yes |   | type of the response,including `Twilio` , `SIP` |
+  |`content`  |  [VoiceServiceAction[]](#VoiceServiceAction-Object)  |yes |   |  |
 
 #### example:
 ```Json 
@@ -144,9 +144,9 @@ The request body contains data with the follow structure:
 	"type":"voiceInput",  
 	"voiceInput":"string", 
     	"voiceConfig":{ 
-      		"audioEncoding": enum , 
-      		"speakingRate": number, 
-      		"pitch": number 
+      		"encoding": "AMR" , 
+      		"sampleRateHertz": 8000, 
+      		"languageCode": "en-US" 
 	   } 
 } 
 ```
@@ -168,9 +168,9 @@ Response
           "content": [{ 
               "voice":"string", 
               "voiceConfig":{ 
-      				"audioEncoding": enum , 
-      				"speakingRate": number, 
-      				"pitch": number 
+			"encoding": "AMR" , 
+			"sampleRateHertz": 8000, 
+			"languageCode": "en-US" 
 					} 
     		}] 
   }
@@ -425,9 +425,9 @@ The request body contains data with the follow structure:
 ```Json 
  { 
     "config": { 
-      "encoding": enum [(AudioEncoding)](#AudioEncoding), 
-      "sampleRateHertz": integer, 
-      "languageCode": string, 
+	"encoding": "AMR" , 
+	"sampleRateHertz": 8000, 
+	"languageCode": "en-US" 
     }, 
     "audio": string
   } 
@@ -485,12 +485,12 @@ The request body contains data with the follow structure:
     }, 
    "voice": { 
       "languageCode": string, 
-      "gender": enum , 
+      "gender": "" , 
     }, 
     "voiceConfig":{ 
-      "audioEncoding": enum , 
-      "speakingRate": number, 
-      "pitch": number, 
+	"encoding": "AMR" , 
+	"sampleRateHertz": 8000, 
+	"languageCode": "en-US" 
     }
 } 
 ```
