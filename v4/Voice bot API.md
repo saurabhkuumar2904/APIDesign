@@ -83,7 +83,7 @@ Request body the request body contains data with the following structure:
     "channelIdentifier": "q3f5b438-xw31-44af-b729-64swaf3d0b56", 
     "visitor": { 
         "phone":"123-4355-212", 
-      }， 
+      },
     "variables": [{ 
                   "name":"string", 
                   "value": "string", 
