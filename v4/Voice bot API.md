@@ -431,7 +431,7 @@ The request body contains data with the follow structure:
 	"sampleRateHertz": 8000, 
 	"languageCode": "en-US" 
     }, 
-    "audio": string
+    "audio": "string"
   } 
 ```
 
@@ -455,7 +455,7 @@ Response
             "confidence": 0.8, 
           } 
         ], 
-        "languageCode": string      
+        "languageCode": "string" 
       } 
     ] 
   }  
