@@ -49,8 +49,8 @@ Request body is Voice Message Object
           "content": [{ 
               "voice":"string", 
     	        "voiceConfig":{ 
-                  "audioEncoding": enum , 
-                  "speakingRate": number, 
+                  "encoding": "LINEAR16" , 
+                  "speakingRate": 8000, 
                   "pitch": number 
                } 
          }] 
