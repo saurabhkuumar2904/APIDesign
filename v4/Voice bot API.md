@@ -1,6 +1,6 @@
   | Change Version | API Version | Change nots | Change Date | Author |Architect Team Reviewer | 
   | - | - | - | - | - |- |
-  | 2.0 | v1 | Voice Bot API | 2022-3-18 | Leon，Carl，Page，Zack |  allon|
+  | 2.0 | v1 | Voice Bot API | 2022-3-18 | Leon，Carl，Page，Zack |  Allon|
 
 
 # Summary
