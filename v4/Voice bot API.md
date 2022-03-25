@@ -87,8 +87,8 @@ Request body the request body contains data with the following structure:
         "phone":"123-4355-212", 
       },
     "variables": [{ 
-                  "name":"string", 
-                  "value": "string", 
+                  "name":"abc", 
+                  "value": "123", 
       }]  
   } 
 ```
