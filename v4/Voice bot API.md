@@ -47,7 +47,10 @@ Request body is Voice Message Object
   {     
           "sessionId":"d3f5b968-ad51-42af-b759-64c0afc40b84", 
           "content": [{ 
-	        "type":"playAudio"
+	        "type":"playText",
+		"content":{ 
+                    "message": "Hi there! I'm a VoiceBot, here to help answer your questions", 
+                },
                 "voice":"string", 
     	        "voiceConfig":{ 
                   "encoding": "LINEAR16" , 
