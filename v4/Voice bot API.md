@@ -545,8 +545,6 @@ Response
   | - | - | :-: | - | 
   | `type` | string | | type of the response,including `PlayAudioAction`,`CollectDTMFDigitsAction`,`TransferChatAction`, `EndCallAction`|
   | `content` | object | |  response's content. when type is `PlayAudioAction`, it represents [PlayAudioAction](#PlayAudioAction-object);when type is `CollectDTMFDigitsAction`,it represents [CollectDTMFDigitsAction](#CollectDTMFDigitsAction-object); when type is `EndCallAction`, it represents [EndCallAction](#EndCallAction-object);when type is `TransferChatAction`, it represents [TransferChatAction](#TransferChatAction-object);|
-  | `voice` | string | | The audio data bytes encoded as specified in VoiceConfig. Note: as with all bytes fields, proto buffers use a pure binary representation, whereas JSON representations use base64.A base64-encoded string. |
-  | `voiceConfig` | [VoiceConfig Object](#VoiceConfig-Object)  | | The encoding of the voice data sent in the request. |
 
 ## PlayAudio Object  
   Text Response is represented as simple flat json objects with the following keys: 
