@@ -47,15 +47,14 @@ Request body is Voice Message Object
   {     
           "sessionId":"d3f5b968-ad51-42af-b759-64c0afc40b84", 
           "content": [{ 
-	        "type":"playText",
+	        "type":"playAudioAction",
 		"content":{ 
-                    "message": "Hi there! I'm a VoiceBot, here to help answer your questions", 
-                },
-                "voice":"string", 
-    	        "voiceConfig":{ 
-                  "encoding": "LINEAR16" , 
-                  "sampleRateHertz": 8000, 
-               } 
+                        "voice":"string", 
+    	        	"voiceConfig":{ 
+                 		 "encoding": "LINEAR16" , 
+                  		"sampleRateHertz": 8000, 
+              		 } 
+                }
          }] 
 } 
 ```
@@ -108,15 +107,14 @@ HTTP/1.1 200 OK
   {     
           "sessionId":"d3f5b968-ad51-42af-b759-64c0afc40b84", 
           "content": [{ 
-	  	"type":"playText",
+	        "type":"playAudioAction",
 		"content":{ 
-                    "message": "Hi there! I'm a VoiceBot, here to help answer your questions", 
-                } 
-                "voice":"string", 
-    	        "voiceConfig":{ 
-			  "encoding": "LINEAR16" , 
-			  "sampleRateHertz": 8000, 
-	            } 
+                        "voice":"string", 
+    	        	"voiceConfig":{ 
+                 		 "encoding": "LINEAR16" , 
+                  		"sampleRateHertz": 8000, 
+              		 } 
+                }
     		}] 
   } 
 ```
@@ -170,15 +168,14 @@ Response
  
   {     
           "content": [{ 
-	      "type":"playText",
-	      "content":{ 
-                    "message": "Hi there! I'm a VoiceBot, here to help answer your questions", 
-               } ,
-              "voice":"string", 
-              "voiceConfig":{ 
-			"encoding": "AMR" , 
-			"sampleRateHertz": 8000, 
-					} 
+	        "type":"playAudioAction",
+		"content":{ 
+                        "voice":"string", 
+    	        	"voiceConfig":{ 
+                 		 "encoding": "LINEAR16" , 
+                  		"sampleRateHertz": 8000, 
+              		 } 
+                }
     		}] 
   }
 ```
