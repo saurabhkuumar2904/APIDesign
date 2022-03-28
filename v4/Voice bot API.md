@@ -543,8 +543,8 @@ Response
   ## VoiceServiceAction Object 
   |Name| Type| Default | Description     | 
   | - | - | :-: | - | 
-  | `type` | string | | type of the response,including `PlayAudio`,`PlayText`,`CollectDTMFDigits`,`CollectSpeechResponse`,`IVRMenu`,`TransferChat`, `EndCall`|
-  | `content` | object | |  response's content. when type is `PlayAudio`, it represents [PlayAudio](#PlayAudio-object); when type is `PlayText`,it represents [PlayText](#PlayText-object);when type is `CollectDTMFDigits`,it represents [CollectDTMFDigits](#CollectDTMFDigits-object); when type is `CollectSpeechResponse`, it represents [CollectSpeechResponse](#CollectSpeechResponse-object);when type is `EndCall`, it represents [EndCall](#EndCall-object);when type is `IVRMenu`, it represents [IVRMenu](#IVRMenu-object);when type is `TransferChat`, it represents [TransferChat](#TransferChat-object);|
+  | `type` | string | | type of the response,including `PlayAudioAction`,`CollectDTMFDigitsAction`,`TransferChatAction`, `EndCallAction`|
+  | `content` | object | |  response's content. when type is `PlayAudioAction`, it represents [PlayAudioAction](#PlayAudioAction-object);when type is `CollectDTMFDigitsAction`,it represents [CollectDTMFDigitsAction](#CollectDTMFDigitsAction-object); when type is `EndCallAction`, it represents [EndCallAction](#EndCallAction-object);when type is `TransferChatAction`, it represents [TransferChatAction](#TransferChatAction-object);|
   | `voice` | string | | The audio data bytes encoded as specified in VoiceConfig. Note: as with all bytes fields, proto buffers use a pure binary representation, whereas JSON representations use base64.A base64-encoded string. |
   | `voiceConfig` | [VoiceConfig Object](#VoiceConfig-Object)  | | The encoding of the voice data sent in the request. |
 
@@ -671,3 +671,28 @@ The FLAC and WAV audio file formats include a header that describes the included
   | `name` | String   | | the name of a variable in a form.  |
   | `value` | String  | | the value of a variable.  |
   
+  ## PlayAudioAction Object  
+  Text Response is represented as simple flat json objects with the following keys: 
+  |Name| Type | Default | Description | 
+  | - | - | :-: | - | 
+  | `voice` | string | | The audio data bytes encoded as specified in VoiceConfig. Note: as with all bytes fields, proto buffers use a pure binary representation, whereas JSON representations use base64.A base64-encoded string. |
+  | `voiceConfig` | [VoiceConfig Object](#VoiceConfig-Object)  | | The encoding of the voice data sent in the request. |
+  | `audioPath` | String  | | String |
+  
+  ## CollectDTMFDigitsAction Object   
+  Text Response is represented as simple flat json objects with the following keys: 
+  |Name| Type | Default | Description | 
+  | - | - | :-: | - | 
+  | `numberOfDigits` | String  | | Enumeration. 1, 2, … 29, 30, Variable. The number of digits entered by the caller in dialer. Default: Not sure. |
+  | `stopGatherAfterPresskey` | String  | | Enumeration. *, #. Available when Number of Digits is Not sure.  |
+  
+  ## TransferChatAction Object   
+  Text Response is represented as simple flat json objects with the following keys: 
+  |Name| Type | Default | Description | 
+  | - | - | :-: | - | 
+  | `transferTo` | String  | | Support Phone Number and Sip URI.  |
+  
+  ## EndCallAction Object   
+  Text Response is represented as simple flat json objects with the following keys: 
+  |Name| Type | Default | Description | 
+  | - | - | :-: | - | 
