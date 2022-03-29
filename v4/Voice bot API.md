@@ -5,15 +5,15 @@
 
 # Summary
 
-## Channel Adapter API 
+## Voice Channel Adapter API 
 The channelURL can be any valid URL that implements this API, and it is configured in the system when a new channel needs to access. 
   - POST /{channelURL} - [Channel Adapter receives input](#Channel-Adapter-receives-input). 
-## Voice Service API  
+## Voice Service Input API  
   - POST /voiceservice/sessions - [Create Session](#Create-Sessions). Voice service creates a session 
   - POST /voiceservice/sessions/{sessionId}/questions - [Receive a question](#Receive-a-question).  Voice service receives call question.
   - DELETE /voiceservice/sessions/{sessionId} - [Delete a session](#Delete-a-session). Voice service deletes a session.
 <!--   - POST /voiceservice/sessions/{sessionId}/variables - [Update Variables](#Update-Variables).Receive the variables of the Voice Bot Session -->
-## Voice Service Input API   
+## Voice Service Notification API   
   - POST /voiceservice/sessions/{sessionId}/answers - [Voice Service receives answers](#Voice-Service-receives-answers)
 ## Voice Bot Service API 
   - POST /voicebot/voicebots/{VoicebotId}/sessions  - [Create Session Voice Bot creates session](#Create-A-New-Voice-Bot-Session)
@@ -40,7 +40,7 @@ Request body is Voice Message Object
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
   | `sessionId` | string | yes | |  session Id .  |
-  |`content`  |  [VoiceServiceAction[]](#VoiceServiceAction-Object)  |yes |   |  |
+  |`content`  |  [VoiceAction[]](#VoiceAction-Object)  |yes |   |  |
 
 #### example:
 ```Json 
@@ -49,11 +49,13 @@ Request body is Voice Message Object
           "content": [{ 
 	        "type":"playAudioAction",
 		"content":{ 
+			"type":"voice",
                         "voice":"string", 
     	        	"voiceConfig":{ 
                  		 "encoding": "LINEAR16" , 
                   		"sampleRateHertz": 8000, 
-              		 } 
+              		 },
+			 
                 }
          }] 
 } 
@@ -98,7 +100,7 @@ The Response body contains data with the following structure:
   | Name | Type |  Description |    
   | - | - | :-: | 
   |`sessionId` | Guid | the unique id of the call  |
-  |`content`  |  [VoiceServiceAction[]](#VoiceServiceAction-Object)  | Greeting output  |
+  |`content`  |  [VoiceAction[]](#VoiceAction-Object)  | Greeting output  |
 
 Response
 ```Json
@@ -109,6 +111,7 @@ HTTP/1.1 200 OK
           "content": [{ 
 	        "type":"playAudioAction",
 		"content":{ 
+			"type":"voice",
                         "voice":"string", 
     	        	"voiceConfig":{ 
                  		 "encoding": "LINEAR16" , 
@@ -170,6 +173,7 @@ Response
           "content": [{ 
 	        "type":"playAudioAction",
 		"content":{ 
+			"type":"voice",
                         "voice":"string", 
     	        	"voiceConfig":{ 
                  		 "encoding": "LINEAR16" , 
@@ -523,7 +527,7 @@ Response
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
   | `id` | Guid  | | |
-  |`content`  |  [VoiceSerivceAction](#voiceserviceaction-object)[]    |  |
+  |`content`  |  [VoiceAction](#voiceAction-object)[]    |  |
 
 ## VoicebotOutput Object 
   |Name| Type | Default | Description | 
@@ -537,7 +541,7 @@ Response
   | `type` | string | | type of the response,including `PlayAudio`,`PlayText`,`CollectDTMFDigits`,`CollectSpeechResponse`,`IVRMenu`,`TransferChat`, `EndCall`|
   | `content` | object | |  response's content. when type is `PlayAudio`, it represents [PlayAudio](#PlayAudio-object); when type is `PlayText`,it represents [PlayText](#PlayText-object);when type is `CollectDTMFDigits`,it represents [CollectDTMFDigits](#CollectDTMFDigits-object); when type is `CollectSpeechResponse`, it represents [CollectSpeechResponse](#CollectSpeechResponse-object);when type is `EndCall`, it represents [EndCall](#EndCall-object);when type is `IVRMenu`, it represents [IVRMenu](#IVRMenu-object);when type is `TransferChat`, it represents [TransferChat](#TransferChat-object);|
   
-  ## VoiceServiceAction Object 
+  ## VoiceAction Object 
   |Name| Type| Default | Description     | 
   | - | - | :-: | - | 
   | `type` | string | | type of the response,including `PlayAudioAction`,`CollectDTMFDigitsAction`,`TransferChatAction`, `EndCallAction`|
@@ -670,9 +674,10 @@ The FLAC and WAV audio file formats include a header that describes the included
   Text Response is represented as simple flat json objects with the following keys: 
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
-  | `voice` | string | | The audio data bytes encoded as specified in VoiceConfig. Note: as with all bytes fields, proto buffers use a pure binary representation, whereas JSON representations use base64.A base64-encoded string. |
-  | `voiceConfig` | [VoiceConfig Object](#VoiceConfig-Object)  | | The encoding of the voice data sent in the request. |
-  | `audioPath` | String  | | String |
+  | `type` | String  | Required| type of the response,including `voice`,`url`|
+  | `voice` | string | Required when type is `voice`| The audio data bytes encoded as specified in VoiceConfig. Note: as with all bytes fields, proto buffers use a pure binary representation, whereas JSON representations use base64.A base64-encoded string. |
+  | `voiceConfig` | [VoiceConfig Object](#VoiceConfig-Object)  |Required when type is `voice` | The encoding of the voice data sent in the request. |
+  | `audioPath` | String  |Required when type is `url` | the audio file url  |
   
   ## CollectDTMFDigitsAction Object   
   Text Response is represented as simple flat json objects with the following keys: 
