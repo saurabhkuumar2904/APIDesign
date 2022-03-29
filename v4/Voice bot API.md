@@ -581,26 +581,22 @@ Response
   | `confirmationKey` | int  | | Enumeration. 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, *, #. Visitor can press the key to confirm.   |
 
 ## TransferChat Object   
-  Text Response is represented as simple flat json objects with the following keys: 
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
   | `transferTo` | String  | | Support Phone Number and Sip URI.  |
 
 
 ## EndCall Object   
-  Text Response is represented as simple flat json objects with the following keys: 
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
 
 
 ## IVRMenu Object   
-  Text Response is represented as simple flat json objects with the following keys: 
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
   | `message` | String  | | String  |
 
 ## Visitor Object   
-  Text Response is represented as simple flat json objects with the following keys: 
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
   | `name` | String  | | Name of the visitor  |
@@ -611,7 +607,6 @@ Response
 
 
 ## VoiceConfig Object
-  Text Response is represented as simple flat json objects with the following keys: 
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
   | `encoding` | enum([AudioEncoding](#AudioEncoding-request))   | | Encoding of audio data. For details, see AudioEncoding.   |
@@ -656,22 +651,19 @@ The FLAC and WAV audio file formats include a header that describes the included
   | - | - | :-: | - | 
   | `text` | String   | | The raw text to be synthesized.  |
 
-## VoiceSelectionParams
-  Description of which voice to use for a synthesis request.     
+## VoiceSelectionParams 
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
   | `languageCode` | String   | | The language of the voice expressed as a BCP-47 language tag, e.g. "en-US".   |
   | `Gender` | enum   | | MALE, FEMALE.  |
 
-## Variable Object
-  Description of which voice to use for a synthesis request.      
+## Variable Object     
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
   | `name` | String   | | the name of a variable in a form.  |
   | `value` | String  | | the value of a variable.  |
   
   ## PlayAudioAction Object  
-  Text Response is represented as simple flat json objects with the following keys: 
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
   | `type` | String  | Required| type of the response,including `voice`,`url`|
@@ -680,19 +672,16 @@ The FLAC and WAV audio file formats include a header that describes the included
   | `audioPath` | String  |Required when type is `url` | the audio file url  |
   
   ## CollectDTMFDigitsAction Object   
-  Text Response is represented as simple flat json objects with the following keys: 
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
   | `numberOfDigits` | String  | | Enumeration. 1, 2, … 29, 30, Variable. The number of digits entered by the caller in dialer. Default: Not sure. |
   | `stopGatherAfterPresskey` | String  | | Enumeration. *, #. Available when Number of Digits is Not sure.  |
   
   ## TransferChatAction Object   
-  Text Response is represented as simple flat json objects with the following keys: 
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
   | `transferTo` | String  | | Support Phone Number and Sip URI.  |
   
   ## EndCallAction Object   
-  Text Response is represented as simple flat json objects with the following keys: 
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
