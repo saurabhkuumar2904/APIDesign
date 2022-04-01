@@ -125,7 +125,7 @@ HTTP/1.1 200 OK
 
 
 
-### Receive a question 
+### Receive a input 
 `POST /voiceservice/sessions/{sessionId}/inputs`
 
 #### Parameters
