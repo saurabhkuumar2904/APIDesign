@@ -10,11 +10,11 @@ The channelURL can be any valid URL that implements this API, and it is configur
   - POST /{channelURL} - [Channel Adapter receives input](#Channel-Adapter-receives-input). 
 ## Voice Service Input API  
   - POST /voiceservice/sessions - [Create Session](#Create-Sessions). Voice service creates a session 
-  - POST /voiceservice/sessions/{sessionId}/questions - [Receive a question](#Receive-a-question).  Voice service receives call question.
+  - POST /voiceservice/sessions/{sessionId}/inputs - [Receive a input](#Receive-a-input).  Voice service receives call input.
   - DELETE /voiceservice/sessions/{sessionId} - [Delete a session](#Delete-a-session). Voice service deletes a session.
 <!--   - POST /voiceservice/sessions/{sessionId}/variables - [Update Variables](#Update-Variables).Receive the variables of the Voice Bot Session -->
 ## Voice Service Notification API   
-  - POST /voiceservice/sessions/{sessionId}/answers - [Voice Service receives answers](#Voice-Service-receives-answers)
+  - POST /voiceservice/sessions/{sessionId}/notifications - [Voice Service receives notifications](#Voice-Service-receives-notifications)
 ## Voice Bot Service API 
   - POST /voicebot/voicebots/{VoicebotId}/sessions  - [Create Session Voice Bot creates session](#Create-A-New-Voice-Bot-Session)
   - POST /voicebot/sessions/{sessionId}/messages - [Voice Bot receive a message](#Voice-Bot-receive-a-message). Voice Bot receives input   
@@ -126,7 +126,7 @@ HTTP/1.1 200 OK
 
 
 ### Receive a question 
-`POST /voiceservice/sessions/{sessionId}/questions`
+`POST /voiceservice/sessions/{sessionId}/inputs`
 
 #### Parameters
 Path parameters 
@@ -161,7 +161,7 @@ The Response body contains data with the following structure:
 
   | Name | Type |  Description |    
   | - | - | :-: | 
-  |`content`  |  [VoiceServiceAction[]](#VoiceServiceAction-Object)  |   |
+  |`content`  |  [VoiceAction[]](#VoiceAction-Object)  |   |
   <!--   |`sessionId` | Guid | the unique id of the call  | -->
 
 Response
@@ -229,9 +229,9 @@ The request body contains data with the follow structure:
   HTTP/1.1 200 OK 
  -->
 
-## Voice Service Input API
-### Voice Service receives answers 
-`POST /voiceservice/sessions/{sessionId}/answers`
+## Voice Service Notification API
+### Voice Service receives notifications 
+`POST /voiceservice/sessions/{sessionId}/notifications`
 
 #### Parameters
 Path parameters 
