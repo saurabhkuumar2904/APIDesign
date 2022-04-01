@@ -7,7 +7,7 @@
 
 ## Voice Channel Adapter API 
 The channelURL can be any valid URL that implements this API, and it is configured in the system when a new channel needs to access. 
-  - POST /{channelURL} - [Channel Adapter receives input](#Channel-Adapter-receives-input). 
+  - POST /{channelURL} - [Channel Adapter receives input](#Voice-Channel-Adapter-receives-input). 
 ## Voice Service Input API  
   - POST /voiceservice/sessions - [Create Session](#Create-Sessions). Voice service creates a session 
   - POST /voiceservice/sessions/{sessionId}/inputs - [Receive a input](#Receive-a-input).  Voice service receives call input.
@@ -27,9 +27,9 @@ Provide STT (Speech to Text) and TTS (Text to Speech) capabilities.
 
 
 # Endpoints
-## Channel Adapter API 
+## Voice Channel Adapter API 
 The ChannelURL can be any valid URL that implements this API, and it is configured in the system when a new channel needs to access.  
-### Channel Adapter receives Input. 
+### Voice Channel Adapter receives Input. 
 `POST /{channelURL}`
 
 
