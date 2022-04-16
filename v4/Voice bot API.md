@@ -601,8 +601,8 @@ Response
   | - | - | :-: | - | 
   | `name` | String  | | Name of the visitor  |
   | `phone` | String  | | Phone of the visitor  |
-  | `state/province` | String  | | State/province of the visitor  |
-  | `country/region` | String  | | Country/region of the visitor  |
+  | `state` | String  | | State/province of the visitor  |
+  | `country` | String  | | Country/region of the visitor  |
   | `city` | String  | | City of the visitor  |
 
 
