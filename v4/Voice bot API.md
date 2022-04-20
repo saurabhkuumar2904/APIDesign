@@ -19,6 +19,9 @@ The channelURL can be any valid URL that implements this API, and it is configur
   - POST /voicebot/voicebots/{VoicebotId}/sessions  - [Create Session Voice Bot creates session](#Create-A-New-Voice-Bot-Session)
   - POST /voicebot/sessions/{sessionId}/messages - [Voice Bot receive a message](#Voice-Bot-receive-a-message). Voice Bot receives input   
   - DELETE /voicebot/sessions/{sessionId} - [Delete Session Voice Bot deletes the session](#Delete-Voice-Bot-session)
+  - POST /voicebot/voicebotCallLog:total - [All Voice Bot Call Log](#Voice-Bot-Call-Log)
+  - GET /voicebot/voicebotCallLog:count - [Get Voice Bot Call Log](#Get-Voice-Bot-Call-Log)
+  - GET /voicebot/GetToken - [Get Token](#Get-Token)
 <!--   - POST /voicebot/sessions/{sessionId}/variables - [Update Variables](#Update-Variable).Receive the variables of the Voice Bot Session -->
 ## STT & TTS API 
 Provide STT (Speech to Text) and TTS (Text to Speech) capabilities. 
@@ -361,6 +364,9 @@ Response
   } 
 ```
 
+
+
+
 ### Delete Voice Bot session 
 `DELETE /voicebot/sessions/{sessionId}`
 
@@ -380,6 +386,119 @@ curl -H "Content-Type: application/json" -d
 #### Response
 
   HTTP/1.1 204 OK 
+
+
+
+### Voice Bot Call Log  
+`POST /voicebot/voicebotCallLog:total`
+
+#### Parameters
+Request body 
+The request body contains data with the follow structure:  
+  | Name | Type | Required | Default | Description |    
+  | - | - | :-: | :-: | - | 
+  | `SiteId` | Int  | Yes | |  Id for the Site  |
+  | `CallingFrom`  |  String   | Yes  |   | The visitor's phone number    |
+  | `Status`  |  String   | Yes  |   |     |
+  | `TransferTo`  |  String   | No  |   | The number to be transferred    |
+  | `CallingTo`  |  String   | Yes  |   | The Voice Bot phone number    |
+  | `StarTime`  |  DateTime   | Yes  |   | Call start time    |
+  | `EndTime`  |  DateTime   | Yes  |   | Call end time    |
+
+
+#### example:
+```Json 
+  { 
+    "SiteId":10000, 
+    "CallingFrom": "+10215846214",
+    "Status": "Completed",
+    "TransferTo": "+15736544228",
+    "CallingTo": "+12012126861",
+    "StarTime": "2022-04-20 12:15:58.145631",
+    "EndTime": "2022-04-20 12:23:21.923631", 
+  }  
+```
+
+#### Response
+The Response body contains data with the following structure:
+
+  | Name | Type |  Description |    
+  | - | - | :-: | 
+  |`CallDuration` | Int | Call duration   |
+  |`BilledCallDuration`  |  Int  |  Billed call duration |
+
+Response
+```Json
+  HTTP/1.1 200 OK 
+  Content-Type:application/json 
+  {     
+    "CallDuration": 206, 
+    "BilledCallDuration": 186
+  } 
+```
+
+
+### Get Voice Bot Call Log 
+`POST /voicebot/voicebotCallLog:count`
+
+#### Parameters
+Path parameters 
+  | Name | Type | Required | Description |    
+  | - | - | :-: | - | 
+  | `StarTime` | DateTime | yes |   |
+  | `DateTime` | DateTime | yes |   |
+  | `SiteId` | DateTime | yes |   |
+
+#### Response
+The Response body contains data with the following structure:
+
+  | Name | Type |  Description |    
+  | - | - | :-: | 
+  |`Total` | Int | Total call duration   |
+  |`CompletedTotal`  |  Int  |  Completed call duration |
+  |`TransferredTotal`  |  Int  |  Transfer call duration |
+
+Response
+```Json
+  HTTP/1.1 200 OK 
+  Content-Type:application/json 
+  {     
+    "Total": 843, 
+    "CompletedTotal": 500,
+    "TransferredTotal": 343
+  } 
+```
+
+### Get Token
+`GET /voicebot/GetToken`
+
+#### Parameters
+Path parameters 
+  | Name | Type | Required | Description |    
+  | - | - | :-: | - | 
+  | `SiteId` | DateTime | yes |   |
+
+
+
+#### Response
+The Response body contains data with the following structure:
+
+  | Name | Type |  Description |    
+  | - | - | :-: | 
+  |`Url` | String |    |
+  |`secret`  |  String  |   |
+  |`ip`  |  String  |   |
+
+Response
+```Json
+  HTTP/1.1 200 OK 
+  Content-Type:application/json 
+  {     
+    "Url": "https://dash11.comm100.io", 
+    "secret": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNyc2Etc2hhMjU2IiwidHlwIjoiSldUIn0.eyJqdGkiOiI0MDZhOWU5Zi1jMjY4LTQzOTktOWQxMi1iYWU0OTk0NjIxZjEiLCJhZ2VudElkIjoiNTU5NWFiZTMtODdhMC00MDJlLWFkYjYtNzNjYzc1Y2U0MjgyIiwic2l0ZUlkIjoiMTAwMDAiLCJ0aHVtYnByaW50IjoiOTYxNjZDQTNCMzRBQkYyRDA0REY5NkEwMTVCQkRERDA5QjBBN0M1OSIsInN1Y2Nlc3MiOiJUcnVlIiwibmJmIjoxNjUwNDIwMjQxLCJleHAiOjE2NTA0Mjc0NDEsImlzcyI6InZvaWNlZGFzaC50ZXN0aW5nLmNvbW0xMDBkZXYuaW8ifQ.FNlReRDZ1G329juwxh1i9PGj4_E0kewmLss1L3M-HwVaPCHNd7DmiQ9KJkakbs3d4XUI3WJmtI4IFCmoMJadguGR_NM3syt1lBcFa9eUPnuESdAamXgN4r3Tg2dHPwb4XCdLcxHjGlek6beG186g2vh-pIdqevAEFzDrZekTmNywT_T6OcEj4TF6Ip1EqA0Nmfk3p_1b7Tk2FHIrb7897bj1UeEA4xDF61xZPz3JcOkBT6aRCq869qATqYMbXsHF3BdHr8wMWlH0glIhtVwBX52IcCPy8A1nKXjs_cujWZtxq9d155w7alMgcWTpmBpUwhaHxGKs4x5_AOCyet1v2Q",
+    "ip": "192.168.0.52"
+  } 
+```
 
 
 ### Update variable  
