@@ -289,7 +289,7 @@ The request body contains data with the follow structure:
       }, 
     "variables": [{ 
         "name":"string", 
-        "value":"string", 
+        "value":"string"
     }] 
   } 
 ```
@@ -415,7 +415,7 @@ The request body contains data with the follow structure:
     "TransferTo": "+15736544228",
     "CallingTo": "+12012126861",
     "StarTime": "2022-04-20 12:15:58.145631",
-    "EndTime": "2022-04-20 12:23:21.923631", 
+    "EndTime": "2022-04-20 12:23:21.923631"
   }  
 ```
 
