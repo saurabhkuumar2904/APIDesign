@@ -21,7 +21,7 @@ The channelURL can be any valid URL that implements this API, and it is configur
   - DELETE /voicebot/sessions/{sessionId} - [Delete Session Voice Bot deletes the session](#Delete-Voice-Bot-session)
   - POST /voicebot/voicebotCallLog:total - [All Voice Bot Call Log](#Voice-Bot-Call-Log)
   - GET /voicebot/voicebotCallLog:count - [Get Voice Bot Call Log](#Get-Voice-Bot-Call-Log)
-  - GET /voicebot/GetToken - [Get Token](#Get-Token)
+  - GET /voicebot/fileservice/token - [Get Token](#Get-Token)
 <!--   - POST /voicebot/sessions/{sessionId}/variables - [Update Variables](#Update-Variable).Receive the variables of the Voice Bot Session -->
 ## STT & TTS API 
 Provide STT (Speech to Text) and TTS (Text to Speech) capabilities. 
@@ -470,7 +470,7 @@ Response
 ```
 
 ### Get Token
-`GET /voicebot/GetToken`
+`GET /voicebot/fileservice/token`
 
 #### Parameters
 Path parameters 
