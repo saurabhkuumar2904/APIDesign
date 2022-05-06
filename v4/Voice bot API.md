@@ -546,6 +546,7 @@ The request body contains data with the follow structure:
   | - | - | :-: | :-: | - | 
   | `config` | [STTVoiceConfig Object](#STTVoiceConfig-Object)  | yes | |  Provides information to the recognizer that specifies how to process the request.    |
   | `audio`  |  string   | yes  |   | The audio data to be recognized.    |
+  | `engine`  |  string   | no  |   | google...    |
 
 
 #### example:
@@ -555,7 +556,8 @@ The request body contains data with the follow structure:
 	"encoding": "AMR" , 
 	"sampleRateHertz": 8000, 
     }, 
-    "audio": "string"
+    "audio": "string",
+    "engine":"string"
   } 
 ```
 
@@ -599,6 +601,8 @@ The request body contains data with the follow structure:
   | `input` | [SynthesisInput](#SynthesisInput)  | yes | |  The Synthesizer requires plain text as input.     |
   | `voice`  |  [VoiceSelectionParams](#VoiceSelectionParams)   | yes  |   | The desired voice of the synthesized audio.     |
   | `voiceConfig`  |  [TTSVoiceConfig Object](#TTSVoiceConfig-Object)   | yes  |   | The configuration of the synthesized audio.     |
+  | `engine`  |  string   | no  |   | google...    |
+
 
 
 #### example:
