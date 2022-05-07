@@ -544,9 +544,9 @@ Request body
 The request body contains data with the follow structure:  
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
-  | `config` | [STTVoiceConfig Object](#STTVoiceConfig-Object)  | yes | |  Provides information to the recognizer that specifies how to process the request.    |
+  | `config` | [STTVoiceConfig](#STTVoiceConfig-Object)  | yes | |  Provides information to the recognizer that specifies how to process the request.    |
   | `audio`  |  string   | yes  |   | The audio data to be recognized.    |
-  | `engine`  |  string   | no  |   | google...    |
+  | `engine`  |  string   | no  | google  | e.g. google    |
 
 
 #### example:
@@ -555,9 +555,9 @@ The request body contains data with the follow structure:
     "config": { 
 	"encoding": "AMR" , 
 	"sampleRateHertz": 8000, 
+	"languageCode": "en-US", 
     }, 
-    "audio": "string",
-    "engine":"string"
+    "audio": "string"    
   } 
 ```
 
@@ -566,7 +566,7 @@ The Response body contains data with the following structure:
 
   | Name | Type |  Description |    
   | - | - | :-: | 
-  |`results[]` | [SpeechRecognitionResult](#SpeechRecognitionResult)  | Sequential list of transcription results corresponding to sequential portions of audio.    |
+  |`results[]` | [SpeechRecognitionResult](#SpeechRecognitionResult-Object)  | Sequential list of transcription results corresponding to sequential portions of audio.    |
 
 Response
 ```Json
@@ -580,8 +580,7 @@ Response
             "transcript": "string", 
             "confidence": 0.8, 
           } 
-        ], 
-        "languageCode": "string" 
+        ]        
       } 
     ] 
   }  
@@ -598,10 +597,9 @@ Request body
 The request body contains data with the follow structure:  
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
-  | `input` | [SynthesisInput](#SynthesisInput)  | yes | |  The Synthesizer requires plain text as input.     |
-  | `voiceSelectionParams`  |  [VoiceSelectionParams](#VoiceSelectionParams)   | yes  |   | The desired voice of the synthesized audio.     |
-  | `config`  |  [TTSVoiceConfig Object](#TTSVoiceConfig-Object)   | yes  |   | The configuration of the synthesized audio.     |
-  | `engine`  |  string   | no  |   | google...    |
+  | `input` | [SynthesisInput](#SynthesisInput-Object)  | yes | |  The Synthesizer requires plain text as input.     |  
+  | `config`  |  [TTSVoiceConfig](#TTSVoiceConfig-Object)   | yes  |   | The configuration of the synthesized audio.     |
+  | `engine`  |  string   | no  | google | e.g. google   |
 
 
 
@@ -611,9 +609,11 @@ The request body contains data with the follow structure:
     "input": { 
       "text": "string", 
     }, 
-    "voice":{ 
+    "config":{ 
+        "encoding":"Mulaw",
+	"sampleRateHertz":8000,
 	"languageCode": "en-US", 
-	"gender": "MALE", 
+	"gender": "MALE", 	
     }    
 } 
 ```
@@ -624,7 +624,7 @@ The Response body contains data with the following structure:
   | Name | Type |  Description |    
   | - | - | :- | 
   |`voiceContent` | string  | The audio data bytes encoded as specified in the request, including the header for encodings that are wrapped in containers (e.g. MP3, OGG_OPUS). For LINEAR16 audio, we include the WAV header. Note: as with all bytes fields, protobuffers use a pure binary representation, whereas JSON representations use base64.A base64-encoded string. |
-  |`voiceConfig` | [VoiceConfig Object](#VoiceConfig-Object)  | A link between a position in the original request input and a corresponding time in the output audio. It is only supported via SSML input.   |
+  |`voiceConfig` | [VoiceConfig](#VoiceConfig-Object)  | A link between a position in the original request input and a corresponding time in the output audio. It is only supported via SSML input.   |
 
 Response
 ```Json
@@ -757,8 +757,10 @@ The FLAC and WAV audio file formats include a header that describes the included
   | - | - | :-: | - | 
   | `encoding` | enum([TTSAudioEncoding](#TTSAudioEncoding))   | | Encoding of audio data. For details, see AudioEncoding.   |
   | `sampleRateHertz` | Int   | | Sample rate in Hertz of the audio data. Valid values are: 8000-48000. 16000 is optimal. For best results, set the sampling rate of the audio source to 16000 Hz. If that is not possible, use the native sample rate of the audio source (instead of re-sampling). This field is optional for FLAC and WAV audio files, but is required for all other audio formats. For details, see AudioEncoding.   |
+  | `languageCode` | String   | | The language of the voice expressed as a BCP-47 language tag, e.g. "en-US".   |
+  | `Gender` | enum   | | MALE, FEMALE.  |
   
-## TTSAudioEncoding 
+## TTSAudioEncoding Object     
 Configuration to set up audio encoder. The encoding determines the output audio format that we'd like. 
   |Enums|   |
   | - | - | 
@@ -769,30 +771,24 @@ Configuration to set up audio encoder. The encoding determines the output audio 
   | `MULAW` | 8-bit samples that compand 14-bit audio samples using G.711 PCMU/mu-law. Audio content returned as MULAW also contains a WAV header.   |
   | `ALAW` | 8-bit samples that compand 14-bit audio samples using G.711 PCMU/A-law. Audio content returned as ALAW also contains a WAV header.   |
     
-## SpeechRecognitionResult
+## SpeechRecognitionResult Object     
   A speech recognition results corresponding to a portion of the audio.  
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
   | `alternatives` | [SpeechRecognitionAlternative](#SpeechRecognitionAlternative)   | | May contain one or more recognition hypotheses (up to the maximum specified in maxAlternatives). These alternatives are ordered in terms of accuracy, with the top (first) alternative being the most probable, as ranked by the recognizer.  |  
 
-## SpeechRecognitionAlternative
+## SpeechRecognitionAlternative Object     
   Alternative hypotheses (a.k.a. n-best list).   
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
   | `transcript` | String   | | Transcript text representing the words that the user spoke.   |
   | `confidence` | Number   | | The confidence estimates between 0.0 and 1.0. A higher number indicates an estimated greater likelihood that the recognized words are correct. This field is set only for the top alternative of a non-streaming result or, of a streaming result where isFinal=true. This field is not guaranteed to be accurate and users should not rely on it to be always provided. The default of 0.0 is a sentinel value indicating confidence was not set.   |
 
-## SynthesisInput
+## SynthesisInput Object     
   Contains text input to be synthesized. The input size is limited to 5000 characters.    
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
   | `text` | String   | | The raw text to be synthesized.  |
-
-## VoiceSelectionParams 
-  |Name| Type | Default | Description | 
-  | - | - | :-: | - | 
-  | `languageCode` | String   | | The language of the voice expressed as a BCP-47 language tag, e.g. "en-US".   |
-  | `Gender` | enum   | | MALE, FEMALE.  |
 
 ## Variable Object     
   |Name| Type | Default | Description | 
