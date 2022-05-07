@@ -599,8 +599,8 @@ The request body contains data with the follow structure:
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
   | `input` | [SynthesisInput](#SynthesisInput)  | yes | |  The Synthesizer requires plain text as input.     |
-  | `voice`  |  [VoiceSelectionParams](#VoiceSelectionParams)   | yes  |   | The desired voice of the synthesized audio.     |
-  | `voiceConfig`  |  [TTSVoiceConfig Object](#TTSVoiceConfig-Object)   | yes  |   | The configuration of the synthesized audio.     |
+  | `voiceSelectionParams`  |  [VoiceSelectionParams](#VoiceSelectionParams)   | yes  |   | The desired voice of the synthesized audio.     |
+  | `config`  |  [TTSVoiceConfig Object](#TTSVoiceConfig-Object)   | yes  |   | The configuration of the synthesized audio.     |
   | `engine`  |  string   | no  |   | google...    |
 
 
@@ -728,11 +728,12 @@ Response
 ## STTVoiceConfig Object
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
-  | `encoding` | enum([AudioEncoding](#STTAudioEncoding-request))   | | Encoding of audio data. For details, see AudioEncoding.   |
+  | `encoding` | enum([STTAudioEncoding](#STTAudioEncoding-Object))   | | Encoding of audio data. For details, see AudioEncoding.   |
   | `sampleRateHertz` | Int   | | Sample rate in Hertz of the audio data. Valid values are: 8000-48000. 16000 is optimal. For best results, set the sampling rate of the audio source to 16000 Hz. If that is not possible, use the native sample rate of the audio source (instead of re-sampling). This field is optional for FLAC and WAV audio files, but is required for all other audio formats. For details, see AudioEncoding.   |
+  | `languageCode`|string|| The language of the voice expressed as a BCP-47 language tag, e.g. "en-US". |
 
 
-## STTAudioEncoding request   
+## STTAudioEncoding Object   
 The encoding of the audio data . 
 
 For best results, the audio source should be captured and transmitted using a lossless encoding (FLAC or LINEAR16). The accuracy of the speech recognition can be reduced if lossy codecs are used to capture or transmit audio, particularly if background noise is present. Lossy codecs include MULAW, AMR, AMR_WB, OGG_OPUS, SPEEX_WITH_HEADER_BYTE, MP3, and WEBM_OPUS. 
@@ -754,10 +755,10 @@ The FLAC and WAV audio file formats include a header that describes the included
 ## TTSVoiceConfig Object
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
-  | `encoding` | enum([AudioEncoding](#TTSAudioEncoding-request))   | | Encoding of audio data. For details, see AudioEncoding.   |
+  | `encoding` | enum([TTSAudioEncoding](#TTSAudioEncoding))   | | Encoding of audio data. For details, see AudioEncoding.   |
   | `sampleRateHertz` | Int   | | Sample rate in Hertz of the audio data. Valid values are: 8000-48000. 16000 is optimal. For best results, set the sampling rate of the audio source to 16000 Hz. If that is not possible, use the native sample rate of the audio source (instead of re-sampling). This field is optional for FLAC and WAV audio files, but is required for all other audio formats. For details, see AudioEncoding.   |
   
-## TTSAudioEncoding request   
+## TTSAudioEncoding 
 Configuration to set up audio encoder. The encoding determines the output audio format that we'd like. 
   |Enums|   |
   | - | - | 
@@ -772,8 +773,7 @@ Configuration to set up audio encoder. The encoding determines the output audio 
   A speech recognition results corresponding to a portion of the audio.  
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
-  | `alternatives` | [SpeechRecognitionAlternative](#SpeechRecognitionAlternative)   | | May contain one or more recognition hypotheses (up to the maximum specified in maxAlternatives). These alternatives are ordered in terms of accuracy, with the top (first) alternative being the most probable, as ranked by the recognizer.  |
-  | `languageCode` | String   | | Output only. The BCP-47 language tag of the language in this result. This language code was detected to have the most likelihood of being spoken in the audio.  |
+  | `alternatives` | [SpeechRecognitionAlternative](#SpeechRecognitionAlternative)   | | May contain one or more recognition hypotheses (up to the maximum specified in maxAlternatives). These alternatives are ordered in terms of accuracy, with the top (first) alternative being the most probable, as ranked by the recognizer.  |  
 
 ## SpeechRecognitionAlternative
   Alternative hypotheses (a.k.a. n-best list).   
