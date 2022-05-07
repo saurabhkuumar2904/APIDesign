@@ -566,7 +566,7 @@ The Response body contains data with the following structure:
 
   | Name | Type |  Description |    
   | - | - | :-: | 
-  |`results[]` | [SpeechRecognitionResult](#SpeechRecognitionResult-Object)  | Sequential list of transcription results corresponding to sequential portions of audio.    |
+  |`results` | [SpeechRecognitionResult[]](#SpeechRecognitionResult-Object)  | Sequential list of transcription results corresponding to sequential portions of audio.    |
 
 Response
 ```Json
