@@ -20,7 +20,7 @@ To integrate your Chatbot with Comm100 Platform, you only need to do the followi
 Create a new Chatbot in the Comm100 Control panel and configure it as follows   
 1. Fill in the Bot name  
 2. Select "Third Party Engine" as the bot Engine  
-3. Fill in your adapter root URI in the "Webhook target URL" input box  
+3. Fill in your adapter root URI in the "Webhook target URL" input box ,The port number of the URL needs to be 80.
 4. Select the Comm100 Live Chat channel   
 ![image](https://user-images.githubusercontent.com/8872646/146148035-2b0d215e-0064-45a2-bcd7-07cbd16356e5.png)
 
