@@ -149,7 +149,7 @@ Response Example
 
 Request body
 
-The request body  is: [ChatbotInput](#chatbotinput-object) Object
+The request body  is: [InteractionRequest](#InteractionRequest-object) Object
 
 example:
 ```Json 
@@ -166,7 +166,7 @@ example:
 ![image](https://user-images.githubusercontent.com/8872646/146140038-e9e1be33-ce9c-4b0f-8b4a-75d4cd63ff75.png)
 
 #### Response
-the response is: [ChatbotOutput](#chatbotoutput-object) Object
+the response is: [InteractionResponse](#InteractionResponse-object) Object
 
 #### Example
 Using curl
