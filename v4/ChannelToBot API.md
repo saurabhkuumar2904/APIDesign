@@ -13,7 +13,7 @@ To integrate your Chatbot with Comm100 Platform, you only need to do the followi
   As shown in the diagram, You need to establish your own Chatbot Adapter, which connects to your BOT Engine service and implements the interfaces in this API documents.
   You can first implement the following two important interfaces and start chatting
   - `POST /chatbotSessions` - [Create a new Chatbot Session](#create-a-new-chatbot-session)
-  - `POST /chatbotSessions/{id}/interactions` - [Send a  Chatbot Input and get a Chatbot Output](#create-a-chatbot-interaction)  
+  - `POST /chatbotSession/{id}/interactions` - [Send a  Chatbot Input and get a Chatbot Output](#create-a-chatbot-interaction)  
   See [API Description](#api-description) for all interface definitions  
   Click [Data Struct](#data-struct) to view key data structure definitions  
 ### 2. Creating a new Comm100 Chatbot and fill in your adapter service base URI
