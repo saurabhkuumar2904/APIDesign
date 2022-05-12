@@ -30,7 +30,7 @@ Create a new Chatbot in the Comm100 Control panel and configure it as follows
   - `POST /chatbotSessions` - [Create a new Chatbot Session](#create-a-new-chatbot-session)
   - `DELETE /chatbotSessions/{SessionId}` - [Delete the Chatbot Session](#delete-the-chatbot-session)
 ## ChatbotInteraction  
-  - `POST /chatbotSessions/{id}/interactions` - [Send a  Chatbot Input and get a Chatbot Output](#create-a-chatbot-interaction)
+  - `POST /chatbotSession/{id}/interactions` - [Send a  Chatbot Input and get a Chatbot Output](#create-a-chatbot-interaction)
 <!-- ## ChatbotSessionVariable -->
 <!--   - `GET /chatbotSessions/{id}/variables` - [get the variables of the Chatbot Session ](#get-the-variables) -->
 <!--   - `PUT /chatbotSessions/{id}/variables` - [Update the variables of the Chatbot Session ](#update-the-variables) -->
