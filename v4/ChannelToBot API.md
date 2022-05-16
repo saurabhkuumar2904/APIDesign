@@ -307,6 +307,7 @@ Response
   HTTP/1.1 200 OK
 ```
  -->
+ 
 # Data Struct
 
    - [ChatbotSession](#chatbotsession)    A ChatbotSession means a Session between the user and the chatbot
