@@ -2,16 +2,17 @@
   | - | - | - | - | - |
   |X2 4.0 | v4 | Bot API | 2021-9-8 | Leon |  
  
- # Summary
+
+ ## Summary
  
- ## Bot Integration Structure Diagram
+ ### Bot Integration Structure Diagram
 ![image](https://user-images.githubusercontent.com/8872646/146502833-661bd26b-2e35-4e71-88af-fea3f1a4a6f7.png)
 
 
-## Integration Steps
+### Integration Steps
 To integrate your Chatbot with Comm100 Platform, you only need to do the following two steps:
 
-### 1. Building Your Bot Adapter Service
+#### 1. Building Your Bot Adapter Service
   As shown in the diagram, You need to establish your own Chatbot Adapter, which connects to your BOT Engine service and implements the interfaces in this API documents.
   You can first implement the following two important interfaces and start chatting
   - `POST /chatbotSessions` - [Create a new Chatbot Session](#create-a-new-chatbot-session)
@@ -19,7 +20,7 @@ To integrate your Chatbot with Comm100 Platform, you only need to do the followi
   See [API Description](#api-description) for all interface definitions  
   Click [Data Struct](#data-struct) to view key data structure definitions  
 
-### 2. Creating a new Comm100 Chatbot and fill in your adapter service base URI
+#### 2. Creating a new Comm100 Chatbot and fill in your adapter service base URI
 Create a new Chatbot in the Comm100 Control panel and configure it as follows   
 1. Fill in the Bot name  
 2. Select "Third Party Engine" as the bot Engine  
@@ -28,19 +29,19 @@ Create a new Chatbot in the Comm100 Control panel and configure it as follows
 ![image](https://user-images.githubusercontent.com/8872646/146148035-2b0d215e-0064-45a2-bcd7-07cbd16356e5.png)
 
 
-# API Description
+## API Description
 
-## ChatbotSession
+### ChatbotSession
   - `POST /chatbotSessions` - [Create a new Chatbot Session](#create-a-new-chatbot-session)
   - `DELETE /chatbotSessions/{SessionId}` - [Delete the Chatbot Session](#delete-the-chatbot-session)
 
-## ChatbotInteraction  
+### ChatbotInteraction  
   - `POST /chatbotSession/{id}/interactions` - [Send a  Chatbot Input and get a Chatbot Output](#create-a-chatbot-interaction)
 <!-- ## ChatbotSessionVariable -->
 <!--   - `GET /chatbotSessions/{id}/variables` - [get the variables of the Chatbot Session ](#get-the-variables) -->
 <!--   - `PUT /chatbotSessions/{id}/variables` - [Update the variables of the Chatbot Session ](#update-the-variables) -->
 
-# Endpoints
+## Endpoints
 
 ### Create A New Chatbot Session
 `POST /chatbotSessions`
@@ -75,7 +76,7 @@ The Response body contains data with the following structure:
   | Name | Type |  Description |    
   | - | - | :-: | 
   |`sessionId` | string | The unique id of the session |
-  |`content`  |  [GeneralResponse](#GeneralResponse-object)[]     |  |
+  |`content`  |  [GeneralResponse](#generalresponse-object)[]     |  |
 
 
 #### Example
@@ -155,7 +156,7 @@ Response Example
 
 Request body
 
-The request body  is: [InteractionRequest](#InteractionRequest-object) Object
+The request body  is: [InteractionRequest](#interactionrequest-object) Object
 
 example:
 ```Json 
@@ -172,7 +173,7 @@ example:
 ![image](https://user-images.githubusercontent.com/8872646/146140038-e9e1be33-ce9c-4b0f-8b4a-75d4cd63ff75.png)
 
 #### Response
-the response is: [InteractionResponse](#InteractionResponse-object) Object
+the response is: [InteractionResponse](#interactionresponse-object) Object
 
 #### Example
 Using curl
@@ -307,8 +308,7 @@ Response
   HTTP/1.1 200 OK
 ```
  -->
- 
-# Data Struct
+## Data Struct
 
    - [ChatbotSession](#chatbotsession)    A ChatbotSession means a Session between the user and the chatbot
      - [ChatbotInteraction](#chatbotinteraction) One ChatbotInteraction means one user input and one Chatbot output
@@ -330,7 +330,7 @@ Response
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
   | `sessionId` | string  | | sessionId |  
-  | `content` | [GeneralResponse](#generalResponse-object)[]  |   |  |
+  | `content` | [GeneralResponse](#generalresponse-object)[]  |   |  |
 
 ### InteractionRequest Object
 
@@ -349,7 +349,7 @@ Response
   |Name| Type | Default | Description | 
   | - | - | :-: | - |   
   | `type` | String  | | 	type of the response,including`text`,`location`,`option`,`form`|
-  | `content` | object  | | [InputText](#inputText-object), [InputLocation](#inputLocation-object), [InputOption](#inputOption-object),[InputForm](#inputform-object)
+  | `content` | object  | | [InputText](#inputtext-object), [InputLocation](#inputlocation-object), [InputOption](#inputoption-object),[InputForm](#inputform-object)
 
 ### InputText Object
   |Name| Type | Default | Description | 
@@ -370,7 +370,7 @@ Response
 ### InputForm Object
   |Name| Type | Default | Description | 
   | - | - | :-: | - |
-  | `formValues` | [FieldValue](#FieldValue-object)[]  | |  an array of [FieldValue](#FieldValue-object) |
+  | `formValues` | [FieldValue](#fieldvalue-object)[]  | |  an array of [FieldValue](#fieldvalue-object) |
   | `action` | string  | | submit, cancel |
   
 ### FieldValue Object
@@ -391,7 +391,7 @@ Response
   |Name| Type| Default | Description     |
   | - | - | :-: | - |
   | `id` | Guid  |  | the unique id of the response |
-  | `content` | [GeneralResponse](#generalResponse-object)[]|  |   |
+  | `content` | [GeneralResponse](#generalresponse-object)[]|  |   |
 
 
 ### GeneralResponse Object
@@ -400,7 +400,7 @@ Response
   |Name| Type| Default | Description     | 
   | - | - | :-: | - | 
   |`type` | string | | type of the response,including `Text`,`QuickReply`、 `Image`、`Video`、`Authentication`,`Location`,`VariableData`,`Form`,`TransferChat`|
-  | `content` | object | |  response's content. when type is `Text`, it represents [OutputText](#outputtext-object); when type is `QuickReply`,it represents [OutputQuickReply](#outputquickreply-object);when type is `Image`,it represents [OutputImage](#outputimage-object);when type is `Video`,it represents [OutputVideo](#outputvideo-object); when type is `Location`, it represents [OutputLocation](#outputLocation-object);when type is `Form`, it represents [OutputForm](#form-object);when type is `TransferChat`, it represents [OutputTransferChat](#transferchat-object); when type is `OutputAudio`, it represents [OutputAudio](#OutputAudio-object);when type is `OutputEndCall`, it represents [OutputEndCall](#OutputEndCall-object);|
+  | `content` | object | |  response's content. when type is `Text`, it represents [OutputText](#outputtext-object); when type is `QuickReply`,it represents [OutputQuickReply](#outputquickreply-object);when type is `Image`,it represents [OutputImage](#outputimage-object);when type is `Video`,it represents [OutputVideo](#outputvideo-object); when type is `Location`, it represents [OutputLocation](#outputlocation-object);when type is `Form`, it represents [OutputForm](#form-object);when type is `TransferChat`, it represents [OutputTransferChat](#transferchat-object); when type is `OutputAudio`, it represents [OutputAudio](#outputaudio-object);when type is `OutputEndCall`, it represents [OutputEndCall](#outputendCall-object);|
   |`delayTime` | decimal | 1 | how many seconds delay to show  |
 
 ### OutputText Object
@@ -411,7 +411,7 @@ Response
   |`message` | string |  | string  |
   |`Links` | [TextLink](#textLink-object)[]|  |   |
 
-#### TextLink Object
+### TextLink Object
 Text Response is represented as simple flat json objects with the following keys:
 
   |Name| Type| Default | Description     | 
@@ -504,7 +504,7 @@ FormReplyResponse is represented as simple flat json objects with the following 
 |`message` | string |   | A separate message which is sent before the form is sent.|
 |`title` | string |  | the title of that form|
 |`isConfirmationRequired` | bool |   | whether visitor needs to click confirm before the form is submitted.|
-|`fields` | [ChatbotActionSendFormField](#ChatbotActionSendFormField-object)[] | | an array of [ChatbotActionSendFormField](#ChatbotActionSendFormField-object)  |
+|`fields` | [ChatbotActionSendFormField](#chatbotactionsendformfield-object)[] | | an array of [ChatbotActionSendFormField](#chatbotactionsendformfield-object)  |
 |`submitButtonText` | string |   | |
 |`cancelButtonText` | string |   | |
 |`confirmButtonText` | string |   | |
@@ -577,5 +577,3 @@ Text Response is represented as simple flat json objects with the following keys
 |`chatRequestingPageUrl` | integer |  |  |
 |`campaignId` | string |  |  |
 |`channelAccountId` | string |  |  |
-
-
