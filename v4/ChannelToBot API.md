@@ -3,12 +3,14 @@
   |X2 4.0 | v4 | Bot API | 2021-9-8 | Leon |  
  
  # Summary
+ 
  ## Bot Integration Structure Diagram
 ![image](https://user-images.githubusercontent.com/8872646/146502833-661bd26b-2e35-4e71-88af-fea3f1a4a6f7.png)
 
 
 ## Integration Steps
 To integrate your Chatbot with Comm100 Platform, you only need to do the following two steps:
+
 ### 1. Building Your Bot Adapter Service
   As shown in the diagram, You need to establish your own Chatbot Adapter, which connects to your BOT Engine service and implements the interfaces in this API documents.
   You can first implement the following two important interfaces and start chatting
@@ -16,6 +18,7 @@ To integrate your Chatbot with Comm100 Platform, you only need to do the followi
   - `POST /chatbotSession/{id}/interactions` - [Send a  Chatbot Input and get a Chatbot Output](#create-a-chatbot-interaction)  
   See [API Description](#api-description) for all interface definitions  
   Click [Data Struct](#data-struct) to view key data structure definitions  
+
 ### 2. Creating a new Comm100 Chatbot and fill in your adapter service base URI
 Create a new Chatbot in the Comm100 Control panel and configure it as follows   
 1. Fill in the Bot name  
@@ -26,9 +29,11 @@ Create a new Chatbot in the Comm100 Control panel and configure it as follows
 
 
 # API Description
+
 ## ChatbotSession
   - `POST /chatbotSessions` - [Create a new Chatbot Session](#create-a-new-chatbot-session)
   - `DELETE /chatbotSessions/{SessionId}` - [Delete the Chatbot Session](#delete-the-chatbot-session)
+
 ## ChatbotInteraction  
   - `POST /chatbotSession/{id}/interactions` - [Send a  Chatbot Input and get a Chatbot Output](#create-a-chatbot-interaction)
 <!-- ## ChatbotSessionVariable -->
@@ -117,6 +122,7 @@ Response
     ]
 }
 ```
+
 ### Delete The Chatbot Session
 `DELETE /chatbotSessions/{ChatbotSessionId}`
 
@@ -308,6 +314,7 @@ Response
        - [ChatbotInput](#chatbotinput-object) One User Input
        - [ChatbotOutput](#chatbotoutput-object) One Chatbot Output
          - [ChatbotResponse](#chatbotresponse-object) One Chatbot output consists of multiple ChatbotResponse
+
 ### CreateChatbotSessionRequest Object
 
   |Name| Type | Default | Description | 
@@ -323,11 +330,13 @@ Response
   | - | - | :-: | - | 
   | `sessionId` | string  | | sessionId |  
   | `content` | [GeneralResponse](#generalResponse-object)[]  |   |  |
+
 ### InteractionRequest Object
 
   |Name| Type | Default | Description | 
   | - | - | :-: | - |   
   | `input` |  [ChatbotInput](#chatbotinput-object)|  |  |  
+
 ### InteractionResponse Object
 
   |Name| Type | Default | Description | 
@@ -341,20 +350,23 @@ Response
   | `type` | String  | | 	type of the response,including`text`,`location`,`option`,`form`|
   | `content` | object  | | [InputText](#inputText-object), [InputLocation](#inputLocation-object), [InputOption](#inputOption-object),[InputForm](#inputform-object)
 
-  ### InputText Object
+### InputText Object
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
   | `text` | String  | |  |
-  ### InputLocation Object
+  
+### InputLocation Object
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
   | `location` | String  | | the longitude and latitude of the location, e.g. "-39.900000,116.300000" |
   | `action` | string  | | submit, cancel |
-  ### InputOption Object
+
+### InputOption Object
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
   | `optionId` | String  | |optionId |
-  ### InputForm Object
+
+### InputForm Object
   |Name| Type | Default | Description | 
   | - | - | :-: | - |
   | `formValues` | [FieldValue](#FieldValue-object)[]  | |  an array of [FieldValue](#FieldValue-object) |
@@ -371,6 +383,7 @@ Response
 | - | - | :-: |  - | 
 |`name` | string |  | the name of a variable in a form. |
 |`value` | string |  | the value of a variable. |
+
 ### ChatbotOutput Object
   ChatbotMessage Object is represented as simple flat JSON objects with the following keys:  
 
@@ -396,7 +409,8 @@ Response
   | - | - | :-: | - | 
   |`message` | string |  | string  |
   |`Links` | [TextLink](#textLink-object)[]|  |   |
- #### TextLink Object
+
+#### TextLink Object
 Text Response is represented as simple flat json objects with the following keys:
 
   |Name| Type| Default | Description     | 
@@ -407,7 +421,8 @@ Text Response is represented as simple flat json objects with the following keys
   |`openStyle` | String |  | full,tall,compact  |
   |`openIn` | String |  | newWindow, sideWindow,currentWindow|
   |`order` | int |  |   |
- ### OutputQuickReply Object
+
+### OutputQuickReply Object
 Text Response is represented as simple flat json objects with the following keys:
 
   |Name| Type| Default | Description     | 
@@ -423,6 +438,7 @@ Text Response is represented as simple flat json objects with the following keys
   | - | - | :-: | - | 
   |`imageUrl` | string |  | string  |
   |`message` | string |  | string  |
+
 ### OutputVideo Object
   Text Response is represented as simple flat json objects with the following keys:
 
@@ -431,7 +447,8 @@ Text Response is represented as simple flat json objects with the following keys
   |`videoUrl` | string |  | string  |
   |`message` | string |  | string  |
 
- ### OutputLocation Object
+
+### OutputLocation Object
 Text Response is represented as simple flat json objects with the following keys:
 
   |Name| Type| Default | Description     | 
@@ -440,7 +457,8 @@ Text Response is represented as simple flat json objects with the following keys
   |`isForce` | bool |  | must location and can not input  text  |
   |`message` | string |  | string  |
 
-  ### OutputTransferChat Object
+
+### OutputTransferChat Object
 Text Response is represented as simple flat json objects with the following keys:
 
   |Name| Type| Default | Description     | 
@@ -514,6 +532,7 @@ Text Response is represented as simple flat json objects with the following keys
   |`order` | int |  |   |
   |`text` | String |  |   |
   |`type` | String | text | type of the option,including `TriggerAnIntent`,`ContactAnAgent`、 `Text`  |
+
 ### SessionVisitorInfo Object
 
 |Name| Type|  Default |  Description     |
