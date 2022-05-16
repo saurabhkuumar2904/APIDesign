@@ -663,14 +663,14 @@ Response
 ## VoicebotAction Object 
   |Name| Type| Default | Description     | 
   | - | - | :-: | - | 
-  | `type` | string | | type of the response,including `PlayAudio`,`PlayText`,`CollectDTMFDigits`,`CollectSpeechResponse`,`IVRMenu`,`TransferChat`, `EndCall`|
+  | `type` | string | | type of the response,including `PlayAudio`,`PlayText`,`CollectDTMFDigits`,`CollectSpeechResponse`,`IVRMenu`,`TransferCall`, `EndCall`|
   | `content` | object | |  response's content. when type is `PlayAudio`, it represents [PlayAudio](#PlayAudio-object); when type is `PlayText`,it represents [PlayText](#PlayText-object);when type is `CollectDTMFDigits`,it represents [CollectDTMFDigits](#CollectDTMFDigits-object); when type is `CollectSpeechResponse`, it represents [CollectSpeechResponse](#CollectSpeechResponse-object);when type is `EndCall`, it represents [EndCall](#EndCall-object);when type is `IVRMenu`, it represents [IVRMenu](#IVRMenu-object);when type is `TransferCall`, it represents [TransferCall](#TransferCall-object);|
   
   ## VoiceAction Object 
   |Name| Type| Default | Description     | 
   | - | - | :-: | - | 
-  | `type` | string | | type of the response,including `PlayAudioAction`,`CollectDTMFDigitsAction`,`TransferChatAction`, `EndCallAction`|
-  | `content` | object | |  response's content. when type is `PlayAudioAction`, it represents [PlayAudioAction](#PlayAudioAction-object);when type is `CollectDTMFDigitsAction`,it represents [CollectDTMFDigitsAction](#CollectDTMFDigitsAction-object); when type is `EndCallAction`, it represents [EndCallAction](#EndCallAction-object);when type is `TransferChatAction`, it represents [TransferChatAction](#TransferChatAction-object);|
+  | `type` | string | | type of the response,including `PlayAudioAction`,`CollectDTMFDigitsAction`,`TransferCallAction`, `EndCallAction`|
+  | `content` | object | |  response's content. when type is `PlayAudioAction`, it represents [PlayAudioAction](#PlayAudioAction-object);when type is `CollectDTMFDigitsAction`,it represents [CollectDTMFDigitsAction](#CollectDTMFDigitsAction-object); when type is `EndCallAction`, it represents [EndCallAction](#EndCallAction-object);when type is `TransferCallAction`, it represents [TransferCallAction](#TransferCallAction-object);|
 
 ## PlayAudio Object  
   Text Response is represented as simple flat json objects with the following keys: 
@@ -816,7 +816,7 @@ Configuration to set up audio encoder. The encoding determines the output audio 
   | `numberOfDigits` | String  | | Enumeration. 1, 2, … 29, 30, Variable. The number of digits entered by the caller in dialer. Default: Not sure. |
   | `stopGatherAfterPresskey` | String  | | Enumeration. *, #. Available when Number of Digits is Not sure.  |
   
-  ## TransferChatAction Object   
+  ## TransferCallAction Object   
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
   | `transferTo` | String  | | Support Phone Number and Sip URI.  |
