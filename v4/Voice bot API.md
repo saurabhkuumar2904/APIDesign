@@ -6,15 +6,19 @@
 # Summary
 
 ## Voice Channel Adapter API 
+
 The channelURL can be any valid URL that implements this API, and it is configured in the system when a new channel needs to access. 
   - POST /{channelURL} - [Voice Channel Adapter receives input](#Voice-Channel-Adapter-receives-input). 
+
 ## Voice Service Input API  
   - POST /voiceservice/sessions - [Create Session](#Create-Sessions). Voice service creates a session 
   - POST /voiceservice/sessions/{sessionId}/inputs - [Receive a input](#Receive-a-input).  Voice service receives call input.
   - DELETE /voiceservice/sessions/{sessionId} - [Delete a session](#Delete-a-session). Voice service deletes a session.
 <!--   - POST /voiceservice/sessions/{sessionId}/variables - [Update Variables](#Update-Variables).Receive the variables of the Voice Bot Session -->
+
 ## Voice Service Notification API   
   - POST /voiceservice/sessions/{sessionId}/notifications - [Voice Service receives notifications](#Voice-Service-receives-notifications)
+
 ## Voice Bot Service API 
   - POST /voicebot/voicebots/{VoicebotId}/sessions  - [Create Session Voice Bot creates session](#Create-A-New-Voice-Bot-Session)
   - POST /voicebot/sessions/{sessionId}/messages - [Voice Bot receive a message](#Voice-Bot-receive-a-message). Voice Bot receives input   
@@ -23,6 +27,7 @@ The channelURL can be any valid URL that implements this API, and it is configur
   - GET /voicebot/voicebotCallLog:count - [Get Voice Bot Call Log](#Get-Voice-Bot-Call-Log)
   - GET /voicebot/fileservice/token - [Get Token](#Get-Token)
 <!--   - POST /voicebot/sessions/{sessionId}/variables - [Update Variables](#Update-Variable).Receive the variables of the Voice Bot Session -->
+
 ## STT & TTS API 
 Provide STT (Speech to Text) and TTS (Text to Speech) capabilities. 
   - POST /stttts/stt:speechToText - [Speech To Text](#Speech-To-Text) 
@@ -30,8 +35,10 @@ Provide STT (Speech to Text) and TTS (Text to Speech) capabilities.
 
 
 # Endpoints
+
 ## Voice Channel Adapter API 
 The ChannelURL can be any valid URL that implements this API, and it is configured in the system when a new channel needs to access.  
+
 ### Voice Channel Adapter receives Input. 
 `POST /{channelURL}`
 
@@ -69,6 +76,7 @@ Response
 HTTP/1.1 200 OK 
 
 ## Voice Service API 
+
 ### Create Sessions 
 `POST /voiceservice/sessions`
 
@@ -233,6 +241,7 @@ The request body contains data with the follow structure:
  -->
 
 ## Voice Service Notification API
+
 ### Voice Service receives notifications 
 `POST /voiceservice/sessions/{sessionId}/notifications`
 
@@ -264,6 +273,7 @@ The Request body contains data with the following structure:
 HTTP/1.1 200 OK
 
 ## Voice Bot Service API 
+
 ### Create A New Voice Bot Session  
 `POST /voicebot/voicebots/{VoicebotId}/sessions`
 
@@ -533,6 +543,7 @@ HTTP/1.1 200 OK
 
 
 ## STT & TTS API  
+
 ### Speech To Text  
 Performs synchronous speech recognition: receive results after all audio has been sent and processed.
 
@@ -653,7 +664,7 @@ Response
   |Name| Type| Default | Description     | 
   | - | - | :-: | - | 
   | `type` | string | | type of the response,including `PlayAudio`,`PlayText`,`CollectDTMFDigits`,`CollectSpeechResponse`,`IVRMenu`,`TransferChat`, `EndCall`|
-  | `content` | object | |  response's content. when type is `PlayAudio`, it represents [PlayAudio](#PlayAudio-object); when type is `PlayText`,it represents [PlayText](#PlayText-object);when type is `CollectDTMFDigits`,it represents [CollectDTMFDigits](#CollectDTMFDigits-object); when type is `CollectSpeechResponse`, it represents [CollectSpeechResponse](#CollectSpeechResponse-object);when type is `EndCall`, it represents [EndCall](#EndCall-object);when type is `IVRMenu`, it represents [IVRMenu](#IVRMenu-object);when type is `TransferChat`, it represents [TransferChat](#TransferChat-object);|
+  | `content` | object | |  response's content. when type is `PlayAudio`, it represents [PlayAudio](#PlayAudio-object); when type is `PlayText`,it represents [PlayText](#PlayText-object);when type is `CollectDTMFDigits`,it represents [CollectDTMFDigits](#CollectDTMFDigits-object); when type is `CollectSpeechResponse`, it represents [CollectSpeechResponse](#CollectSpeechResponse-object);when type is `EndCall`, it represents [EndCall](#EndCall-object);when type is `IVRMenu`, it represents [IVRMenu](#IVRMenu-object);when type is `TransferCall`, it represents [TransferCall](#TransferCall-object);|
   
   ## VoiceAction Object 
   |Name| Type| Default | Description     | 
@@ -694,7 +705,7 @@ Response
   | `confirmationText` | String  | | Visitor can speak the text to confirm the input. This text will not be read to visitors.   |
   | `confirmationKey` | int  | | Enumeration. 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, *, #. Visitor can press the key to confirm.   |
 
-## TransferChat Object   
+## TransferCall Object   
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
   | `transferTo` | String  | | Support Phone Number and Sip URI.  |
@@ -791,7 +802,7 @@ Configuration to set up audio encoder. The encoding determines the output audio 
   | `name` | String   | | the name of a variable in a form.  |
   | `value` | String  | | the value of a variable.  |
   
-  ## PlayAudioAction Object  
+## PlayAudioAction Object  
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
   | `type` | String  | Required| type of the response,including `voice`,`url`|
