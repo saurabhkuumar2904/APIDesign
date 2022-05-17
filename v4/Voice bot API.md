@@ -49,13 +49,13 @@ Request body the request body contains data with the following structure:
 Request body is Voice Message Object 
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
-  | `channelIdentifier` | string | yes | |  channelIdentifier .  |
-  |`content`  |  [VoiceAction[]](#VoiceAction-Object)  |yes |   |  |
+  | `sessionId` | string | yes | |  channelIdentifier .  |
+  | `content`  |  [VoiceAction[]](#VoiceAction-Object)  |yes |   |  |
 
 #### example:
 ```Json 
   {     
-          "channelIdentifier":"d3f5b968-ad51-42af-b759-64c0afc40b84", 
+          "sessionId":"d3f5b968-ad51-42af-b759-64c0afc40b84", 
           "content": [{ 
 	        "type":"playAudioAction",
 		"content":{ 
