@@ -152,7 +152,8 @@ The request body contains data with the follow structure:
   | `type` | string | yes | |  type of the response, including textInput, voiceInput   |
   | `textInput`  |  string  | When type is textInput  |   | Text input to voice robot   |
   | `voiceInput`  |  string  | When type is voiceInput  |   | The audio data bytes encoded as specified in VoiceConfig. Note: as with all bytes fields, proto buffers use a pure binary representation, whereas JSON representations use base64.A base64-encoded string.  |
-  | `voiceConfig`  |  [VoiceConfig Object](#VoiceConfig-Object)  | When type is voiceInput  |   | Provides information to the recognizer that specifies how to process the request.  |
+  | `sttVoiceConfig`  |  [STTVoiceConfig Object](#STTVoiceConfig-Object)  | When type is voiceInput  |   | Provides information to the recognizer that specifies how to process the request.  |
+  | `ttsVoiceConfig`  |  [TTSVoiceConfig Object](#TTSVoiceConfig-Object)  | text to speech |   | The configuration of the response audio.  |
 <!--   | `isTransferFailed`  |  bool  | When type is chatTransferStatus  |   | If the bot Transfer Chat to agent failed  | -->
 
 #### example:
@@ -160,10 +161,14 @@ The request body contains data with the follow structure:
 {  
 	"type":"voiceInput",  
 	"voiceInput":"string", 
-    	"voiceConfig":{ 
+    	"sttVoiceConfig":{ 
       		"encoding": "AMR" , 
       		"sampleRateHertz": 8000, 
-	   } 
+	   } ,
+	 "ttsVoiceConfig":{ 
+      		"encoding": "AMR" , 
+      		"sampleRateHertz": 8000, 
+	   }    
 } 
 ```
 
