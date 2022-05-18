@@ -348,8 +348,10 @@ Request body
 The request body contains data with the follow structure:  
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
-  | `textInput` | String  | No | |  Text input to voice robot    |
+  | `textInput` | String  | Yes | |  Text input to voice robot    |
   | `isTransferFailed`  |  Bool   | No  |   | If the bot Transfer Chat to agent failed    |
+  | `isLowSTTConfidence`  |  Bool   | No  |   | If the STT is low confidence    |
+
 
 
 #### example:
