@@ -89,6 +89,7 @@ Request body the request body contains data with the following structure:
   |`channelIdentifier`  |  string  |yes |   | The Unique ID corresponding to voicebotId,such as phone number，SIP URI  |
   |`visitor`  |  [Visitor Object](#Visitor-Object)  |no |   | visitor information |
   |`variables`  |  [Variable[]](#Variable-Object)  |no |   | Variables |
+  |`ttsVoiceConfig`  |  [TTSVoiceConfig Object](#TTSVoiceConfig-Object)  | text to speech |   | The configuration of the response audio.  |
 
 #### example:
 ```Json 
