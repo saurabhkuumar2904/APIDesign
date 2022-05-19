@@ -2,39 +2,38 @@
   | - | - | - | - | - |- |
   | 2.0 | v1 | Voice Bot API | 2022-3-18 | Leon，Carl，Page，Zack |  Allon|
 
+## Summary
 
-# Summary
-
-## Voice Channel Adapter API 
+### Voice Channel Adapter API 
 
 The channelURL can be any valid URL that implements this API, and it is configured in the system when a new channel needs to access. 
-  - POST /{channelURL} - [Voice Channel Adapter receives input](#Voice-Channel-Adapter-receives-input). 
+  - POST /{channelURL} - [Voice Channel Adapter receives input](#voice-channel-adapter-receives-input). 
 
-## Voice Service Input API  
-  - POST /voiceservice/sessions - [Create Session](#Create-Sessions). Voice service creates a session 
-  - POST /voiceservice/sessions/{sessionId}/inputs - [Receive a input](#Receive-a-input).  Voice service receives call input.
-  - DELETE /voiceservice/sessions/{sessionId} - [Delete a session](#Delete-a-session). Voice service deletes a session.
-<!--   - POST /voiceservice/sessions/{sessionId}/variables - [Update Variables](#Update-Variables).Receive the variables of the Voice Bot Session -->
+### Voice Service Input API  
+  - POST /voiceservice/sessions - [Create Session](#create-sessions). Voice service creates a session 
+  - POST /voiceservice/sessions/{sessionId}/inputs - [Receive a input](#receive-a-input).  Voice service receives call input.
+  - DELETE /voiceservice/sessions/{sessionId} - [Delete a session](#delete-a-session). Voice service deletes a session.
+<!--   - POST /voiceservice/sessions/{sessionId}/variables - [Update Variables](#update-variables).Receive the variables of the Voice Bot Session -->
 
-## Voice Service Notification API   
-  - POST /voiceservice/sessions/{sessionId}/notifications - [Voice Service receives notifications](#Voice-Service-receives-notifications)
+### Voice Service Notification API   
+  - POST /voiceservice/sessions/{sessionId}/notifications - [Voice Service receives notifications](#voice-service-receives-notifications)
 
-## Voice Bot Service API 
-  - POST /voicebot/voicebots/{VoicebotId}/sessions  - [Create Session Voice Bot creates session](#Create-A-New-Voice-Bot-Session)
-  - POST /voicebot/sessions/{sessionId}/messages - [Voice Bot receive a message](#Voice-Bot-receive-a-message). Voice Bot receives input   
-  - DELETE /voicebot/sessions/{sessionId} - [Delete Session Voice Bot deletes the session](#Delete-Voice-Bot-session)
-  - POST /voicebot/voicebotCallLog:total - [All Voice Bot Call Log](#Voice-Bot-Call-Log)
-  - GET /voicebot/voicebotCallLog:count - [Get Voice Bot Call Log](#Get-Voice-Bot-Call-Log)
-  - GET /voicebot/fileservice/token - [Get Token](#Get-Token)
-<!--   - POST /voicebot/sessions/{sessionId}/variables - [Update Variables](#Update-Variable).Receive the variables of the Voice Bot Session -->
+### Voice Bot Service API 
+  - POST /voicebot/voicebots/{VoicebotId}/sessions  - [Create Session Voice Bot creates session](#create-a-new-voice-bot-session)
+  - POST /voicebot/sessions/{sessionId}/messages - [Voice Bot receive a message](#voice-bot-receive-a-message). Voice Bot receives input   
+  - DELETE /voicebot/sessions/{sessionId} - [Delete Session Voice Bot deletes the session](#delete-voice-bot-session)
+  - POST /voicebot/voicebotCallLog:total - [All Voice Bot Call Log](#voice-bot-call-log)
+  - GET /voicebot/voicebotCallLog:count - [Get Voice Bot Call Log](#get-voice-bot-call-log)
+  - GET /voicebot/fileservice/token - [Get Token](#get-token)
+<!--   - POST /voicebot/sessions/{sessionId}/variables - [Update Variables](#update-variable).Receive the variables of the Voice Bot Session -->
 
-## STT & TTS API 
+### STT & TTS API 
 Provide STT (Speech to Text) and TTS (Text to Speech) capabilities. 
-  - POST /stttts/stt:speechToText - [Speech To Text](#Speech-To-Text) 
-  - POST /stttts/tts:textToSpeech - [Text To Speech](#Text-To-Speech)
+  - POST /stttts/stt:speechToText - [Speech To Text](#speech-to-text) 
+  - POST /stttts/tts:textToSpeech - [Text To Speech](#text-to-speech)
 
 
-# Endpoints
+## Endpoints
 
 ## Voice Channel Adapter API 
 The ChannelURL can be any valid URL that implements this API, and it is configured in the system when a new channel needs to access.  
@@ -50,8 +49,8 @@ Request body is Voice Message Object
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
   | `sessionId` | string | yes | |  channelIdentifier .  |
-  | `content`  |  [VoiceAction[]](#VoiceAction-Object)  |yes |   |  |
-
+  | `content`  |  [VoiceAction](#voiceaction-object)[]  |yes |   |  |
+  
 #### example:
 ```Json 
   {     
@@ -87,9 +86,9 @@ Request body the request body contains data with the following structure:
   | - | - | :-: | :-: | - | 
   | `channel` | string | yes | |  type of the response, including `Twilio`, `SIP`  |
   |`channelIdentifier`  |  string  |yes |   | The Unique ID corresponding to voicebotId,such as phone number，SIP URI  |
-  |`visitor`  |  [Visitor Object](#Visitor-Object)  |no |   | visitor information |
-  |`variables`  |  [Variable[]](#Variable-Object)  |no |   | Variables |
-  |`ttsVoiceConfig`  |  [TTSVoiceConfig Object](#TTSVoiceConfig-Object)  | text to speech |   | The configuration of the response audio.  |
+  |`visitor`  |  [Visitor](#visitor-object) Object |no |   | visitor information |
+  |`variables`  |  [Variable](#variable-object)[]  |no |   | Variables |
+  |`ttsVoiceConfig`  |  [TTSVoiceConfig](#ttsvoiceconfig-object) Object | text to speech |   | The configuration of the response audio.  |
 
 #### example:
 ```Json 
@@ -112,7 +111,7 @@ The Response body contains data with the following structure:
   | Name | Type |  Description |    
   | - | - | :-: | 
   |`sessionId` | Guid | the unique id of the call  |
-  |`content`  |  [VoiceAction[]](#VoiceAction-Object)  | Greeting output  |
+  |`content`  |  [VoiceAction](#voiceaction-object)[]  | Greeting output  |
 
 Response
 ```Json
@@ -153,8 +152,8 @@ The request body contains data with the follow structure:
   | `type` | string | yes | |  type of the response, including textInput, voiceInput   |
   | `textInput`  |  string  | When type is textInput  |   | Text input to voice robot   |
   | `voiceInput`  |  string  | When type is voiceInput  |   | The audio data bytes encoded as specified in VoiceConfig. Note: as with all bytes fields, proto buffers use a pure binary representation, whereas JSON representations use base64.A base64-encoded string.  |
-  | `sttVoiceConfig`  |  [STTVoiceConfig Object](#STTVoiceConfig-Object)  | When type is voiceInput  |   | Provides information to the recognizer that specifies how to process the request.  |
-  | `ttsVoiceConfig`  |  [TTSVoiceConfig Object](#TTSVoiceConfig-Object)  | text to speech |   | The configuration of the response audio.  |
+  | `sttVoiceConfig`  |  [STTVoiceConfig](#sttvoiceconfig-object) Object | When type is voiceInput  |   | Provides information to the recognizer that specifies how to process the request.  |
+  | `ttsVoiceConfig`  |  [TTSVoiceConfig](#ttsvoiceconfig-object) Object  | text to speech |   | The configuration of the response audio.  |
 <!--   | `isTransferFailed`  |  bool  | When type is chatTransferStatus  |   | If the bot Transfer Chat to agent failed  | -->
 
 #### example:
@@ -178,7 +177,7 @@ The Response body contains data with the following structure:
 
   | Name | Type |  Description |    
   | - | - | :-: | 
-  |`content`  |  [VoiceAction[]](#VoiceAction-Object)  |   |
+  |`content`  |  [VoiceAction](#voiceaction-object)[]  |   |
   <!--   |`sessionId` | Guid | the unique id of the call  | -->
 
 Response
@@ -228,7 +227,7 @@ Request body
 The request body contains data with the follow structure:  
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
-  | `variables` | [Variable[]](#Variable-Object)  | yes | |  Variables  |
+  | `variables` | [Variable](#variable-object)[]   | yes | |  Variables  |
 
 #### example:
 ```Json 
@@ -261,7 +260,7 @@ Request body
 The Request body contains data with the following structure:  
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
-  | `content` | [VoiceBotAction[]](#VoiceBotAction-Object) | yes | |    |
+  | `content` | [VoiceBotAction](#voicebotaction-object)[] | yes | |    |
 
 #### example:
 ```Json 
@@ -293,8 +292,8 @@ Request body
 The request body contains data with the follow structure:  
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
-  | `visitor` | [Visitor Object](#Visitor-Object)  | No | |  Visitor information.   |
-  | `variables`  |  [Variable[]](#Variable-Object)   | No  |   | Variables    |
+  | `visitor` | [Visitor](#visitor-object) Object | No | |  Visitor information.   |
+  | `variables`  |  [Variable](#variable-object)[]   | No  |   | Variables    |
 
 
 #### example:
@@ -316,7 +315,7 @@ The Response body contains data with the following structure:
   | Name | Type |  Description |    
   | - | - | :-: | 
   |`sessionId` | Guid | the unique id of the session   |
-  |`content`  |  [VoiceBotAction[]](#VoiceBotAction-Object)  |   |
+  |`content`  |  [VoiceBotAction](#voicebotaction-object)[]  |   |
 
 Response
 ```Json
@@ -532,7 +531,7 @@ Request body
 The request body contains data with the follow structure:  
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
-  | `variables` | [Variable[]](#Variable-Object)  | Yes | |  Variables    |
+  | `variables` | [Variable](#variable-object)[]  | Yes | |  Variables    |
 
 
 #### example:
@@ -563,7 +562,7 @@ Request body
 The request body contains data with the follow structure:  
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
-  | `config` | [STTVoiceConfig](#STTVoiceConfig-Object)  | yes | |  Provides information to the recognizer that specifies how to process the request.    |
+  | `config` | [STTVoiceConfig](#sttvoiceconfig-object) Object  | yes | |  Provides information to the recognizer that specifies how to process the request.    |
   | `audio`  |  string   | yes  |   | The audio data to be recognized.    |
   | `engine`  |  string   | no  | google  | e.g. google    |
 
@@ -585,7 +584,7 @@ The Response body contains data with the following structure:
 
   | Name | Type |  Description |    
   | - | - | :-: | 
-  |`results` | [SpeechRecognitionResult[]](#SpeechRecognitionResult-Object)  | Sequential list of transcription results corresponding to sequential portions of audio.    |
+  |`results` | [SpeechRecognitionResult](#speechrecognitionresult-object)[]  | Sequential list of transcription results corresponding to sequential portions of audio.    |
 
 Response
 ```Json
@@ -616,8 +615,8 @@ Request body
 The request body contains data with the follow structure:  
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
-  | `input` | [SynthesisInput](#SynthesisInput-Object)  | yes | |  The Synthesizer requires plain text as input.     |  
-  | `config`  |  [TTSVoiceConfig](#TTSVoiceConfig-Object)   | yes  |   | The configuration of the synthesized audio.     |
+  | `input` | [SynthesisInput](#synthesisinput-object) Object | yes | |  The Synthesizer requires plain text as input.     |  
+  | `config`  |  [TTSVoiceConfig](#ttsvoiceconfig-object) Object  | yes  |   | The configuration of the synthesized audio.     |
   | `engine`  |  string   | no  | google | e.g. google   |
 
 
@@ -660,7 +659,7 @@ Response
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
   | `id` | Guid  | | |
-  |`content`  |  [VoiceAction](#voiceAction-object)[]    |  |
+  |`content`  |  [VoiceAction](#voiceaction-object)[]    |  |
 
 ## VoicebotOutput Object 
   |Name| Type | Default | Description | 
@@ -672,13 +671,13 @@ Response
   |Name| Type| Default | Description     | 
   | - | - | :-: | - | 
   | `type` | string | | type of the response,including `PlayAudio`,`PlayText`,`CollectDTMFDigits`,`CollectSpeechResponse`,`IVRMenu`,`TransferCall`, `EndCall`|
-  | `content` | object | |  response's content. when type is `PlayAudio`, it represents [PlayAudio](#PlayAudio-object); when type is `PlayText`,it represents [PlayText](#PlayText-object);when type is `CollectDTMFDigits`,it represents [CollectDTMFDigits](#CollectDTMFDigits-object); when type is `CollectSpeechResponse`, it represents [CollectSpeechResponse](#CollectSpeechResponse-object);when type is `EndCall`, it represents [EndCall](#EndCall-object);when type is `IVRMenu`, it represents [IVRMenu](#IVRMenu-object);when type is `TransferCall`, it represents [TransferCall](#TransferCall-object);|
+  | `content` | object | |  response's content. when type is `PlayAudio`, it represents [PlayAudio](#playaudio-object); when type is `PlayText`,it represents [PlayText](#playtext-object);when type is `CollectDTMFDigits`,it represents [CollectDTMFDigits](#collectdtmfdigits-object); when type is `CollectSpeechResponse`, it represents [CollectSpeechResponse](#collectspeechresponse-object);when type is `EndCall`, it represents [EndCall](#endcall-object);when type is `IVRMenu`, it represents [IVRMenu](#ivrmenu-object);when type is `TransferCall`, it represents [TransferCall](#transfercall-object);|
   
   ## VoiceAction Object 
   |Name| Type| Default | Description     | 
   | - | - | :-: | - | 
   | `type` | string | | type of the response,including `PlayAudioAction`,`CollectDTMFDigitsAction`,`TransferCallAction`, `EndCallAction`|
-  | `content` | object | |  response's content. when type is `PlayAudioAction`, it represents [PlayAudioAction](#PlayAudioAction-object);when type is `CollectDTMFDigitsAction`,it represents [CollectDTMFDigitsAction](#CollectDTMFDigitsAction-object); when type is `EndCallAction`, it represents [EndCallAction](#EndCallAction-object);when type is `TransferCallAction`, it represents [TransferCallAction](#TransferCallAction-object);|
+  | `content` | object | |  response's content. when type is `PlayAudioAction`, it represents [PlayAudioAction](#playaudioaction-object);when type is `CollectDTMFDigitsAction`,it represents [CollectDTMFDigitsAction](#collectdtmfdigitsaction-object); when type is `EndCallAction`, it represents [EndCallAction](#endcallaction-object);when type is `TransferCallAction`, it represents [TransferCallAction](#transfercallaction-object);|
 
 ## PlayAudio Object  
   Text Response is represented as simple flat json objects with the following keys: 
@@ -742,7 +741,7 @@ Response
 ## STTVoiceConfig Object
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
-  | `encoding` | enum([STTAudioEncoding](#STTAudioEncoding-Object))   | | Encoding of audio data. For details, see AudioEncoding.   |
+  | `encoding` | enum([STTAudioEncoding](#sttaudioencoding-object))   | | Encoding of audio data. For details, see AudioEncoding.   |
   | `sampleRateHertz` | Int   | | Sample rate in Hertz of the audio data. Valid values are: 8000-48000. 16000 is optimal. For best results, set the sampling rate of the audio source to 16000 Hz. If that is not possible, use the native sample rate of the audio source (instead of re-sampling). This field is optional for FLAC and WAV audio files, but is required for all other audio formats. For details, see AudioEncoding.   |
   | `languageCode`|string|| The language of the voice expressed as a BCP-47 language tag, e.g. "en-US". |
 
@@ -769,7 +768,7 @@ The FLAC and WAV audio file formats include a header that describes the included
 ## TTSVoiceConfig Object
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
-  | `encoding` | enum([TTSAudioEncoding](#TTSAudioEncoding))   | | Encoding of audio data. For details, see AudioEncoding.   |
+  | `encoding` | enum([TTSAudioEncoding](#ttsaudioencoding-object))   | | Encoding of audio data. For details, see AudioEncoding.   |
   | `sampleRateHertz` | Int   | | Sample rate in Hertz of the audio data. Valid values are: 8000-48000. 16000 is optimal. For best results, set the sampling rate of the audio source to 16000 Hz. If that is not possible, use the native sample rate of the audio source (instead of re-sampling). This field is optional for FLAC and WAV audio files, but is required for all other audio formats. For details, see AudioEncoding.   |
   | `languageCode` | String   | | The language of the voice expressed as a BCP-47 language tag, e.g. "en-US".   |
   | `Gender` | enum   | | MALE, FEMALE.  |
@@ -789,7 +788,7 @@ Configuration to set up audio encoder. The encoding determines the output audio 
   A speech recognition results corresponding to a portion of the audio.  
   |Name| Type | Default | Description | 
   | - | - | :-: | - | 
-  | `alternatives` | [SpeechRecognitionAlternative](#SpeechRecognitionAlternative)   | | May contain one or more recognition hypotheses (up to the maximum specified in maxAlternatives). These alternatives are ordered in terms of accuracy, with the top (first) alternative being the most probable, as ranked by the recognizer.  |  
+  | `alternatives` | [SpeechRecognitionAlternative](#speechrecognitionalternative-object)   | | May contain one or more recognition hypotheses (up to the maximum specified in maxAlternatives). These alternatives are ordered in terms of accuracy, with the top (first) alternative being the most probable, as ranked by the recognizer.  |  
 
 ## SpeechRecognitionAlternative Object     
   Alternative hypotheses (a.k.a. n-best list).   
@@ -815,7 +814,7 @@ Configuration to set up audio encoder. The encoding determines the output audio 
   | - | - | :-: | - | 
   | `type` | String  | Required| type of the response,including `voice`,`url`|
   | `voice` | string | Required when type is `voice`| The audio data bytes encoded as specified in VoiceConfig. Note: as with all bytes fields, proto buffers use a pure binary representation, whereas JSON representations use base64.A base64-encoded string. |
-  | `voiceConfig` | [VoiceConfig Object](#VoiceConfig-Object)  |Required when type is `voice` | The encoding of the voice data sent in the request. |
+  | `voiceConfig` | [TTSVoiceConfig](#ttsvoiceconfig-object) Object  |Required when type is `voice` | The encoding of the voice data sent in the request. |
   | `audioPath` | String  |Required when type is `url` | the audio file url  |
   
   ## CollectDTMFDigitsAction Object   
