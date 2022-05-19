@@ -22,9 +22,9 @@ The channelURL can be any valid URL that implements this API, and it is configur
   - POST /voicebot/voicebots/{VoicebotId}/sessions  - [Create Session Voice Bot creates session](#create-a-new-voice-bot-session)
   - POST /voicebot/sessions/{sessionId}/messages - [Voice Bot receive a message](#voice-bot-receive-a-message). Voice Bot receives input   
   - DELETE /voicebot/sessions/{sessionId} - [Delete Session Voice Bot deletes the session](#delete-voice-bot-session)
-  - POST /voicebot/voicebotCallLog:total - [All Voice Bot Call Log](#voice-bot-call-log)
-  - GET /voicebot/voicebotCallLog:count - [Get Voice Bot Call Log](#get-voice-bot-call-log)
-  - GET /voicebot/fileservice/token - [Get Token](#get-token)
+<!--   - POST /voicebot/voicebotCallLog:total - [All Voice Bot Call Log](#voice-bot-call-log) -->
+<!--   - GET /voicebot/voicebotCallLog:count - [Get Voice Bot Call Log](#get-voice-bot-call-log) -->
+<!--   - GET /voicebot/fileservice/token - [Get Token](#get-token) -->
 <!--   - POST /voicebot/sessions/{sessionId}/variables - [Update Variables](#update-variable).Receive the variables of the Voice Bot Session -->
 
 ### STT & TTS API 
@@ -405,7 +405,7 @@ curl -H "Content-Type: application/json" -d
   HTTP/1.1 204 OK 
 
 
-
+<!--
 ### Voice Bot Call Log  
 `POST /voicebot/voicebotCallLog:total`
 
@@ -547,6 +547,7 @@ The request body contains data with the follow structure:
 #### Response
 HTTP/1.1 200 OK
 
+-->
 
 
 ## STT & TTS API  
