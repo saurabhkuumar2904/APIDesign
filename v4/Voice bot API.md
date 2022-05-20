@@ -266,6 +266,7 @@ The Request body contains data with the following structure:
 #### example:
 ```Json 
   {     
+  	  "sessionId":"d3f5b968-ad51-42af-b759-64c0afc40b84", 
           "content":[{ 
               "type":"playText", 
               "content":{ 
