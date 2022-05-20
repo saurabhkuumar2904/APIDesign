@@ -149,11 +149,12 @@ Request body
 The request body contains data with the follow structure:  
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
-  | `type` | string | yes | |  type of the response, including textInput, voiceInput   |
+  | `type` | string | yes | |  type of the response, including textInput, voiceInput, transferred  |
   | `textInput`  |  string  | When type is textInput  |   | Text input to voice robot   |
   | `voiceInput`  |  string  | When type is voiceInput  |   | The audio data bytes encoded as specified in VoiceConfig. Note: as with all bytes fields, proto buffers use a pure binary representation, whereas JSON representations use base64.A base64-encoded string.  |
   | `sttVoiceConfig`  |  [STTVoiceConfig](#sttvoiceconfig-object) Object | When type is voiceInput  |   | Provides information to the recognizer that specifies how to process the request.  |
-  | `ttsVoiceConfig`  |  [TTSVoiceConfig](#ttsvoiceconfig-object) Object  | text to speech |   | The configuration of the response audio.  |
+  | `ttsVoiceConfig`  |  [TTSVoiceConfig](#ttsvoiceconfig-object) Object  | yes |   | The configuration of the response audio.  |
+  | `transferredTime`  | DateTime | When type is transferred |   | The chat transferred time.  |
 <!--   | `isTransferFailed`  |  bool  | When type is chatTransferStatus  |   | If the bot Transfer Chat to agent failed  | -->
 
 #### example:
