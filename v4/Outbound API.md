@@ -6,7 +6,7 @@
 
 ### Outbound Message Callback API 
 
-The CallbackURL can be any valid URL that implements this API, and it is configured in the system when a new Outbound Message API needs to . 
+The CallbackURL can be any valid URL that implements this API, and it is configured in the system when a new Outbound Message Campaign created . 
   - POST /{callbackURL} - [Outbound Message Callback API](#voice-channel-adapter-receives-input). 
 
 ### Outbound Message API  
