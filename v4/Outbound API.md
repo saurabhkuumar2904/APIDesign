@@ -492,9 +492,9 @@ Request body the request body contains data with the following structure:
     "id":"d3f5b968-ad51-42af-b759-64c0afc40b84",
     "from": "+19857473631", 
     "to": "+19857473632", 
-    "contactId":"q3f5b438-xw31-44af-b729-64swaf3d0b56"
+    "contactId":"q3f5b438-xw31-44af-b729-64swaf3d0b56",
     "outboundCampaign": { 
-        "id"":"q3f5b438-xw31-44af-b729-64swaf3d0b56",
+        "id":"q3f5b438-xw31-44af-b729-64swaf3d0b56",
         "channel":"sms", 
         "triggerMode":"API"
         "channelAccountId":"q3f5b438-xw31-44af-b729-64swaf3d0b56",
