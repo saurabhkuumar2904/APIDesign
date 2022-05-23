@@ -37,18 +37,55 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
 
 ## Endpoints
 
-### Outbound Message Callback API 
+### Create A New outbound message
+`POST /ticketing/outboundmessages/`
 
-### Outbound Message API  
+#### Parameters
+Request body 
+Request body the request body contains data with the following structure: 
+  | Name | Type | Required | Default | Description |    
+  | - | - | :-: | :-: | - | 
+  |`id`  |  string  |yes |   | outbound message id| 
+  |`from`  |  string  |yes |   |  phone number |
+  |`to`  | string | yes |   |   |
+  |`message`  | string | yes |   |   |
+  |`contactId`  | Guid | yes |   |   |
+  |`outboundCampaign`  |  [Outbound Campaign](#outbound-campaign-object) Object |yes |   |  |
+  #### example:
+```Json 
+ {
+    "id":"d3f5b968-ad51-42af-b759-64c0afc40b84",
+    "from": "+19857473631", 
+    "to": "+19857473632", 
+    "contactId":"q3f5b438-xw31-44af-b729-64swaf3d0b56"
+    "outboundCampaign": { 
+        "id"":"q3f5b438-xw31-44af-b729-64swaf3d0b56",
+        "channel":"sms", 
+        "triggerMode":"API"
+        "channelAccountId":"q3f5b438-xw31-44af-b729-64swaf3d0b56",
+        "isNewTicketAutoCreatedForMessage":true
+      }
+  } 
+```
 
-### Contact API 
+#### Response
+The Response body contains data with the following structure:
 
-### Ticketing Outbound Message API 
+  | Name | Type |  Description |    
+  | - | - | :-: | 
+  |`ticketId` | Guid |  |
+  |`ticketMessageId`  |   | |
 
-#### Create A New outbound message
+Response
+```Json
+HTTP/1.1 200 OK 
+  Content-Type:  application/json 
+  {     
+          "ticketId":"d3f5b968-ad51-42af-b759-64c0afc40b84",         
+          "ticketMessageId":"d3f5b968-ad51-42af-b759-64c0afc40b84", 
+          
+  } 
+```
 
-#### Get a single outbound messages
 
-  - POST /ticketing/outboundmessages/ - [Create A New outbound message](#create-a-new-outbound-message). 
-  - GET /ticketing/outboundmessages/{id} - [Get a single outbound message](#get-a-single-campaign). 
 ## Model
