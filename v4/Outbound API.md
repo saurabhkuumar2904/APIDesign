@@ -33,7 +33,6 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
 
 ### Ticketing Outbound Message API 
   - POST /ticketing/outboundmessages/ - [Create A New outbound message](#create-a-new-outbound-message). 
-  - PUT /ticketing/outboundmessages/{id} - [Update the outboundmessages](#update-the-outbound-message).   
   - GET /ticketing/outboundmessages/{id} - [Get a single outbound messages](#get-a-single-campaign). 
 
 ## Endpoints
