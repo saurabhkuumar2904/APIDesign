@@ -12,16 +12,16 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
 ### Outbound Message API  
 
 #### Outbound Campaign
-  - GET /outbound/campaigns/ - [Get the list of Campaign](#get-the-list-of-campaign). 
-  - GET /outbound/campaigns/{id} - [Get a single Campaign](#get-a-single-campaign). 
-  - POST /outbound/campaigns/ - [Create A New Campaign](#create-a-new-campaign).  
-  - PUT /outbound/campaigns/{id} - [Update the Campaign](#update-the-campaign).  
+  - GET /outbound/campaigns/ - [Get the list of Outbound Campaign](#get-the-list-of-outbound-campaign). 
+  - GET /outbound/campaigns/{id} - [Get a single Outbound Campaign](#get-a-single-outbound-campaign). 
+  - POST /outbound/campaigns/ - [Create a new Outbound Campaign](#create-a-new-outbound-campaign).  
+  - PUT /outbound/campaigns/{id} - [Update the Outbound Campaign](#update-the-outbound-campaign).  
   - DELETE /outbound/campaigns/{id} - [Delete the campaign](#delete-the-campaign). 
 #### Outbound Message
-  - GET /outbound/messages/ - [Get the list of Message](#get-the-list-of-message). 
-  - GET /outbound/messages/{id} - [Get a single Message Record](#get-a-single-message). 
-  - POST /outbound/campaigns/{id}/messages - [Send A Message](#send-a-message).   
-  - PUT /outbound/messages/{id} - [Update the Message](#update-the-Message).  
+  - GET /outbound/messages/ - [Get the list of Outbound Message](#get-the-list-of-outbound-message). 
+  - GET /outbound/messages/{id} - [Get a single Outbound Message](#get-a-single-outbound-message). 
+  - POST /outbound/campaigns/{id}/messages - [Create a new Outbound Message](#create-a-new-outbound-message).   
+  - PUT /outbound/messages/{id} - [Update the Outbound Message](#update-the-outbound-message).  
 
 ### Contact API 
 ####  Contact
@@ -47,7 +47,7 @@ The Response body contains data with the following structure:
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
-|`outboundCampaignList` |[OutboundCampaign](#variablevalue-object)[]  |Yes|  An array of [OutboundCamgaign](#variablevalue-object)  |
+|`outboundCampaignList` |[OutboundCampaign](#outboundcampaign-Object)[]  |Yes|  An array of [OutboundCamgaign](#outboundcampaign-object)  |
 
 ```Json 
   HTTP/1.1 200 OK
@@ -88,7 +88,7 @@ The Response body contains data with the following structure:
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
-|`outboundCampaign` |[OutboundCampaign](#variablevalue-object)  |Yes|   [OutboundCampaign](#variablevalue-object)  |
+|`outboundCampaign` |[OutboundCampaign](#outboundcampaign-object)  |Yes|   [OutboundCampaign](#outboundcampaign-object)  |
 
 ```Json 
   HTTP/1.1 200 OK
@@ -159,7 +159,7 @@ The Response body contains data with the following structure:
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
-|`outboundCampaign` |[OutboundCampaign](#variablevalue-object)  |Yes|   [OutboundCamgaign](#variablevalue-object)  |
+|`outboundCampaign` |[OutboundCampaign](#outboundcampaign-object)  |Yes|   [OutboundCamgaign](#outboundcampaign-object)  |
 
 ```Json 
   HTTP/1.1 201 Created
@@ -182,7 +182,7 @@ The Response body contains data with the following structure:
 }
 ```
 
-### Update a Outbound Campaign
+### Update the Outbound Campaign
 `PUT /outbound/campaigns/{id}`
 #### Parameters
 Path parameters
@@ -236,7 +236,7 @@ The Response body contains data with the following structure:
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
-|`campaign` |[Campaign](#variablevalue-object)  |Yes|   [Camgaign](#variablevalue-object)  |
+|`outboundCampaign` |[OutboundCampaign](#outboundcampaign-object)  |Yes|   [OutboundCampaign](#outboundcampaign-object)  |
 
 ```Json 
   HTTP/1.1 200 Ok
@@ -259,7 +259,7 @@ The Response body contains data with the following structure:
 }
 ```
 
-### Delete a Campaign
+### Delete the Campaign
 `DELETE /outbound/campaigns/{id}`
 #### Parameters
 Path parameters
@@ -288,7 +288,7 @@ The Response body contains data with the following structure:
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
-|`outboundMessageList` |[OutboundMessage](#variablevalue-object)[]  |Yes|  An array of [OutboundMessage](#variablevalue-object)  |
+|`outboundMessageList` |[OutboundMessage](#outboundmessage-object)[]  |Yes|  An array of [OutboundMessage](#outboundmessage-object)  |
 
 ```Json 
   HTTP/1.1 200 OK
@@ -325,7 +325,7 @@ The Response body contains data with the following structure:
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
-|`outboundMessage` |[OutboundMessage](#variablevalue-object)  |Yes|   [OutboundMessage](#variablevalue-object)  |
+|`outboundMessage` |[OutboundMessage](#outboundmessage-object)  |Yes|   [OutboundMessage](#outboundmessage-object)  |
 
 ```Json 
   HTTP/1.1 200 OK
@@ -388,7 +388,7 @@ The Response body contains data with the following structure:
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
-|`outboundMessage` |[OutboundMessage](#variablevalue-object)  |Yes|   [OutboundMessage](#variablevalue-object)  |
+|`outboundMessage` |[OutboundMessage](#outboundmessage-object)  |Yes|   [OutboundMessage](#outboundmessage-object)  |
 
 ```Json 
   HTTP/1.1 201 Created
@@ -407,7 +407,7 @@ The Response body contains data with the following structure:
 }
 ```
 
-### Update a Outbound Message
+### Update the Outbound Message
 `PUT /outbound/messages/{id}`
 #### Parameters
 Path parameters
@@ -453,7 +453,7 @@ The Response body contains data with the following structure:
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
-|`outboundMessage` |[OutboundMessage](#variablevalue-object)  |Yes|   [OutboundMessage](#variablevalue-object)  |
+|`outboundMessage` |[OutboundMessage](#outboundmessage-object)  |Yes|   [OutboundMessage](#outboundmessage-object)  |
 
 ```Json 
   HTTP/1.1 200 Ok
@@ -523,7 +523,7 @@ HTTP/1.1 200 OK
 ```
 
 ## Model
-### Outbound Campaign JSON Format
+### OutboundCampaign Object
 Outbound Campaign is represented as simple flat JSON objects with the following keys:
 
   | Name | Type | Required | Description                                           |     
@@ -543,7 +543,7 @@ Outbound Campaign is represented as simple flat JSON objects with the following 
   | `whenToSend` | string | no | Allowed values are "Right Away", "Scheduled". |  
   | `scheduledStartTime` | timestamp | no |  Message of this Outbound Campaign. |  
   
-### Outbound Campaign Contact Filter Condition JSON Format
+### OutboundCampaignContactFilterCondition Object
 Outbound Campaign Contact Filter Condition is represented as simple flat JSON objects with the following keys:
 
   | Name | Type | Required | Description                                           |     
@@ -555,7 +555,7 @@ Outbound Campaign Contact Filter Condition is represented as simple flat JSON ob
   | `value` | string | yes |  Trigger mode of the contact filter condition. |  
   | `order` | integer | yes |  Order of the contact filter condition. | 
   
-### Outbound Message JSON Format
+### OutboundMessage Object
 Outbound Message is represented as simple flat JSON objects with the following keys:
 
   | Name | Type | Required | Description                                           |     
