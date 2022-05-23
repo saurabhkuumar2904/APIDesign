@@ -33,8 +33,22 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
 
 ### Ticketing Outbound Message API 
   - POST /ticketing/outboundmessages/ - [Create A New outbound message](#create-a-new-outbound-message). 
-  - GET /ticketing/outboundmessages/{id} - [Get a single outbound messages](#get-a-single-campaign). 
+  - GET /ticketing/outboundmessages/{id} - [Get a single outbound message](#get-a-single-outbound-message). 
 
 ## Endpoints
 
+### Outbound Message Callback API 
+
+### Outbound Message API  
+
+### Contact API 
+
+### Ticketing Outbound Message API 
+
+#### Create A New outbound message
+
+#### Get a single outbound messages
+
+  - POST /ticketing/outboundmessages/ - [Create A New outbound message](#create-a-new-outbound-message). 
+  - GET /ticketing/outboundmessages/{id} - [Get a single outbound message](#get-a-single-campaign). 
 ## Model
