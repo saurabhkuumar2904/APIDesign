@@ -30,6 +30,14 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
   - POST /contact/contacts/ - [Create a new Contact](#create-a-new-contact).  
   - PUT /contact/contacts/{id} - [Update the Contact](#update-the-contact).  
   - DELETE /contact/contacts/{id} - [Delete the Contact](#delete-the-contact). 
+  - POST /contact/contacts:merge - [Merge Contact](#merge-contacts). 
+
+####  Contact Field
+  - GET /contact/fields - [Get the list of Contact Field](#get-the-list-of-contact-field).
+  - GET /contact/fields/{id} - [Get a single Contact Field](#get-a-single-contact-field).  
+  - POST /contact/fields - [Create a new Contact Field](#create-a-new-contact-field).  
+  - PUT /contact/fields/{id} - [Update a Contact Field](#update-a-contact-field).  
+  - DELETE /contact/fields/{id} - [Delete a Contact Field](#delete-a-contact-field).  
 
 ### Ticketing Outreach Message API 
   - POST /ticketing/outreachmessages/ - [Create a new ticket outreach message](#create-a-new-ticket-outreach-message). 
@@ -728,6 +736,40 @@ No response
 ```
 
 
+
+
+### Get the list of contact field
+`GET /contact/fields/`
+#### Parameters
+No parameters
+
+#### Response
+The Response body contains data with the following structure:
+
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+|`contact fields` |[Contact Field](#contact-field-object)  |Yes| [Contact](#contact-field-object)  |
+
+```Json 
+  HTTP/1.1 200 OK
+  Content-Type: application/json
+{
+	"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
+	"isSystem": "true",
+  "isIdentity":"false",
+  "identityType":"",
+	"isRequired": "false",
+  "isReadOnly": "false",
+	"type": "text",
+	"name": "Company",
+	"length": 256,
+	"helpText": "company name",
+	"defaultValue": "Comm100",
+	"order": 5,
+  "fieldOptions":[]
+}
+```
+
 ### Create a new outreach message
 `POST /ticketing/outreachmessages/`
 
@@ -834,18 +876,32 @@ Contact is represented as simple flat JSON objects with the following keys:
   | `name` | string | yes |  The name of the Contact. |  
   | `firstName` | string | no |  The first name of the Contact. |  
   | `lastName` | string | no |  The last name of the Contact. |  
-  | `description` | string | no |  The description of the Contact. |  
-  | `alias` | string | no |  The alis of the Contact. |  
-  | `title` | string | no |  The title of the Contact. |  
-  | `company` | string | no |  The company of the Contact. |  
-  | `fax` | string | yes |  The fax of the Contact. |  
-  | `phone` | string | no |  The phone of the Contact. |  
-  | `mailingAddress` | string | no |  The mailing address of the Contact. |  
-  | `city` | string | no |  The city of the Contact. |  
-  | `stateOrProvince` | string | no |  The state or province of the Contact. |  
-  | `countryOrRegion` | string | no |  The country or region of the Contact. |  
-  | `postalOrZipCode` | string | no |  The postal or zip code of the Contact. |  
-  | `timeZone` | string | no |  The time zone of the Contact. |  
   | `createTime` | timestamp | no |  The create time of the Contact. |  
   | `lastUpdatedTime` | timestamp | no |  The last updated time of the Contact. |  
   | `mergeToContactId` | Guid | no |  The Contact id of merge to. |  
+  | `customFields` | [custom field value](#custom-field-value-object)[] | custom field value array | 
+
+### custom field value object
+| Name | Type | Description | 
+| - | - | - | 
+| `id` | string | the id of custom field |
+| `name` | string | the name of custom field |
+| `value` | string | the value of custom field |
+
+### contact field object
+| Name | Type | Description | 
+| - | - | - | 
+| `id` | guid | the id of custom field |
+| `name` | string | unique name of the field |
+| `isSystem` | bool | Whether the field is a system field or not. |
+| `isIdentity` | bool | Whether the field is an identity field or not. |
+| `identityType` | string |  |
+| `isRequired` | bool | Whether the field is required or not. |
+| `isReadOnly` | string | Whether the field is readyonly or not. |
+| `type` | string | Type of the field. Allowed values are "text", "textArea", "email", "url", "date", "integer", "float" |
+| `length` | int | Field length |
+| `helpText` | string | Help text of the field. |
+| `defaultValue` | string | Default value of the field. |
+| `order` | string | |
+| `fieldOptions` | fieldOptions[] | Reference to Field Option. |
+  
