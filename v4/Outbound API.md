@@ -27,13 +27,13 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
 ####  Contact
   - GET /contact/contacts/ - [Get the list of Contact](#get-the-list-of-contact).  
   - GET /contact/contacts/{id} - [Get a single Contact](#get-a-single-contact).  
-  - POST /contact/contacts/ - [Create A New Contact](#create-a-new-contact).  
+  - POST /contact/contacts/ - [Create a new Contact](#create-a-new-contact).  
   - PUT /contact/contacts/{id} - [Update the Contact](#update-the-contact).  
   - DELETE /contact/contacts/{id} - [Delete the Contact](#delete-the-contact). 
 
 ### Ticketing Outbound Message API 
-  - POST /ticketing/outboundmessages/ - [Create A New outbound message](#create-a-new-outbound-message). 
-  - GET /ticketing/outboundmessages/{id} - [Get a single outbound message](#get-a-single-outbound-message). 
+  - POST /ticketing/outboundmessages/ - [Create a new ticket outbound message](#create-a-new-ticket-outbound-message). 
+  - GET /ticketing/outboundmessages/{id} - [Get a single ticket outbound message](#get-a-single-ticket-outbound-message). 
 
 ## Endpoints
 
@@ -472,7 +472,279 @@ The Response body contains data with the following structure:
 }
 ```
 
-### Create A New outbound message
+### Get the list of Contact
+`GET /contact/contacts/`
+#### Parameters
+No parameters
+
+#### Response
+The Response body contains data with the following structure:
+
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+|`contactList` |[Contact](#contact-object)[]  |Yes|  An array of [Contact](#contact-object)  |
+
+```Json 
+  HTTP/1.1 200 OK
+  Content-Type: application/json
+{
+	"contacts": [{
+		"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
+		"name": "Tom cruise",
+		"firstName": "Tom",
+		"lastName": "Cruise",
+		"description": "Moive actor",
+		"alias": "tomcruise",
+		"title": "Senior Moive actor",
+		"company": "Comm100",
+		"fax": "",
+		"phone": "",
+		"mailingAddress": "",
+		"city": "",
+		"stateOrProvince": "",
+		"countryOrRegion": "",
+		"postalOrZipCode": "",
+		"timeZone": "",
+        "createTime": "2022-03-18 01:12:32.0000000",
+        "lastUpdatedTime": "2022-03-18 01:12:32.0000000",
+        "mergeToContactId": "00000000-0000-0000-0000-000000000000"
+	}]
+}
+```
+
+### Get a single Contact
+`GET /contact/contacts/{id}`
+#### Parameters
+Path parameters
+
+  | Name | Type | Required  | Description |     
+  | - | - | - | - | 
+  | `id` | Guid | Yes  |  The unique id of the Contact |  
+
+#### Response
+The Response body contains data with the following structure:
+
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+|`contact` |[Contact](#contact-object)  |Yes| Contact   |
+
+```Json 
+  HTTP/1.1 200 OK
+  Content-Type: application/json
+{
+	"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
+	"name": "Tom cruise",
+	"firstName": "Tom",
+	"lastName": "Cruise",
+	"description": "Moive actor",
+	"alias": "tomcruise",
+	"title": "Senior Moive actor",
+	"company": "Comm100",
+	"fax": "",
+	"phone": "",
+	"mailingAddress": "",
+	"city": "",
+	"stateOrProvince": "",
+	"countryOrRegion": "",
+	"postalOrZipCode": "",
+	"timeZone": "",
+	"createTime": "2022-03-18 01:12:32.0000000",
+	"lastUpdatedTime": "2022-03-18 01:12:32.0000000",
+	"mergeToContactId": "00000000-0000-0000-0000-000000000000"
+}
+```
+
+### Create a new Contact
+`POST /contact/contacts/`
+#### Parameters
+No parameters
+
+#### Request body
+The request body contains data with the following structure:
+
+  | Name | Type | Required | Description                                           |     
+  | - | - | - | - | 
+  | `name` | string | yes |  The name of the Contact. |  
+  | `firstName` | string | yes |  The first name of the Contact. |  
+  | `lastName` | string | yes |  The last name of the Contact. |  
+  | `description` | string | yes |  The description of the Contact. |  
+  | `alias` | string | yes |  The alis of the Contact. |  
+  | `title` | string | yes |  The title of the Contact. |  
+  | `company` | string | no |  The company of the Contact. |  
+  | `fax` | string | yes |  The fax of the Contact. |  
+  | `phone` | string | no |  The phone of the Contact. |  
+  | `mailingAddress` | string | no |  The mailing address of the Contact. |  
+  | `city` | string | no |  The city of the Contact. |  
+  | `stateOrProvince` | string | no |  The state or province of the Contact. |  
+  | `countryOrRegion` | string | no |  The country or region of the Contact. |  
+  | `postalOrZipCode` | string | no |  The postal or zip code of the Contact. |  
+  | `timeZone` | Guid | string |  The time zone of the Contact. |  
+  | `mergeToContactId` | Guid | no |  The Contact id of merge to. |  
+  
+example:
+```Json 
+{
+	"name": "Tom cruise",
+	"firstName": "Tom",
+	"lastName": "Cruise",
+	"description": "Moive actor",
+	"alias": "tomcruise",
+	"title": "Senior Moive actor",
+	"company": "Comm100",
+	"fax": "",
+	"phone": "",
+	"mailingAddress": "",
+	"city": "",
+	"stateOrProvince": "",
+	"countryOrRegion": "",
+	"postalOrZipCode": "",
+	"timeZone": "",
+	"mergeToContactId": "00000000-0000-0000-0000-000000000000"
+}
+```
+
+#### Response
+The Response body contains data with the following structure:
+
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+|`contact` |[Contact](#contact-object)  |Yes|   [Contact](#contact-object)  |
+
+```Json 
+  HTTP/1.1 201 Created
+  Content-Type: application/json
+{
+	"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
+	"name": "Tom cruise",
+	"firstName": "Tom",
+	"lastName": "Cruise",
+	"description": "Moive actor",
+	"alias": "tomcruise",
+	"title": "Senior Moive actor",
+	"company": "Comm100",
+	"fax": "",
+	"phone": "",
+	"mailingAddress": "",
+	"city": "",
+	"stateOrProvince": "",
+	"countryOrRegion": "",
+	"postalOrZipCode": "",
+	"timeZone": "",
+	"createTime": "2022-03-18 01:12:32.0000000",
+	"lastUpdatedTime": "2022-03-18 01:12:32.0000000",
+	"mergeToContactId": "00000000-0000-0000-0000-000000000000"
+}
+```
+
+### Update the Contact
+`PUT /contact/contacts/{id}`
+#### Parameters
+Path parameters
+
+  | Name | Type | Required  | Description |     
+  | - | - | - | - | 
+  | `id` | Guid | Yes  |  The unique id of the Contact |  
+
+#### Request body
+The request body contains data with the following structure:
+
+  | Name | Type | Required | Description                                           |     
+  | - | - | - | - | 
+  | `name` | string | yes |  The name of the Contact. |  
+  | `firstName` | string | yes |  The first name of the Contact. |  
+  | `lastName` | string | yes |  The last name of the Contact. |  
+  | `description` | string | yes |  The description of the Contact. |  
+  | `alias` | string | yes |  The alis of the Contact. |  
+  | `title` | string | yes |  The title of the Contact. |  
+  | `company` | string | no |  The company of the Contact. |  
+  | `fax` | string | yes |  The fax of the Contact. |  
+  | `phone` | string | no |  The phone of the Contact. |  
+  | `mailingAddress` | string | no |  The mailing address of the Contact. |  
+  | `city` | string | no |  The city of the Contact. |  
+  | `stateOrProvince` | string | no |  The state or province of the Contact. |  
+  | `countryOrRegion` | string | no |  The country or region of the Contact. |  
+  | `postalOrZipCode` | string | no |  The postal or zip code of the Contact. |  
+  | `timeZone` | Guid | string |  The time zone of the Contact. |  
+  | `mergeToContactId` | Guid | no |  The Contact id of merge to. |  
+
+example:
+```Json 
+{
+	"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
+	"name": "Tom cruise 2",
+	"firstName": "Tom",
+	"lastName": "Cruise",
+	"description": "Moive actor",
+	"alias": "tomcruise",
+	"title": "Senior Moive actor",
+	"company": "Comm100",
+	"fax": "",
+	"phone": "",
+	"mailingAddress": "",
+	"city": "",
+	"stateOrProvince": "",
+	"countryOrRegion": "",
+	"postalOrZipCode": "",
+	"timeZone": "",
+	"createTime": "2022-03-18 01:12:32.0000000",
+	"mergeToContactId": "00000000-0000-0000-0000-000000000000"
+}
+```
+
+#### Response
+The Response body contains data with the following structure:
+
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+|`contact` |[Contact](#contact-object)  |Yes|   [Contact](#contact-object)  |
+
+```Json 
+  HTTP/1.1 200 Ok
+  Content-Type: application/json
+{
+	"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
+	"name": "Tom cruise 2",
+	"firstName": "Tom",
+	"lastName": "Cruise",
+	"description": "Moive actor",
+	"alias": "tomcruise",
+	"title": "Senior Moive actor",
+	"company": "Comm100",
+	"fax": "",
+	"phone": "",
+	"mailingAddress": "",
+	"city": "",
+	"stateOrProvince": "",
+	"countryOrRegion": "",
+	"postalOrZipCode": "",
+	"timeZone": "",
+	"createTime": "2022-03-18 01:12:32.0000000",
+	"lastUpdatedTime": "2022-05-18 11:12:32.0000000",
+	"mergeToContactId": "00000000-0000-0000-0000-000000000000"
+}
+```
+
+### Delete the Contact
+`DELETE /contact/contacts/{id}`
+#### Parameters
+Path parameters
+
+  | Name | Type | Required  | Description |     
+  | - | - | - | - | 
+  | `id` | Guid | Yes  |  The unique id of the Contact |  
+
+#### Response
+No response
+
+```Json 
+  HTTP/1.1 204 Ok
+  Content-Type: application/json
+{
+}
+```
+
+
+### Create a new outbound message
 `POST /ticketing/outboundmessages/`
 
 #### Parameters
@@ -571,3 +843,27 @@ Outbound Message is represented as simple flat JSON objects with the following k
   | `outreachCampaignId` | Guid | yes |  The Outbound Campaign id the Outbound Message. |  
   | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outbound Message. |  
         
+### Contact Object
+Contact is represented as simple flat JSON objects with the following keys:
+
+  | Name | Type | Required | Description                                           |     
+  | - | - | - | - | 
+  | `id` | Guid | yes | The unique id of the Contact. |  
+  | `name` | string | yes |  The name of the Contact. |  
+  | `firstName` | string | yes |  The first name of the Contact. |  
+  | `lastName` | string | yes |  The last name of the Contact. |  
+  | `description` | string | yes |  The description of the Contact. |  
+  | `alias` | string | yes |  The alis of the Contact. |  
+  | `title` | string | yes |  The title of the Contact. |  
+  | `company` | string | no |  The company of the Contact. |  
+  | `fax` | string | yes |  The fax of the Contact. |  
+  | `phone` | string | no |  The phone of the Contact. |  
+  | `mailingAddress` | string | no |  The mailing address of the Contact. |  
+  | `city` | string | no |  The city of the Contact. |  
+  | `stateOrProvince` | string | no |  The state or province of the Contact. |  
+  | `countryOrRegion` | string | no |  The country or region of the Contact. |  
+  | `postalOrZipCode` | string | no |  The postal or zip code of the Contact. |  
+  | `timeZone` | Guid | string |  The time zone of the Contact. |  
+  | `createTime` | timestamp | no |  The create time of the Contact. |  
+  | `lastUpdatedTime` | timestamp | no |  The last updated time of the Contact. |  
+  | `mergeToContactId` | Guid | no |  The Contact id of merge to. |  
