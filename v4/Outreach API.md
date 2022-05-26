@@ -899,9 +899,17 @@ Contact is represented as simple flat JSON objects with the following keys:
 | `isRequired` | bool | Whether the field is required or not. |
 | `isReadOnly` | string | Whether the field is readyonly or not. |
 | `type` | string | Type of the field. Allowed values are "text", "textArea", "email", "url", "date", "integer", "float" |
-| `length` | int | Field length |
+| `length` | integer | Field length |
 | `helpText` | string | Help text of the field. |
 | `defaultValue` | string | Default value of the field. |
-| `order` | string | |
-| `fieldOptions` | fieldOptions[] | Reference to Field Option. |
-  
+| `order` | integer | |
+| `fieldOptions` | fieldOptions[#field-option-object] | Reference to Field Option. |
+
+### Field option object
+| Name | Type | Description | 
+| - | - | - | 
+| `id` | guid | Id of the field option. |
+| `fieldId` | guid | Id of the field which the option belongs to. |
+| `value` | string | Value of the option. |
+| `order` | integer | Order of the option. |
+| `displayText` | string | Display text of the option. |
