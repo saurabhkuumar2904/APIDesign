@@ -1,27 +1,27 @@
   | Change Version | API Version | Change nots | Change Date | Author |Architect Team Reviewer | 
   | - | - | - | - | - |- |
-  | 1.0 | v1 |Outbound API | 2022-5-18 | Leon，Frank,Yogesh|  Allon|
+  | 1.0 | v1 |Outreach API | 2022-5-18 | Leon，Frank,Yogesh|  Allon|
 
 ## Summary
 
-### Outbound Message Callback API 
+### Outreach Message Callback API 
 
-The CallbackURL can be any valid URL that implements this API, and it is configured in the system when a new Outbound Message Campaign is created. 
-  - POST /{callbackURL} - [Outbound Message Callback API](#voice-channel-adapter-receives-input). 
+The CallbackURL can be any valid URL that implements this API, and it is configured in the system when a new Outreach Message Campaign is created. 
+  - POST /{callbackURL} - [Outreach Message Callback API](#voice-channel-adapter-receives-input). 
 
-### Outbound Message API  
+### Outreach Message API  
 
-#### Outbound Campaign
-  - GET /outbound/campaigns/ - [Get the list of Outbound Campaign](#get-the-list-of-outbound-campaign). 
-  - GET /outbound/campaigns/{id} - [Get a single Outbound Campaign](#get-a-single-outbound-campaign). 
-  - POST /outbound/campaigns/ - [Create a new Outbound Campaign](#create-a-new-outbound-campaign).  
-  - PUT /outbound/campaigns/{id} - [Update the Outbound Campaign](#update-the-outbound-campaign).  
-  - DELETE /outbound/campaigns/{id} - [Delete the campaign](#delete-the-campaign). 
-#### Outbound Message
-  - GET /outbound/messages/ - [Get the list of Outbound Message](#get-the-list-of-outbound-message). 
-  - GET /outbound/messages/{id} - [Get a single Outbound Message](#get-a-single-outbound-message). 
-  - POST /outbound/campaigns/{id}/messages - [Create a new Outbound Message](#create-a-new-outbound-message).   
-  - PUT /outbound/messages/{id} - [Update the Outbound Message](#update-the-outbound-message).  
+#### Outreach Campaign
+  - GET /outreach/campaigns/ - [Get the list of Outreach Campaign](#get-the-list-of-outreach-campaign). 
+  - GET /outreach/campaigns/{id} - [Get a single Outreach Campaign](#get-a-single-outreach-campaign). 
+  - POST /outreach/campaigns/ - [Create a new Outreach Campaign](#create-a-new-outreach-campaign).  
+  - PUT /outreach/campaigns/{id} - [Update the Outreach Campaign](#update-the-outreach-campaign).  
+  - DELETE /outreach/campaigns/{id} - [Delete the campaign](#delete-the-campaign). 
+#### Outreach Message
+  - GET /outreach/messages/ - [Get the list of Outreach Message](#get-the-list-of-outreach-message). 
+  - GET /outreach/messages/{id} - [Get a single Outreach Message](#get-a-single-outreach-message). 
+  - POST /outreach/campaigns/{id}/messages - [Create a new Outreach Message](#create-a-new-outreach-message).   
+  - PUT /outreach/messages/{id} - [Update the Outreach Message](#update-the-outreach-message).  
 
 ### Contact API 
 ####  Contact
@@ -31,14 +31,14 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
   - PUT /contact/contacts/{id} - [Update the Contact](#update-the-contact).  
   - DELETE /contact/contacts/{id} - [Delete the Contact](#delete-the-contact). 
 
-### Ticketing Outbound Message API 
-  - POST /ticketing/outboundmessages/ - [Create a new ticket outbound message](#create-a-new-ticket-outbound-message). 
-  - GET /ticketing/outboundmessages/{id} - [Get a single ticket outbound message](#get-a-single-ticket-outbound-message). 
+### Ticketing Outreach Message API 
+  - POST /ticketing/outreachmessages/ - [Create a new ticket outreach message](#create-a-new-ticket-outreach-message). 
+  - GET /ticketing/outreachmessages/{id} - [Get a single ticket outreach message](#get-a-single-ticket-outreach-message). 
 
 ## Endpoints
 
-### Get the list of Outbound Campaign
-`GET /outbound/campaigns/`
+### Get the list of Outreach Campaign
+`GET /outreach/campaigns/`
 #### Parameters
 No parameters
 
@@ -47,48 +47,46 @@ The Response body contains data with the following structure:
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
-|`outboundCampaignList` |[OutboundCampaign](#outboundcampaign-Object)[]  |Yes|  An array of [OutboundCamgaign](#outboundcampaign-object)  |
+|`outreachCampaignList` |[OutreachCampaign](#outreachcampaign-Object)[]  |Yes|  An array of [OutreachCamgaign](#outreachcampaign-object)  |
 
 ```Json 
   HTTP/1.1 200 OK
   Content-Type: application/json
 {
-	"outboundCampaigns": [
+	"outreachCampaigns": [
     {
 		"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
 		"name": "test-campaign",
 		"description": "test campaign",
 		"channel": "SMS",
-		"triggerMode": "Manual",
-		"status": "Draft",
 		"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 		"message": "Hello, please fill in your application form by the end of this week!",
-		"isNewTicketAutoCreatedForMessage": "Yes",
-		"timeToAutoCreateNewTicket": "When the message is successfully sent",
+		"isMessageAutoAttachedToTicket": "Yes",
+		"preferredTicketToAutoAttach":"New ticket",
+		"timeToAutoAttachToTicket": "When the message is sent",
 		"contactFilterConditionMetType": "Any",
 		"contactFilterLogicalExpresssion": "",
-		"whenToSend": "Right Away",
 		"scheduledStartTime": ""
 	}
     ]
 }
 ```
 
-### Get a single Outbound Campaign
-`GET /outbound/campaigns/{id}`
+### Get a single Outreach Campaign
+`GET /outreach/campaigns/{id}`
 #### Parameters
 Path parameters
 
   | Name | Type | Required  | Description |     
   | - | - | - | - | 
-  | `id` | Guid | Yes  |  The unique id of the Outbound Campaign |  
+  | `id` | Guid | Yes  |  The unique id of the Outreach Campaign |  
 
 #### Response
 The Response body contains data with the following structure:
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
-|`outboundCampaign` |[OutboundCampaign](#outboundcampaign-object)  |Yes|   [OutboundCampaign](#outboundcampaign-object)  |
+|`outreachCampaign` |[OutreachCampaign](#outreachcampaign-object)  |Yes|   [OutreachCampaign](#outreachcampaign-object)  |
 
 ```Json 
   HTTP/1.1 200 OK
@@ -98,21 +96,19 @@ The Response body contains data with the following structure:
 	"name": "test-campaign",
 	"description": "test campaign",
 	"channel": "SMS",
-	"triggerMode": "Manual",
-	"status": "Draft",
 	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"message": "Hello, please fill in your application form by the end of this week!",
-	"isNewTicketAutoCreatedForMessage": "Yes",
-	"timeToAutoCreateNewTicket": "When the message is successfully sent",
+	"isMessageAutoAttachedToTicket": "Yes",
+	"preferredTicketToAutoAttach":"New ticket",
+	"timeToAutoCreateNewTicket": "When the message is sent",
 	"contactFilterConditionMetType": "Any",
 	"contactFilterLogicalExpresssion": "",
-	"whenToSend": "Right Away",
 	"scheduledStartTime": ""
 }
 ```
 
-### Create a new Outbound Campaign
-`POST /outbound/campaigns/`
+### Create a new Outreach Campaign
+`POST /outreach/campaigns/`
 #### Parameters
 No parameters
 
@@ -121,19 +117,17 @@ The request body contains data with the following structure:
 
   | Name | Type | Required | Description                                           |     
   | - | - | - | - | 
-  | `name` | string | yes |  Name of this Outbound Campaign. |  
-  | `description` | string | no |  Description of this Outbound Campaign. |  
-  | `channel` | string | no |  App channel of this Outbound Campaign. |  
-  | `triggerMode` | string | yes |  Trigger mode of this Outbound Campaign, allowed values are "Manual", "Scheduled", "API". |  
-  | `status` | string | no |  Status of this Outbound Campaign, allowed values are "Draft", "Published", "Running", "Finished". |  
-  | `channelAccountId` | Guid | no |  Channel account id of this Outbound Campaign. |  
-  | `message` | string | no |  Message of this Outbound Campaign. |  
-  | `isNewTicketAutoCreatedForMessage` | bool | no |  Whether a new ticket will be auto created or not for the message.|  
-  | `timeToAutoCreateNewTicket` | string | no |  Allowed values are "When the message is successfully sent", "When contact replies the first message after the message is successfully sent". |  
+  | `name` | string | yes |  Name of this Outreach Campaign. |  
+  | `description` | string | no |  Description of this Outreach Campaign. |  
+  | `channel` | string | no |  App channel of this Outreach Campaign. |  
+  | `channelAccountId` | Guid | no |  Channel account id of this Outreach Campaign. |  
+  | `message` | string | no |  Message of this Outreach Campaign. |  
+  | `isMessageAutoAttachedToTicket` | bool | no |  Whether a new ticket will be auto created or not for the message.|  
+  | `preferredTicketToAutoAttach` | string | no |  Allowed values are "New ticket", "Existing unresolved ticket whose last message is from SMS channel".|  
+  | `timeToAutoAttachToTicket` | string | no |  Allowed values are "When the message is sent", "When contact replies the message". |  
   | `contactFilterConditionMetType` | string | no |  Allowed values are "All", "Any", "Logical Expression". |  
   | `contactFilterLogicalExpresssion` | string | no |  Contact Filter Logical Expresssion of this Condition. |  
-  | `whenToSend` | string | no | Allowed values are "Right Away", "Scheduled". |  
-  | `scheduledStartTime` | timestamp | no |  Message of this Outbound Campaign. |  
+  | `scheduledStartTime` | timestamp | no |  Message of this Outreach Campaign. |  
   
 example:
 ```Json 
@@ -141,15 +135,13 @@ example:
 	"name": "test-campaign",
 	"description": "test campaign",
 	"channel": "SMS",
-	"triggerMode": "Manual",
-	"status": "Draft",
 	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"message": "Hello, please fill in your application form by the end of this week!",
-	"isNewTicketAutoCreatedForMessage": "Yes",
-	"timeToAutoCreateNewTicket": "When the message is successfully sent",
+	"isMessageAutoAttachedToTicket": "Yes",
+	"preferredTicketToAutoAttach":"New ticket",
+	"timeToAutoAttachToTicket": "When the message is sent",
 	"contactFilterConditionMetType": "Any",
 	"contactFilterLogicalExpresssion": "",
-	"whenToSend": "Right Away",
 	"scheduledStartTime": ""
 }
 ```
@@ -159,7 +151,7 @@ The Response body contains data with the following structure:
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
-|`outboundCampaign` |[OutboundCampaign](#outboundcampaign-object)  |Yes|   [OutboundCamgaign](#outboundcampaign-object)  |
+|`outreachCampaign` |[OutreachCampaign](#outreachcampaign-object)  |Yes|   [OutreachCamgaign](#outreachcampaign-object)  |
 
 ```Json 
   HTTP/1.1 201 Created
@@ -169,47 +161,43 @@ The Response body contains data with the following structure:
 	"name": "test-campaign",
 	"description": "test campaign",
 	"channel": "SMS",
-	"triggerMode": "Manual",
-	"status": "Draft",
 	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"message": "Hello, please fill in your application form by the end of this week!",
-	"isNewTicketAutoCreatedForMessage": "Yes",
-	"timeToAutoCreateNewTicket": "When the message is successfully sent",
+	"isMessageAutoAttachedToTicket": "Yes",
+	"preferredTicketToAutoAttach":"New ticket",
+	"timeToAutoAttachToTicket": "When the message is sent",
 	"contactFilterConditionMetType": "Any",
 	"contactFilterLogicalExpresssion": "",
-	"whenToSend": "Right Away",
 	"scheduledStartTime": ""
 }
 ```
 
-### Update the Outbound Campaign
-`PUT /outbound/campaigns/{id}`
+### Update the Outreach Campaign
+`PUT /outreach/campaigns/{id}`
 #### Parameters
 Path parameters
 
   | Name | Type | Required  | Description |     
   | - | - | - | - | 
-  | `id` | Guid | Yes  |  The unique id of the Outbound Campaign |  
+  | `id` | Guid | Yes  |  The unique id of the Outreach Campaign |  
 
 #### Request body
 The request body contains data with the following structure:
 
   | Name | Type | Required | Description                                           |     
   | - | - | - | - | 
-  | `id` | Guid | Yes  |  The unique id of the Outbound Campaign |  
-  | `name` | string | yes |  Name of this Outbound Campaign. |  
-  | `description` | string | no |  Description of this Outbound Campaign. |  
-  | `channel` | string | no |  App channel of this Outbound Campaign. |  
-  | `triggerMode` | string | yes |  Trigger mode of this Outbound Campaign, allowed values are "Manual", "Scheduled", "API". |  
-  | `status` | string | no |  Status of this Outbound Campaign, allowed values are "Draft", "Published", "Running", "Finished". |  
-  | `channelAccountId` | Guid | no |  Channel account id of this Outbound Campaign. |  
-  | `message` | string | no |  Message of this Outbound Campaign. |  
-  | `isNewTicketAutoCreatedForMessage` | bool | no |  Whether a new ticket will be auto created or not for the message.|  
-  | `timeToAutoCreateNewTicket` | string | no |  Allowed values are "When the message is successfully sent", "When contact replies the first message after the message is successfully sent". |  
+  | `id` | Guid | Yes  |  The unique id of the Outreach Campaign |  
+  | `name` | string | yes |  Name of this Outreach Campaign. |  
+  | `description` | string | no |  Description of this Outreach Campaign. |  
+  | `channel` | string | no |  App channel of this Outreach Campaign. |  
+  | `channelAccountId` | Guid | no |  Channel account id of this Outreach Campaign. |  
+  | `message` | string | no |  Message of this Outreach Campaign. |  
+  | `isMessageAutoAttachedToTicket` | bool | no |  Whether a new ticket will be auto created or not for the message.|  
+  | `preferredTicketToAutoAttach` | string | no |  Allowed values are "New ticket", "Existing unresolved ticket whose last message is from SMS channel".|  
+  | `timeToAutoAttachToTicket` | string | no |  Allowed values are "When the message is sent", "When contact replies the message". |  
   | `contactFilterConditionMetType` | string | no |  Allowed values are "All", "Any", "Logical Expression". |  
   | `contactFilterLogicalExpresssion` | string | no |  Contact Filter Logical Expresssion of this Condition. |  
-  | `whenToSend` | string | no | Allowed values are "Right Away", "Scheduled". |  
-  | `scheduledStartTime` | timestamp | no |  Message of this Outbound Campaign. |  
+  | `scheduledStartTime` | timestamp | no |  Message of this Outreach Campaign. |  
 
 example:
 ```Json 
@@ -218,15 +206,13 @@ example:
 	"name": "test-campaign 2",
 	"description": "test campaign",
 	"channel": "SMS",
-	"triggerMode": "Manual",
-	"status": "Published",
 	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"message": "Hello, please fill in your application form by the end of this week!",
-	"isNewTicketAutoCreatedForMessage": "Yes",
-	"timeToAutoCreateNewTicket": "When the message is successfully sent",
+	"isMessageAutoAttachedToTicket": "Yes",
+	"preferredTicketToAutoAttach":"New ticket",
+	"timeToAutoAttachToTicket": "When the message is sent",
 	"contactFilterConditionMetType": "Any",
 	"contactFilterLogicalExpresssion": "",
-	"whenToSend": "Right Away",
 	"scheduledStartTime": ""
 }
 ```
@@ -236,7 +222,7 @@ The Response body contains data with the following structure:
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
-|`outboundCampaign` |[OutboundCampaign](#outboundcampaign-object)  |Yes|   [OutboundCampaign](#outboundcampaign-object)  |
+|`outreachCampaign` |[OutreachCampaign](#outreachcampaign-object)  |Yes|   [OutreachCampaign](#outreachcampaign-object)  |
 
 ```Json 
   HTTP/1.1 200 Ok
@@ -246,27 +232,25 @@ The Response body contains data with the following structure:
 	"name": "test-campaign 2",
 	"description": "test campaign",
 	"channel": "SMS",
-	"triggerMode": "Manual",
-	"status": "Published",
 	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"message": "Hello, please fill in your application form by the end of this week!",
-	"isNewTicketAutoCreatedForMessage": "Yes",
-	"timeToAutoCreateNewTicket": "When the message is successfully sent",
+	"isMessageAutoAttachedToTicket": "Yes",
+	"preferredTicketToAutoAttach":"New ticket",
+	"timeToAutoAttachToTicket": "When the message is sent",
 	"contactFilterConditionMetType": "Any",
 	"contactFilterLogicalExpresssion": "",
-	"whenToSend": "Right Away",
 	"scheduledStartTime": ""
 }
 ```
 
 ### Delete the Campaign
-`DELETE /outbound/campaigns/{id}`
+`DELETE /outreach/campaigns/{id}`
 #### Parameters
 Path parameters
 
   | Name | Type | Required  | Description |     
   | - | - | - | - | 
-  | `id` | Guid | Yes  |  The unique id of the Outbound Campaign |  
+  | `id` | Guid | Yes  |  The unique id of the Outreach Campaign |  
 
 #### Response
 No response
@@ -278,8 +262,8 @@ No response
 }
 ```
 
-### Get the list of Outbound Message
-`GET /outbound/messages/`
+### Get the list of Outreach Message
+`GET /outreach/messages/`
 #### Parameters
 No parameters
 
@@ -288,13 +272,13 @@ The Response body contains data with the following structure:
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
-|`outboundMessageList` |[OutboundMessage](#outboundmessage-object)[]  |Yes|  An array of [OutboundMessage](#outboundmessage-object)  |
+|`outreachMessageList` |[OutreachMessage](#outreachmessage-object)[]  |Yes|  An array of [OutreachMessage](#outreachmessage-object)  |
 
 ```Json 
   HTTP/1.1 200 OK
   Content-Type: application/json
 {
-	"outboundMessages": [
+	"outreachMessages": [
     {
 		"id": "11183a83-48e9-4d0d-a3bd-fb19ce5c12db",
 		"sentTime": "2022-05-23 03:00:36.277",
@@ -311,21 +295,21 @@ The Response body contains data with the following structure:
 }
 ```
 
-### Get a single Outbound Message
-`GET /outbound/messages/{id}`
+### Get a single Outreach Message
+`GET /outreach/messages/{id}`
 #### Parameters
 Path parameters
 
   | Name | Type | Required  | Description |     
   | - | - | - | - | 
-  | `id` | Guid | Yes  |  The unique id of the Outbound Message |  
+  | `id` | Guid | Yes  |  The unique id of the Outreach Message |  
 
 #### Response
 The Response body contains data with the following structure:
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
-|`outboundMessage` |[OutboundMessage](#outboundmessage-object)  |Yes|   [OutboundMessage](#outboundmessage-object)  |
+|`outreachMessage` |[OutreachMessage](#outreachmessage-object)  |Yes|   [OutreachMessage](#outreachmessage-object)  |
 
 ```Json 
   HTTP/1.1 200 OK
@@ -344,29 +328,29 @@ The Response body contains data with the following structure:
 }
 ```
 
-### Create a new Outbound Message
-`POST /outbound/campaigns/{id}/messages`
+### Create a new Outreach Message
+`POST /outreach/campaigns/{id}/messages`
 #### Parameters
 Path parameters
 
   | Name | Type | Required  | Description |     
   | - | - | - | - | 
-  | `id` | Guid | Yes  |  The unique id of the Outbound Campaign |  
+  | `id` | Guid | Yes  |  The unique id of the Outreach Campaign |  
 
 #### Request body
 The request body contains data with the following structure:
 
   | Name | Type | Required | Description                                           |     
   | - | - | - | - | 
-  | `sentTime` | timestamp | yes |  The outreach campaign id of the Outbound Message. |  
-  | `contactId` | Guid | yes |  Contact id of the Outbound Message. |  
+  | `sentTime` | timestamp | yes |  The outreach campaign id of the Outreach Message. |  
+  | `contactId` | Guid | yes |  Contact id of the Outreach Message. |  
   | `message` | string | yes |  Message. |  
-  | `from` | string | yes |  Where the Outbound Message from. |  
-  | `to` | string | yes |  Where the Outbound Message to. |  
-  | `status` | string | yes |  Status of the Outbound Message. Allowed values are "Inqueue", "Successful", "Failed" |  
-  | `failedReason` | string | no |  The failed reason of the Outbound Message. |  
-  | `outreachCampaignId` | Guid | yes |  The outreach campaign id the Outbound Message. |  
-  | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outbound Message. |  
+  | `from` | string | yes |  Where the Outreach Message from. |  
+  | `to` | string | yes |  Where the Outreach Message to. |  
+  | `status` | string | yes |  Status of the Outreach Message. Allowed values are "Queued", "Sending", "Sent", "Failed" |  
+  | `failedReason` | string | no |  The failed reason of the Outreach Message. |  
+  | `outreachCampaignId` | Guid | yes |  The outreach campaign id the Outreach Message. |  
+  | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outreach Message. |  
   
 example:
 ```Json 
@@ -388,7 +372,7 @@ The Response body contains data with the following structure:
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
-|`outboundMessage` |[OutboundMessage](#outboundmessage-object)  |Yes|   [OutboundMessage](#outboundmessage-object)  |
+|`outreachMessage` |[OutreachMessage](#outreachmessage-object)  |Yes|   [OutreachMessage](#outreachmessage-object)  |
 
 ```Json 
   HTTP/1.1 201 Created
@@ -407,30 +391,30 @@ The Response body contains data with the following structure:
 }
 ```
 
-### Update the Outbound Message
-`PUT /outbound/messages/{id}`
+### Update the Outreach Message
+`PUT /outreach/messages/{id}`
 #### Parameters
 Path parameters
 
   | Name | Type | Required  | Description |     
   | - | - | - | - | 
-  | `id` | Guid | Yes  |  The unique id of the Outbound Message |  
+  | `id` | Guid | Yes  |  The unique id of the Outreach Message |  
 
 #### Request body
 The request body contains data with the following structure:
 
   | Name | Type | Required | Description                                           |     
   | - | - | - | - | 
-  | `id` | Guid | yes | The unique id of the Outbound Message. |  
-  | `sentTime` | timestamp | yes |  The outreach campaign id of the Outbound Message. |  
-  | `contactId` | Guid | yes |  Contact id of the Outbound Message. |  
+  | `id` | Guid | yes | The unique id of the Outreach Message. |  
+  | `sentTime` | timestamp | yes |  The outreach campaign id of the Outreach Message. |  
+  | `contactId` | Guid | yes |  Contact id of the Outreach Message. |  
   | `message` | string | yes |  Message. |  
-  | `from` | string | yes |  Where the Outbound Message from. |  
-  | `to` | string | yes |  Where the Outbound Message to. |  
-  | `status` | string | yes |  Status of the Outbound Message. Allowed values are "Inqueue", "Successful", "Failed" |  
-  | `failedReason` | string | no |  The failed reason of the Outbound Message. |  
-  | `outreachCampaignId` | Guid | yes |  The outreach campaign id the Outbound Message. |  
-  | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outbound Message. |  
+  | `from` | string | yes |  Where the Outreach Message from. |  
+  | `to` | string | yes |  Where the Outreach Message to. |  
+  | `status` | string | yes |  Status of the Outreach Message. Allowed values are "Queued", "Sending", "Sent", "Failed" |  
+  | `failedReason` | string | no |  The failed reason of the Outreach Message. |  
+  | `outreachCampaignId` | Guid | yes |  The outreach campaign id the Outreach Message. |  
+  | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outreach Message. |  
   
 example:
 ```Json 
@@ -453,7 +437,7 @@ The Response body contains data with the following structure:
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
-|`outboundMessage` |[OutboundMessage](#outboundmessage-object)  |Yes|   [OutboundMessage](#outboundmessage-object)  |
+|`outreachMessage` |[OutreachMessage](#outreachmessage-object)  |Yes|   [OutreachMessage](#outreachmessage-object)  |
 
 ```Json 
   HTTP/1.1 200 Ok
@@ -526,7 +510,7 @@ The Response body contains data with the following structure:
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
-|`contact` |[Contact](#contact-object)  |Yes| Contact   |
+|`contact` |[Contact](#contact-object)  |Yes| [Contact](#contact-object)   |
 
 ```Json 
   HTTP/1.1 200 OK
@@ -565,20 +549,20 @@ The request body contains data with the following structure:
   | Name | Type | Required | Description                                           |     
   | - | - | - | - | 
   | `name` | string | yes |  The name of the Contact. |  
-  | `firstName` | string | yes |  The first name of the Contact. |  
-  | `lastName` | string | yes |  The last name of the Contact. |  
-  | `description` | string | yes |  The description of the Contact. |  
-  | `alias` | string | yes |  The alis of the Contact. |  
-  | `title` | string | yes |  The title of the Contact. |  
+  | `firstName` | string | no |  The first name of the Contact. |  
+  | `lastName` | string | no |  The last name of the Contact. |  
+  | `description` | string | no |  The description of the Contact. |  
+  | `alias` | string | no |  The alis of the Contact. |  
+  | `title` | string | no |  The title of the Contact. |  
   | `company` | string | no |  The company of the Contact. |  
-  | `fax` | string | yes |  The fax of the Contact. |  
+  | `fax` | string | no |  The fax of the Contact. |  
   | `phone` | string | no |  The phone of the Contact. |  
   | `mailingAddress` | string | no |  The mailing address of the Contact. |  
   | `city` | string | no |  The city of the Contact. |  
   | `stateOrProvince` | string | no |  The state or province of the Contact. |  
   | `countryOrRegion` | string | no |  The country or region of the Contact. |  
   | `postalOrZipCode` | string | no |  The postal or zip code of the Contact. |  
-  | `timeZone` | Guid | string |  The time zone of the Contact. |  
+  | `timeZone` | string | no |  The time zone of the Contact. |  
   | `mergeToContactId` | Guid | no |  The Contact id of merge to. |  
   
 example:
@@ -651,20 +635,20 @@ The request body contains data with the following structure:
   | Name | Type | Required | Description                                           |     
   | - | - | - | - | 
   | `name` | string | yes |  The name of the Contact. |  
-  | `firstName` | string | yes |  The first name of the Contact. |  
-  | `lastName` | string | yes |  The last name of the Contact. |  
-  | `description` | string | yes |  The description of the Contact. |  
-  | `alias` | string | yes |  The alis of the Contact. |  
-  | `title` | string | yes |  The title of the Contact. |  
+  | `firstName` | string | no |  The first name of the Contact. |  
+  | `lastName` | string | no |  The last name of the Contact. |  
+  | `description` | string | no |  The description of the Contact. |  
+  | `alias` | string | no |  The alis of the Contact. |  
+  | `title` | string | no |  The title of the Contact. |  
   | `company` | string | no |  The company of the Contact. |  
-  | `fax` | string | yes |  The fax of the Contact. |  
+  | `fax` | string | no |  The fax of the Contact. |  
   | `phone` | string | no |  The phone of the Contact. |  
   | `mailingAddress` | string | no |  The mailing address of the Contact. |  
   | `city` | string | no |  The city of the Contact. |  
   | `stateOrProvince` | string | no |  The state or province of the Contact. |  
   | `countryOrRegion` | string | no |  The country or region of the Contact. |  
   | `postalOrZipCode` | string | no |  The postal or zip code of the Contact. |  
-  | `timeZone` | Guid | string |  The time zone of the Contact. |  
+  | `timeZone` | string | no |  The time zone of the Contact. |  
   | `mergeToContactId` | Guid | no |  The Contact id of merge to. |  
 
 example:
@@ -744,20 +728,20 @@ No response
 ```
 
 
-### Create a new outbound message
-`POST /ticketing/outboundmessages/`
+### Create a new outreach message
+`POST /ticketing/outreachmessages/`
 
 #### Parameters
 Request body 
 Request body the request body contains data with the following structure: 
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
-  |`id`  |  string  |yes |   | outbound message id| 
+  |`id`  |  string  |yes |   | outreach message id| 
   |`from`  |  string  |yes |   |  phone number |
   |`to`  | string | yes |   |   |
   |`message`  | string | yes |   |   |
   |`contactId`  | Guid | yes |   |   |
-  |`outboundCampaign`  |  [Outbound Campaign](#outbound-campaign-object) Object |yes |   |  |
+  |`outreachCampaign`  |  [Outreach Campaign](#outreach-campaign-object) Object |yes |   |  |
   #### example:
 ```Json 
  {
@@ -765,12 +749,12 @@ Request body the request body contains data with the following structure:
     "from": "+19857473631", 
     "to": "+19857473632", 
     "contactId":"q3f5b438-xw31-44af-b729-64swaf3d0b56",
-    "outboundCampaign": { 
+    "outreachCampaign": { 
         "id":"q3f5b438-xw31-44af-b729-64swaf3d0b56",
         "channel":"sms", 
         "triggerMode":"API"
         "channelAccountId":"q3f5b438-xw31-44af-b729-64swaf3d0b56",
-        "isNewTicketAutoCreatedForMessage":true
+        "isMessageAutoAttachedToTicket":true
       }
   } 
 ```
@@ -795,53 +779,51 @@ HTTP/1.1 200 OK
 ```
 
 ## Model
-### OutboundCampaign Object
-Outbound Campaign is represented as simple flat JSON objects with the following keys:
+### OutreachCampaign Object
+Outreach Campaign is represented as simple flat JSON objects with the following keys:
 
   | Name | Type | Required | Description                                           |     
   | - | - | - | - | 
-  | `id` | Guid | yes | The unique id of the Outbound Campaign. |  
-  | `name` | string | yes |  Name of this Outbound Campaign. |  
-  | `description` | string | no |  Description of this Outbound Campaign. |  
-  | `channel` | string | no |  App channel of this Outbound Campaign. |  
-  | `triggerMode` | string | yes |  Trigger mode of this Outbound Campaign, allowed values are "Manual", "Scheduled", "API". |  
-  | `status` | string | no |  Status of this Outbound Campaign, allowed values are "Draft", "Published", "Running", "Finished". |  
-  | `channelAccountId` | Guid | no |  Channel account id of this Outbound Campaign. |  
-  | `message` | string | no |  Message of this Outbound Campaign. |  
-  | `isNewTicketAutoCreatedForMessage` | bool | no |  Whether a new ticket will be auto created or not for the message.|  
-  | `timeToAutoCreateNewTicket` | string | no |  Allowed values are "When the message is successfully sent", "When contact replies the first message after the message is successfully sent". |  
+  | `id` | Guid | yes | The unique id of the Outreach Campaign. |  
+  | `name` | string | yes |  Name of this Outreach Campaign. |  
+  | `description` | string | no |  Description of this Outreach Campaign. |  
+  | `channel` | string | no |  App channel of this Outreach Campaign. |  
+  | `channelAccountId` | Guid | no |  Channel account id of this Outreach Campaign. |  
+  | `message` | string | no |  Message of this Outreach Campaign. |  
+  | `isMessageAutoAttachedToTicket` | bool | no |  Whether a new ticket will be auto created or not for the message.| 
+  | `preferredTicketToAutoAttach` | string | no |  Allowed values are "New ticket", "Existing unresolved ticket whose last message is from SMS channel".|  
+  | `timeToAutoAttachToTicket` | string | no |  Allowed values are "When the message is sent", "When contact replies the message". |  
   | `contactFilterConditionMetType` | string | no |  Allowed values are "All", "Any", "Logical Expression". |  
   | `contactFilterLogicalExpresssion` | string | no |  Contact Filter Logical Expresssion of this Condition. |  
-  | `whenToSend` | string | no | Allowed values are "Right Away", "Scheduled". |  
-  | `scheduledStartTime` | timestamp | no |  Message of this Outbound Campaign. |  
+  | `scheduledStartTime` | timestamp | no |  Message of this Outreach Campaign. |  
   
-### OutboundCampaignContactFilterCondition Object
-Outbound Campaign Contact Filter Condition is represented as simple flat JSON objects with the following keys:
+### OutreachCampaignContactFilterCondition Object
+Outreach Campaign Contact Filter Condition is represented as simple flat JSON objects with the following keys:
 
   | Name | Type | Required | Description                                           |     
   | - | - | - | - | 
   | `id` | Guid | yes | The unique id of the contact filter condition. |  
-  | `outreachCampaignId` | Guid | yes |  The Outbound Campaign id of the contact filter condition. |  
+  | `outreachCampaignId` | Guid | yes |  The Outreach Campaign id of the contact filter condition. |  
   | `fieldName` | string | yes |  Field name of the contact filter condition. |  
   | `operator` | string | yes |  Allowed values are "Contains", "Does Not Contain", "Is", "Is Not", "Is More Than", "Is Less Than", "Before", "After". |  
   | `value` | string | yes |  Trigger mode of the contact filter condition. |  
   | `order` | integer | yes |  Order of the contact filter condition. | 
   
-### OutboundMessage Object
-Outbound Message is represented as simple flat JSON objects with the following keys:
+### OutreachMessage Object
+Outreach Message is represented as simple flat JSON objects with the following keys:
 
   | Name | Type | Required | Description                                           |     
   | - | - | - | - | 
-  | `id` | Guid | yes | The unique id of the Outbound Message. |  
-  | `sentTime` | timestamp | yes |  The sent time the Outbound Message. |  
-  | `contactId` | Guid | yes |  Contact id of the Outbound Message. |  
+  | `id` | Guid | yes | The unique id of the Outreach Message. |  
+  | `sentTime` | timestamp | yes |  The sent time the Outreach Message. |  
+  | `contactId` | Guid | yes |  Contact id of the Outreach Message. |  
   | `message` | string | yes |  Message. |  
-  | `from` | string | yes |  Where the Outbound Message from. |  
-  | `to` | string | yes |  Where the Outbound Message to. |  
-  | `status` | string | yes |  Status of the Outbound Message. Allowed values are "Inqueue", "Successful", "Failed" |  
-  | `failedReason` | string | no |  The failed reason of the Outbound Message. |  
-  | `outreachCampaignId` | Guid | yes |  The Outbound Campaign id the Outbound Message. |  
-  | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outbound Message. |  
+  | `from` | string | yes |  Where the Outreach Message from. |  
+  | `to` | string | yes |  Where the Outreach Message to. |  
+  | `status` | string | yes |  Status of the Outreach Message. Allowed values are "Queued", "Sending", "Sent", "Failed" |  
+  | `failedReason` | string | no |  The failed reason of the Outreach Message. |  
+  | `outreachCampaignId` | Guid | yes |  The Outreach Campaign id the Outreach Message. |  
+  | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outreach Message. |  
         
 ### Contact Object
 Contact is represented as simple flat JSON objects with the following keys:
@@ -850,11 +832,11 @@ Contact is represented as simple flat JSON objects with the following keys:
   | - | - | - | - | 
   | `id` | Guid | yes | The unique id of the Contact. |  
   | `name` | string | yes |  The name of the Contact. |  
-  | `firstName` | string | yes |  The first name of the Contact. |  
-  | `lastName` | string | yes |  The last name of the Contact. |  
-  | `description` | string | yes |  The description of the Contact. |  
-  | `alias` | string | yes |  The alis of the Contact. |  
-  | `title` | string | yes |  The title of the Contact. |  
+  | `firstName` | string | no |  The first name of the Contact. |  
+  | `lastName` | string | no |  The last name of the Contact. |  
+  | `description` | string | no |  The description of the Contact. |  
+  | `alias` | string | no |  The alis of the Contact. |  
+  | `title` | string | no |  The title of the Contact. |  
   | `company` | string | no |  The company of the Contact. |  
   | `fax` | string | yes |  The fax of the Contact. |  
   | `phone` | string | no |  The phone of the Contact. |  
@@ -863,7 +845,7 @@ Contact is represented as simple flat JSON objects with the following keys:
   | `stateOrProvince` | string | no |  The state or province of the Contact. |  
   | `countryOrRegion` | string | no |  The country or region of the Contact. |  
   | `postalOrZipCode` | string | no |  The postal or zip code of the Contact. |  
-  | `timeZone` | Guid | string |  The time zone of the Contact. |  
+  | `timeZone` | string | no |  The time zone of the Contact. |  
   | `createTime` | timestamp | no |  The create time of the Contact. |  
   | `lastUpdatedTime` | timestamp | no |  The last updated time of the Contact. |  
   | `mergeToContactId` | Guid | no |  The Contact id of merge to. |  
