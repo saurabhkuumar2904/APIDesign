@@ -42,7 +42,7 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
   - DELETE /contact/fields/{id} - [Delete a Contact Field](#delete-a-contact-field).  
   
 ###  Ticketing API 
-  - POST ticketing/messages:attach - [attach a ticket Message without sending message](#attach-a-new-ticket-message)
+  - POST /ticketing/messages:attach - [attach a ticket Message without sending message](#attach-a-new-ticket-message)
 
 ###  Outreach Message API 
   - POST /unichannel/outreachmessages/ - [Create a new ticket outreach message](#create-a-new-ticket-outreach-message). 
