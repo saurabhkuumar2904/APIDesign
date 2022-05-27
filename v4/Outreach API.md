@@ -17,10 +17,12 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
   - POST /outreach/campaigns/ - [Create a new Outreach Campaign](#create-a-new-outreach-campaign).  
   - PUT /outreach/campaigns/{id} - [Update the Outreach Campaign](#update-the-outreach-campaign).  
   - DELETE /outreach/campaigns/{id} - [Delete the campaign](#delete-the-campaign). 
+  - POST /outreach/campaigns/{id}:send - [Send the campaign](#Send-the-campaign). 
 #### Outreach Message
   - GET /outreach/messages/ - [Get the list of Outreach Message](#get-the-list-of-outreach-message). 
   - GET /outreach/messages/{id} - [Get a single Outreach Message](#get-a-single-outreach-message). 
-  - POST /outreach/campaigns/{id}/messages - [Create a new Outreach Message](#create-a-new-outreach-message).   
+  - POST /outreach/messages - [Create a new Outreach Message](#create-a-new-outreach-message). 
+<!--   - POST /outreach/campaigns/{id}/messages - [Create a new Outreach Message](#create-a-new-outreach-message).    -->
   - PUT /outreach/messages/{id} - [Update the Outreach Message](#update-the-outreach-message).  
 
 ### Contact API 
@@ -270,6 +272,40 @@ No response
 }
 ```
 
+### Send the Campaign
+`POST /outreach/campaigns/{id}:send`
+#### Parameters
+Path parameters
+
+  | Name | Type | Required  | Description |     
+  | - | - | - | - | 
+  | `id` | Guid | Yes  |  The unique id of the Outreach Campaign |  
+
+#### Response
+The Response body contains data with the following structure:
+
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+|`outreachCampaign` |[OutreachCampaign](#outreachcampaign-object)  |Yes|   [OutreachCampaign](#outreachcampaign-object)  |
+
+```Json 
+  HTTP/1.1 200 Ok
+  Content-Type: application/json
+{
+	"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
+	"name": "test-campaign 2",
+	"description": "test campaign",
+	"channel": "SMS",
+	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
+	"message": "Hello, please fill in your application form by the end of this week!",
+	"isMessageAutoAttachedToTicket": "Yes",
+	"preferredTicketToAutoAttach":"New ticket",
+	"timeToAutoAttachToTicket": "When the message is sent",
+	"contactFilterConditionMetType": "Any",
+	"contactFilterLogicalExpresssion": "",
+	"scheduledStartTime": ""
+}
+```
 ### Get the list of Outreach Message
 `GET /outreach/messages/`
 #### Parameters
