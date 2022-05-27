@@ -22,8 +22,8 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
   - GET /outreach/messages/ - [Get the list of Outreach Message](#get-the-list-of-outreach-message). 
   - GET /outreach/messages/{id} - [Get a single Outreach Message](#get-a-single-outreach-message). 
   - POST /outreach/messages - [Create a new Outreach Message](#create-a-new-outreach-message). 
-<!--   - POST /outreach/campaigns/{id}/messages - [Create a new Outreach Message](#create-a-new-outreach-message).    -->
   - PUT /outreach/messages/{id} - [Update the Outreach Message](#update-the-outreach-message).  
+<!--   - POST /outreach/campaigns/{id}/messages - [Create a new Outreach Message](#create-a-new-outreach-message).    -->
 
 ### Contact API 
 ####  Contact
@@ -309,7 +309,10 @@ The Response body contains data with the following structure:
 ### Get the list of Outreach Message
 `GET /outreach/messages/`
 #### Parameters
-No parameters
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+|`contactId` |Guid  |No| The unique id of the Contact  |
+|`outreachCampaignId` |Guid |Yes| The unique id of the Outreach Campaign |
 
 #### Response
 The Response body contains data with the following structure:
