@@ -309,6 +309,9 @@ The Response body contains data with the following structure:
 ### Get the list of Outreach Message
 `GET /outreach/messages/`
 #### Parameters
+No Parameters
+
+#### Request body
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
 |`contactId` |Guid  |No| The unique id of the Contact  |
@@ -376,13 +379,10 @@ The Response body contains data with the following structure:
 ```
 
 ### Create a new Outreach Message
-`POST /outreach/campaigns/{id}/messages`
-#### Parameters
-Path parameters
+`POST /outreach/messages`
 
-  | Name | Type | Required  | Description |     
-  | - | - | - | - | 
-  | `id` | Guid | Yes  |  The unique id of the Outreach Campaign |  
+#### Parameters
+No Parameters
 
 #### Request body
 The request body contains data with the following structure:
