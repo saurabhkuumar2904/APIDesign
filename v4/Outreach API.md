@@ -312,7 +312,7 @@ The Response body contains data with the following structure:
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
 |`contactId` |Guid  |No| The unique id of the Contact  |
-|`outreachCampaignId` |Guid |Yes| The unique id of the Outreach Campaign |
+|`outreachCampaignId` |Guid |No| The unique id of the Outreach Campaign |
 
 #### Response
 The Response body contains data with the following structure:
