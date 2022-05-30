@@ -28,12 +28,14 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
 ### Contact API 
 ####  Contact
   - GET /contact/contacts/ - [Get the list of Contact](#get-the-list-of-contact).  
+  - POST /contact/contacts:query - [Query contact with conditions](#query-contact-with-conditions).  
   - GET /contact/contacts/{id} - [Get a single Contact](#get-a-single-contact).  
   - POST /contact/contacts/ - [Create a new Contact](#create-a-new-contact).  
   - PUT /contact/contacts/{id} - [Update the Contact](#update-the-contact).  
   - DELETE /contact/contacts/{id} - [Delete the Contact](#delete-the-contact). 
   - POST /contact/contacts:merge - [Merge Contact](#merge-contacts). 
-
+  - POST /contact/contacts:import - [Import Contacts](#import-contacts). 
+  - POST /contact/contacts:export - [Export Contacts](#export-contacts). 
 ####  Contact Field
   - GET /contact/fields - [Get the list of Contact Field](#get-the-list-of-contact-field).
   - GET /contact/fields/{id} - [Get a single Contact Field](#get-a-single-contact-field).  
@@ -150,7 +152,7 @@ The request body contains data with the following structure:
   | `timeToAutoAttachToTicket` | string | no |  Allowed values are "When the message is sent", "When contact replies the message". |  
   | `contactFilterConditionMetType` | string | no |  Allowed values are "All", "Any", "Logical Expression". |  
   | `contactFilterLogicalExpresssion` | string | no |  Contact Filter Logical Expresssion of this Condition. |  
-  | `contactFilterConditions` | [OutreachCampaignContactFilterCondition](#outreachcampaigncontactfiltercondition-object)[] | no | An array of [OutreachCampaignContactFilterCondition](#outreachcampaigncontactfiltercondition-object)| 
+  | `contactFilterConditions` | [ContactFilterCondition](#ContactFilterCondition-object)[] | no | An array of [ContactFilterCondition](#ContactFilterCondition-object)| 
   | `scheduledStartTime` | timestamp | no |  Message of this Outreach Campaign. |  
   
 example:
@@ -233,7 +235,7 @@ The request body contains data with the following structure:
   | `timeToAutoAttachToTicket` | string | no |  Allowed values are "When the message is sent", "When contact replies the message". |  
   | `contactFilterConditionMetType` | string | no |  Allowed values are "All", "Any", "Logical Expression". |  
   | `contactFilterLogicalExpresssion` | string | no |  Contact Filter Logical Expresssion of this Condition. |  
-  | `contactFilterConditions` | [OutreachCampaignContactFilterCondition](#outreachcampaigncontactfiltercondition-object)[] | no | An array of [OutreachCampaignContactFilterCondition](#outreachcampaigncontactfiltercondition-object)| 
+  | `contactFilterConditions` | [ContactFilterCondition](#ContactFilterCondition-object)[] | no | An array of [ContactFilterCondition](#ContactFilterCondition-object)| 
   | `scheduledStartTime` | timestamp | no |  Message of this Outreach Campaign. |  
 
 example:
@@ -581,7 +583,7 @@ The Response body contains data with the following structure:
 ### Get the list of Contact
 `GET /contact/contacts/`
 #### Parameters
-Path parameters
+#### Path parameters
 
   | Name | Type | Required  | Description |     
   | - | - | - | - | 
@@ -594,7 +596,80 @@ Path parameters
   | `pageSize` | String | No  | page size | 
   | `sortBy` | String | No  | sort by | 
   | `sortOrder` | String | No  | `asc`,`desc`, default `asc` |  
-  | `conditions` | [Conditions](#condition-object) | No  | parameter format: `conditions[0][field]=company&conditions[0][matchType]=contains&conditions[0][value]=Apple&conditions[1][field]=name&conditions[1][matchType]=contains&conditions[1][value]=Jordan`, fields can be system fields and custom fields. | 
+  | `ContactFilterConditionMetType` | string | no |  Contact Filter Logical Expresssion of this Condition. "All", "Any", "LogicalExpression" | 
+  | `contactFilterLogicalExpresssion` | string | no |  Contact Filter Logical Expression | 
+  | `contactFilterConditions` | [ContactFilterCondition](#ContactFilterCondition-object)[] | no | An array of [ContactFilterCondition](#ContactFilterCondition-object)| 
+
+#### Request Body
+
+
+#### Response
+The Response body contains data with the following structure:
+
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+|`contactList` |[Contact](#contact-object)[]  |Yes|  An array of [Contact](#contact-object)  |
+
+```Json 
+  HTTP/1.1 200 OK
+  Content-Type: application/json
+{
+  "contacts": [
+	{
+    "id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
+    "name": "Tom cruise",
+    "createTime": "2022-03-18 01:12:32.0000000",
+    "lastUpdatedTime": "2022-03-18 01:12:32.0000000",
+    "mergeToContactId": "00000000-0000-0000-0000-000000000000",
+    "customFields": {
+        "firstName": "Tom",
+        "lastName": "Cruise",
+        "description": "Moive actor",
+        "alias": "tomcruise",
+        "title": "Senior Moive actor",
+        "company": "Comm100",
+        "fax": "",
+        "phone": "",
+        "mailingAddress": "",
+        "city": "",
+        "stateOrProvince": "",
+        "countryOrRegion": "",
+        "postalOrZipCode": "",
+        "timeZone": ""
+    },
+    "contactIdentities":
+      [{
+          "id":"760a3dfb-f776-4dc8-99cb-7fb288bdf1eb",
+          "contactId":"d5a7c487-7ac8-4b07-99e6-b85c3c6e56ab",
+          "contactIdentityType":"SMS",
+          "name":"+033214561",
+          "value":"+033214561",
+          "avatarUrl":"",
+          "infoUrl":"",
+          "screenName":"",
+          "originalContactPageUrl":""
+      }]
+	}],
+  "previousPage":null,
+  "nextPage":"http://demo.comm100.io/contacts?pageIndex=2&pageSize=50&siteId=10100000",
+  "total":255
+}
+```
+
+### Query contact with conditions
+`POST /contact/contacts:query`
+#### Parameters
+#### Request Body
+  | Name | Type | Required  | Description |     
+  | - | - | - | - | 
+  | `include` | String | No  | include | 
+  | `pageIndex` | String | No  | page index | 
+  | `pageSize` | String | No  | page size | 
+  | `sortBy` | String | No  | sort by | 
+  | `sortOrder` | String | No  | `asc`,`desc`, default `asc` |  
+  | `ContactFilterConditionMetType` | string | no |  Contact Filter Logical Expresssion of this Condition. `All`, `Any`, `LogicalExpression` | 
+  | `contactFilterLogicalExpresssion` | string | no |  Contact Filter Logical Expression | 
+  | `contactFilterConditions` | [ContactFilterCondition object](#contactFilterCondition-object)[] | no | An array of [ContactFilterCondition object](#contactFilterCondition-object)| 
 
 #### Response
 The Response body contains data with the following structure:
@@ -848,6 +923,27 @@ The request body contains data with the following structure:
 #### Response
 No response
 
+### Import Contacts
+`POST /contact/contacts/import`
+#### Parameters
+##### Request body
+The request body contains data with the following structure:
+
+  | Name | Type | Required | Description                                           |     
+  | - | - | - | - | 
+  | `file` | file | yes | The import file |     
+
+#### Response
+No response
+
+### Export Contacts
+`GET /contact/contacts/exportAll`
+#### Parameters
+No oarameter     
+
+#### Response
+- file
+
 ### Get the list of contact field
 `GET /contact/fields/`
 #### Parameters
@@ -1035,18 +1131,16 @@ Outreach Campaign is represented as simple flat JSON objects with the following 
   | `timeToAutoAttachToTicket` | string | no |  Allowed values are "When the message is sent", "When contact replies the message". |  
   | `contactFilterConditionMetType` | string | no |  Allowed values are "All", "Any", "Logical Expression". |  
   | `contactFilterLogicalExpresssion` | string | no |  Contact Filter Logical Expresssion of this Condition. |  
-  | `contactFilterConditions` | [OutreachCampaignContactFilterCondition](#outreachcampaigncontactfiltercondition-object)[] | no | An array of [OutreachCampaignContactFilterCondition](#outreachcampaigncontactfiltercondition-object)| 
+  | `contactFilterConditions` | [ContactFilterCondition](#ContactFilterCondition-object)[] | no | An array of [ContactFilterCondition](#ContactFilterCondition-object)| 
   | `scheduledStartTime` | timestamp | no |  Message of this Outreach Campaign. |  
   
-### OutreachCampaignContactFilterCondition Object
+### ContactFilterCondition Object
 Outreach Campaign Contact Filter Condition is represented as simple flat JSON objects with the following keys:
 
   | Name | Type | Required | Description                                           |     
   | - | - | - | - | 
-  | `id` | Guid | yes | The unique id of the contact filter condition. |  
-  | `outreachCampaignId` | Guid | yes |  The Outreach Campaign id of the contact filter condition. |  
   | `fieldName` | string | yes |  Field name of the contact filter condition. |  
-  | `operator` | string | yes |  Allowed values are "Contains", "Does Not Contain", "Is", "Is Not", "Is More Than", "Is Less Than", "Before", "After". |  
+  | `metType` | string | yes |  Allowed values are "Contains", "Does Not Contain", "Is", "Is Not", "Is More Than", "Is Less Than", "Before", "After". |  
   | `value` | string | yes |  Trigger mode of the contact filter condition. |  
   | `order` | integer | yes |  Order of the contact filter condition. | 
   
@@ -1075,13 +1169,15 @@ Contact is represented as simple flat JSON objects with the following keys:
 
   | Name | Type | Required | Description                                           |     
   | - | - | - | - | 
-  | `id` | Guid | yes | The unique id of the Contact. |  
-  | `name` | string | yes |  The name of the Contact. |  
+  | `id` | Guid | yes | The unique id of the contact. |  
+  | `name` | string | yes |  The name of the contact. |  
+  | `first Name` | string | no | The first name of the contact |
+  | `last name` | string | no | The last name of the contact |
   | `createTime` | timestamp | no |  The create time of the Contact. |  
   | `lastUpdatedTime` | timestamp | no |  The last updated time of the Contact. |  
   | `mergeToContactId` | Guid | no |  The Contact id of merge to. |  
-  | `customFields` | [custom field value](#custom-field-value-object)[] | custom field value array | 
-  | `contactIdentities` | [contact identities](#contact-identity-object)[] | custom field value array | 
+  | `customFields` | [custom field value](#custom-field-value-object)[] | no | custom field value array | 
+  | `contactIdentities` | [contact identities](#contact-identity-object)[] | yes | custom field value array | 
 
 ### Contact Identity Object
 Contact Identity is represented as simple flat JSON objects with the following keys:
@@ -1130,11 +1226,3 @@ Contact Identity is represented as simple flat JSON objects with the following k
 | `value` | string | Value of the option. |
 | `order` | integer | Order of the option. |
 | `displayText` | string | Display text of the option. |
-
-### Condition object
-| Name | Type | Description | 
-| - | - | - | 
-| `field` | string | Contact field name. |
-| `matchType` | string | "Is", "IsNot"，"After", "Before", "Contains", "DoesNotContain", "IsMoreThan", "IsLessThan" |
-| `value` | string | Field value. |
-   
