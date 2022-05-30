@@ -17,11 +17,13 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
   - POST /outreach/campaigns/ - [Create a new Outreach Campaign](#create-a-new-outreach-campaign).  
   - PUT /outreach/campaigns/{id} - [Update the Outreach Campaign](#update-the-outreach-campaign).  
   - DELETE /outreach/campaigns/{id} - [Delete the campaign](#delete-the-campaign). 
+  - POST /outreach/campaigns/{id}:send - [Send the campaign](#Send-the-campaign). 
 #### Outreach Message
   - GET /outreach/messages/ - [Get the list of Outreach Message](#get-the-list-of-outreach-message). 
   - GET /outreach/messages/{id} - [Get a single Outreach Message](#get-a-single-outreach-message). 
-  - POST /outreach/campaigns/{id}/messages - [Create a new Outreach Message](#create-a-new-outreach-message).   
+  - POST /outreach/messages - [Create a new Outreach Message](#create-a-new-outreach-message). 
   - PUT /outreach/messages/{id} - [Update the Outreach Message](#update-the-outreach-message).  
+<!--   - POST /outreach/campaigns/{id}/messages - [Create a new Outreach Message](#create-a-new-outreach-message).    -->
 
 ### Contact API 
 ####  Contact
@@ -39,9 +41,12 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
   - PUT /contact/fields/{id} - [Update a Contact Field](#update-a-contact-field).  
   - DELETE /contact/fields/{id} - [Delete a Contact Field](#delete-a-contact-field).  
 
-### Ticketing Outreach Message API 
-  - POST /ticketing/outreachmessages/ - [Create a new ticket outreach message](#create-a-new-ticket-outreach-message). 
-  - GET /ticketing/outreachmessages/{id} - [Get a single ticket outreach message](#get-a-single-ticket-outreach-message). 
+### Ticketing API 
+  - POST /ticketing/ticket/{id}:attach - [attach a outreach message to the ticket](#attach-a-outreach-message-to-the-ticket). 
+  - 
+###  Outbound unichannel API 
+  - POST /Outboundunichannel/messages/ - [Create a new Outbound message](#create-a-new-outreach-message). 
+  - GET /Outboundunichannel/messages/{id} - [Get a single Outbound message](#get-a-single-outreach-message). 
 
 ## Endpoints
 
@@ -61,8 +66,7 @@ The Response body contains data with the following structure:
   HTTP/1.1 200 OK
   Content-Type: application/json
 {
-	"outreachCampaigns": [
-    {
+	"outreachCampaigns": [{
 		"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
 		"name": "test-campaign",
 		"description": "test campaign",
@@ -70,13 +74,18 @@ The Response body contains data with the following structure:
 		"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 		"message": "Hello, please fill in your application form by the end of this week!",
 		"isMessageAutoAttachedToTicket": "Yes",
-		"preferredTicketToAutoAttach":"New ticket",
+		"preferredTicketToAutoAttach": "New ticket",
 		"timeToAutoAttachToTicket": "When the message is sent",
 		"contactFilterConditionMetType": "Any",
 		"contactFilterLogicalExpresssion": "",
+		"contactFilterConditions": [{
+			"FieldName": "AAA",
+			"Operator": "is",
+			"Value": "BBBB",
+			"Order": "0"
+		}],
 		"scheduledStartTime": ""
-	}
-    ]
+	}]
 }
 ```
 
@@ -107,10 +116,16 @@ The Response body contains data with the following structure:
 	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"message": "Hello, please fill in your application form by the end of this week!",
 	"isMessageAutoAttachedToTicket": "Yes",
-	"preferredTicketToAutoAttach":"New ticket",
+	"preferredTicketToAutoAttach": "New ticket",
 	"timeToAutoCreateNewTicket": "When the message is sent",
 	"contactFilterConditionMetType": "Any",
 	"contactFilterLogicalExpresssion": "",
+	"contactFilterConditions": [{
+		"FieldName": "AAA",
+		"Operator": "is",
+		"Value": "BBBB",
+		"Order": "0"
+	}],
 	"scheduledStartTime": ""
 }
 ```
@@ -135,6 +150,7 @@ The request body contains data with the following structure:
   | `timeToAutoAttachToTicket` | string | no |  Allowed values are "When the message is sent", "When contact replies the message". |  
   | `contactFilterConditionMetType` | string | no |  Allowed values are "All", "Any", "Logical Expression". |  
   | `contactFilterLogicalExpresssion` | string | no |  Contact Filter Logical Expresssion of this Condition. |  
+  | `contactFilterConditions` | [OutreachCampaignContactFilterCondition](#outreachcampaigncontactfiltercondition-object)[] | no | An array of [OutreachCampaignContactFilterCondition](#outreachcampaigncontactfiltercondition-object)| 
   | `scheduledStartTime` | timestamp | no |  Message of this Outreach Campaign. |  
   
 example:
@@ -146,10 +162,16 @@ example:
 	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"message": "Hello, please fill in your application form by the end of this week!",
 	"isMessageAutoAttachedToTicket": "Yes",
-	"preferredTicketToAutoAttach":"New ticket",
+	"preferredTicketToAutoAttach": "New ticket",
 	"timeToAutoAttachToTicket": "When the message is sent",
 	"contactFilterConditionMetType": "Any",
 	"contactFilterLogicalExpresssion": "",
+	"contactFilterConditions": [{
+		"FieldName": "AAA",
+		"Operator": "is",
+		"Value": "BBBB",
+		"Order": "0"
+	}],
 	"scheduledStartTime": ""
 }
 ```
@@ -172,10 +194,16 @@ The Response body contains data with the following structure:
 	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"message": "Hello, please fill in your application form by the end of this week!",
 	"isMessageAutoAttachedToTicket": "Yes",
-	"preferredTicketToAutoAttach":"New ticket",
+	"preferredTicketToAutoAttach": "New ticket",
 	"timeToAutoAttachToTicket": "When the message is sent",
 	"contactFilterConditionMetType": "Any",
 	"contactFilterLogicalExpresssion": "",
+	"contactFilterConditions": [{
+		"FieldName": "AAA",
+		"Operator": "is",
+		"Value": "BBBB",
+		"Order": "0"
+	}],
 	"scheduledStartTime": ""
 }
 ```
@@ -205,6 +233,7 @@ The request body contains data with the following structure:
   | `timeToAutoAttachToTicket` | string | no |  Allowed values are "When the message is sent", "When contact replies the message". |  
   | `contactFilterConditionMetType` | string | no |  Allowed values are "All", "Any", "Logical Expression". |  
   | `contactFilterLogicalExpresssion` | string | no |  Contact Filter Logical Expresssion of this Condition. |  
+  | `contactFilterConditions` | [OutreachCampaignContactFilterCondition](#outreachcampaigncontactfiltercondition-object)[] | no | An array of [OutreachCampaignContactFilterCondition](#outreachcampaigncontactfiltercondition-object)| 
   | `scheduledStartTime` | timestamp | no |  Message of this Outreach Campaign. |  
 
 example:
@@ -217,10 +246,16 @@ example:
 	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"message": "Hello, please fill in your application form by the end of this week!",
 	"isMessageAutoAttachedToTicket": "Yes",
-	"preferredTicketToAutoAttach":"New ticket",
+	"preferredTicketToAutoAttach": "New ticket",
 	"timeToAutoAttachToTicket": "When the message is sent",
 	"contactFilterConditionMetType": "Any",
 	"contactFilterLogicalExpresssion": "",
+	"contactFilterConditions": [{
+		"FieldName": "AAA",
+		"Operator": "is",
+		"Value": "BBBB",
+		"Order": "0"
+	}],
 	"scheduledStartTime": ""
 }
 ```
@@ -243,10 +278,16 @@ The Response body contains data with the following structure:
 	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"message": "Hello, please fill in your application form by the end of this week!",
 	"isMessageAutoAttachedToTicket": "Yes",
-	"preferredTicketToAutoAttach":"New ticket",
+	"preferredTicketToAutoAttach": "New ticket",
 	"timeToAutoAttachToTicket": "When the message is sent",
 	"contactFilterConditionMetType": "Any",
 	"contactFilterLogicalExpresssion": "",
+	"contactFilterConditions": [{
+		"FieldName": "AAA",
+		"Operator": "is",
+		"Value": "BBBB",
+		"Order": "0"
+	}],
 	"scheduledStartTime": ""
 }
 ```
@@ -270,10 +311,56 @@ No response
 }
 ```
 
+### Send the Campaign
+`POST /outreach/campaigns/{id}:send`
+#### Parameters
+Path parameters
+
+  | Name | Type | Required  | Description |     
+  | - | - | - | - | 
+  | `id` | Guid | Yes  |  The unique id of the Outreach Campaign |  
+
+#### Response
+The Response body contains data with the following structure:
+
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+|`outreachCampaign` |[OutreachCampaign](#outreachcampaign-object)  |Yes|   [OutreachCampaign](#outreachcampaign-object)  |
+
+```Json 
+  HTTP/1.1 200 Ok
+  Content-Type: application/json
+{
+	"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
+	"name": "test-campaign 2",
+	"description": "test campaign",
+	"channel": "SMS",
+	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
+	"message": "Hello, please fill in your application form by the end of this week!",
+	"isMessageAutoAttachedToTicket": "Yes",
+	"preferredTicketToAutoAttach": "New ticket",
+	"timeToAutoAttachToTicket": "When the message is sent",
+	"contactFilterConditionMetType": "Any",
+	"contactFilterLogicalExpresssion": "",
+	"contactFilterConditions": [{
+		"FieldName": "AAA",
+		"Operator": "is",
+		"Value": "BBBB",
+		"Order": "0"
+	}],
+	"scheduledStartTime": ""
+}
+```
 ### Get the list of Outreach Message
 `GET /outreach/messages/`
+
 #### Parameters
-No parameters
+parameters
+
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+|`contactId` |Guid  |No| The unique id of the Contact  |
+|`outreachCampaignId` |Guid |No| The unique id of the Outreach Campaign |
 
 #### Response
 The Response body contains data with the following structure:
@@ -286,8 +373,7 @@ The Response body contains data with the following structure:
   HTTP/1.1 200 OK
   Content-Type: application/json
 {
-	"outreachMessages": [
-    {
+	"outreachMessages": [{
 		"id": "11183a83-48e9-4d0d-a3bd-fb19ce5c12db",
 		"sentTime": "2022-05-23 03:00:36.277",
 		"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
@@ -297,9 +383,12 @@ The Response body contains data with the following structure:
 		"status": "Successful",
 		"failedReason": "",
 		"outreachCampaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
+		"outreachCampaignSentTime": "2022-05-22 03:00:36.277",
+		"isMessageAutoAttachedToTicket": "Yes",
+		"preferredTicketToAutoAttach": "New ticket",
+		"timeToAutoAttachToTicket": "When the message is sent",
 		"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48"
-	}
-    ]
+	}]
 }
 ```
 
@@ -332,18 +421,19 @@ The Response body contains data with the following structure:
 	"status": "Successful",
 	"failedReason": "",
 	"outreachCampaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
+	"outreachCampaignSentTime": "2022-05-22 03:00:36.277",
+	"isMessageAutoAttachedToTicket": "Yes",
+	"preferredTicketToAutoAttach": "New ticket",
+	"timeToAutoAttachToTicket": "When the message is sent",
 	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48"
 }
 ```
 
 ### Create a new Outreach Message
-`POST /outreach/campaigns/{id}/messages`
-#### Parameters
-Path parameters
+`POST /outreach/messages`
 
-  | Name | Type | Required  | Description |     
-  | - | - | - | - | 
-  | `id` | Guid | Yes  |  The unique id of the Outreach Campaign |  
+#### Parameters
+No Parameters
 
 #### Request body
 The request body contains data with the following structure:
@@ -358,6 +448,10 @@ The request body contains data with the following structure:
   | `status` | string | yes |  Status of the Outreach Message. Allowed values are "Queued", "Sending", "Sent", "Failed" |  
   | `failedReason` | string | no |  The failed reason of the Outreach Message. |  
   | `outreachCampaignId` | Guid | yes |  The outreach campaign id the Outreach Message. |  
+  | `outreachCampaignSentTime` | timestamp | no |  The sent time of the Outreach Campaign. |  
+  | `isMessageAutoAttachedToTicket` | string | no |  The Outreach Campaign id the Outreach Message. |  
+  | `preferredTicketToAutoAttach` | string | no |  The Outreach Campaign id the Outreach Message. |  
+  | `timeToAutoAttachToTicket` | string | no |  The Outreach Campaign id the Outreach Message. |  
   | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outreach Message. |  
   
 example:
@@ -371,6 +465,10 @@ example:
 	"status": "Successful",
 	"failedReason": "",
 	"outreachCampaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
+	"outreachCampaignSentTime": "2022-05-22 03:00:36.277",
+	"isMessageAutoAttachedToTicket": "Yes",
+	"preferredTicketToAutoAttach": "New ticket",
+	"timeToAutoAttachToTicket": "When the message is sent",
 	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48"
 }
 ```
@@ -395,6 +493,10 @@ The Response body contains data with the following structure:
 	"status": "Successful",
 	"failedReason": "",
 	"outreachCampaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
+	"outreachCampaignSentTime": "2022-05-22 03:00:36.277",
+	"isMessageAutoAttachedToTicket": "Yes",
+	"preferredTicketToAutoAttach": "New ticket",
+	"timeToAutoAttachToTicket": "When the message is sent",
 	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48"
 }
 ```
@@ -422,6 +524,10 @@ The request body contains data with the following structure:
   | `status` | string | yes |  Status of the Outreach Message. Allowed values are "Queued", "Sending", "Sent", "Failed" |  
   | `failedReason` | string | no |  The failed reason of the Outreach Message. |  
   | `outreachCampaignId` | Guid | yes |  The outreach campaign id the Outreach Message. |  
+  | `outreachCampaignSentTime` | timestamp | no |  The sent time of the Outreach Campaign. |  
+  | `isMessageAutoAttachedToTicket` | string | no |  The Outreach Campaign id the Outreach Message. |  
+  | `preferredTicketToAutoAttach` | string | no |  The Outreach Campaign id the Outreach Message. |  
+  | `timeToAutoAttachToTicket` | string | no |  The Outreach Campaign id the Outreach Message. |  
   | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outreach Message. |  
   
 example:
@@ -436,6 +542,10 @@ example:
 	"status": "Successful",
 	"failedReason": "",
 	"outreachCampaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
+	"outreachCampaignSentTime": "2022-05-22 03:00:36.277",
+	"isMessageAutoAttachedToTicket": "Yes",
+	"preferredTicketToAutoAttach": "New ticket",
+	"timeToAutoAttachToTicket": "When the message is sent",
 	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48"
 }
 ```
@@ -460,6 +570,10 @@ The Response body contains data with the following structure:
 	"status": "Successful",
 	"failedReason": "",
 	"outreachCampaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
+	"outreachCampaignSentTime": "2022-05-22 03:00:36.277",
+	"isMessageAutoAttachedToTicket": "Yes",
+	"preferredTicketToAutoAttach": "New ticket",
+	"timeToAutoAttachToTicket": "When the message is sent",
 	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48"
 }
 ```
@@ -491,7 +605,8 @@ The Response body contains data with the following structure:
   HTTP/1.1 200 OK
   Content-Type: application/json
 {
-	"contacts": [{
+	"contacts": [
+	{
 		"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
 		"name": "Tom cruise",
     "createTime": "2022-03-18 01:12:32.0000000",
@@ -918,6 +1033,7 @@ Outreach Campaign is represented as simple flat JSON objects with the following 
   | `timeToAutoAttachToTicket` | string | no |  Allowed values are "When the message is sent", "When contact replies the message". |  
   | `contactFilterConditionMetType` | string | no |  Allowed values are "All", "Any", "Logical Expression". |  
   | `contactFilterLogicalExpresssion` | string | no |  Contact Filter Logical Expresssion of this Condition. |  
+  | `contactFilterConditions` | [OutreachCampaignContactFilterCondition](#outreachcampaigncontactfiltercondition-object)[] | no | An array of [OutreachCampaignContactFilterCondition](#outreachcampaigncontactfiltercondition-object)| 
   | `scheduledStartTime` | timestamp | no |  Message of this Outreach Campaign. |  
   
 ### OutreachCampaignContactFilterCondition Object
@@ -945,7 +1061,11 @@ Outreach Message is represented as simple flat JSON objects with the following k
   | `to` | string | yes |  Where the Outreach Message to. |  
   | `status` | string | yes |  Status of the Outreach Message. Allowed values are "Queued", "Sending", "Sent", "Failed" |  
   | `failedReason` | string | no |  The failed reason of the Outreach Message. |  
-  | `outreachCampaignId` | Guid | yes |  The Outreach Campaign id the Outreach Message. |  
+  | `outreachCampaignId` | Guid | no |  The Outreach Campaign id the Outreach Message. |  
+  | `outreachCampaignSentTime` | timestamp | no |  The sent time of the Outreach Campaign. |  
+  | `isMessageAutoAttachedToTicket` | string | no |  The Outreach Campaign id the Outreach Message. |  
+  | `preferredTicketToAutoAttach` | string | no |  The Outreach Campaign id the Outreach Message. |  
+  | `timeToAutoAttachToTicket` | string | no |  The Outreach Campaign id the Outreach Message. |  
   | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outreach Message. |  
         
 ### Contact Object
