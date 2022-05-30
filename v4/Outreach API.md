@@ -467,8 +467,19 @@ The Response body contains data with the following structure:
 ### Get the list of Contact
 `GET /contact/contacts/`
 #### Parameters
-No parameters
+Path parameters
 
+  | Name | Type | Required  | Description |     
+  | - | - | - | - | 
+  | `keywords` | String | No  | search scope includes: contact name/identity id/identity value |  
+  | `contactIdentityType` | String | No  | contact identity type |  
+  | `contactIdentityValue` | String | No  | contact identity value | 
+  | `contactIdentityName` | String | No  | contact identity name | 
+  | `include` | String | No  | include | 
+  | `pageIndex` | String | No  | page index | 
+  | `pageSize` | String | No  | page size | 
+  | `SortBy` | String | No  | sort by | 
+  | `SortOrder` | String | No  | `asc`,`desc`, default `asc` |  
 #### Response
 The Response body contains data with the following structure:
 
@@ -483,24 +494,41 @@ The Response body contains data with the following structure:
 	"contacts": [{
 		"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
 		"name": "Tom cruise",
-		"firstName": "Tom",
-		"lastName": "Cruise",
-		"description": "Moive actor",
-		"alias": "tomcruise",
-		"title": "Senior Moive actor",
-		"company": "Comm100",
-		"fax": "",
-		"phone": "",
-		"mailingAddress": "",
-		"city": "",
-		"stateOrProvince": "",
-		"countryOrRegion": "",
-		"postalOrZipCode": "",
-		"timeZone": "",
-        "createTime": "2022-03-18 01:12:32.0000000",
-        "lastUpdatedTime": "2022-03-18 01:12:32.0000000",
-        "mergeToContactId": "00000000-0000-0000-0000-000000000000"
-	}]
+    "createTime": "2022-03-18 01:12:32.0000000",
+    "lastUpdatedTime": "2022-03-18 01:12:32.0000000",
+    "mergeToContactId": "00000000-0000-0000-0000-000000000000",
+    "customFields": {
+        "firstName": "Tom",
+        "lastName": "Cruise",
+        "description": "Moive actor",
+        "alias": "tomcruise",
+        "title": "Senior Moive actor",
+        "company": "Comm100",
+        "fax": "",
+        "phone": "",
+        "mailingAddress": "",
+        "city": "",
+        "stateOrProvince": "",
+        "countryOrRegion": "",
+        "postalOrZipCode": "",
+        "timeZone": "",
+    },
+    "contactIdentities":
+      [{
+          "id":"760a3dfb-f776-4dc8-99cb-7fb288bdf1eb",
+          "contactId":"d5a7c487-7ac8-4b07-99e6-b85c3c6e56ab",
+          "contactIdentityType":"SMS",
+          "name":"+033214561",
+          "value":"+033214561",
+          "avatarUrl":"",
+          "infoUrl":"",
+          "screenName":"",
+          "originalContactPageUrl":""
+      }]
+	}],
+  "previousPage":null,
+  "nextPage":"http://demo.comm100.io/contacts?pageIndex=2&pageSize=50&siteId=10100000",
+  "total":255
 }
 ```
 
@@ -526,30 +554,44 @@ The Response body contains data with the following structure:
 {
 	"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
 	"name": "Tom cruise",
-	"firstName": "Tom",
-	"lastName": "Cruise",
-	"description": "Moive actor",
-	"alias": "tomcruise",
-	"title": "Senior Moive actor",
-	"company": "Comm100",
-	"fax": "",
-	"phone": "",
-	"mailingAddress": "",
-	"city": "",
-	"stateOrProvince": "",
-	"countryOrRegion": "",
-	"postalOrZipCode": "",
-	"timeZone": "",
 	"createTime": "2022-03-18 01:12:32.0000000",
 	"lastUpdatedTime": "2022-03-18 01:12:32.0000000",
-	"mergeToContactId": "00000000-0000-0000-0000-000000000000"
+	"mergeToContactId": "00000000-0000-0000-0000-000000000000",
+  "customFields": {
+        "firstName": "Tom",
+        "lastName": "Cruise",
+        "description": "Moive actor",
+        "alias": "tomcruise",
+        "title": "Senior Moive actor",
+        "company": "Comm100",
+        "fax": "",
+        "phone": "",
+        "mailingAddress": "",
+        "city": "",
+        "stateOrProvince": "",
+        "countryOrRegion": "",
+        "postalOrZipCode": "",
+        "timeZone": "",
+    },
+    "contactIdentities":
+      [{
+          "id":"760a3dfb-f776-4dc8-99cb-7fb288bdf1eb",
+          "contactId":"d5a7c487-7ac8-4b07-99e6-b85c3c6e56ab",
+          "contactIdentityType":"SMS",
+          "name":"+033214561",
+          "value":"+033214561",
+          "avatarUrl":"",
+          "infoUrl":"",
+          "screenName":"",
+          "originalContactPageUrl":""
+      }]
 }
 ```
 
 ### Create a new Contact
 `POST /contact/contacts/`
 #### Parameters
-No parameters
+No path parameters
 
 #### Request body
 The request body contains data with the following structure:
@@ -557,42 +599,25 @@ The request body contains data with the following structure:
   | Name | Type | Required | Description                                           |     
   | - | - | - | - | 
   | `name` | string | yes |  The name of the Contact. |  
-  | `firstName` | string | no |  The first name of the Contact. |  
-  | `lastName` | string | no |  The last name of the Contact. |  
-  | `description` | string | no |  The description of the Contact. |  
-  | `alias` | string | no |  The alis of the Contact. |  
-  | `title` | string | no |  The title of the Contact. |  
-  | `company` | string | no |  The company of the Contact. |  
-  | `fax` | string | no |  The fax of the Contact. |  
-  | `phone` | string | no |  The phone of the Contact. |  
-  | `mailingAddress` | string | no |  The mailing address of the Contact. |  
-  | `city` | string | no |  The city of the Contact. |  
-  | `stateOrProvince` | string | no |  The state or province of the Contact. |  
-  | `countryOrRegion` | string | no |  The country or region of the Contact. |  
-  | `postalOrZipCode` | string | no |  The postal or zip code of the Contact. |  
-  | `timeZone` | string | no |  The time zone of the Contact. |  
-  | `mergeToContactId` | Guid | no |  The Contact id of merge to. |  
+  | `contactIdentity` | [contactIdentities](#contact-Identity-object) | yes | Contact identities array. |  
+  | `customField` | [custom fields](#custom-field-value-object) | yes |  value of contact custom fields. |  
   
 example:
 ```Json 
 {
-	"name": "Tom cruise",
-	"firstName": "Tom",
-	"lastName": "Cruise",
-	"description": "Moive actor",
-	"alias": "tomcruise",
-	"title": "Senior Moive actor",
-	"company": "Comm100",
-	"fax": "",
-	"phone": "",
-	"mailingAddress": "",
-	"city": "",
-	"stateOrProvince": "",
-	"countryOrRegion": "",
-	"postalOrZipCode": "",
-	"timeZone": "",
-	"mergeToContactId": "00000000-0000-0000-0000-000000000000"
+    "name":"Frank",
+    "contactIdentities":[
+        {
+            "contactIdentityType":"Email",
+            "value":"frank@1234.com",
+            "name":"Frank"
+        }
+    ],
+    "customFields":{
+        "company": "Comm100",
+    }
 }
+
 ```
 
 #### Response
@@ -608,23 +633,24 @@ The Response body contains data with the following structure:
 {
 	"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
 	"name": "Tom cruise",
-	"firstName": "Tom",
-	"lastName": "Cruise",
-	"description": "Moive actor",
-	"alias": "tomcruise",
-	"title": "Senior Moive actor",
-	"company": "Comm100",
-	"fax": "",
-	"phone": "",
-	"mailingAddress": "",
-	"city": "",
-	"stateOrProvince": "",
-	"countryOrRegion": "",
-	"postalOrZipCode": "",
-	"timeZone": "",
 	"createTime": "2022-03-18 01:12:32.0000000",
 	"lastUpdatedTime": "2022-03-18 01:12:32.0000000",
-	"mergeToContactId": "00000000-0000-0000-0000-000000000000"
+	"mergeToContactId": "00000000-0000-0000-0000-000000000000",
+  "customFields": { 
+      "company": "Comm100"
+  },
+  "contactIdentities":
+    [{
+        "id":"760a3dfb-f776-4dc8-99cb-7fb288bdf1eb",
+        "contactId":"d5a7c487-7ac8-4b07-99e6-b85c3c6e56ab",
+        "contactIdentityType":"Email",
+        "name":"frank",
+        "value":"frank@1234.com",
+        "avatarUrl":"",
+        "infoUrl":"",
+        "screenName":"",
+        "originalContactPageUrl":""
+    }]
 }
 ```
 
@@ -643,43 +669,31 @@ The request body contains data with the following structure:
   | Name | Type | Required | Description                                           |     
   | - | - | - | - | 
   | `name` | string | yes |  The name of the Contact. |  
-  | `firstName` | string | no |  The first name of the Contact. |  
-  | `lastName` | string | no |  The last name of the Contact. |  
-  | `description` | string | no |  The description of the Contact. |  
-  | `alias` | string | no |  The alis of the Contact. |  
-  | `title` | string | no |  The title of the Contact. |  
-  | `company` | string | no |  The company of the Contact. |  
-  | `fax` | string | no |  The fax of the Contact. |  
-  | `phone` | string | no |  The phone of the Contact. |  
-  | `mailingAddress` | string | no |  The mailing address of the Contact. |  
-  | `city` | string | no |  The city of the Contact. |  
-  | `stateOrProvince` | string | no |  The state or province of the Contact. |  
-  | `countryOrRegion` | string | no |  The country or region of the Contact. |  
-  | `postalOrZipCode` | string | no |  The postal or zip code of the Contact. |  
-  | `timeZone` | string | no |  The time zone of the Contact. |  
-  | `mergeToContactId` | Guid | no |  The Contact id of merge to. |  
+  | `contactIdentity` | [contactIdentities](#contact-Identity-object) | yes | Contact identities array. |  
+  | `customField` | [custom fields](#custom-field-value-object) | yes |  value of contact custom fields. |  
 
 example:
 ```Json 
 {
 	"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
 	"name": "Tom cruise 2",
-	"firstName": "Tom",
-	"lastName": "Cruise",
-	"description": "Moive actor",
-	"alias": "tomcruise",
-	"title": "Senior Moive actor",
-	"company": "Comm100",
-	"fax": "",
-	"phone": "",
-	"mailingAddress": "",
-	"city": "",
-	"stateOrProvince": "",
-	"countryOrRegion": "",
-	"postalOrZipCode": "",
-	"timeZone": "",
 	"createTime": "2022-03-18 01:12:32.0000000",
-	"mergeToContactId": "00000000-0000-0000-0000-000000000000"
+	"mergeToContactId": "00000000-0000-0000-0000-000000000000",
+  "customFields": { 
+    "company": "Comm100"
+  },
+  "contactIdentities":
+    [{
+        "id":"760a3dfb-f776-4dc8-99cb-7fb288bdf1eb",
+        "contactId":"d5a7c487-7ac8-4b07-99e6-b85c3c6e56ab",
+        "contactIdentityType":"Email",
+        "name":"frank",
+        "value":"frank@1234.com",
+        "avatarUrl":"",
+        "infoUrl":"",
+        "screenName":"",
+        "originalContactPageUrl":""
+    }]
 }
 ```
 
@@ -688,33 +702,7 @@ The Response body contains data with the following structure:
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
-|`contact` |[Contact](#contact-object)  |Yes|   [Contact](#contact-object)  |
-
-```Json 
-  HTTP/1.1 200 Ok
-  Content-Type: application/json
-{
-	"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
-	"name": "Tom cruise 2",
-	"firstName": "Tom",
-	"lastName": "Cruise",
-	"description": "Moive actor",
-	"alias": "tomcruise",
-	"title": "Senior Moive actor",
-	"company": "Comm100",
-	"fax": "",
-	"phone": "",
-	"mailingAddress": "",
-	"city": "",
-	"stateOrProvince": "",
-	"countryOrRegion": "",
-	"postalOrZipCode": "",
-	"timeZone": "",
-	"createTime": "2022-03-18 01:12:32.0000000",
-	"lastUpdatedTime": "2022-05-18 11:12:32.0000000",
-	"mergeToContactId": "00000000-0000-0000-0000-000000000000"
-}
-```
+  |`contact` |[Contact](#contact-object)  |Yes|   [Contact](#contact-object)  |
 
 ### Delete the Contact
 `DELETE /contact/contacts/{id}`
@@ -728,15 +716,20 @@ Path parameters
 #### Response
 No response
 
-```Json 
-  HTTP/1.1 204 Ok
-  Content-Type: application/json
-{
-}
-```
 
+### Merge Contacts
+`POST /contact/contacts:merge`
+#### Parameters
+##### Request body
+The request body contains data with the following structure:
 
+  | Name | Type | Required | Description                                           |     
+  | - | - | - | - | 
+  | `originalContactId` | Guid | yes | The original ID of the Contact. |  
+  | `targetContactId` | Guid | yes | The target ID of the Contact. |   
 
+#### Response
+No response
 
 ### Get the list of contact field
 `GET /contact/fields/`
@@ -748,7 +741,40 @@ The Response body contains data with the following structure:
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
-|`contact fields` |[Contact Field](#contact-field-object)  |Yes| [Contact](#contact-field-object)  |
+  |`contact fields` |[Contact Field](#contact-field-object)  |Yes| [Contact](#contact-field-object)  |
+
+```Json 
+  HTTP/1.1 200 OK
+  Content-Type: application/json
+  [{
+    "id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
+    "isSystem": "true",
+    "isIdentity":"false",
+    "identityType":"",
+    "isRequired": "false",
+    "isReadOnly": "false",
+    "type": "text",
+    "name": "Company",
+    "length": 256,
+    "helpText": "company name",
+    "defaultValue": "Comm100",
+    "order": 5,
+    "fieldOptions":[]
+  }]
+```
+### Get a single contact field
+`GET /contact/fields/{id}`
+#### Parameters
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+  |`id` | Guid  |Yes| contact field ID |
+
+#### Response
+The Response body contains data with the following structure:
+
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+  |`contact field` |[Contact Field](#contact-field-object)  |Yes| [Contact](#contact-field-object)  |
 
 ```Json 
   HTTP/1.1 200 OK
@@ -769,6 +795,61 @@ The Response body contains data with the following structure:
   "fieldOptions":[]
 }
 ```
+
+### Create a new contact field
+`POST /contact/fields/`
+#### Parameters
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+  | `name` | string | unique name of the field |
+  | `isRequired` | bool | Whether the field is required or not. |
+  | `isReadOnly` | string | Whether the field is readyonly or not. |
+  | `type` | string | Type of the field. Allowed values are "text", "textArea", "email", "url", "date", "integer", "float" |
+  | `length` | integer | Field length |
+  | `helpText` | string | Help text of the field. |
+  | `defaultValue` | string | Default value of the field. |
+  | `order` | integer | |
+  | `fieldOptions` | fieldOptions[#field-option-object] | Reference to Field Option. |
+
+#### Response
+The Response body contains data with the following structure:
+
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+  |`contact field` |[Contact Field](#contact-field-object)  |Yes| [Contact](#contact-field-object)  |
+
+### Update a Contact Field
+`PUT /contact/fields/{id}`
+#### Parameters
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+  |`id` | Guid  |Yes| contact field ID |
+  | `name` | string | unique name of the field |
+  | `isRequired` | bool | Whether the field is required or not. |
+  | `isReadOnly` | string | Whether the field is readyonly or not. |
+  | `type` | string | Type of the field. Allowed values are "text", "textArea", "email", "url", "date", "integer", "float" |
+  | `length` | integer | Field length |
+  | `helpText` | string | Help text of the field. |
+  | `defaultValue` | string | Default value of the field. |
+  | `order` | integer | |
+  | `fieldOptions` | fieldOptions[#field-option-object] | Reference to Field Option. |
+
+#### Response
+The Response body contains data with the following structure:
+
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+  |`contact field` |[Contact Field](#contact-field-object)  |Yes| [Contact](#contact-field-object)  |
+
+### Delete a Contact Field
+`Delete /contact/fields/{id}`
+#### Parameters
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+  |`id` | Guid  |Yes| contact field ID |
+
+#### Response
+No Response
 
 ### Create a new outreach message
 `POST /ticketing/outreachmessages/`
@@ -874,12 +955,27 @@ Contact is represented as simple flat JSON objects with the following keys:
   | - | - | - | - | 
   | `id` | Guid | yes | The unique id of the Contact. |  
   | `name` | string | yes |  The name of the Contact. |  
-  | `firstName` | string | no |  The first name of the Contact. |  
-  | `lastName` | string | no |  The last name of the Contact. |  
   | `createTime` | timestamp | no |  The create time of the Contact. |  
   | `lastUpdatedTime` | timestamp | no |  The last updated time of the Contact. |  
   | `mergeToContactId` | Guid | no |  The Contact id of merge to. |  
   | `customFields` | [custom field value](#custom-field-value-object)[] | custom field value array | 
+  | `contactIdentities` | [contact identities](#contact-identity-object)[] | custom field value array | 
+
+### Contact Identity Object
+Contact Identity is represented as simple flat JSON objects with the following keys:
+
+| Name | Type | Description | 
+| - | - | - |
+| `id` | string | read-only, the id of identity |
+| `type` | string | required, contact identity type |
+| `value` | string | required, the value of one identity, should be unique |
+| `name` | string | required, the name of one identity |
+| `avatar` | string | optional, the avatar of one identity |
+| `identityInfoUrl` | string | optional, the original identity info url of one identity |
+| `originalContactPageUrl` | string | optional, the original contact page url |
+| `screenName` | string | optional, only for twitter |
+| `isDeleted` | boolean | if is deleted |
+
 
 ### custom field value object
 | Name | Type | Description | 
