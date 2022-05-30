@@ -1111,10 +1111,10 @@ Contact Identity is represented as simple flat JSON objects with the following k
 | `name` | string | unique name of the field |
 | `isSystem` | bool | Whether the field is a system field or not. |
 | `isIdentity` | bool | Whether the field is an identity field or not. |
-| `identityType` | string |  |
+| `identityType` | string | "visitor", "email", "SMS", "facebook", "twitter", "wechat", "SSOID", "externalID", "whatsApp", "instagram", "telegram", "line". Available when Is Identity is true. |
 | `isRequired` | bool | Whether the field is required or not. |
 | `isReadOnly` | string | Whether the field is readyonly or not. |
-| `type` | string | Type of the field. Allowed values are "text", "textArea", "email", "url", "date", "integer", "float" |
+| `type` | string | Type of the field. Allowed values are "text", "textArea", "email", "url", "date", "date time", "integer", "float", "radio", "checkbox", "dropdownlist", "checkboxlist", "link", "timezone" |
 | `length` | integer | Field length |
 | `helpText` | string | Help text of the field. |
 | `defaultValue` | string | Default value of the field. |
