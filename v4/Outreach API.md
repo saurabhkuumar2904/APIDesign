@@ -1140,7 +1140,7 @@ Outreach Campaign Contact Filter Condition is represented as simple flat JSON ob
   | Name | Type | Required | Description                                           |     
   | - | - | - | - | 
   | `fieldName` | string | yes |  Field name of the contact filter condition. |  
-  | `metType` | string | yes |  Allowed values are "Contains", "Does Not Contain", "Is", "Is Not", "Is More Than", "Is Less Than", "Before", "After". |  
+  | `operator` | string | yes |  Allowed values are "Contains", "Does Not Contain", "Is", "Is Not", "Is More Than", "Is Less Than", "Before", "After". |  
   | `value` | string | yes |  Trigger mode of the contact filter condition. |  
   | `order` | integer | yes |  Order of the contact filter condition. | 
   
