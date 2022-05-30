@@ -609,8 +609,8 @@ The Response body contains data with the following structure:
 {
   "contacts": [
 	{
-		"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
-		"name": "Tom cruise",
+    "id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
+    "name": "Tom cruise",
     "createTime": "2022-03-18 01:12:32.0000000",
     "lastUpdatedTime": "2022-03-18 01:12:32.0000000",
     "mergeToContactId": "00000000-0000-0000-0000-000000000000",
@@ -669,11 +669,11 @@ The Response body contains data with the following structure:
   HTTP/1.1 200 OK
   Content-Type: application/json
 {
-	"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
-	"name": "Tom cruise",
-	"createTime": "2022-03-18 01:12:32.0000000",
-	"lastUpdatedTime": "2022-03-18 01:12:32.0000000",
-	"mergeToContactId": "00000000-0000-0000-0000-000000000000",
+  "id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
+  "name": "Tom cruise",
+  "createTime": "2022-03-18 01:12:32.0000000",
+  "lastUpdatedTime": "2022-03-18 01:12:32.0000000",
+  "mergeToContactId": "00000000-0000-0000-0000-000000000000",
   "customFields": {
         "firstName": "Tom",
         "lastName": "Cruise",
@@ -748,11 +748,11 @@ The Response body contains data with the following structure:
   HTTP/1.1 201 Created
   Content-Type: application/json
 {
-	"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
-	"name": "Tom cruise",
-	"createTime": "2022-03-18 01:12:32.0000000",
-	"lastUpdatedTime": "2022-03-18 01:12:32.0000000",
-	"mergeToContactId": "00000000-0000-0000-0000-000000000000",
+  "id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
+  "name": "Tom cruise",
+  "createTime": "2022-03-18 01:12:32.0000000",
+  "lastUpdatedTime": "2022-03-18 01:12:32.0000000",
+  "mergeToContactId": "00000000-0000-0000-0000-000000000000",
   "customFields": { 
       "company": "Comm100"
   },
@@ -792,13 +792,13 @@ The request body contains data with the following structure:
 example:
 ```Json 
 {
-	"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
-	"name": "Tom cruise 2",
-	"createTime": "2022-03-18 01:12:32.0000000",
-	"mergeToContactId": "00000000-0000-0000-0000-000000000000",
+  "id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
+  "name": "Tom cruise 2",
+  "createTime": "2022-03-18 01:12:32.0000000",
+  "mergeToContactId": "00000000-0000-0000-0000-000000000000",
   "customFields": { 
-    "company": "Comm100"
-  },
+      "company": "Comm100"
+    },
   "contactIdentities":
     [{
         "id":"760a3dfb-f776-4dc8-99cb-7fb288bdf1eb",
@@ -897,18 +897,18 @@ The Response body contains data with the following structure:
   HTTP/1.1 200 OK
   Content-Type: application/json
 {
-	"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
-	"isSystem": "true",
+  "id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
+  "isSystem": "true",
   "isIdentity":"false",
   "identityType":"",
-	"isRequired": "false",
+  "isRequired": "false",
   "isReadOnly": "false",
-	"type": "text",
-	"name": "Company",
-	"length": 256,
-	"helpText": "company name",
-	"defaultValue": "Comm100",
-	"order": 5,
+  "type": "text",
+  "name": "Company",
+  "length": 256,
+  "helpText": "company name",
+  "defaultValue": "Comm100",
+  "order": 5,
   "fieldOptions":[]
 }
 ```
