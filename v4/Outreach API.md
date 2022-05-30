@@ -1099,14 +1099,13 @@ Contact Identity is represented as simple flat JSON objects with the following k
 | `isDeleted` | boolean | if is deleted |
 
 
-### custom field value object
+### Contact custom field value object
 | Name | Type | Description | 
 | - | - | - | 
-| `id` | string | the id of custom field |
 | `name` | string | the name of custom field |
 | `value` | string | the value of custom field |
 
-### contact field object
+### Contact field object
 | Name | Type | Description | 
 | - | - | - | 
 | `id` | guid | the id of custom field |
