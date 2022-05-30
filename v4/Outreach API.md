@@ -1,6 +1,6 @@
   | Change Version | API Version | Change nots | Change Date | Author |Architect Team Reviewer | 
   | - | - | - | - | - |- |
-  | 1.0 | v1 |Outreach API | 2022-5-18 | Leon，Frank,Yogesh|  Allon|
+  | 1.0 | v1 |Outreach API | 2022-5-18 | Leon,Frank,Yogesh|  Allon|
 
 ## Summary
 
