@@ -41,9 +41,12 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
   - PUT /contact/fields/{id} - [Update a Contact Field](#update-a-contact-field).  
   - DELETE /contact/fields/{id} - [Delete a Contact Field](#delete-a-contact-field).  
 
-### Ticketing Outreach Message API 
-  - POST /ticketing/outreachmessages/ - [Create a new ticket outreach message](#create-a-new-ticket-outreach-message). 
-  - GET /ticketing/outreachmessages/{id} - [Get a single ticket outreach message](#get-a-single-ticket-outreach-message). 
+### Ticketing API 
+  - POST /ticketing/ticket/{id}:attach - [attach a outreach message to the ticket](#attach-a-outreach-message-to-the-ticket). 
+  - 
+###  outreach unichannel API 
+  - POST /outreachunichannel/messages/ - [Create a new outreach message](#create-a-new-outreach-message). 
+  - GET /outreachunichannel/messages/{id} - [Get a single outreach message](#get-a-single-outreach-message). 
 
 ## Endpoints
 
