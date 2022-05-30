@@ -592,8 +592,10 @@ Path parameters
   | `include` | String | No  | include | 
   | `pageIndex` | String | No  | page index | 
   | `pageSize` | String | No  | page size | 
-  | `SortBy` | String | No  | sort by | 
-  | `SortOrder` | String | No  | `asc`,`desc`, default `asc` |  
+  | `sortBy` | String | No  | sort by | 
+  | `sortOrder` | String | No  | `asc`,`desc`, default `asc` |  
+  | `conditions` | [Conditions](#condition-object) | No  | parameter format: `conditions[0][field]=company&conditions[0][matchType]=contains&conditions[0][value]=Apple&conditions[1][field]=name&conditions[1][matchType]=contains&conditions[1][value]=Jordan`, fields can be system fields and custom fields. | 
+
 #### Response
 The Response body contains data with the following structure:
 
@@ -1129,3 +1131,11 @@ Contact Identity is represented as simple flat JSON objects with the following k
 | `value` | string | Value of the option. |
 | `order` | integer | Order of the option. |
 | `displayText` | string | Display text of the option. |
+
+### Condition object
+| Name | Type | Description | 
+| - | - | - | 
+| `field` | string | Contact field name. |
+| `matchType` | string | "Is", "IsNot"，"After", "Before", "Contains", "DoesNotContain", "IsMoreThan", "IsLessThan" |
+| `value` | string | Field value. |
+   
