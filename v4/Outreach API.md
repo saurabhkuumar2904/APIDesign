@@ -688,7 +688,7 @@ The Response body contains data with the following structure:
         "stateOrProvince": "",
         "countryOrRegion": "",
         "postalOrZipCode": "",
-        "timeZone": "",
+        "timeZone": ""
     },
     "contactIdentities":
       [{
