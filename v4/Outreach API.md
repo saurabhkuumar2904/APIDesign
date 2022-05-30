@@ -607,7 +607,7 @@ The Response body contains data with the following structure:
   HTTP/1.1 200 OK
   Content-Type: application/json
 {
-	"contacts": [
+  "contacts": [
 	{
 		"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
 		"name": "Tom cruise",
@@ -628,7 +628,7 @@ The Response body contains data with the following structure:
         "stateOrProvince": "",
         "countryOrRegion": "",
         "postalOrZipCode": "",
-        "timeZone": "",
+        "timeZone": ""
     },
     "contactIdentities":
       [{
