@@ -861,7 +861,7 @@ The request body contains data with the following structure:
   | Name | Type | Required | Description                                           |     
   | - | - | - | - | 
   | `name` | string | yes |  The name of the Contact. |  
-  | `contactIdentity` | [contactIdentities](#contact-Identity-object) | yes | Contact identities array. |  
+  | `contactIdentity` | [contactIdentities](#contact-Identity-object)[] | yes | Contact identities array. |  
   | `customField` | [custom fields](#custom-field-value-object) | yes |  value of contact custom fields. |  
 
 example:
@@ -894,7 +894,7 @@ The Response body contains data with the following structure:
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
-  |`contact` |[Contact](#contact-object)  |Yes|   [Contact](#contact-object)  |
+  |`contact` |[Contact](#contact-object)  |Yes| [Contact](#contact-object)  |
 
 ### Delete the Contact
 `DELETE /contact/contacts/{id}`
@@ -903,7 +903,7 @@ Path parameters
 
   | Name | Type | Required  | Description |     
   | - | - | - | - | 
-  | `id` | Guid | Yes  |  The unique id of the Contact |  
+  | `id` | Guid | Yes  | The unique id of the Contact |  
 
 #### Response
 No response
@@ -924,7 +924,7 @@ The request body contains data with the following structure:
 No response
 
 ### Import Contacts
-`POST /contact/contacts/import`
+`POST /contact/contacts:import`
 #### Parameters
 ##### Request body
 The request body contains data with the following structure:
@@ -937,9 +937,9 @@ The request body contains data with the following structure:
 No response
 
 ### Export Contacts
-`GET /contact/contacts/exportAll`
+`POST /contact/contacts:export`
 #### Parameters
-No oarameter     
+No Parameter     
 
 #### Response
 - file
@@ -954,7 +954,7 @@ The Response body contains data with the following structure:
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
-  |`contact fields` |[Contact Field](#contact-field-object)  |Yes| [Contact](#contact-field-object)  |
+  |`contact fields` |[Contact Field](#contact-field-object)[]  |Yes| [Contact](#contact-field-object)  |
 
 ```Json 
   HTTP/1.1 200 OK
@@ -1022,7 +1022,7 @@ The Response body contains data with the following structure:
   | `helpText` | string | Help text of the field. |
   | `defaultValue` | string | Default value of the field. |
   | `order` | integer | |
-  | `fieldOptions` | fieldOptions[#field-option-object] | Reference to Field Option. |
+  | `fieldOptions` | [fieldOptions](#field-option-object)[] | Reference to Field Option. |
 
 #### Response
 The Response body contains data with the following structure:
@@ -1045,7 +1045,7 @@ The Response body contains data with the following structure:
   | `helpText` | string | Help text of the field. |
   | `defaultValue` | string | Default value of the field. |
   | `order` | integer | |
-  | `fieldOptions` | fieldOptions[#field-option-object] | Reference to Field Option. |
+  | `fieldOptions` | [fieldOptions](#field-option-object)[] | Reference to Field Option. |
 
 #### Response
 The Response body contains data with the following structure:
@@ -1216,7 +1216,7 @@ Contact Identity is represented as simple flat JSON objects with the following k
 | `helpText` | string | Help text of the field. |
 | `defaultValue` | string | Default value of the field. |
 | `order` | integer | |
-| `fieldOptions` | fieldOptions[#field-option-object] | Reference to Field Option. |
+| `fieldOptions` | [fieldOptions](#field-option-object)[] | Reference to Field Option. |
 
 ### Field option object
 | Name | Type | Description | 
