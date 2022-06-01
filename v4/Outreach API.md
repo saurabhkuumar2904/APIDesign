@@ -4,12 +4,7 @@
 
 ## Summary
 
-### Outreach Message Callback API 
-
-The CallbackURL can be any valid URL that implements this API, and it is configured in the system when a new Outreach Message Campaign is created. 
-  - POST /{callbackURL} - [Outreach Message Callback API](#voice-channel-adapter-receives-input). 
-
-### Outreach Message API  
+### Outreach API  
 
 #### Outreach Campaign
   - GET /outreach/campaigns/ - [Get the list of Outreach Campaign](#get-the-list-of-outreach-campaign). 
@@ -18,6 +13,7 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
   - PUT /outreach/campaigns/{id} - [Update the Outreach Campaign](#update-the-outreach-campaign).  
   - DELETE /outreach/campaigns/{id} - [Delete the campaign](#delete-the-campaign). 
   - POST /outreach/campaigns/{id}:send - [Send the campaign](#Send-the-campaign). 
+  
 #### Outreach Message
   - GET /outreach/messages/ - [Get the list of Outreach Message](#get-the-list-of-outreach-message). 
   - GET /outreach/messages/{id} - [Get a single Outreach Message](#get-a-single-outreach-message). 
@@ -25,7 +21,13 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
   - PUT /outreach/messages/{id} - [Update the Outreach Message](#update-the-outreach-message).  
 <!--   - POST /outreach/campaigns/{id}/messages - [Create a new Outreach Message](#create-a-new-outreach-message).    -->
 
+### Outreach Message Callback API 
+
+The CallbackURL can be any valid URL that implements this API, and it is configured in the system when a new Outreach Message is created. 
+  - POST /{callbackURL} - [Outreach Message Callback API](#outreach-message-Callback-api). 
+  
 ### Contact API 
+
 ####  Contact
   - GET /contact/contacts/ - [Get the list of Contact](#get-the-list-of-contact).  
   - POST /contact/contacts:query - [Query contact with conditions](#query-contact-with-conditions).  
@@ -36,6 +38,7 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
   - POST /contact/contacts:merge - [Merge Contact](#merge-contacts). 
   - POST /contact/contacts:import - [Import Contacts](#import-contacts). 
   - POST /contact/contacts:export - [Export Contacts](#export-contacts). 
+  
 ####  Contact Field
   - GET /contact/fields - [Get the list of Contact Field](#get-the-list-of-contact-field).
   - GET /contact/fields/{id} - [Get a single Contact Field](#get-a-single-contact-field).  
@@ -52,8 +55,43 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
 
 ## Endpoints
 
+### Outreach Message Callback API
+`POST /{callbackURL}`
+
+#### Parameters
+No parameters
+
+#### Response
+The Response body contains data with the following structure:
+
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+|`outreachMessage` |[OutreachMessage](#outreachmessage-object)  |Yes|   [OutreachMessage](#outreachmessage-object)  |
+```Json 
+  HTTP/1.1 200 OK
+  Content-Type: application/json
+{
+	"id": "11183a83-48e9-4d0d-a3bd-fb19ce5c12db",
+	"sentTime": "2022-05-23 03:00:36.277",
+	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
+	"message": "Hello, please fill in your application form by the end of this week!",
+	"from": "Tom Cruise",
+	"to": "XXX University",
+	"status": "Successful",
+	"failedReason": "",
+	"outreachCampaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
+	"outreachCampaignSentTime": "2022-05-22 03:00:36.277",
+	"isMessageAutoAttachedToTicket": "Yes",
+	"preferredTicketToAutoAttach": "New ticket",
+	"timeToAutoAttachToTicket": "When the message is sent",
+	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
+	"callbackURL": "https://domainname.com/sms/callback"
+}
+```
+
 ### Get the list of Outreach Campaign
 `GET /outreach/campaigns/`
+
 #### Parameters
 No parameters
 
@@ -93,6 +131,7 @@ The Response body contains data with the following structure:
 
 ### Get a single Outreach Campaign
 `GET /outreach/campaigns/{id}`
+
 #### Parameters
 Path parameters
 
@@ -134,6 +173,7 @@ The Response body contains data with the following structure:
 
 ### Create a new Outreach Campaign
 `POST /outreach/campaigns/`
+
 #### Parameters
 No parameters
 
@@ -212,6 +252,7 @@ The Response body contains data with the following structure:
 
 ### Update the Outreach Campaign
 `PUT /outreach/campaigns/{id}`
+
 #### Parameters
 Path parameters
 
@@ -296,6 +337,7 @@ The Response body contains data with the following structure:
 
 ### Delete the Campaign
 `DELETE /outreach/campaigns/{id}`
+
 #### Parameters
 Path parameters
 
@@ -315,6 +357,7 @@ No response
 
 ### Send the Campaign
 `POST /outreach/campaigns/{id}:send`
+
 #### Parameters
 Path parameters
 
@@ -389,13 +432,15 @@ The Response body contains data with the following structure:
 		"isMessageAutoAttachedToTicket": "Yes",
 		"preferredTicketToAutoAttach": "New ticket",
 		"timeToAutoAttachToTicket": "When the message is sent",
-		"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48"
+		"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
+		"callbackURL": "https://domainname.com/sms/callback"
 	}]
 }
 ```
 
 ### Get a single Outreach Message
 `GET /outreach/messages/{id}`
+
 #### Parameters
 Path parameters
 
@@ -427,7 +472,8 @@ The Response body contains data with the following structure:
 	"isMessageAutoAttachedToTicket": "Yes",
 	"preferredTicketToAutoAttach": "New ticket",
 	"timeToAutoAttachToTicket": "When the message is sent",
-	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48"
+	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
+	"callbackURL": "https://domainname.com/sms/callback"
 }
 ```
 
@@ -455,6 +501,7 @@ The request body contains data with the following structure:
   | `preferredTicketToAutoAttach` | string | no |  The Outreach Campaign id the Outreach Message. |  
   | `timeToAutoAttachToTicket` | string | no |  The Outreach Campaign id the Outreach Message. |  
   | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outreach Message. |  
+  | `callbackURL` | string | no |  The callbackURL of the Outreach Message. |  
   
 example:
 ```Json 
@@ -471,7 +518,8 @@ example:
 	"isMessageAutoAttachedToTicket": "Yes",
 	"preferredTicketToAutoAttach": "New ticket",
 	"timeToAutoAttachToTicket": "When the message is sent",
-	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48"
+	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
+	"callbackURL": "https://domainname.com/sms/callback"
 }
 ```
 
@@ -499,12 +547,14 @@ The Response body contains data with the following structure:
 	"isMessageAutoAttachedToTicket": "Yes",
 	"preferredTicketToAutoAttach": "New ticket",
 	"timeToAutoAttachToTicket": "When the message is sent",
-	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48"
+	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
+	"callbackURL": "https://domainname.com/sms/callback"
 }
 ```
 
 ### Update the Outreach Message
 `PUT /outreach/messages/{id}`
+
 #### Parameters
 Path parameters
 
@@ -531,6 +581,7 @@ The request body contains data with the following structure:
   | `preferredTicketToAutoAttach` | string | no |  The Outreach Campaign id the Outreach Message. |  
   | `timeToAutoAttachToTicket` | string | no |  The Outreach Campaign id the Outreach Message. |  
   | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outreach Message. |  
+  | `callbackURL` | string | no |  The callbackURL of the Outreach Message. |  
   
 example:
 ```Json 
@@ -548,7 +599,8 @@ example:
 	"isMessageAutoAttachedToTicket": "Yes",
 	"preferredTicketToAutoAttach": "New ticket",
 	"timeToAutoAttachToTicket": "When the message is sent",
-	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48"
+	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
+	"callbackURL": "https://domainname.com/sms/callback"
 }
 ```
 
@@ -576,13 +628,16 @@ The Response body contains data with the following structure:
 	"isMessageAutoAttachedToTicket": "Yes",
 	"preferredTicketToAutoAttach": "New ticket",
 	"timeToAutoAttachToTicket": "When the message is sent",
-	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48"
+	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
+	"callbackURL": "https://domainname.com/sms/callback"
 }
 ```
 
 ### Get the list of Contact
 `GET /contact/contacts/`
+
 #### Parameters
+
 #### Path parameters
 
   | Name | Type | Required  | Description |     
@@ -658,7 +713,9 @@ The Response body contains data with the following structure:
 
 ### Query contact with conditions
 `POST /contact/contacts:query`
+
 #### Parameters
+
 #### Request Body
   | Name | Type | Required  | Description |     
   | - | - | - | - | 
@@ -726,6 +783,7 @@ The Response body contains data with the following structure:
 
 ### Get a single Contact
 `GET /contact/contacts/{id}`
+
 #### Parameters
 Path parameters
 
@@ -782,6 +840,7 @@ The Response body contains data with the following structure:
 
 ### Create a new Contact
 `POST /contact/contacts/`
+
 #### Parameters
 No path parameters
 
@@ -848,6 +907,7 @@ The Response body contains data with the following structure:
 
 ### Update the Contact
 `PUT /contact/contacts/{id}`
+
 #### Parameters
 Path parameters
 
@@ -898,6 +958,7 @@ The Response body contains data with the following structure:
 
 ### Delete the Contact
 `DELETE /contact/contacts/{id}`
+
 #### Parameters
 Path parameters
 
@@ -911,7 +972,9 @@ No response
 
 ### Merge Contacts
 `POST /contact/contacts:merge`
+
 #### Parameters
+
 ##### Request body
 The request body contains data with the following structure:
 
@@ -925,7 +988,9 @@ No response
 
 ### Import Contacts
 `POST /contact/contacts:import`
+
 #### Parameters
+
 ##### Request body
 The request body contains data with the following structure:
 
@@ -938,6 +1003,7 @@ No response
 
 ### Export Contacts
 `POST /contact/contacts:export`
+
 #### Parameters
 No Parameter     
 
@@ -946,6 +1012,7 @@ No Parameter
 
 ### Get the list of contact field
 `GET /contact/fields/`
+
 #### Parameters
 No parameters
 
@@ -975,8 +1042,10 @@ The Response body contains data with the following structure:
     "fieldOptions":[]
   }]
 ```
+
 ### Get a single contact field
 `GET /contact/fields/{id}`
+
 #### Parameters
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
@@ -1011,6 +1080,7 @@ The Response body contains data with the following structure:
 
 ### Create a new contact field
 `POST /contact/fields/`
+
 #### Parameters
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
@@ -1033,6 +1103,7 @@ The Response body contains data with the following structure:
 
 ### Update a Contact Field
 `PUT /contact/fields/{id}`
+
 #### Parameters
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
@@ -1056,6 +1127,7 @@ The Response body contains data with the following structure:
 
 ### Delete a Contact Field
 `Delete /contact/fields/{id}`
+
 #### Parameters
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
@@ -1115,6 +1187,7 @@ HTTP/1.1 200 OK
 ```
 
 ## Model
+
 ### OutreachCampaign Object
 Outreach Campaign is represented as simple flat JSON objects with the following keys:
 
@@ -1126,7 +1199,7 @@ Outreach Campaign is represented as simple flat JSON objects with the following 
   | `channel` | string | no |  App channel of this Outreach Campaign. |  
   | `channelAccountId` | Guid | no |  Channel account id of this Outreach Campaign. |  
   | `message` | string | no |  Message of this Outreach Campaign. |  
-  | `isMessageAutoAttachedToTicket` | bool | no |  Whether a new ticket will be auto created or not for the message.| 
+  | `isMessageAutoAttachedToTicket` | bool | no |  Whether a new ticket will be auto created or not for the message.`yes`, `no`| 
   | `preferredTicketToAutoAttach` | string | no |  Allowed values are "New ticket", "Existing unresolved ticket whose last message is from SMS channel".|  
   | `timeToAutoAttachToTicket` | string | no |  Allowed values are "When the message is sent", "When contact replies the message". |  
   | `contactFilterConditionMetType` | string | no |  Allowed values are "All", "Any", "Logical Expression". |  
@@ -1159,11 +1232,12 @@ Outreach Message is represented as simple flat JSON objects with the following k
   | `failedReason` | string | no |  The failed reason of the Outreach Message. |  
   | `outreachCampaignId` | Guid | no |  The Outreach Campaign id the Outreach Message. |  
   | `outreachCampaignSentTime` | timestamp | no |  The sent time of the Outreach Campaign. |  
-  | `isMessageAutoAttachedToTicket` | string | no |  The Outreach Campaign id the Outreach Message. |  
-  | `preferredTicketToAutoAttach` | string | no |  The Outreach Campaign id the Outreach Message. |  
-  | `timeToAutoAttachToTicket` | string | no |  The Outreach Campaign id the Outreach Message. |  
+  | `isMessageAutoAttachedToTicket` | string | no |  Whether a new ticket will be auto created or not for the message.`yes`, `no` |  
+  | `preferredTicketToAutoAttach` | string | no |  Allowed values are "New ticket", "Existing unresolved ticket whose last message is from SMS channel". |  
+  | `timeToAutoAttachToTicket` | string | no |   Allowed values are "When the message is sent", "When contact replies the message". |  
   | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outreach Message. |  
-        
+  | `callbackURL` | string | no |  The callbackURL of the Outreach Message. |  
+  
 ### Contact Object
 Contact is represented as simple flat JSON objects with the following keys:
 
