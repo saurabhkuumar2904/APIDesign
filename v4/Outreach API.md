@@ -405,34 +405,34 @@ Path parameters
   | `id` | Guid | Yes  |  The unique id of the Outreach Campaign |  
 
 #### Response
-The Response body contains data with the following structure:
-
-  | Name  | Type | Required  | Description |     
-  | - | - | - | - | 
-|`outreachCampaign` |[OutreachCampaign](#outreachcampaign-object)  |Yes|   [OutreachCampaign](#outreachcampaign-object)  |
+The Response body contains data is [OutreachCampaignRecord](#outreachcampaignrecord-object):
 
 ```Json 
   HTTP/1.1 200 Ok
   Content-Type: application/json
 {
 	"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
-	"name": "test-campaign 2",
-	"description": "test campaign",
-	"channel": "SMS",
-	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
-	"message": "Hello, please fill in your application form by the end of this week!",
-	"isMessageAutoAttachedToTicket": "Yes",
-	"preferredTicketToAutoAttach": "New ticket",
-	"timeToAutoAttachToTicket": "When the message is sent",
-	"contactFilterConditionMetType": "Any",
-	"contactFilterLogicalExpresssion": "",
-	"contactFilterConditions": [{
-		"FieldName": "AAA",
-		"Operator": "is",
-		"Value": "BBBB",
-		"Order": "0"
-	}],
-	"scheduledStartTime": ""
+	"sentTime": "2022-05-23 03:00:36.277",
+	"outreachCampaign":{
+		"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
+		"name": "test-campaign 2",
+		"description": "test campaign",
+		"channel": "SMS",
+		"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
+		"message": "Hello, please fill in your application form by the end of this week!",
+		"isMessageAutoAttachedToTicket": "Yes",
+		"preferredTicketToAutoAttach": "New ticket",
+		"timeToAutoAttachToTicket": "When the message is sent",
+		"contactFilterConditionMetType": "Any",
+		"contactFilterLogicalExpresssion": "",
+		"contactFilterConditions": [{
+			"FieldName": "AAA",
+			"Operator": "is",
+			"Value": "BBBB",
+			"Order": "0"
+		}],
+		"scheduledStartTime": ""
+	}
 }
 ```
 ### Get the list of Outreach Message
@@ -1255,6 +1255,16 @@ Outreach Campaign Contact Filter Condition is represented as simple flat JSON ob
   | `operator` | string | yes |  Allowed values are "Contains", "Does Not Contain", "Is", "Is Not", "Is More Than", "Is Less Than", "Before", "After". |  
   | `value` | string | yes |  Trigger mode of the contact filter condition. |  
   | `order` | integer | yes |  Order of the contact filter condition. | 
+  
+### OutreachCampaignRecord Object
+Outreach Campaign is represented as simple flat JSON objects with the following keys:
+
+  | Name | Type | Required | Description                                           |     
+  | - | - | - | - | 
+  | `id` | Guid | yes | The unique id of the Outreach Campaign Record. |  
+  | `sentTime` | timestamp | yes | The unique id of the Outreach Campaign. | 
+  | `campaign` |  [OutreachCampaign](#outreachcampaign-object) | yes | Outreach Campaign. |  
+  
   
 ### OutreachMessage Object
 Outreach Message is represented as simple flat JSON objects with the following keys:
