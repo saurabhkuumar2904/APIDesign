@@ -1263,7 +1263,7 @@ Outreach Campaign is represented as simple flat JSON objects with the following 
   | - | - | - | - | 
   | `id` | Guid | yes | The unique id of the Outreach Campaign Record. |  
   | `sentTime` | timestamp | yes | The unique id of the Outreach Campaign. | 
-  | `campaign` |  [OutreachCampaign](#outreachcampaign-object) | yes | Outreach Campaign. |  
+  | `outreachCampaign` |  [OutreachCampaign](#outreachcampaign-object) | yes | Outreach Campaign. |  
   
   
 ### OutreachMessage Object
