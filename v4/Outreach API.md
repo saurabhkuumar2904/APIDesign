@@ -59,8 +59,47 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
 `POST /{callbackURL}`
 
 #### Parameters
-No parameters
+No Parameters
 
+#### Request body
+The request body contains data with the following structure:
+
+  | Name | Type | Required | Description                                           |     
+  | - | - | - | - | 
+  | `sentTime` | timestamp | yes |  The outreach campaign id of the Outreach Message. |  
+  | `contactId` | Guid | yes |  Contact id of the Outreach Message. |  
+  | `message` | string | yes |  Message. |  
+  | `from` | string | yes |  Where the Outreach Message from. |  
+  | `to` | string | yes |  Where the Outreach Message to. |  
+  | `status` | string | yes |  Status of the Outreach Message. Allowed values are "Queued", "Sending", "Sent", "Failed" |  
+  | `failedReason` | string | no |  The failed reason of the Outreach Message. |  
+  | `outreachCampaignId` | Guid | yes |  The outreach campaign id the Outreach Message. |  
+  | `outreachCampaignSentTime` | timestamp | no |  The sent time of the Outreach Campaign. |  
+  | `isMessageAutoAttachedToTicket` | string | no |  The Outreach Campaign id the Outreach Message. |  
+  | `preferredTicketToAutoAttach` | string | no |  The Outreach Campaign id the Outreach Message. |  
+  | `timeToAutoAttachToTicket` | string | no |  The Outreach Campaign id the Outreach Message. |  
+  | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outreach Message. |  
+  | `callbackURL` | string | no |  The callbackURL of the Outreach Message. |  
+  
+example:
+```Json 
+{
+	"sentTime": "2022-05-23 03:00:36.277",
+	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
+	"message": "Hello, please fill in your application form by the end of this week!",
+	"from": "Tom Cruise",
+	"to": "XXX University",
+	"status": "Successful",
+	"failedReason": "",
+	"outreachCampaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
+	"outreachCampaignSentTime": "2022-05-22 03:00:36.277",
+	"isMessageAutoAttachedToTicket": "Yes",
+	"preferredTicketToAutoAttach": "New ticket",
+	"timeToAutoAttachToTicket": "When the message is sent",
+	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
+	"callbackURL": "https://domainname.com/sms/callback"
+}
+```
 #### Response
 The Response body contains data with the following structure:
 
