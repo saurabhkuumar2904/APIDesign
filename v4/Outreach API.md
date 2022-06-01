@@ -24,7 +24,7 @@
 ### Outreach Message Callback API 
 
 The CallbackURL can be any valid URL that implements this API, and it is configured in the system when a new Outreach Message is created. 
-  - POST /{callbackURL} - [Outreach Message Callback API](#outreach-message-callback-api). 
+  - POST /{callbackURL} - [Outreach Message Callback](#outreach-message-callback). 
   
 ### Contact API 
 
@@ -55,7 +55,7 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
 
 ## Endpoints
 
-### Outreach Message Callback API
+### Outreach Message Callback
 `POST /{callbackURL}`
 
 #### Parameters
