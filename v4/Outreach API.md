@@ -21,7 +21,7 @@
   - PUT /outreach/messages/{id} - [Update the Outreach Message](#update-the-outreach-message).  
 <!--   - POST /outreach/campaigns/{id}/messages - [Create a new Outreach Message](#create-a-new-outreach-message).    -->
 
-### Outreach Message Callback API 
+### Outreach Callback API 
 
 The CallbackURL can be any valid URL that implements this API, and it is configured in the system when a new Outreach Message is created. 
   - POST /{callbackURL} - [Outreach Message Callback](#outreach-message-callback). 
@@ -46,12 +46,16 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
   - PUT /contact/fields/{id} - [Update a Contact Field](#update-a-contact-field).  
   - DELETE /contact/fields/{id} - [Delete a Contact Field](#delete-a-contact-field).  
 
+###  Outbound Unichannel API 
+  - POST /outboundunichannel/messages/ - [Create a new Outbound message](#create-a-outbound-message). 
+  - GET /outboundunichannel/messages/{id} - [Get a Outbound message](#get-a-outbound-message). 
+  - 
+###  Outbound Unichannel Callback API 
+The CallbackURL can be any valid URL that implements this API, and it is configured in the system when a Outbound Message is created. 
+  - POST /{callbackURL} - [Outbound Message Callback](#outbound-message-callback). 
+  
 ### Ticketing API 
-  - POST /ticketing/ticket/{id}:attach - [attach a outreach message to the ticket](#attach-a-outreach-message-to-the-ticket). 
-
-###  Outbound unichannel API 
-  - POST /Outboundunichannel/messages/ - [Create a new Outbound message](#create-a-new-outreach-message). 
-  - GET /Outboundunichannel/messages/{id} - [Get a single Outbound message](#get-a-single-outreach-message). 
+  - POST /ticketing/ticket/{id}:attach - [attach a message to the ticket](#attach-a-message-to-the-ticket). 
 
 ## Endpoints
 
