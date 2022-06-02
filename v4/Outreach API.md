@@ -49,7 +49,7 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
 ###  Outbound Unichannel API 
   - POST /outboundunichannel/messages/ - [Create a new Outbound message](#create-a-outbound-message). 
   - GET /outboundunichannel/messages/{id} - [Get a Outbound message](#get-a-outbound-message). 
-  - 
+
 ###  Outbound Unichannel Callback API 
 The CallbackURL can be any valid URL that implements this API, and it is configured in the system when a Outbound Message is created. 
   - POST /{callbackURL} - [Outbound Message Callback](#outbound-message-callback). 
@@ -1179,8 +1179,8 @@ The Response body contains data with the following structure:
 #### Response
 No Response
 
-### Create a new outreach message
-`POST /ticketing/outreachmessages/`
+### Create a outbound message
+`POST /outboundunichannel/messages/`
 
 #### Parameters
 Request body 
@@ -1188,25 +1188,21 @@ Request body the request body contains data with the following structure:
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
   |`id`  |  string  |yes |   | outreach message id| 
-  |`from`  |  string  |yes |   |  phone number |
+  |`channelAccountId` | Guid | no |  Channel account id. |  
+  |`contactId`  | Guid | no |   |   | 
   |`to`  | string | yes |   |   |
   |`message`  | string | yes |   |   |
-  |`contactId`  | Guid | yes |   |   |
-  |`outreachCampaign`  |  [Outreach Campaign](#outreach-campaign-object) Object |yes |   |  |
+  | `callbackURL` | string | no |  The callbackURL of the Outbound Message. |  
   #### example:
 ```Json 
  {
     "id":"d3f5b968-ad51-42af-b759-64c0afc40b84",
+    "channelAccountId":"q3f5b438-xw31-44af-b729-64swaf3d0b56",
     "from": "+19857473631", 
     "to": "+19857473632", 
     "contactId":"q3f5b438-xw31-44af-b729-64swaf3d0b56",
-    "outreachCampaign": { 
-        "id":"q3f5b438-xw31-44af-b729-64swaf3d0b56",
-        "channel":"sms", 
-        "triggerMode":"API"
-        "channelAccountId":"q3f5b438-xw31-44af-b729-64swaf3d0b56",
-        "isMessageAutoAttachedToTicket":true
-      }
+    "message":"hello!Leon"
+    "callbackURL":"https://domainname.com/callback/"
   } 
 ```
 
@@ -1215,17 +1211,14 @@ The Response body contains data with the following structure:
 
   | Name | Type |  Description |    
   | - | - | :-: | 
-  |`ticketId` | Guid |  |
   |`ticketMessageId`  |   | |
 
 Response
 ```Json
 HTTP/1.1 200 OK 
   Content-Type:  application/json 
-  {     
-          "ticketId":"d3f5b968-ad51-42af-b759-64c0afc40b84",         
-          "ticketMessageId":"d3f5b968-ad51-42af-b759-64c0afc40b84", 
-          
+  {           
+     "ticketMessageId":"d3f5b968-ad51-42af-b759-64c0afc40b84"   
   } 
 ```
 
