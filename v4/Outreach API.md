@@ -48,8 +48,7 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
 
 ###  Outbound Unichannel API 
   - POST /outboundunichannel/messages/ - [Create a new Outbound message](#create-a-outbound-message). 
-  - GET /outboundunichannel/messages/{id} - [Get a Outbound message](#get-a-outbound-message). 
-
+  - 
 ###  Outbound Unichannel Callback API 
 The CallbackURL can be any valid URL that implements this API, and it is configured in the system when a Outbound Message is created. 
   - POST /{callbackURL} - [Outbound Message Callback](#outbound-message-callback). 
@@ -58,40 +57,6 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
   - POST /ticketing/ticket/{id}:attach - [attach a message to the ticket](#attach-a-message-to-the-ticket). 
 
 ## Endpoints
-
-### Outreach Message Callback
-`POST /{callbackURL}`
-
-#### Parameters
-No Parameters
-
-#### Request body
-The request body contains data with the [OutreachMessage](#outreachmessage-object) structure:
-
-example:
-```Json 
-{
-	"sentTime": "2022-04-26T10:52:24.336Z",
-	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
-	"message": "Hello, please fill in your application form by the end of this week!",
-	"from": "Tom Cruise",
-	"to": "XXX University",
-	"status": "Successful",
-	"failedReason": "",
-	"outreachCampaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
-	"outreachCampaignSentTime": "2021-04-26T10:52:24.336Z",
-	"isMessageAutoAttachedToTicket": "Yes",
-	"preferredTicketToAutoAttach": "New ticket",
-	"timeToAutoAttachToTicket": "When the message is sent",
-	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
-	"callbackURL": "https://domainname.com/sms/callback"
-}
-```
-#### Response
-
-```Json 
-  HTTP/1.1 200 OK
-```
 
 ### Get the list of Outreach Campaign
 `GET /outreach/campaigns/`
@@ -591,6 +556,41 @@ The Response body contains data with the [OutreachMessage](#outreachmessage-obje
 	"callbackURL": "https://domainname.com/sms/callback"
 }
 ```
+
+### Outreach Message Callback
+`POST /{callbackURL}`
+
+#### Parameters
+No Parameters
+
+#### Request body
+The request body contains data with the [OutreachMessage](#outreachmessage-object) structure:
+
+example:
+```Json 
+{
+	"sentTime": "2022-04-26T10:52:24.336Z",
+	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
+	"message": "Hello, please fill in your application form by the end of this week!",
+	"from": "Tom Cruise",
+	"to": "XXX University",
+	"status": "Successful",
+	"failedReason": "",
+	"outreachCampaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
+	"outreachCampaignSentTime": "2021-04-26T10:52:24.336Z",
+	"isMessageAutoAttachedToTicket": "Yes",
+	"preferredTicketToAutoAttach": "New ticket",
+	"timeToAutoAttachToTicket": "When the message is sent",
+	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
+	"callbackURL": "https://domainname.com/sms/callback"
+}
+```
+#### Response
+
+```Json 
+  HTTP/1.1 200 OK
+```
+
 
 ### Get the list of Contact
 `GET /contact/contacts/`
@@ -1123,6 +1123,35 @@ HTTP/1.1 200 OK
     "MessageId":"d3f5b968-ad51-42af-b759-64c0afc40b84"   
   } 
 ```
+### Outbound Message Callback
+`POST /{callbackURL}`
+
+#### Parameters
+No Parameters
+
+#### Request body
+The request body contains data with the [OutboundMessage](#OutboundMessage-object) structure:
+
+example:
+```Json 
+{
+	"id": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
+	"sentTime": "2022-04-26T10:52:24.336Z",
+	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
+	"message": "Hello, please fill in your application form by the end of this week!",
+	"from": "+13453746564",
+	"to": "+13453746564",
+	"status": "Successful",
+	"failedReason": "",
+	"TicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
+}
+```
+#### Response
+
+```Json 
+  HTTP/1.1 200 OK
+```
+
 ### Attach a message to the ticket
 `POST /ticketing/ticket/{id}:attach`
 
@@ -1286,4 +1315,18 @@ Contact Identity is represented as simple flat JSON objects with the following k
 | `order` | integer | Order of the option. |
 | `displayText` | string | Display text of the option. |
 
+### OutboundMessage Object
+Outbound Message is represented as simple flat JSON objects with the following keys:
 
+  | Name | Type | Required | Description                                           |     
+  | - | - | - | - | 
+  | `id` | Guid | yes | The unique id of the Outbound Message. |  
+  | `sentTime` | datetime | yes |  The sent time the Outbound Message. |  
+  | `contactId` | Guid | yes |  Contact id of the Outbound Message. |  
+  | `message` | string | yes |  Message. |  
+  | `from` | string | yes |  Where the Outbound Message from. |  
+  | `to` | string | yes |  Where the Outbound Message to. |  
+  | `status` | string | yes |  Status of the Outreach Message. Allowed values are "Queued", "Sending", "Sent", "Failed" |  
+  | `failedReason` | string | no |  The failed reason of the Outbound Message. |  
+  | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outreach Message. |  
+  | `callbackURL` | string | no |  The callbackURL of the Outreach Message. |  
