@@ -1242,7 +1242,7 @@ Outreach Message is represented as simple flat JSON objects with the following k
   | `message` | string | yes |  Message. |  
   | `from` | string | yes |  Where the Outreach Message from. |  
   | `to` | string | yes |  Where the Outreach Message to. |  
-  | `status` | string | yes |  Status of the Outreach Message. Allowed values are "Queued", "Sending", "Sent", "Failed" |  
+  | `status` | string | yes |  Status of the Outreach Message. Allowed values are `Queued`, `Sending`, `Sent`, `Failed`，`delivered`,`undelivered` |  
   | `failedReason` | string | no |  The failed reason of the Outreach Message. |  
   | `outreachCampaignId` | Guid | no |  The Outreach Campaign id the Outreach Message. |  
   | `outreachCampaignSentTime` | datetime | no |  The sent time of the Outreach Campaign. |  
