@@ -1086,8 +1086,8 @@ Request body
 Request body the request body contains data with the following structure: 
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
-  |`id`  |  string  |yes |   | outreach message id| 
   |`channelAccountId` | Guid | no |  Channel account id. |  
+  |`channelCarrier` | Guid | no | SMS Channel `telnyxsms`,`twilio` |  
   |`contactId`  | Guid | no |   |   | 
   |`to`  | string | yes |   |   |
   |`message`  | string | yes |   |   |
@@ -1095,7 +1095,6 @@ Request body the request body contains data with the following structure:
   #### example:
 ```Json 
  {
-    "id":"d3f5b968-ad51-42af-b759-64c0afc40b84",
     "channelAccountId":"q3f5b438-xw31-44af-b729-64swaf3d0b56",
     "from": "+19857473631", 
     "to": "+19857473632", 
@@ -1110,15 +1109,56 @@ The Response body contains data with the following structure:
 
   | Name | Type |  Description |    
   | - | - | :-: | 
-  |`ticketMessageId`  |   | |
+  |`errorCode`  | int  | |
+  |`responseMessage`  | string  | error message |
+  |`MessageId`  | Guid  | |
 
 Response
 ```Json
 HTTP/1.1 200 OK 
   Content-Type:  application/json 
-  {           
-     "ticketMessageId":"d3f5b968-ad51-42af-b759-64c0afc40b84"   
+  {        
+    "errorCode": 0,
+    "responseMessage": "Message send successfully.", 
+    "MessageId":"d3f5b968-ad51-42af-b759-64c0afc40b84"   
   } 
+```
+### Attach a message to the ticket
+`POST /ticketing/ticket/{id}:attach`
+
+#### Parameters
+  | Name | Type | Required | Default | Description |    
+  | - | - | :-: | :-: | - | 
+  |`id` | Guid | no | ticket id. |  
+#### Request body 
+Request body the request body contains data with the [Ticket Message](#ticketmessage-object) structure: 
+
+  #### example:
+```Json 
+{
+	"id": "3b6560d4-0f10-4652-a376-e590936d290e",
+	"ticketId": "100",
+	"parentId": "ef50cc68-5b88-4405-88f0-84334581246d",
+	"sentById": "31cb8d70-b5a6-4faa-b021-62335d6dcf6c",
+	"sentByType": "visitor",
+	"time": "2021-04-26T10:52:24.336Z",
+	"type": "text",
+	"metadata": {...}
+	"originalId": "96e7964a-29cb-40d6-8251-4f334b5748bd",
+	"channelId": "Email",
+	"body": "data:text/plain;base64,PHA+MTExPC9wPg==",
+	"ifDisplayInTicketCorrespondences": true,
+	"isRead": true,
+	"attachments": []
+	"messageDelivery": {}
+}
+```
+
+#### Response
+
+Response
+```Json
+HTTP/1.1 200 OK 
 ```
 
 ## Model
