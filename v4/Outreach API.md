@@ -267,7 +267,7 @@ example:
 ```
 
 #### Response
-The Response body contains data with the [OutreachCampaign](#outreachcampaign-object)  structure:
+The Response body contains data with the [OutreachCampaign](#outreachcampaign-object) object structure:
 
 ```Json 
   HTTP/1.1 200 Ok
@@ -322,7 +322,7 @@ Path parameters
   | `id` | Guid | Yes  |  The unique id of the Outreach Campaign |  
 
 #### Response
-The Response body contains data with the [OutreachCampaignRecord](#outreachcampaignrecord-object) structure:
+The Response body contains data with the [OutreachCampaignRecord](#outreachcampaignrecord-object) object structure:
 
 ```Json 
   HTTP/1.1 200 Ok
@@ -364,7 +364,7 @@ parameters
 |`outreachCampaignId` |Guid |No| The unique id of the Outreach Campaign |
 |`outreachCampaignRecordId` |Guid |No| The unique id of the Outreach Campaign |
 #### Response
-The Response body contains data with the [OutreachMessage](#outreachmessage-object) structure:
+The Response body contains data with the [OutreachMessage](#outreachmessage-object) object structure:
 
 
 ```Json 
@@ -402,7 +402,7 @@ Path parameters
   | `id` | Guid | Yes  |  The unique id of the Outreach Message |  
 
 #### Response
-The Response body contains data with the [OutreachMessage](#outreachmessage-object) structure:
+The Response body contains data with the [OutreachMessage](#outreachmessage-object) object structure:
 
 ```Json 
   HTTP/1.1 200 OK
@@ -433,7 +433,7 @@ The Response body contains data with the [OutreachMessage](#outreachmessage-obje
 No Parameters
 
 #### Request body
-The request body contains data with the [OutreachMessage](#outreachmessage-object) structure:
+The request body contains data with the [OutreachMessage](#outreachmessage-object) object structure:
   
 example:
 ```Json 
@@ -456,7 +456,7 @@ example:
 ```
 
 #### Response
-The Response body contains data with the [OutreachMessage](#outreachmessage-object)  structure:
+The Response body contains data with the [OutreachMessage](#outreachmessage-object) object structure:
 
 ```Json 
   HTTP/1.1 201 Created
@@ -533,7 +533,7 @@ example:
 ```
 
 #### Response
-The Response body contains data with the [OutreachMessage](#outreachmessage-object)  structure:
+The Response body contains data with the [OutreachMessage](#outreachmessage-object) object structure:
 
 ```Json 
   HTTP/1.1 200 Ok
@@ -564,7 +564,7 @@ The Response body contains data with the [OutreachMessage](#outreachmessage-obje
 No Parameters
 
 #### Request body
-The request body contains data with the [OutreachMessage](#outreachmessage-object) structure:
+The request body contains data with the [OutreachMessage](#outreachmessage-object) object structure:
 
 example:
 ```Json 
@@ -751,7 +751,7 @@ Path parameters
   | `id` | Guid | Yes  |  The unique id of the Contact |  
 
 #### Response
-The Response body contains data with the [Contact](#contact-object) structure:
+The Response body contains data with the [Contact](#contact-object) object structure:
 
 ```Json 
   HTTP/1.1 200 OK
@@ -827,7 +827,7 @@ example:
 ```
 
 #### Response
-The Response body contains data with the [Contact](#contact-object) structure:
+The Response body contains data with the [Contact](#contact-object) object structure:
 
 ```Json 
   HTTP/1.1 201 Created
@@ -901,7 +901,7 @@ example:
 ```
 
 #### Response
-The Response body contains data with the [Contact](#contact-object)  structure:
+The Response body contains data with the [Contact](#contact-object) object structure:
 
 
 ### Delete the Contact
@@ -1000,7 +1000,7 @@ The Response body contains data with the following structure:
   |`id` | Guid  |Yes| contact field ID |
 
 #### Response
-The Response body contains data with the [Contact Field](#contact-field-object) structure:
+The Response body contains data with the [Contact Field](#contact-field-object) object structure:
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
@@ -1043,7 +1043,7 @@ The Response body contains data with the [Contact Field](#contact-field-object) 
   | `fieldOptions` | [fieldOptions](#field-option-object)[] | Reference to Field Option. |
 
 #### Response
-The Response body contains data with the [Contact Field](#contact-field-object)  structure:
+The Response body contains data with the [Contact Field](#contact-field-object) object structure:
 
 
 ### Update a Contact Field
@@ -1064,7 +1064,7 @@ The Response body contains data with the [Contact Field](#contact-field-object) 
   | `fieldOptions` | [fieldOptions](#field-option-object)[] | Reference to Field Option. |
 
 #### Response
-The Response body contains data with the [Contact Field](#contact-field-object)  structure:
+The Response body contains data with the [Contact Field](#contact-field-object) object structure:
 
 
 ### Delete a Contact Field
@@ -1105,7 +1105,7 @@ Request body the request body contains data with the following structure:
 ```
 
 #### Response
-The Response body contains data with the [OutboundMessage](#OutboundMessage-object) structure:
+The Response body contains data with the [OutboundMessage](#OutboundMessage-object) object structure:
 
 
 Response
@@ -1130,7 +1130,7 @@ HTTP/1.1 200 OK
 No Parameters
 
 #### Request body
-The request body contains data with the [OutboundMessage](#OutboundMessage-object) structure:
+The request body contains data with the [OutboundMessage](#OutboundMessage-object) object structure:
 
 example:
 ```Json 
@@ -1157,9 +1157,9 @@ example:
 #### Parameters
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
-  |`id` | Guid | no | ticket id. |  
+  |`id` | Guid | yes | ticket id. |  
 #### Request body 
-Request body the request body contains data with the [Ticket Message](#ticketmessage-object) structure: 
+Request body the request body contains data with the [Ticket Message](#ticketmessage-object) object structure: 
 
   #### example:
 ```Json 
