@@ -1105,23 +1105,23 @@ Request body the request body contains data with the following structure:
 ```
 
 #### Response
-The Response body contains data with the following structure:
+The Response body contains data with the [OutboundMessage](#OutboundMessage-object) structure:
 
-  | Name | Type |  Description |    
-  | - | - | :-: | 
-  |`errorCode`  | int  | |
-  |`responseMessage`  | string  | error message |
-  |`MessageId`  | Guid  | |
 
 Response
 ```Json
 HTTP/1.1 200 OK 
   Content-Type:  application/json 
-  {        
-    "errorCode": 0,
-    "responseMessage": "Message send successfully.", 
-    "MessageId":"d3f5b968-ad51-42af-b759-64c0afc40b84"   
-  } 
+{
+	"id": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
+	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
+	"message": "Hello, please fill in your application form by the end of this week!",
+	"from": "+13453746564",
+	"to": "+13453746564",
+	"status": "Successful",
+	"failedReason": "",
+	"sentTime": "2022-04-26T10:52:24.336Z",
+}
 ```
 ### Outbound Message Callback
 `POST /{callbackURL}`
@@ -1136,14 +1136,13 @@ example:
 ```Json 
 {
 	"id": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
-	"sentTime": "2022-04-26T10:52:24.336Z",
 	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
 	"message": "Hello, please fill in your application form by the end of this week!",
 	"from": "+13453746564",
 	"to": "+13453746564",
 	"status": "Successful",
 	"failedReason": "",
-	"TicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
+	"sentTime": "2022-04-26T10:52:24.336Z",
 }
 ```
 #### Response
@@ -1326,7 +1325,6 @@ Outbound Message is represented as simple flat JSON objects with the following k
   | `message` | string | yes |  Message. |  
   | `from` | string | yes |  Where the Outbound Message from. |  
   | `to` | string | yes |  Where the Outbound Message to. |  
-  | `status` | string | yes |  Status of the Outreach Message. Allowed values are "Queued", "Sending", "Sent", "Failed" |  
+  | `status` | string | yes |  Status of the Outbound Message. Allowed values are `Queued`, `Sending`, `Sent`, `Failed`，`delivered`,`undelivered` |  
   | `failedReason` | string | no |  The failed reason of the Outbound Message. |  
-  | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outreach Message. |  
   | `callbackURL` | string | no |  The callbackURL of the Outreach Message. |  
