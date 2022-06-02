@@ -1233,8 +1233,8 @@ Outreach Campaign is represented as simple flat JSON objects with the following 
   | `name` | string | yes |  Name of this Outreach Campaign. |  
   | `description` | string | no |  Description of this Outreach Campaign. |  
   | `channel` | string | no |  App channel of this Outreach Campaign. |  
-  | `channelAccountId` | Guid | no |  Channel account id of this Outreach Campaign. |  
-  | `message` | string | no |  Message of this Outreach Campaign. |  
+  | `channelAccountId` | Guid | yes |  Channel account id of this Outreach Campaign. |  
+  | `message` | string | yes |  Message of this Outreach Campaign. |  
   | `isMessageAutoAttachedToTicket` | bool | no |  Whether a new ticket will be auto created or not for the message.`yes`, `no`| 
   | `preferredTicketToAutoAttach` | string | no |  Allowed values are "New ticket", "Existing unresolved ticket whose last message is from SMS channel".|  
   | `timeToAutoAttachToTicket` | string | no |  Allowed values are "When the message is sent", "When contact replies the message". |  
