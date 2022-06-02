@@ -1238,6 +1238,7 @@ Outreach Message is represented as simple flat JSON objects with the following k
   | `id` | Guid | yes | The unique id of the Outreach Message. |  
   | `sentTime` | datetime | yes |  The sent time the Outreach Message. |  
   | `contactId` | Guid | yes |  Contact id of the Outreach Message. |  
+  | `channelAccountId` | Guid | yes |  Channel account id of this Outreach Campaign. |  
   | `message` | string | yes |  Message. |  
   | `from` | string | yes |  Where the Outreach Message from. |  
   | `to` | string | yes |  Where the Outreach Message to. |  
@@ -1321,6 +1322,7 @@ Outbound Message is represented as simple flat JSON objects with the following k
   | - | - | - | - | 
   | `id` | Guid | yes | The unique id of the Outbound Message. |  
   | `sentTime` | datetime | yes |  The sent time the Outbound Message. |  
+  | `channelAccountId` | Guid | yes |  Channel account id of this Outreach Campaign. |  
   | `contactId` | Guid | yes |  Contact id of the Outbound Message. |  
   | `message` | string | yes |  Message. |  
   | `from` | string | yes |  Where the Outbound Message from. |  
