@@ -66,25 +66,8 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
 No Parameters
 
 #### Request body
-The request body contains data with the following structure:
+The request body contains data with the [OutreachMessage](#outreachmessage-object) structure:
 
-  | Name | Type | Required | Description                                           |     
-  | - | - | - | - | 
-  | `sentTime` | datetime | yes |  The outreach campaign id of the Outreach Message. |  
-  | `contactId` | Guid | yes |  Contact id of the Outreach Message. |  
-  | `message` | string | yes |  Message. |  
-  | `from` | string | yes |  Where the Outreach Message from. |  
-  | `to` | string | yes |  Where the Outreach Message to. |  
-  | `status` | string | yes |  Status of the Outreach Message. Allowed values are "Queued", "Sending", "Sent", "Failed" |  
-  | `failedReason` | string | no |  The failed reason of the Outreach Message. |  
-  | `outreachCampaignId` | Guid | yes |  The outreach campaign id the Outreach Message. |  
-  | `outreachCampaignSentTime` | datetime | no |  The sent time of the Outreach Campaign. |  
-  | `isMessageAutoAttachedToTicket` | string | no |  The Outreach Campaign id the Outreach Message. |  
-  | `preferredTicketToAutoAttach` | string | no |  The Outreach Campaign id the Outreach Message. |  
-  | `timeToAutoAttachToTicket` | string | no |  The Outreach Campaign id the Outreach Message. |  
-  | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outreach Message. |  
-  | `callbackURL` | string | no |  The callbackURL of the Outreach Message. |  
-  
 example:
 ```Json 
 {
@@ -105,31 +88,9 @@ example:
 }
 ```
 #### Response
-The Response body contains data with the following structure:
 
-  | Name  | Type | Required  | Description |     
-  | - | - | - | - | 
-|`outreachMessage` |[OutreachMessage](#outreachmessage-object)  |Yes|   [OutreachMessage](#outreachmessage-object)  |
 ```Json 
   HTTP/1.1 200 OK
-  Content-Type: application/json
-{
-	"id": "11183a83-48e9-4d0d-a3bd-fb19ce5c12db",
-	"sentTime": "2022-05-23 03:00:36.277",
-	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
-	"message": "Hello, please fill in your application form by the end of this week!",
-	"from": "Tom Cruise",
-	"to": "XXX University",
-	"status": "Successful",
-	"failedReason": "",
-	"outreachCampaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
-	"outreachCampaignSentTime": "2022-05-22 03:00:36.277",
-	"isMessageAutoAttachedToTicket": "Yes",
-	"preferredTicketToAutoAttach": "New ticket",
-	"timeToAutoAttachToTicket": "When the message is sent",
-	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
-	"callbackURL": "https://domainname.com/sms/callback"
-}
 ```
 
 ### Get the list of Outreach Campaign
@@ -143,7 +104,7 @@ The Response body contains data with the following structure:
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
-|`outreachCampaignList` |[OutreachCampaign](#outreachcampaign-Object)[]  |Yes|  An array of [OutreachCamgaign](#outreachcampaign-object)  |
+|`outreachCampaigns` |[OutreachCampaign](#outreachcampaign-Object)[]  |Yes|  An array of [OutreachCamgaign](#outreachcampaign-object)  |
 
 ```Json 
   HTTP/1.1 200 OK
@@ -183,11 +144,8 @@ Path parameters
   | `id` | Guid | Yes  |  The unique id of the Outreach Campaign |  
 
 #### Response
-The Response body contains data with the following structure:
+The Response body contains data with the [OutreachCampaign](#outreachcampaign-object) structure:
 
-  | Name  | Type | Required  | Description |     
-  | - | - | - | - | 
-|`outreachCampaign` |[OutreachCampaign](#outreachcampaign-object)  |Yes|   [OutreachCampaign](#outreachcampaign-object)  |
 
 ```Json 
   HTTP/1.1 200 OK
@@ -262,11 +220,8 @@ example:
 ```
 
 #### Response
-The Response body contains data with the following structure:
+The Response body contains data with the [OutreachCampaign](#outreachcampaign-object) structure:
 
-  | Name  | Type | Required  | Description |     
-  | - | - | - | - | 
-|`outreachCampaign` |[OutreachCampaign](#outreachcampaign-object)  |Yes|   [OutreachCamgaign](#outreachcampaign-object)  |
 
 ```Json 
   HTTP/1.1 201 Created
@@ -347,11 +302,7 @@ example:
 ```
 
 #### Response
-The Response body contains data with the following structure:
-
-  | Name  | Type | Required  | Description |     
-  | - | - | - | - | 
-|`outreachCampaign` |[OutreachCampaign](#outreachcampaign-object)  |Yes|   [OutreachCampaign](#outreachcampaign-object)  |
+The Response body contains data with the [OutreachCampaign](#outreachcampaign-object)  structure:
 
 ```Json 
   HTTP/1.1 200 Ok
@@ -393,9 +344,6 @@ No response
 
 ```Json 
   HTTP/1.1 204 Ok
-  Content-Type: application/json
-{
-}
 ```
 
 ### Send the Campaign
@@ -409,7 +357,7 @@ Path parameters
   | `id` | Guid | Yes  |  The unique id of the Outreach Campaign |  
 
 #### Response
-The Response body contains data is [OutreachCampaignRecord](#outreachcampaignrecord-object):
+The Response body contains data with the [OutreachCampaignRecord](#outreachcampaignrecord-object) structure:
 
 ```Json 
   HTTP/1.1 200 Ok
@@ -449,13 +397,10 @@ parameters
   | - | - | - | - | 
 |`contactId` |Guid  |No| The unique id of the Contact  |
 |`outreachCampaignId` |Guid |No| The unique id of the Outreach Campaign |
-
+|`outreachCampaignRecordId` |Guid |No| The unique id of the Outreach Campaign |
 #### Response
-The Response body contains data with the following structure:
+The Response body contains data with the [OutreachMessage](#outreachmessage-object) structure:
 
-  | Name  | Type | Required  | Description |     
-  | - | - | - | - | 
-|`outreachMessageList` |[OutreachMessage](#outreachmessage-object)[]  |Yes|  An array of [OutreachMessage](#outreachmessage-object)  |
 
 ```Json 
   HTTP/1.1 200 OK
@@ -492,11 +437,7 @@ Path parameters
   | `id` | Guid | Yes  |  The unique id of the Outreach Message |  
 
 #### Response
-The Response body contains data with the following structure:
-
-  | Name  | Type | Required  | Description |     
-  | - | - | - | - | 
-|`outreachMessage` |[OutreachMessage](#outreachmessage-object)  |Yes|   [OutreachMessage](#outreachmessage-object)  |
+The Response body contains data with the [OutreachMessage](#outreachmessage-object) structure:
 
 ```Json 
   HTTP/1.1 200 OK
@@ -527,24 +468,7 @@ The Response body contains data with the following structure:
 No Parameters
 
 #### Request body
-The request body contains data with the following structure:
-
-  | Name | Type | Required | Description                                           |     
-  | - | - | - | - | 
-  | `sentTime` | datetime | yes |  The outreach campaign id of the Outreach Message. |  
-  | `contactId` | Guid | yes |  Contact id of the Outreach Message. |  
-  | `message` | string | yes |  Message. |  
-  | `from` | string | yes |  Where the Outreach Message from. |  
-  | `to` | string | yes |  Where the Outreach Message to. |  
-  | `status` | string | yes |  Status of the Outreach Message. Allowed values are "Queued", "Sending", "Sent", "Failed" |  
-  | `failedReason` | string | no |  The failed reason of the Outreach Message. |  
-  | `outreachCampaignId` | Guid | yes |  The outreach campaign id the Outreach Message. |  
-  | `outreachCampaignSentTime` | datetime | no |  The sent time of the Outreach Campaign. |  
-  | `isMessageAutoAttachedToTicket` | string | no |  The Outreach Campaign id the Outreach Message. |  
-  | `preferredTicketToAutoAttach` | string | no |  The Outreach Campaign id the Outreach Message. |  
-  | `timeToAutoAttachToTicket` | string | no |  The Outreach Campaign id the Outreach Message. |  
-  | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outreach Message. |  
-  | `callbackURL` | string | no |  The callbackURL of the Outreach Message. |  
+The request body contains data with the [OutreachMessage](#outreachmessage-object) structure:
   
 example:
 ```Json 
@@ -567,11 +491,7 @@ example:
 ```
 
 #### Response
-The Response body contains data with the following structure:
-
-  | Name  | Type | Required  | Description |     
-  | - | - | - | - | 
-|`outreachMessage` |[OutreachMessage](#outreachmessage-object)  |Yes|   [OutreachMessage](#outreachmessage-object)  |
+The Response body contains data with the [OutreachMessage](#outreachmessage-object)  structure:
 
 ```Json 
   HTTP/1.1 201 Created
@@ -648,11 +568,7 @@ example:
 ```
 
 #### Response
-The Response body contains data with the following structure:
-
-  | Name  | Type | Required  | Description |     
-  | - | - | - | - | 
-|`outreachMessage` |[OutreachMessage](#outreachmessage-object)  |Yes|   [OutreachMessage](#outreachmessage-object)  |
+The Response body contains data with the [OutreachMessage](#outreachmessage-object)  structure:
 
 ```Json 
   HTTP/1.1 200 Ok
@@ -706,7 +622,7 @@ The Response body contains data with the following structure:
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
-|`contactList` |[Contact](#contact-object)[]  |Yes|  An array of [Contact](#contact-object)  |
+|`contacts` |[Contact](#contact-object)[]  |Yes|  An array of [Contact](#contact-object)  |
 
 ```Json 
   HTTP/1.1 200 OK
@@ -776,7 +692,7 @@ The Response body contains data with the following structure:
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
-|`contactList` |[Contact](#contact-object)[]  |Yes|  An array of [Contact](#contact-object)  |
+|`contacts` |[Contact](#contact-object)[]  |Yes|  An array of [Contact](#contact-object)  |
 
 ```Json 
   HTTP/1.1 200 OK
@@ -835,11 +751,7 @@ Path parameters
   | `id` | Guid | Yes  |  The unique id of the Contact |  
 
 #### Response
-The Response body contains data with the following structure:
-
-  | Name  | Type | Required  | Description |     
-  | - | - | - | - | 
-|`contact` |[Contact](#contact-object)  |Yes| [Contact](#contact-object)   |
+The Response body contains data with the [Contact](#contact-object) structure:
 
 ```Json 
   HTTP/1.1 200 OK
@@ -915,11 +827,7 @@ example:
 ```
 
 #### Response
-The Response body contains data with the following structure:
-
-  | Name  | Type | Required  | Description |     
-  | - | - | - | - | 
-|`contact` |[Contact](#contact-object)  |Yes|   [Contact](#contact-object)  |
+The Response body contains data with the [Contact](#contact-object) structure:
 
 ```Json 
   HTTP/1.1 201 Created
@@ -993,11 +901,8 @@ example:
 ```
 
 #### Response
-The Response body contains data with the following structure:
+The Response body contains data with the [Contact](#contact-object)  structure:
 
-  | Name  | Type | Required  | Description |     
-  | - | - | - | - | 
-  |`contact` |[Contact](#contact-object)  |Yes| [Contact](#contact-object)  |
 
 ### Delete the Contact
 `DELETE /contact/contacts/{id}`
@@ -1095,7 +1000,7 @@ The Response body contains data with the following structure:
   |`id` | Guid  |Yes| contact field ID |
 
 #### Response
-The Response body contains data with the following structure:
+The Response body contains data with the [Contact Field](#contact-field-object) structure:
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
@@ -1138,11 +1043,8 @@ The Response body contains data with the following structure:
   | `fieldOptions` | [fieldOptions](#field-option-object)[] | Reference to Field Option. |
 
 #### Response
-The Response body contains data with the following structure:
+The Response body contains data with the [Contact Field](#contact-field-object)  structure:
 
-  | Name  | Type | Required  | Description |     
-  | - | - | - | - | 
-  |`contact field` |[Contact Field](#contact-field-object)  |Yes| [Contact](#contact-field-object)  |
 
 ### Update a Contact Field
 `PUT /contact/fields/{id}`
@@ -1162,11 +1064,8 @@ The Response body contains data with the following structure:
   | `fieldOptions` | [fieldOptions](#field-option-object)[] | Reference to Field Option. |
 
 #### Response
-The Response body contains data with the following structure:
+The Response body contains data with the [Contact Field](#contact-field-object)  structure:
 
-  | Name  | Type | Required  | Description |     
-  | - | - | - | - | 
-  |`contact field` |[Contact Field](#contact-field-object)  |Yes| [Contact](#contact-field-object)  |
 
 ### Delete a Contact Field
 `Delete /contact/fields/{id}`
