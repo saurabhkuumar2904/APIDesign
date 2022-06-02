@@ -48,7 +48,7 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
 
 ###  Outbound Unichannel API 
   - POST /outboundunichannel/messages/ - [Create a new Outbound message](#create-a-outbound-message). 
-  - 
+
 ###  Outbound Unichannel Callback API 
 The CallbackURL can be any valid URL that implements this API, and it is configured in the system when a Outbound Message is created. 
   - POST /{callbackURL} - [Outbound Message Callback](#outbound-message-callback). 
