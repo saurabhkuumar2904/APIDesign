@@ -70,7 +70,7 @@ The request body contains data with the following structure:
 
   | Name | Type | Required | Description                                           |     
   | - | - | - | - | 
-  | `sentTime` | timestamp | yes |  The outreach campaign id of the Outreach Message. |  
+  | `sentTime` | datetime | yes |  The outreach campaign id of the Outreach Message. |  
   | `contactId` | Guid | yes |  Contact id of the Outreach Message. |  
   | `message` | string | yes |  Message. |  
   | `from` | string | yes |  Where the Outreach Message from. |  
@@ -78,7 +78,7 @@ The request body contains data with the following structure:
   | `status` | string | yes |  Status of the Outreach Message. Allowed values are "Queued", "Sending", "Sent", "Failed" |  
   | `failedReason` | string | no |  The failed reason of the Outreach Message. |  
   | `outreachCampaignId` | Guid | yes |  The outreach campaign id the Outreach Message. |  
-  | `outreachCampaignSentTime` | timestamp | no |  The sent time of the Outreach Campaign. |  
+  | `outreachCampaignSentTime` | datetime | no |  The sent time of the Outreach Campaign. |  
   | `isMessageAutoAttachedToTicket` | string | no |  The Outreach Campaign id the Outreach Message. |  
   | `preferredTicketToAutoAttach` | string | no |  The Outreach Campaign id the Outreach Message. |  
   | `timeToAutoAttachToTicket` | string | no |  The Outreach Campaign id the Outreach Message. |  
@@ -88,7 +88,7 @@ The request body contains data with the following structure:
 example:
 ```Json 
 {
-	"sentTime": "2022-05-23 03:00:36.277",
+	"sentTime": "2022-04-26T10:52:24.336Z",
 	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
 	"message": "Hello, please fill in your application form by the end of this week!",
 	"from": "Tom Cruise",
@@ -96,7 +96,7 @@ example:
 	"status": "Successful",
 	"failedReason": "",
 	"outreachCampaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
-	"outreachCampaignSentTime": "2022-05-22 03:00:36.277",
+	"outreachCampaignSentTime": "2021-04-26T10:52:24.336Z",
 	"isMessageAutoAttachedToTicket": "Yes",
 	"preferredTicketToAutoAttach": "New ticket",
 	"timeToAutoAttachToTicket": "When the message is sent",
@@ -236,7 +236,7 @@ The request body contains data with the following structure:
   | `contactFilterConditionMetType` | string | no |  Allowed values are "All", "Any", "Logical Expression". |  
   | `contactFilterLogicalExpresssion` | string | no |  Contact Filter Logical Expresssion of this Condition. |  
   | `contactFilterConditions` | [ContactFilterCondition](#ContactFilterCondition-object)[] | no | An array of [ContactFilterCondition](#ContactFilterCondition-object)| 
-  | `scheduledStartTime` | timestamp | no |  Message of this Outreach Campaign. |  
+  | `scheduledStartTime` | datetime | no |  Message of this Outreach Campaign. |  
   
 example:
 ```Json 
@@ -320,7 +320,7 @@ The request body contains data with the following structure:
   | `contactFilterConditionMetType` | string | no |  Allowed values are "All", "Any", "Logical Expression". |  
   | `contactFilterLogicalExpresssion` | string | no |  Contact Filter Logical Expresssion of this Condition. |  
   | `contactFilterConditions` | [ContactFilterCondition](#ContactFilterCondition-object)[] | no | An array of [ContactFilterCondition](#ContactFilterCondition-object)| 
-  | `scheduledStartTime` | timestamp | no |  Message of this Outreach Campaign. |  
+  | `scheduledStartTime` | datetime | no |  Message of this Outreach Campaign. |  
 
 example:
 ```Json 
@@ -531,7 +531,7 @@ The request body contains data with the following structure:
 
   | Name | Type | Required | Description                                           |     
   | - | - | - | - | 
-  | `sentTime` | timestamp | yes |  The outreach campaign id of the Outreach Message. |  
+  | `sentTime` | datetime | yes |  The outreach campaign id of the Outreach Message. |  
   | `contactId` | Guid | yes |  Contact id of the Outreach Message. |  
   | `message` | string | yes |  Message. |  
   | `from` | string | yes |  Where the Outreach Message from. |  
@@ -539,7 +539,7 @@ The request body contains data with the following structure:
   | `status` | string | yes |  Status of the Outreach Message. Allowed values are "Queued", "Sending", "Sent", "Failed" |  
   | `failedReason` | string | no |  The failed reason of the Outreach Message. |  
   | `outreachCampaignId` | Guid | yes |  The outreach campaign id the Outreach Message. |  
-  | `outreachCampaignSentTime` | timestamp | no |  The sent time of the Outreach Campaign. |  
+  | `outreachCampaignSentTime` | datetime | no |  The sent time of the Outreach Campaign. |  
   | `isMessageAutoAttachedToTicket` | string | no |  The Outreach Campaign id the Outreach Message. |  
   | `preferredTicketToAutoAttach` | string | no |  The Outreach Campaign id the Outreach Message. |  
   | `timeToAutoAttachToTicket` | string | no |  The Outreach Campaign id the Outreach Message. |  
@@ -611,7 +611,7 @@ The request body contains data with the following structure:
   | Name | Type | Required | Description                                           |     
   | - | - | - | - | 
   | `id` | Guid | yes | The unique id of the Outreach Message. |  
-  | `sentTime` | timestamp | yes |  The outreach campaign id of the Outreach Message. |  
+  | `sentTime` | datetime | yes |  The outreach campaign id of the Outreach Message. |  
   | `contactId` | Guid | yes |  Contact id of the Outreach Message. |  
   | `message` | string | yes |  Message. |  
   | `from` | string | yes |  Where the Outreach Message from. |  
@@ -619,7 +619,7 @@ The request body contains data with the following structure:
   | `status` | string | yes |  Status of the Outreach Message. Allowed values are "Queued", "Sending", "Sent", "Failed" |  
   | `failedReason` | string | no |  The failed reason of the Outreach Message. |  
   | `outreachCampaignId` | Guid | yes |  The outreach campaign id the Outreach Message. |  
-  | `outreachCampaignSentTime` | timestamp | no |  The sent time of the Outreach Campaign. |  
+  | `outreachCampaignSentTime` | datetime | no |  The sent time of the Outreach Campaign. |  
   | `isMessageAutoAttachedToTicket` | string | no |  The Outreach Campaign id the Outreach Message. |  
   | `preferredTicketToAutoAttach` | string | no |  The Outreach Campaign id the Outreach Message. |  
   | `timeToAutoAttachToTicket` | string | no |  The Outreach Campaign id the Outreach Message. |  
@@ -1241,7 +1241,7 @@ Outreach Campaign is represented as simple flat JSON objects with the following 
   | `contactFilterConditionMetType` | string | no |  Allowed values are "All", "Any", "Logical Expression". |  
   | `contactFilterLogicalExpresssion` | string | no |  Contact Filter Logical Expresssion of this Condition. |  
   | `contactFilterConditions` | [ContactFilterCondition](#ContactFilterCondition-object)[] | no | An array of [ContactFilterCondition](#ContactFilterCondition-object)| 
-  | `scheduledStartTime` | timestamp | no |  Message of this Outreach Campaign. |  
+  | `scheduledStartTime` | datetime | no |  Message of this Outreach Campaign. |  
   
 ### ContactFilterCondition Object
 Outreach Campaign Contact Filter Condition is represented as simple flat JSON objects with the following keys:
@@ -1259,7 +1259,7 @@ Outreach Campaign is represented as simple flat JSON objects with the following 
   | Name | Type | Required | Description                                           |     
   | - | - | - | - | 
   | `id` | Guid | yes | The unique id of the Outreach Campaign Record. |  
-  | `sentTime` | timestamp | yes | The unique id of the Outreach Campaign. | 
+  | `sentTime` | datetime | yes | The unique id of the Outreach Campaign. | 
   | `outreachCampaign` |  [OutreachCampaign](#outreachcampaign-object) | yes | Outreach Campaign. |  
   
   
@@ -1269,7 +1269,7 @@ Outreach Message is represented as simple flat JSON objects with the following k
   | Name | Type | Required | Description                                           |     
   | - | - | - | - | 
   | `id` | Guid | yes | The unique id of the Outreach Message. |  
-  | `sentTime` | timestamp | yes |  The sent time the Outreach Message. |  
+  | `sentTime` | datetime | yes |  The sent time the Outreach Message. |  
   | `contactId` | Guid | yes |  Contact id of the Outreach Message. |  
   | `message` | string | yes |  Message. |  
   | `from` | string | yes |  Where the Outreach Message from. |  
@@ -1277,7 +1277,7 @@ Outreach Message is represented as simple flat JSON objects with the following k
   | `status` | string | yes |  Status of the Outreach Message. Allowed values are "Queued", "Sending", "Sent", "Failed" |  
   | `failedReason` | string | no |  The failed reason of the Outreach Message. |  
   | `outreachCampaignId` | Guid | no |  The Outreach Campaign id the Outreach Message. |  
-  | `outreachCampaignSentTime` | timestamp | no |  The sent time of the Outreach Campaign. |  
+  | `outreachCampaignSentTime` | datetime | no |  The sent time of the Outreach Campaign. |  
   | `isMessageAutoAttachedToTicket` | string | no |  Whether a new ticket will be auto created or not for the message.`yes`, `no` |  
   | `preferredTicketToAutoAttach` | string | no |  Allowed values are "New ticket", "Existing unresolved ticket whose last message is from SMS channel". |  
   | `timeToAutoAttachToTicket` | string | no |   Allowed values are "When the message is sent", "When contact replies the message". |  
@@ -1293,8 +1293,8 @@ Contact is represented as simple flat JSON objects with the following keys:
   | `name` | string | yes |  The name of the contact. |  
   | `first Name` | string | no | The first name of the contact |
   | `last name` | string | no | The last name of the contact |
-  | `createTime` | timestamp | no |  The create time of the Contact. |  
-  | `lastUpdatedTime` | timestamp | no |  The last updated time of the Contact. |  
+  | `createTime` | datetime | no |  The create time of the Contact. |  
+  | `lastUpdatedTime` | datetime | no |  The last updated time of the Contact. |  
   | `mergeToContactId` | Guid | no |  The Contact id of merge to. |  
   | `customFields` | [custom field value](#custom-field-value-object)[] | no | custom field value array | 
   | `contactIdentities` | [contact identities](#contact-identity-object)[] | yes | custom field value array | 
