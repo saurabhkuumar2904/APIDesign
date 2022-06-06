@@ -11,8 +11,8 @@
   - GET /outreach/campaigns/{id} - [Get a single Outreach Campaign](#get-a-single-outreach-campaign). 
   - POST /outreach/campaigns/ - [Create a new Outreach Campaign](#create-a-new-outreach-campaign).  
   - PUT /outreach/campaigns/{id} - [Update the Outreach Campaign](#update-the-outreach-campaign).  
-  - DELETE /outreach/campaigns/{id} - [Delete the campaign](#delete-the-campaign). 
-  - POST /outreach/campaigns/{id}:send - [Send the campaign](#Send-the-campaign). 
+  - DELETE /outreach/campaigns/{id} - [Delete the Outreach campaign](#delete-the-outreach-campaign). 
+  - POST /outreach/campaigns/{id}:send - [Send the Outreach campaign](#Send-the-outreach-campaign). 
   
 #### Outreach Message
   - GET /outreach/messages/ - [Get the list of Outreach Message](#get-the-list-of-outreach-message). 
@@ -294,7 +294,7 @@ The Response body contains data with the [OutreachCampaign](#outreachcampaign-ob
 }
 ```
 
-### Delete the Campaign
+### Delete the Outreach Campaign
 `DELETE /outreach/campaigns/{id}`
 
 #### Parameters
@@ -311,7 +311,7 @@ No response
   HTTP/1.1 204 Ok
 ```
 
-### Send the Campaign
+### Send the Outreach Campaign
 `POST /outreach/campaigns/{id}:send`
 
 #### Parameters
