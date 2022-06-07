@@ -1340,4 +1340,4 @@ Attachment Object is represented as simple flat JSON objects with the following 
   | `type` | string | yes | Type of the attachment. Allowed values are "video", "audio", "image", "file". |  
   | `url` | string | yes | Download URL of the attachment. |  
   | `size` | integer | no |  Size of the attachment. |  
-  | `name` | string | yes |  Name of the attachment. |  
+  | `name` | string | no |  Name of the attachment. |  
