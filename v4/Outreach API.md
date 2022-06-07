@@ -1091,7 +1091,7 @@ Request body the request body contains data with the following structure:
   |`contactId`  | Guid | no |   |   | 
   |`to`  | string | yes |   |   |
   |`message`  | string | yes |   |   |
-  |`attachments`  | [Attachment](#attachment-object)[] object | yes |  the attachments of message|   
+  |`attachments`  | [Attachment](#attachment-object)[] object | no |  the attachments of message|   
   | `callbackURL` | string | no |  The callbackURL of the Outbound Message. |  
   #### example:
 ```Json 
