@@ -1093,6 +1093,7 @@ Request body the request body contains data with the following structure:
   |`message`  | string | yes |   |   |
   |`attachments`  | [Attachment](#attachment-object)[] object | no |  the attachments of message|   
   | `callbackURL` | string | no |  The callbackURL of the Outbound Message. |  
+  | `retryDuration` | int | no |  How many minutes will it be retried. |  
   #### example:
 ```Json 
  {
