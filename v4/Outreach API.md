@@ -1086,11 +1086,12 @@ Request body
 Request body the request body contains data with the following structure: 
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
-  |`channelAccountId` | Guid | no |  Channel account id. |  
-  |`channelCarrier` | Guid | no | SMS Channel `telnyxsms`,`twilio` |  
+  |`channelAccountId` | Guid | yes |  Channel account id. |  
+  |`channelCarrier` | Guid | yes | SMS Channel `telnyxsms`,`twilio` |  
   |`contactId`  | Guid | no |   |   | 
   |`to`  | string | yes |   |   |
   |`message`  | string | yes |   |   |
+  |`attachments`  | [Attachment](#attachment-object)[] object | yes |  the attachments of message|   
   | `callbackURL` | string | no |  The callbackURL of the Outbound Message. |  
   #### example:
 ```Json 
@@ -1330,3 +1331,13 @@ Outbound Message is represented as simple flat JSON objects with the following k
   | `status` | string | yes |  Status of the Outbound Message. Allowed values are `Queued`, `Sending`, `Sent`, `Failed`，`delivered`,`undelivered` |  
   | `failedReason` | string | no |  The failed reason of the Outbound Message. |  
   | `callbackURL` | string | no |  The callbackURL of the Outreach Message. |  
+  
+ ### Attachment Object
+Attachment Object is represented as simple flat JSON objects with the following keys:
+
+  | Name | Type | Required | Description                                           |     
+  | - | - | - | - | 
+  | `type` | string | yes | Type of the attachment. Allowed values are "video", "audio", "image", "file". |  
+  | `url` | string | yes | Download URL of the attachment. |  
+  | `size` | integer | no |  Size of the attachment. |  
+  | `name` | string | yes |  Name of the attachment. |  
