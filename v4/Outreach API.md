@@ -1127,13 +1127,12 @@ Request body the request body contains data with the following structure:
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
   |`channelAccountId` | Guid | yes |  Channel account id. |  
-  |`channelCarrier` | Guid | yes | SMS Channel `telnyxsms`,`twilio` |  
+  |`channelCarrier` | Guid | no | SMS Channel `telnyxsms`,`twilio` |  
   |`contactId`  | Guid | no |   |   | 
   |`to`  | string | yes |   |   |
   |`message`  | string | yes |   |   |
   |`attachments`  | [Attachment](#attachment-object)[] object | no |  the attachments of message|   
   | `callbackURL` | string | no |  The callbackURL of the Outbound Message. |  
-  | `retryDuration` | int | no |  How many minutes will it be retried. |  
   #### example:
 ```Json 
  {
