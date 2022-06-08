@@ -36,9 +36,10 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
   - PUT /contact/contacts/{id} - [Update the Contact](#update-the-contact).  
   - DELETE /contact/contacts/{id} - [Delete the Contact](#delete-the-contact). 
   - POST /contact/contacts:merge - [Merge Contact](#merge-contacts). 
+  - GET /contact/contacts:downloadTemplate - [Download Template](#download-template). 
   - POST /contact/contacts:import - [Import Contacts](#import-contacts). 
-  - POST /contact/contacts:export - [Export Contacts](#export-contacts). 
-  - GET /contact/contacts/contactIdentities - [Get the list of Contact Identities](#get-the-list-of-contact-Identities).  
+  - GET /contact/contacts:export - [Export Contacts](#export-contacts). 
+  - GET /contact/contacts/contactIdentities - [Get the list of Contact Identities](#get-the-list-of-contact-Identities).    
 
 ####  Contact Field
   - GET /contact/fields - [Get the list of Contact Field](#get-the-list-of-contact-field).
@@ -935,6 +936,15 @@ The request body contains data with the following structure:
 #### Response
 No response
 
+### Download Template
+`GET /contact/contacts:downloadTemplate`
+
+#### Parameters
+No parameter
+
+#### Response
+- template file
+
 ### Import Contacts
 `POST /contact/contacts:import`
 
@@ -945,7 +955,7 @@ The request body contains data with the following structure:
 
   | Name | Type | Required | Description                                           |     
   | - | - | - | - | 
-  | `file` | file | yes | The import file |     
+  | `uploadFile` | file | yes | The import file URL |     
 
 #### Response
   | Name | Type | Required | Description                                           |     
@@ -955,10 +965,13 @@ The request body contains data with the following structure:
   | `failedFileUrl` | string | no | The URL of failed file | 
 
 ### Export Contacts
-`POST /contact/contacts:export`
+`GET /contact/contacts:export`
 
 #### Parameters
-No Parameter     
+##### Path Parameters
+  | Name | Type | Required | Description                                           |     
+  | - | - | - | - | 
+  | `exportAs` | string | no | `xlsx`, `xls`, `csv` |   
 
 #### Response
 - file
