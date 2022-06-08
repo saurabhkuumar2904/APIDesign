@@ -1143,6 +1143,7 @@ Request body the request body contains data with the following structure:
   |`channelCarrier` | Guid | no | SMS Channel `telnyxsms`,`twilio` |  
   |`contactId`  | Guid | no |   |   | 
   |`to`  | string | yes |   |   |
+  |`from`  | string | no |   |   |
   |`message`  | string | yes |   |   |
   |`attachments`  | [Attachment](#attachment-object)[] object | no |  the attachments of message|   
   | `callbackURL` | string | no |  The callbackURL of the Outbound Message. |  
