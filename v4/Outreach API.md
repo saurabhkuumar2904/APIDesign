@@ -1376,11 +1376,12 @@ Outbound Message is represented as simple flat JSON objects with the following k
 
   | Name | Type | Required | Description                                           |     
   | - | - | - | - | 
-  | `id` | Guid | yes | The unique id of the Outbound Message. |  
+  | `id` | string | yes | The unique id of the Outbound Message. |  
   | `sentTime` | datetime | yes |  The sent time the Outbound Message. |  
   | `channelAccountId` | Guid | yes |  Channel account id of this Outbound Campaign. |  
-  | `contactId` | Guid | yes |  Contact id of the Outbound Message. |  
+  | `contactId` | Guid | no |  Contact id of the Outbound Message. |  
   | `message` | string | yes |  Message. |  
+  | `attachments` | string | no |  Message. |  
   | `from` | string | yes |  Where the Outbound Message from. |  
   | `to` | string | yes |  Where the Outbound Message to. |  
   | `status` | string | yes |  Status of the Outbound Message. Allowed values are `Queued`, `Sending`, `Sent`, `Failed`，`delivered`,`undelivered` |  
