@@ -1179,6 +1179,7 @@ example:
 	"id": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
 	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
 	"message": "Hello, please fill in your application form by the end of this week!",
+	"attachments": [Attachment](https://github.com/whimp007/APIDesign/blob/master/v4/Outreach%20API.md#attachment-object)[]object
 	"from": "+13453746564",
 	"to": "+13453746564",
 	"status": "sent",
