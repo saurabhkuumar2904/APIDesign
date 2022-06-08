@@ -38,7 +38,8 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
   - POST /contact/contacts:merge - [Merge Contact](#merge-contacts). 
   - POST /contact/contacts:import - [Import Contacts](#import-contacts). 
   - POST /contact/contacts:export - [Export Contacts](#export-contacts). 
-  
+  - GET /contact/contacts/contactIdentities - [Get the list of Contact Identities](#get-the-list-of-contact-Identities).  
+
 ####  Contact Field
   - GET /contact/fields - [Get the list of Contact Field](#get-the-list-of-contact-field).
   - GET /contact/fields/{id} - [Get a single Contact Field](#get-a-single-contact-field).  
@@ -947,7 +948,11 @@ The request body contains data with the following structure:
   | `file` | file | yes | The import file |     
 
 #### Response
-No response
+  | Name | Type | Required | Description                                           |     
+  | - | - | - | - | 
+  | `status` | string | no | import result message |   
+  | `message` | string | no | import result message |     
+  | `failedFileUrl` | string | no | The URL of failed file | 
 
 ### Export Contacts
 `POST /contact/contacts:export`
@@ -990,6 +995,41 @@ The Response body contains data with the following structure:
     "fieldOptions":[]
   }]
 ```
+
+### Get the list of Contact Identities
+`GET /contact/ContactIdentities/`
+
+#### Parameters
+Path parameters
+
+  | Name | Type | Required  | Description |     
+  | - | - | - | - | 
+  | `value` | string | Yes  |  Contact identity value |
+  | `identityType` | string | No  |  Contact identity type |
+
+#### Response
+The Response body contains data with the following structure:
+
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+  |`contact identity` |[Contact Identity](#contact-identity-object)[]  | Yes | Contact identity array |
+
+```Json 
+  HTTP/1.1 200 OK
+  Content-Type: application/json
+  [{
+          "id":"760a3dfb-f776-4dc8-99cb-7fb288bdf1eb",
+          "contactId":"d5a7c487-7ac8-4b07-99e6-b85c3c6e56ab",
+          "contactIdentityType":"SMS",
+          "name":"+033214561",
+          "value":"+033214561",
+          "avatarUrl":"",
+          "infoUrl":"",
+          "screenName":"",
+          "originalContactPageUrl":""
+    }]
+```
+
 
 ### Get a single contact field
 `GET /contact/fields/{id}`
