@@ -11,8 +11,8 @@
   - GET /outreach/campaigns/{id} - [Get a single Outreach Campaign](#get-a-single-outreach-campaign). 
   - POST /outreach/campaigns/ - [Create a new Outreach Campaign](#create-a-new-outreach-campaign).  
   - PUT /outreach/campaigns/{id} - [Update the Outreach Campaign](#update-the-outreach-campaign).  
-  - DELETE /outreach/campaigns/{id} - [Delete the campaign](#delete-the-campaign). 
-  - POST /outreach/campaigns/{id}:send - [Send the campaign](#Send-the-campaign). 
+  - DELETE /outreach/campaigns/{id} - [Delete the Outreach campaign](#delete-the-outreach-campaign). 
+  - POST /outreach/campaigns/{id}:send - [Send the Outreach campaign](#Send-the-outreach-campaign). 
   
 #### Outreach Message
   - GET /outreach/messages/ - [Get the list of Outreach Message](#get-the-list-of-outreach-message). 
@@ -49,7 +49,6 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
 
 ###  Outbound Unichannel API 
   - POST /outboundunichannel/messages/ - [Create a new Outbound message](#create-a-outbound-message). 
-  - GET /outboundunichannel/messages/{id} - [Get a Outbound message](#get-a-outbound-message). 
 
 ###  Outbound Unichannel Callback API 
 The CallbackURL can be any valid URL that implements this API, and it is configured in the system when a Outbound Message is created. 
@@ -59,40 +58,6 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
   - POST /ticketing/ticket/{id}:attach - [attach a message to the ticket](#attach-a-message-to-the-ticket). 
 
 ## Endpoints
-
-### Outreach Message Callback
-`POST /{callbackURL}`
-
-#### Parameters
-No Parameters
-
-#### Request body
-The request body contains data with the [OutreachMessage](#outreachmessage-object) structure:
-
-example:
-```Json 
-{
-	"sentTime": "2022-04-26T10:52:24.336Z",
-	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
-	"message": "Hello, please fill in your application form by the end of this week!",
-	"from": "Tom Cruise",
-	"to": "XXX University",
-	"status": "Successful",
-	"failedReason": "",
-	"outreachCampaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
-	"outreachCampaignSentTime": "2021-04-26T10:52:24.336Z",
-	"isMessageAutoAttachedToTicket": "Yes",
-	"preferredTicketToAutoAttach": "New ticket",
-	"timeToAutoAttachToTicket": "When the message is sent",
-	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
-	"callbackURL": "https://domainname.com/sms/callback"
-}
-```
-#### Response
-
-```Json 
-  HTTP/1.1 200 OK
-```
 
 ### Get the list of Outreach Campaign
 `GET /outreach/campaigns/`
@@ -303,7 +268,7 @@ example:
 ```
 
 #### Response
-The Response body contains data with the [OutreachCampaign](#outreachcampaign-object)  structure:
+The Response body contains data with the [OutreachCampaign](#outreachcampaign-object) object structure:
 
 ```Json 
   HTTP/1.1 200 Ok
@@ -330,7 +295,7 @@ The Response body contains data with the [OutreachCampaign](#outreachcampaign-ob
 }
 ```
 
-### Delete the Campaign
+### Delete the Outreach Campaign
 `DELETE /outreach/campaigns/{id}`
 
 #### Parameters
@@ -347,7 +312,7 @@ No response
   HTTP/1.1 204 Ok
 ```
 
-### Send the Campaign
+### Send the Outreach Campaign
 `POST /outreach/campaigns/{id}:send`
 
 #### Parameters
@@ -358,7 +323,7 @@ Path parameters
   | `id` | Guid | Yes  |  The unique id of the Outreach Campaign |  
 
 #### Response
-The Response body contains data with the [OutreachCampaignRecord](#outreachcampaignrecord-object) structure:
+The Response body contains data with the [OutreachCampaignRecord](#outreachcampaignrecord-object) object structure:
 
 ```Json 
   HTTP/1.1 200 Ok
@@ -400,7 +365,7 @@ parameters
 |`outreachCampaignId` |Guid |No| The unique id of the Outreach Campaign |
 |`outreachCampaignRecordId` |Guid |No| The unique id of the Outreach Campaign |
 #### Response
-The Response body contains data with the [OutreachMessage](#outreachmessage-object) structure:
+The Response body contains data with the [OutreachMessage](#outreachmessage-object) object structure:
 
 
 ```Json 
@@ -414,7 +379,7 @@ The Response body contains data with the [OutreachMessage](#outreachmessage-obje
 		"message": "Hello, please fill in your application form by the end of this week!",
 		"from": "Tom Cruise",
 		"to": "XXX University",
-		"status": "Successful",
+		"status": "sent",
 		"failedReason": "",
 		"outreachCampaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
 		"outreachCampaignSentTime": "2022-05-22 03:00:36.277",
@@ -438,7 +403,7 @@ Path parameters
   | `id` | Guid | Yes  |  The unique id of the Outreach Message |  
 
 #### Response
-The Response body contains data with the [OutreachMessage](#outreachmessage-object) structure:
+The Response body contains data with the [OutreachMessage](#outreachmessage-object) object structure:
 
 ```Json 
   HTTP/1.1 200 OK
@@ -450,7 +415,7 @@ The Response body contains data with the [OutreachMessage](#outreachmessage-obje
 	"message": "Hello, please fill in your application form by the end of this week!",
 	"from": "Tom Cruise",
 	"to": "XXX University",
-	"status": "Successful",
+	"status": "sent",
 	"failedReason": "",
 	"outreachCampaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
 	"outreachCampaignSentTime": "2022-05-22 03:00:36.277",
@@ -469,7 +434,7 @@ The Response body contains data with the [OutreachMessage](#outreachmessage-obje
 No Parameters
 
 #### Request body
-The request body contains data with the [OutreachMessage](#outreachmessage-object) structure:
+The request body contains data with the [OutreachMessage](#outreachmessage-object) object structure:
   
 example:
 ```Json 
@@ -479,7 +444,7 @@ example:
 	"message": "Hello, please fill in your application form by the end of this week!",
 	"from": "Tom Cruise",
 	"to": "XXX University",
-	"status": "Successful",
+	"status": "sent",
 	"failedReason": "",
 	"outreachCampaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
 	"outreachCampaignSentTime": "2022-05-22 03:00:36.277",
@@ -492,7 +457,7 @@ example:
 ```
 
 #### Response
-The Response body contains data with the [OutreachMessage](#outreachmessage-object)  structure:
+The Response body contains data with the [OutreachMessage](#outreachmessage-object) object structure:
 
 ```Json 
   HTTP/1.1 201 Created
@@ -504,7 +469,7 @@ The Response body contains data with the [OutreachMessage](#outreachmessage-obje
 	"message": "Hello, please fill in your application form by the end of this week!",
 	"from": "Tom Cruise",
 	"to": "XXX University",
-	"status": "Successful",
+	"status": "sent",
 	"failedReason": "",
 	"outreachCampaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
 	"outreachCampaignSentTime": "2022-05-22 03:00:36.277",
@@ -556,7 +521,7 @@ example:
 	"message": "Hello, please fill in your application form by the end of this week!",
 	"from": "Tom Cruise",
 	"to": "XXX University",
-	"status": "Successful",
+	"status": "sent",
 	"failedReason": "",
 	"outreachCampaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
 	"outreachCampaignSentTime": "2022-05-22 03:00:36.277",
@@ -569,7 +534,7 @@ example:
 ```
 
 #### Response
-The Response body contains data with the [OutreachMessage](#outreachmessage-object)  structure:
+The Response body contains data with the [OutreachMessage](#outreachmessage-object) object structure:
 
 ```Json 
   HTTP/1.1 200 Ok
@@ -581,7 +546,7 @@ The Response body contains data with the [OutreachMessage](#outreachmessage-obje
 	"message": "Hello, please fill in your application form by the end of this week!",
 	"from": "Tom Cruise",
 	"to": "XXX University",
-	"status": "Successful",
+	"status": "sent",
 	"failedReason": "",
 	"outreachCampaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
 	"outreachCampaignSentTime": "2022-05-22 03:00:36.277",
@@ -592,6 +557,41 @@ The Response body contains data with the [OutreachMessage](#outreachmessage-obje
 	"callbackURL": "https://domainname.com/sms/callback"
 }
 ```
+
+### Outreach Message Callback
+`POST /{callbackURL}`
+
+#### Parameters
+No Parameters
+
+#### Request body
+The request body contains data with the [OutreachMessage](#outreachmessage-object) object structure:
+
+example:
+```Json 
+{
+	"sentTime": "2022-04-26T10:52:24.336Z",
+	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
+	"message": "Hello, please fill in your application form by the end of this week!",
+	"from": "Tom Cruise",
+	"to": "XXX University",
+	"status": "sent",
+	"failedReason": "",
+	"outreachCampaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
+	"outreachCampaignSentTime": "2021-04-26T10:52:24.336Z",
+	"isMessageAutoAttachedToTicket": "Yes",
+	"preferredTicketToAutoAttach": "New ticket",
+	"timeToAutoAttachToTicket": "When the message is sent",
+	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
+	"callbackURL": "https://domainname.com/sms/callback"
+}
+```
+#### Response
+
+```Json 
+  HTTP/1.1 200 OK
+```
+
 
 ### Get the list of Contact
 `GET /contact/contacts/`
@@ -752,7 +752,7 @@ Path parameters
   | `id` | Guid | Yes  |  The unique id of the Contact |  
 
 #### Response
-The Response body contains data with the [Contact](#contact-object) structure:
+The Response body contains data with the [Contact](#contact-object) object structure:
 
 ```Json 
   HTTP/1.1 200 OK
@@ -828,7 +828,7 @@ example:
 ```
 
 #### Response
-The Response body contains data with the [Contact](#contact-object) structure:
+The Response body contains data with the [Contact](#contact-object) object structure:
 
 ```Json 
   HTTP/1.1 201 Created
@@ -902,7 +902,7 @@ example:
 ```
 
 #### Response
-The Response body contains data with the [Contact](#contact-object)  structure:
+The Response body contains data with the [Contact](#contact-object) object structure:
 
 
 ### Delete the Contact
@@ -1040,7 +1040,7 @@ The Response body contains data with the following structure:
   |`id` | Guid  |Yes| contact field ID |
 
 #### Response
-The Response body contains data with the [Contact Field](#contact-field-object) structure:
+The Response body contains data with the [Contact Field](#contact-field-object) object structure:
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
@@ -1083,7 +1083,7 @@ The Response body contains data with the [Contact Field](#contact-field-object) 
   | `fieldOptions` | [fieldOptions](#field-option-object)[] | Reference to Field Option. |
 
 #### Response
-The Response body contains data with the [Contact Field](#contact-field-object)  structure:
+The Response body contains data with the [Contact Field](#contact-field-object) object structure:
 
 
 ### Update a Contact Field
@@ -1104,7 +1104,7 @@ The Response body contains data with the [Contact Field](#contact-field-object) 
   | `fieldOptions` | [fieldOptions](#field-option-object)[] | Reference to Field Option. |
 
 #### Response
-The Response body contains data with the [Contact Field](#contact-field-object)  structure:
+The Response body contains data with the [Contact Field](#contact-field-object) object structure:
 
 
 ### Delete a Contact Field
@@ -1126,16 +1126,17 @@ Request body
 Request body the request body contains data with the following structure: 
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
-  |`id`  |  string  |yes |   | outreach message id| 
-  |`channelAccountId` | Guid | no |  Channel account id. |  
+  |`channelAccountId` | Guid | yes |  Channel account id. |  
+  |`channelCarrier` | Guid | yes | SMS Channel `telnyxsms`,`twilio` |  
   |`contactId`  | Guid | no |   |   | 
   |`to`  | string | yes |   |   |
   |`message`  | string | yes |   |   |
+  |`attachments`  | [Attachment](#attachment-object)[] object | no |  the attachments of message|   
   | `callbackURL` | string | no |  The callbackURL of the Outbound Message. |  
+  | `retryDuration` | int | no |  How many minutes will it be retried. |  
   #### example:
 ```Json 
  {
-    "id":"d3f5b968-ad51-42af-b759-64c0afc40b84",
     "channelAccountId":"q3f5b438-xw31-44af-b729-64swaf3d0b56",
     "from": "+19857473631", 
     "to": "+19857473632", 
@@ -1146,19 +1147,88 @@ Request body the request body contains data with the following structure:
 ```
 
 #### Response
-The Response body contains data with the following structure:
+The Response body contains data with the [OutboundMessage](#OutboundMessage-object) object structure:
 
-  | Name | Type |  Description |    
-  | - | - | :-: | 
-  |`ticketMessageId`  |   | |
 
 Response
 ```Json
 HTTP/1.1 200 OK 
   Content-Type:  application/json 
-  {           
-     "ticketMessageId":"d3f5b968-ad51-42af-b759-64c0afc40b84"   
-  } 
+{
+	"id": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
+	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
+	"message": "Hello, please fill in your application form by the end of this week!",
+	"from": "+13453746564",
+	"to": "+13453746564",
+	"status": "sent",
+	"failedReason": "",
+	"sentTime": "2022-04-26T10:52:24.336Z",
+}
+```
+### Outbound Message Callback
+`POST /{callbackURL}`
+
+#### Parameters
+No Parameters
+
+#### Request body
+The request body contains data with the [OutboundMessage](#OutboundMessage-object) object structure:
+
+example:
+```Json 
+{
+	"id": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
+	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
+	"message": "Hello, please fill in your application form by the end of this week!",
+	"from": "+13453746564",
+	"to": "+13453746564",
+	"status": "sent",
+	"failedReason": "",
+	"sentTime": "2022-04-26T10:52:24.336Z",
+}
+```
+#### Response
+
+```Json 
+  HTTP/1.1 200 OK
+```
+
+### Attach a message to the ticket
+`POST /ticketing/ticket/{id}:attach`
+
+#### Parameters
+  | Name | Type | Required | Default | Description |    
+  | - | - | :-: | :-: | - | 
+  |`id` | Guid | yes | ticket id. |  
+#### Request body 
+Request body the request body contains data with the [Ticket Message](#ticketmessage-object) object structure: 
+
+  #### example:
+```Json 
+{
+	"id": "3b6560d4-0f10-4652-a376-e590936d290e",
+	"ticketId": "100",
+	"parentId": "ef50cc68-5b88-4405-88f0-84334581246d",
+	"sentById": "31cb8d70-b5a6-4faa-b021-62335d6dcf6c",
+	"sentByType": "visitor",
+	"time": "2021-04-26T10:52:24.336Z",
+	"type": "text",
+	"metadata": {...}
+	"originalId": "96e7964a-29cb-40d6-8251-4f334b5748bd",
+	"channelId": "Email",
+	"body": "data:text/plain;base64,PHA+MTExPC9wPg==",
+	"ifDisplayInTicketCorrespondences": true,
+	"isRead": true,
+	"attachments": []
+	"messageDelivery": {}
+}
+```
+
+#### Response
+
+Response
+```Json
+HTTP/1.1 200 OK 
 ```
 
 ## Model
@@ -1210,10 +1280,11 @@ Outreach Message is represented as simple flat JSON objects with the following k
   | `id` | Guid | yes | The unique id of the Outreach Message. |  
   | `sentTime` | datetime | yes |  The sent time the Outreach Message. |  
   | `contactId` | Guid | yes |  Contact id of the Outreach Message. |  
+  | `channelAccountId` | Guid | yes |  Channel account id of this Outreach Campaign. |  
   | `message` | string | yes |  Message. |  
   | `from` | string | yes |  Where the Outreach Message from. |  
   | `to` | string | yes |  Where the Outreach Message to. |  
-  | `status` | string | yes |  Status of the Outreach Message. Allowed values are "Queued", "Sending", "Sent", "Failed" |  
+  | `status` | string | yes |  Status of the Outreach Message. Allowed values are `Queued`, `Sending`, `Sent`, `Failed`，`delivered`,`undelivered` |  
   | `failedReason` | string | no |  The failed reason of the Outreach Message. |  
   | `outreachCampaignId` | Guid | no |  The Outreach Campaign id the Outreach Message. |  
   | `outreachCampaignSentTime` | datetime | no |  The sent time of the Outreach Campaign. |  
@@ -1286,4 +1357,28 @@ Contact Identity is represented as simple flat JSON objects with the following k
 | `order` | integer | Order of the option. |
 | `displayText` | string | Display text of the option. |
 
+### OutboundMessage Object
+Outbound Message is represented as simple flat JSON objects with the following keys:
 
+  | Name | Type | Required | Description                                           |     
+  | - | - | - | - | 
+  | `id` | Guid | yes | The unique id of the Outbound Message. |  
+  | `sentTime` | datetime | yes |  The sent time the Outbound Message. |  
+  | `channelAccountId` | Guid | yes |  Channel account id of this Outbound Campaign. |  
+  | `contactId` | Guid | yes |  Contact id of the Outbound Message. |  
+  | `message` | string | yes |  Message. |  
+  | `from` | string | yes |  Where the Outbound Message from. |  
+  | `to` | string | yes |  Where the Outbound Message to. |  
+  | `status` | string | yes |  Status of the Outbound Message. Allowed values are `Queued`, `Sending`, `Sent`, `Failed`，`delivered`,`undelivered` |  
+  | `failedReason` | string | no |  The failed reason of the Outbound Message. |  
+  | `callbackURL` | string | no |  The callbackURL of the Outreach Message. |  
+  
+ ### Attachment Object
+Attachment Object is represented as simple flat JSON objects with the following keys:
+
+  | Name | Type | Required | Description                                           |     
+  | - | - | - | - | 
+  | `type` | string | yes | Type of the attachment. Allowed values are "video", "audio", "image", "file". |  
+  | `url` | string | yes | Download URL of the attachment. |  
+  | `size` | integer | no |  Size of the attachment. |  
+  | `name` | string | no |  Name of the attachment. |  
