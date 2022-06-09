@@ -1368,7 +1368,7 @@ Outbound Message is represented as simple flat JSON objects with the following k
 
   | Name | Type | Required | Description                                           |     
   | - | - | - | - | 
-  | `id` | string | yes | The unique id of the Outbound Message. |  
+  | `id` | Guid | yes | The unique id of the Outbound Message. |  
   | `sentTime` | datetime | yes |  The sent time the Outbound Message. |  
   | `channelAccountId` | Guid | yes |  Channel account id of this Outbound Campaign. |  
   | `contactId` | Guid | no |  Contact id of the Outbound Message. |  
