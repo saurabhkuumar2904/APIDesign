@@ -607,14 +607,10 @@ example:
   | `contactIdentityType` | String | No  | contact identity type |  
   | `contactIdentityValue` | String | No  | contact identity value | 
   | `contactIdentityName` | String | No  | contact identity name | 
-  | `include` | String | No  | include | 
   | `pageIndex` | String | No  | page index | 
   | `pageSize` | String | No  | page size | 
   | `sortBy` | String | No  | sort by | 
   | `sortOrder` | String | No  | `asc`,`desc`, default `asc` |  
-  | `ContactFilterConditionMetType` | string | no |  Contact Filter Logical Expresssion of this Condition. "All", "Any", "LogicalExpression" | 
-  | `contactFilterLogicalExpresssion` | string | no |  Contact Filter Logical Expression | 
-  | `contactFilterConditions` | [ContactFilterCondition](#ContactFilterCondition-object)[] | no | An array of [ContactFilterCondition](#ContactFilterCondition-object)| 
 
 #### Request Body
 
@@ -680,7 +676,6 @@ The Response body contains data with the following structure:
 #### Request Body
   | Name | Type | Required  | Description |     
   | - | - | - | - | 
-  | `include` | String | No  | include | 
   | `pageIndex` | String | No  | page index | 
   | `pageSize` | String | No  | page size | 
   | `sortBy` | String | No  | sort by | 
