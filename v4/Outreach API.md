@@ -968,13 +968,10 @@ The request body contains data with the following structure:
 `GET /contact/contacts:export`
 
 #### Parameters
-##### Path Parameters
-  | Name | Type | Required | Description                                           |     
-  | - | - | - | - | 
-  | `exportAs` | string | no | `xlsx`, `xls`, `csv` |   
+No parameter
 
 #### Response
-- file
+- Cvs file
 
 ### Get the list of contact field
 `GET /contact/fields/`
