@@ -56,7 +56,7 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
   - POST /{callbackURL} - [Outbound Message Callback](#outbound-message-callback). 
   
 ### Ticketing API 
-  - POST /ticketing/ticket/{id}:attach - [attach a message to the ticket](#attach-a-message-to-the-ticket). 
+  - POST /ticketing/ticket/{id}/messages:attach - [attach a message to the ticket](#attach-a-message-to-the-ticket). 
 
 ## Endpoints
 
@@ -1200,7 +1200,7 @@ example:
 ```
 
 ### Attach a message to the ticket
-`POST /ticketing/ticket/{id}:attach`
+`POST /ticketing/ticket/{id}/messages:attach`
 
 #### Parameters
   | Name | Type | Required | Default | Description |    
