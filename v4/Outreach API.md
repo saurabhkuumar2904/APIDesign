@@ -367,10 +367,10 @@ parameters
 |`outreachCampaignId` |Guid |No| The unique id of the Outreach Campaign |
 |`outreachCampaignRecordId` |Guid |No| The unique id of the Outreach Campaign |
 | `isMessageAutoAttachedToTicket` | string | no |  Whether a new ticket will be auto created or not for the message.`yes`, `no` |  
-| `preferredTicketToAutoAttach` | string | no |  Allowed values are "New ticket", "Existing unresolved ticket whose last message is from SMS channel". |  
-| `timeToAutoAttachToTicket` | string | no |   Allowed values are "When the message is sent", "When contact replies the message". |  
+| `preferredTicketToAutoAttach` | string | no |  Allowed values are `New ticket`, `Existing unresolved ticket whose last message is from SMS channel`. |  
+| `timeToAutoAttachToTicket` | string | no |   Allowed values are `When the message is sent`, `When contact replies the message`. |  
 | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outreach Message. |  
-| `sentTime` | datetime | yes |  The sent time the Outreach Message. |  
+| `sentTime` | datetime | no |  The sent time the Outreach Message. |  
 #### Response
 The Response body contains data with the [OutreachMessage](#outreachmessage-object) object structure:
 
