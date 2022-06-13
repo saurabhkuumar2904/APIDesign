@@ -19,6 +19,7 @@
   - GET /outreach/messages/{id} - [Get a single Outreach Message](#get-a-single-outreach-message). 
   - POST /outreach/messages - [Create a new Outreach Message](#create-a-new-outreach-message). 
   - PUT /outreach/messages/{id} - [Update the Outreach Message](#update-the-outreach-message).  
+  - GET /outreach/unattachedMessages/ - [Get the list of Outreach Message that needs to be attached by unichannel](#get-the-list-of-unattached-outreach-message). 
 <!--   - POST /outreach/campaigns/{id}/messages - [Create a new Outreach Message](#create-a-new-outreach-message).    -->
 
 ### Outreach Callback API 
@@ -355,6 +356,7 @@ The Response body contains data with the [OutreachCampaignRecord](#outreachcampa
 	}
 }
 ```
+
 ### Get the list of Outreach Message
 `GET /outreach/messages/`
 
@@ -366,9 +368,6 @@ parameters
 |`contactId` |Guid  |No| The unique id of the Contact  |
 |`outreachCampaignId` |Guid |No| The unique id of the Outreach Campaign |
 |`outreachCampaignRecordId` |Guid |No| The unique id of the Outreach Campaign |
-| `isMessageAutoAttachedToTicket` | string | no |  Whether a new ticket will be auto created or not for the message.`yes`, `no` |  
-| `preferredTicketToAutoAttach` | string | no |  Allowed values are `New ticket`, `Existing unresolved ticket whose last message is from SMS channel`. |  
-| `timeToAutoAttachToTicket` | string | no |   Allowed values are `When the message is sent`, `When contact replies the message`. |  
 | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outreach Message. |  
 | `sentTime` | datetime | no |  The sent time the Outreach Message. |  
 #### Response
@@ -398,6 +397,46 @@ The Response body contains data with the [OutreachMessage](#outreachmessage-obje
 	}]
 }
 ```
+
+
+### Get the list of Unattached Outreach Message
+`GET /outreach/unattachedmessages/`
+
+#### Parameters
+parameters
+
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+|`contactId` |Guid  |No| The unique id of the Contact  |
+
+#### Response
+The Response body contains data with the [OutreachMessage](#outreachmessage-object) object structure:
+
+
+```Json 
+  HTTP/1.1 200 OK
+  Content-Type: application/json
+{
+	"outreachMessages": [{
+		"id": "11183a83-48e9-4d0d-a3bd-fb19ce5c12db",
+		"sentTime": "2022-05-23 03:00:36.277",
+		"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
+		"message": "Hello, please fill in your application form by the end of this week!",
+		"from": "Tom Cruise",
+		"to": "XXX University",
+		"status": "sent",
+		"failedReason": "",
+		"outreachCampaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
+		"outreachCampaignSentTime": "2022-05-22 03:00:36.277",
+		"isMessageAutoAttachedToTicket": "Yes",
+		"preferredTicketToAutoAttach": "New ticket",
+		"timeToAutoAttachToTicket": "When the message is sent",
+		"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
+		"callbackURL": "https://domainname.com/sms/callback"
+	}]
+}
+```
+
 
 ### Get a single Outreach Message
 `GET /outreach/messages/{id}`
