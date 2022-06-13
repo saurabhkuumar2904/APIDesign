@@ -35,10 +35,11 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
   - POST /contact/contacts/ - [Create a new Contact](#create-a-new-contact).  
   - PUT /contact/contacts/{id} - [Update the Contact](#update-the-contact).  
   - DELETE /contact/contacts/{id} - [Delete the Contact](#delete-the-contact). 
+  - DELETE /contact/contacts - [Batch delete contacts](#batch-delete-contacts). 
   - POST /contact/contacts:merge - [Merge Contact](#merge-contacts). 
   - GET /contact/contacts:downloadTemplate - [Download Template](#download-template). 
   - POST /contact/contacts:import - [Import Contacts](#import-contacts). 
-  - GET /contact/contacts:export - [Export Contacts](#export-contacts). 
+  - POST /contact/contacts:export - [Export Contacts](#export-contacts). 
   - GET /contact/contacts/contactIdentities - [Get the list of Contact Identities](#get-the-list-of-contact-Identities).    
 
 ####  Contact Field
@@ -681,10 +682,11 @@ The Response body contains data with the following structure:
 #### Request Body
   | Name | Type | Required  | Description |     
   | - | - | - | - | 
-  | `pageIndex` | String | No  | page index | 
-  | `pageSize` | String | No  | page size | 
-  | `sortBy` | String | No  | sort by | 
-  | `sortOrder` | String | No  | `asc`,`desc`, default `asc` |  
+  | `pageIndex` | string | No  | page index | 
+  | `pageSize` | string | No  | page size | 
+  | `sortBy` | string | No  | sort by | 
+  | `sortOrder` | string | No  | `asc`,`desc`, default `asc` |  
+  | `keywords` | string | No  | keywords |  
   | `ContactFilterConditionMetType` | string | no |  Contact Filter Logical Expresssion of this Condition. `All`, `Any`, `LogicalExpression` | 
   | `contactFilterLogicalExpresssion` | string | no |  Contact Filter Logical Expression | 
   | `contactFilterConditions` | [ContactFilterCondition object](#contactFilterCondition-object)[] | no | An array of [ContactFilterCondition object](#contactFilterCondition-object)| 
@@ -871,7 +873,7 @@ Path parameters
 #### Request body
 The request body contains data with the following structure:
 
-  | Name | Type | Required | Description                                           |     
+  | Name | Type | Required | Description |     
   | - | - | - | - | 
   | `name` | string | yes |  The name of the Contact. |  
   | `contactIdentity` | [contactIdentities](#contact-Identity-object)[] | yes | Contact identities array. |  
@@ -919,6 +921,18 @@ Path parameters
 #### Response
 No response
 
+### Batch delete contacts
+`DELETE /contact/contacts`
+
+#### Parameters
+Path parameters
+
+  | Name | Type | Required  | Description |     
+  | - | - | - | - | 
+  | `ids` | Guid | Yes  | The ID array of the Contacts |  
+
+#### Response
+No response
 
 ### Merge Contacts
 `POST /contact/contacts:merge`
@@ -928,7 +942,7 @@ No response
 ##### Request body
 The request body contains data with the following structure:
 
-  | Name | Type | Required | Description                                           |     
+  | Name | Type | Required | Description |     
   | - | - | - | - | 
   | `originalContactId` | Guid | yes | The original ID of the Contact. |  
   | `targetContactId` | Guid | yes | The target ID of the Contact. |   
@@ -953,22 +967,29 @@ No parameter
 ##### Request body
 The request body contains data with the following structure:
 
-  | Name | Type | Required | Description                                           |     
+  | Name | Type | Required | Description |     
   | - | - | - | - | 
   | `uploadFile` | file | yes | The import file URL |     
 
 #### Response
-  | Name | Type | Required | Description                                           |     
+  | Name | Type | Required | Description |     
   | - | - | - | - | 
   | `status` | string | no | import result message |   
   | `message` | string | no | import result message |     
   | `failedFileUrl` | string | no | The URL of failed file | 
 
 ### Export Contacts
-`GET /contact/contacts:export`
+`POST /contact/contacts:export`
 
 #### Parameters
-No parameter
+##### Request body
+The request body contains data with the following structure:
+
+  | Name | Type | Required | Description |     
+  | - | - | - | - | 
+  | `selected` | Guid[] | no | The selected Contact ID array. |  
+  | `timeZoneId` | Guid | yes | The ID of timezone. |   
+  | `utcOffset` | int | yes | The offset with UTC time. |   
 
 #### Response
 - Cvs file
