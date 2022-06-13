@@ -987,8 +987,8 @@ The request body contains data with the following structure:
 
   | Name | Type | Required | Description |     
   | - | - | - | - | 
-  | `selected` | Guid[] | no | The selected Contact ID array. |  
-  | `timeZoneId` | Guid | yes | The ID of timezone. |   
+  | `selected` | guid[] | no | The selected Contact ID array. |  
+  | `timeZoneId` | string | yes | The ID of timezone. |   
   | `utcOffset` | int | yes | The offset with UTC time. |   
 
 #### Response
