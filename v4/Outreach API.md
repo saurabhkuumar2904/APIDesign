@@ -648,14 +648,14 @@ example:
 
   | Name | Type | Required  | Description |     
   | - | - | - | - | 
-  | `keywords` | String | No  | search scope includes: contact name/identity id/identity value |  
-  | `contactIdentityType` | String | No  | contact identity type |  
-  | `contactIdentityValue` | String | No  | contact identity value | 
-  | `contactIdentityName` | String | No  | contact identity name | 
-  | `pageIndex` | String | No  | page index | 
-  | `pageSize` | String | No  | page size | 
-  | `sortBy` | String | No  | sort by | 
-  | `sortOrder` | String | No  | `asc`,`desc`, default `asc` |  
+  | `keywords` | string | No  | search scope includes: contact name/identity id/identity value |  
+  | `contactIdentityType` | string | No  | contact identity type |  
+  | `contactIdentityValue` | string | No  | contact identity value | 
+  | `contactIdentityName` | string | No  | contact identity name | 
+  | `pageIndex` | int | No  | page index | 
+  | `pageSize` | int | No  | page size | 
+  | `sortBy` | string | No  | sort by | 
+  | `sortOrder` | string | No  | `asc`,`desc`, default `asc` |  
 
 #### Request Body
 
@@ -721,8 +721,8 @@ The Response body contains data with the following structure:
 #### Request Body
   | Name | Type | Required  | Description |     
   | - | - | - | - | 
-  | `pageIndex` | string | No  | page index | 
-  | `pageSize` | string | No  | page size | 
+  | `pageIndex` | int | No  | page index | 
+  | `pageSize` | int | No  | page size | 
   | `sortBy` | string | No  | sort by | 
   | `sortOrder` | string | No  | `asc`,`desc`, default `asc` |  
   | `keywords` | string | No  | keywords |  
@@ -854,12 +854,12 @@ The request body contains data with the following structure:
 example:
 ```Json 
 {
-    "name":"Frank",
+    "name":"Test",
     "contactIdentities":[
         {
             "contactIdentityType":"Email",
-            "value":"frank@1234.com",
-            "name":"Frank"
+            "value":"test@1234.com",
+            "name":"Test"
         }
     ],
     "customFields":{
@@ -889,8 +889,8 @@ The Response body contains data with the [Contact](#contact-object) object struc
         "id":"760a3dfb-f776-4dc8-99cb-7fb288bdf1eb",
         "contactId":"d5a7c487-7ac8-4b07-99e6-b85c3c6e56ab",
         "contactIdentityType":"Email",
-        "name":"frank",
-        "value":"frank@1234.com",
+        "name":"Test",
+        "value":"Test@1234.com",
         "avatarUrl":"",
         "infoUrl":"",
         "screenName":"",
@@ -933,8 +933,8 @@ example:
         "id":"760a3dfb-f776-4dc8-99cb-7fb288bdf1eb",
         "contactId":"d5a7c487-7ac8-4b07-99e6-b85c3c6e56ab",
         "contactIdentityType":"Email",
-        "name":"frank",
-        "value":"frank@1234.com",
+        "name":"Test",
+        "value":"Test@1234.com",
         "avatarUrl":"",
         "infoUrl":"",
         "screenName":"",
