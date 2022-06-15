@@ -1377,8 +1377,8 @@ Contact is represented as simple flat JSON objects with the following keys:
   | `createTime` | datetime | no |  The create time of the Contact. |  
   | `lastUpdatedTime` | datetime | no |  The last updated time of the Contact. |  
   | `mergeToContactId` | Guid | no |  The Contact id of merge to. |  
-  | `customFields` | [custom field value](#contact-custom-field-value-object)[] | no | custom field value array | 
-  | `contactIdentities` | [contact identities](#contact-identity-object)[] | yes | custom field value array | 
+  | `customFields` | [Contact Custom Field Value](#contact-custom-field-value-object)[] | no | custom field value array | 
+  | `contactIdentities` | [Contact Identity](#contact-identity-object)[] | yes | custom field value array | 
 
 ### Contact Identity Object
 Contact Identity is represented as simple flat JSON objects with the following keys:
