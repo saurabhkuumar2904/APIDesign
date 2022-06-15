@@ -1372,8 +1372,8 @@ Contact is represented as simple flat JSON objects with the following keys:
   | - | - | - | - | 
   | `id` | Guid | yes | The unique id of the contact. |  
   | `name` | string | yes |  The name of the contact. |  
-  | `first Name` | string | no | The first name of the contact |
-  | `last name` | string | no | The last name of the contact |
+  | `firstName` | string | no | The first name of the contact |
+  | `lastName` | string | no | The last name of the contact |
   | `createTime` | datetime | no |  The create time of the Contact. |  
   | `lastUpdatedTime` | datetime | no |  The last updated time of the Contact. |  
   | `mergeToContactId` | Guid | no |  The Contact id of merge to. |  
