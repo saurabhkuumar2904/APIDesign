@@ -652,7 +652,6 @@ example:
   | `keywords` | string | No  | search scope includes: contact name/identity id/identity value |  
   | `contactIdentityType` | string | No  | contact identity type |  
   | `contactIdentityValue` | string | No  | contact identity value | 
-  | `contactIdentityName` | string | No  | contact identity name | 
   | `pageIndex` | int | No  | page index | 
   | `pageSize` | int | No  | page size | 
   | `sortBy` | string | No  | sort by | 
