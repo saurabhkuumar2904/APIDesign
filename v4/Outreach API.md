@@ -37,7 +37,7 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
   - PUT /contact/contacts/{id} - [Update the Contact](#update-the-contact).  
   - DELETE /contact/contacts/{id} - [Delete the Contact](#delete-the-contact). 
   - DELETE /contact/contacts - [Batch delete contacts](#batch-delete-contacts). 
-  - POST /contact/contacts:merge - [Merge Contact](#merge-contacts). 
+  - POST /contact/contacts/{id}:merge - [Merge Contact](#merge-contacts). 
   - GET /contact/importTemplate - [Download Template](#download-template). 
   - POST /contact/contacts:import - [Import Contacts](#import-contacts). 
   - POST /contact/contacts:export - [Export Contacts](#export-contacts). 
@@ -974,7 +974,7 @@ Path parameters
 No response
 
 ### Merge Contacts
-`POST /contact/contacts:merge`
+`POST /contact/contacts/{id}:merge`
 
 #### Parameters
 
@@ -983,8 +983,7 @@ The request body contains data with the following structure:
 
   | Name | Type | Required | Description |     
   | - | - | - | - | 
-  | `originalContactId` | Guid | yes | The original ID of the Contact. |  
-  | `targetContactId` | Guid | yes | The target ID of the Contact. |   
+  | `contactId` | Guid | yes | The original ID of the Contact. |   
 
 #### Response
 No response
