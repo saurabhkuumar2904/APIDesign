@@ -990,7 +990,7 @@ The request body contains data with the following structure:
 No response
 
 ### Download Template
-`GET /contact/contacts:downloadTemplate`
+`GET /contact/importTemplate`
 
 #### Parameters
 No parameter
