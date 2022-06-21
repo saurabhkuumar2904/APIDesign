@@ -381,16 +381,12 @@ parameters
 |`campaignRecordId` |Guid |No| The unique id of the Outreach Campaign |
 | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outreach Message. |  
 | `sentTime` | datetime | no |  The sent time the Outreach Message. |  
+| `keywords` | string | No  | search scope includes: from/to/campaign.name/contact.name |
+| `pageIndex` | int | No  | page index | 
+| `pageSize` | int | No  | page size, default is 10, if the value is 0, will return all matched contacts. | 
+| `sortBy` | string | No  | sort by | 
+| `sortOrder` | string | No  | `asc`,`desc`, default `asc` | 
 
-Path parameters
-
-  | Name | Type | Required  | Description |     
-  | - | - | - | - | 
-  | `keywords` | string | No  | search scope includes: from/to/campaign.name/contact.name |
-  | `pageIndex` | int | No  | page index | 
-  | `pageSize` | int | No  | page size, default is 10, if the value is 0, will return all matched contacts. | 
-  | `sortBy` | string | No  | sort by | 
-  | `sortOrder` | string | No  | `asc`,`desc`, default `asc` | 
 #### Response
 The Response body contains data with the [OutreachMessage](#OutreachMessage-object) object structure:
 
