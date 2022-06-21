@@ -655,7 +655,7 @@ example:
   | `contactIdentityType` | string | No  | contact identity type |  
   | `contactIdentityValue` | string | No  | contact identity value | 
   | `pageIndex` | int | No  | page index | 
-  | `pageSize` | int | No  | page size | 
+  | `pageSize` | int | No  | page size, default is 10, if the value is 0, will return all matched contacts. | 
   | `sortBy` | string | No  | sort by | 
   | `sortOrder` | string | No  | `asc`,`desc`, default `asc` |  
 
@@ -724,7 +724,7 @@ The Response body contains data with the following structure:
   | Name | Type | Required  | Description |     
   | - | - | - | - | 
   | `pageIndex` | int | No  | page index | 
-  | `pageSize` | int | No  | page size | 
+  | `pageSize` | int | No  | page size, default is 10, if the value is 0, will return all matched contacts. | 
   | `sortBy` | string | No  | sort by | 
   | `sortOrder` | string | No  | `asc`,`desc`, default `asc` |  
   | `keywords` | string | No  | keywords |  
