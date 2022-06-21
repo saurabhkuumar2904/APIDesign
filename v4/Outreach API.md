@@ -91,13 +91,13 @@ The Response body contains data with the following structure:
 		"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
 		"name": "test-campaign",
 		"description": "test campaign",
-		"channel": "SMS",
+		"channel": "sms",
 		"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 		"message": "Hello, please fill in your application form by the end of this week!",
-		"isMessageAutoAttachedToTicket": "Yes",
-		"preferredTicketToAutoAttach": "New ticket",
+		"isMessageAutoAttachedToTicket": yes,
+		"preferredTicketToAutoAttach": "newTicket",
 		"timeToAutoAttachToTicket": "When the message is sent",
-		"contactFilterConditionMetType": "Any",
+		"contactFilterConditionMetType": "any",
 		"contactFilterLogicalExpresssion": "",
 		"contactFilterConditions": [{
 			"FieldName": "AAA",
@@ -134,13 +134,13 @@ The Response body contains data with the [OutreachCampaign](#OutreachCampaign-ob
 	"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
 	"name": "test-campaign",
 	"description": "test campaign",
-	"channel": "SMS",
+	"channel": "sms",
 	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"message": "Hello, please fill in your application form by the end of this week!",
-	"isMessageAutoAttachedToTicket": "Yes",
-	"preferredTicketToAutoAttach": "New ticket",
-	"timeToAutoCreateNewTicket": "When the message is sent",
-	"contactFilterConditionMetType": "Any",
+	"isMessageAutoAttachedToTicket": yes,
+	"preferredTicketToAutoAttach": "newTicket",
+	"timeToAutoCreateNewTicket": "whenTheMessageIsSent",
+	"contactFilterConditionMetType": "any",
 	"contactFilterLogicalExpresssion": "",
 	"contactFilterConditions": [{
 		"FieldName": "AAA",
@@ -169,9 +169,9 @@ The request body contains data with the following structure:
   | `channelAccountId` | Guid | no |  Channel account id of this Outreach Campaign. |  
   | `message` | string | no |  Message of this Outreach Campaign. |  
   | `isMessageAutoAttachedToTicket` | bool | no |  Whether a new ticket will be auto created or not for the message.|  
-  | `preferredTicketToAutoAttach` | string | no |  Allowed values are "New ticket", "Existing unresolved ticket whose last message is from SMS channel".|  
-  | `timeToAutoAttachToTicket` | string | no |  Allowed values are "When the message is sent", "When contact replies the message". |  
-  | `contactFilterConditionMetType` | string | no |  Allowed values are "All", "Any", "Logical Expression". |  
+  | `preferredTicketToAutoAttach` | string | no |  Allowed values are "newTicket", "existing".|  
+  | `timeToAutoAttachToTicket` | string | no |  Allowed values are "whenTheMessageIsSent", "whenContactRepliesTheMessage". |  
+  | `contactFilterConditionMetType` | string | no |  Allowed values are "all", "any", "logicalExpression". |  
   | `contactFilterLogicalExpresssion` | string | no |  Contact Filter Logical Expresssion of this Condition. |  
   | `contactFilterConditions` | [ContactFilterCondition](#ContactFilterCondition-object)[] | no | An array of [ContactFilterCondition](#ContactFilterCondition-object)| 
   | `scheduledStartTime` | datetime | no |  Time when the schedule start. |  
@@ -181,13 +181,13 @@ example:
 {
 	"name": "test-campaign",
 	"description": "test campaign",
-	"channel": "SMS",
+	"channel": "ams",
 	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"message": "Hello, please fill in your application form by the end of this week!",
-	"isMessageAutoAttachedToTicket": "Yes",
-	"preferredTicketToAutoAttach": "New ticket",
-	"timeToAutoAttachToTicket": "When the message is sent",
-	"contactFilterConditionMetType": "Any",
+	"isMessageAutoAttachedToTicket": yes,
+	"preferredTicketToAutoAttach": "newTicket",
+	"timeToAutoAttachToTicket": "whenTheMessageIsSent",
+	"contactFilterConditionMetType": "any",
 	"contactFilterLogicalExpresssion": "",
 	"contactFilterConditions": [{
 		"FieldName": "AAA",
@@ -210,13 +210,13 @@ The Response body contains data with the [OutreachCampaign](#OutreachCampaign-ob
 	"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
 	"name": "test-campaign",
 	"description": "test campaign",
-	"channel": "SMS",
+	"channel": "sms",
 	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"message": "Hello, please fill in your application form by the end of this week!",
-	"isMessageAutoAttachedToTicket": "Yes",
-	"preferredTicketToAutoAttach": "New ticket",
-	"timeToAutoAttachToTicket": "When the message is sent",
-	"contactFilterConditionMetType": "Any",
+	"isMessageAutoAttachedToTicket": yes,
+	"preferredTicketToAutoAttach": "newTicket",
+	"timeToAutoAttachToTicket": "whenTheMessageIsSent",
+	"contactFilterConditionMetType": "any",
 	"contactFilterLogicalExpresssion": "",
 	"contactFilterConditions": [{
 		"FieldName": "AAA",
@@ -250,9 +250,9 @@ The request body contains data with the following structure:
   | `channelAccountId` | Guid | no |  Channel account id of this Outreach Campaign. |  
   | `message` | string | no |  Message of this Outreach Campaign. |  
   | `isMessageAutoAttachedToTicket` | bool | no |  Whether a new ticket will be auto created or not for the message.|  
-  | `preferredTicketToAutoAttach` | string | no |  Allowed values are "New ticket", "Existing unresolved ticket whose last message is from SMS channel".|  
-  | `timeToAutoAttachToTicket` | string | no |  Allowed values are "When the message is sent", "When contact replies the message". |  
-  | `contactFilterConditionMetType` | string | no |  Allowed values are "All", "Any", "Logical Expression". |  
+  | `preferredTicketToAutoAttach` | string | no |  Allowed values are "newTicket", "existing".|  
+  | `timeToAutoAttachToTicket` | string | no |  Allowed values are "whenTheMessageIsSent", "whenContactRepliesTheMessage". |  
+  | `contactFilterConditionMetType` | string | no |  Allowed values are "all", "any", "logicalExpression". |  
   | `contactFilterLogicalExpresssion` | string | no |  Contact Filter Logical Expresssion of this Condition. |  
   | `contactFilterConditions` | [ContactFilterCondition](#ContactFilterCondition-object)[] | no | An array of [ContactFilterCondition](#ContactFilterCondition-object)| 
   | `scheduledStartTime` | datetime | no |  Time when the schedule start. |  
@@ -263,13 +263,13 @@ example:
 	"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
 	"name": "test-campaign 2",
 	"description": "test campaign",
-	"channel": "SMS",
+	"channel": "sms",
 	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"message": "Hello, please fill in your application form by the end of this week!",
-	"isMessageAutoAttachedToTicket": "Yes",
-	"preferredTicketToAutoAttach": "New ticket",
-	"timeToAutoAttachToTicket": "When the message is sent",
-	"contactFilterConditionMetType": "Any",
+	"isMessageAutoAttachedToTicket": yes,
+	"preferredTicketToAutoAttach": "newTicket",
+	"timeToAutoAttachToTicket": "whenTheMessageIsSent",
+	"contactFilterConditionMetType": "any",
 	"contactFilterLogicalExpresssion": "",
 	"contactFilterConditions": [{
 		"FieldName": "AAA",
@@ -291,13 +291,13 @@ The Response body contains data with the [OutreachCampaign](#OutreachCampaign-ob
 	"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
 	"name": "test-campaign 2",
 	"description": "test campaign",
-	"channel": "SMS",
+	"channel": "sms",
 	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"message": "Hello, please fill in your application form by the end of this week!",
-	"isMessageAutoAttachedToTicket": "Yes",
-	"preferredTicketToAutoAttach": "New ticket",
-	"timeToAutoAttachToTicket": "When the message is sent",
-	"contactFilterConditionMetType": "Any",
+	"isMessageAutoAttachedToTicket": yes,
+	"preferredTicketToAutoAttach": "newTicket",
+	"timeToAutoAttachToTicket": "whenTheMessageIsSent",
+	"contactFilterConditionMetType": "any",
 	"contactFilterLogicalExpresssion": "",
 	"contactFilterConditions": [{
 		"FieldName": "AAA",
@@ -349,13 +349,13 @@ The Response body contains data with the [OutreachCampaignRecord](#OutreachCampa
 		"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
 		"name": "test-campaign 2",
 		"description": "test campaign",
-		"channel": "SMS",
+		"channel": "sms",
 		"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 		"message": "Hello, please fill in your application form by the end of this week!",
-		"isMessageAutoAttachedToTicket": "Yes",
-		"preferredTicketToAutoAttach": "New ticket",
-		"timeToAutoAttachToTicket": "When the message is sent",
-		"contactFilterConditionMetType": "Any",
+		"isMessageAutoAttachedToTicket": yes,
+		"preferredTicketToAutoAttach": "newTicket",
+		"timeToAutoAttachToTicket": "whenTheMessageIsSent",
+		"contactFilterConditionMetType": "any",
 		"contactFilterLogicalExpresssion": "",
 		"contactFilterConditions": [{
 			"FieldName": "AAA",
@@ -406,9 +406,9 @@ The Response body contains data with the [OutreachMessage](#OutreachMessage-obje
 		"failedReason": "",
 		"campaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
 		"campaignSentTime": "2022-05-22 03:00:36.277",
-		"isMessageAutoAttachedToTicket": "Yes",
-		"preferredTicketToAutoAttach": "New ticket",
-		"timeToAutoAttachToTicket": "When the message is sent",
+		"isMessageAutoAttachedToTicket": yes,
+		"preferredTicketToAutoAttach": "newTicket",
+		"timeToAutoAttachToTicket": "whenTheMessageIsSent",
 		"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
 		"callbackURL": "https://domainname.com/sms/callback"
 	}],
@@ -450,9 +450,9 @@ The Response body contains data with the [OutreachMessage](#OutreachMessage-obje
 		"failedReason": "",
 		"campaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
 		"campaignSentTime": "2022-05-22 03:00:36.277",
-		"isMessageAutoAttachedToTicket": "Yes",
-		"preferredTicketToAutoAttach": "New ticket",
-		"timeToAutoAttachToTicket": "When the message is sent",
+		"isMessageAutoAttachedToTicket": yes,
+		"preferredTicketToAutoAttach": "newTicket",
+		"timeToAutoAttachToTicket": "whenTheMessageIsSent",
 		"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
 		"callbackURL": "https://domainname.com/sms/callback"
 	}]
@@ -487,9 +487,9 @@ The Response body contains data with the [OutreachMessage](#OutreachMessage-obje
 	"failedReason": "",
 	"campaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
 	"campaignSentTime": "2022-05-22 03:00:36.277",
-	"isMessageAutoAttachedToTicket": "Yes",
-	"preferredTicketToAutoAttach": "New ticket",
-	"timeToAutoAttachToTicket": "When the message is sent",
+	"isMessageAutoAttachedToTicket": yes,
+	"preferredTicketToAutoAttach": "newTicket",
+	"timeToAutoAttachToTicket": "whenTheMessageIsSent",
 	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
 	"callbackURL": "https://domainname.com/sms/callback"
 }
@@ -516,9 +516,9 @@ example:
 	"failedReason": "",
 	"campaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
 	"campaignSentTime": "2022-05-22 03:00:36.277",
-	"isMessageAutoAttachedToTicket": "Yes",
-	"preferredTicketToAutoAttach": "New ticket",
-	"timeToAutoAttachToTicket": "When the message is sent",
+	"isMessageAutoAttachedToTicket": yes,
+	"preferredTicketToAutoAttach": "newTicket",
+	"timeToAutoAttachToTicket": "whenTheMessageIsSent",
 	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
 	"callbackURL": "https://domainname.com/sms/callback"
 }
@@ -541,9 +541,9 @@ The Response body contains data with the [OutreachMessage](#OutreachMessage-obje
 	"failedReason": "",
 	"campaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
 	"campaignSentTime": "2022-05-22 03:00:36.277",
-	"isMessageAutoAttachedToTicket": "Yes",
-	"preferredTicketToAutoAttach": "New ticket",
-	"timeToAutoAttachToTicket": "When the message is sent",
+	"isMessageAutoAttachedToTicket": yes,
+	"preferredTicketToAutoAttach": "newTicket",
+	"timeToAutoAttachToTicket": "whenTheMessageIsSent",
 	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
 	"callbackURL": "https://domainname.com/sms/callback"
 }
@@ -565,18 +565,18 @@ The request body contains data with the following structure:
   | Name | Type | Required | Description                                           |     
   | - | - | - | - | 
   | `id` | Guid | yes | The unique id of the Outreach Message. |  
-  | `sentTime` | datetime | yes |  The outreach campaign id of the Outreach Message. |  
+  | `sentTime` | datetime | yes |  The sent time of the Outreach Message. |  
   | `contactId` | Guid | yes |  Contact id of the Outreach Message. |  
   | `message` | string | yes |  Message. |  
   | `from` | string | yes |  Where the Outreach Message from. |  
   | `to` | string | yes |  Where the Outreach Message to. |  
-  | `status` | string | yes |  Status of the Outreach Message. Allowed values are "Queued", "Sending", "Sent", "Failed" |  
+  | `status` | string | yes |  Status of the Outreach Message. Allowed values are `queued`, `sending`, `sent`, `failed`，`delivered`,`undelivered` |  
   | `failedReason` | string | no |  The failed reason of the Outreach Message. |  
   | `campaignId` | Guid | yes |  The outreach campaign id the Outreach Message. |  
   | `campaignSentTime` | datetime | no |  The sent time of the Outreach Campaign. |  
-  | `isMessageAutoAttachedToTicket` | string | no |  The Outreach Campaign id the Outreach Message. |  
-  | `preferredTicketToAutoAttach` | string | no |  The Outreach Campaign id the Outreach Message. |  
-  | `timeToAutoAttachToTicket` | string | no |  The Outreach Campaign id the Outreach Message. |  
+  | `isMessageAutoAttachedToTicket` | bool | no |  Whether a new ticket will be auto created or not for the message. |  
+  | `preferredTicketToAutoAttach` | string | no |  Allowed values are "newTicket", "existing".|  
+  | `timeToAutoAttachToTicket` | string | no |  Allowed values are "whenTheMessageIsSent", "whenContactRepliesTheMessage". |  
   | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outreach Message. |  
   | `callbackURL` | string | no |  The callbackURL of the Outreach Message. |  
   
@@ -593,9 +593,9 @@ example:
 	"failedReason": "",
 	"campaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
 	"campaignSentTime": "2022-05-22 03:00:36.277",
-	"isMessageAutoAttachedToTicket": "Yes",
-	"preferredTicketToAutoAttach": "New ticket",
-	"timeToAutoAttachToTicket": "When the message is sent",
+	"isMessageAutoAttachedToTicket": yes,
+	"preferredTicketToAutoAttach": "newTicket",
+	"timeToAutoAttachToTicket": "whenTheMessageIsSent",
 	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
 	"callbackURL": "https://domainname.com/sms/callback"
 }
@@ -618,9 +618,9 @@ The Response body contains data with the [OutreachMessage](#OutreachMessage-obje
 	"failedReason": "",
 	"campaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
 	"campaignSentTime": "2022-05-22 03:00:36.277",
-	"isMessageAutoAttachedToTicket": "Yes",
-	"preferredTicketToAutoAttach": "New ticket",
-	"timeToAutoAttachToTicket": "When the message is sent",
+	"isMessageAutoAttachedToTicket": yes,
+	"preferredTicketToAutoAttach": "newTicket",
+	"timeToAutoAttachToTicket": "whenTheMessageIsSent",
 	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
 	"callbackURL": "https://domainname.com/sms/callback"
 }
@@ -647,9 +647,9 @@ example:
 	"failedReason": "",
 	"campaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
 	"campaignSentTime": "2021-04-26T10:52:24.336Z",
-	"isMessageAutoAttachedToTicket": "Yes",
-	"preferredTicketToAutoAttach": "New ticket",
-	"timeToAutoAttachToTicket": "When the message is sent",
+	"isMessageAutoAttachedToTicket": yes,
+	"preferredTicketToAutoAttach": "newTicket",
+	"timeToAutoAttachToTicket": "whenTheMessageIsSent",
 	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
 	"callbackURL": "https://domainname.com/sms/callback"
 }
@@ -1371,9 +1371,9 @@ Outreach Campaign is represented as simple flat JSON objects with the following 
   | `channelAccountId` | Guid | yes |  Channel account id of this Outreach Campaign. |  
   | `message` | string | yes |  Message of this Outreach Campaign. |  
   | `isMessageAutoAttachedToTicket` | bool | no |  Whether a new ticket will be auto created or not for the message.`yes`, `no`| 
-  | `preferredTicketToAutoAttach` | string | no |  Allowed values are "New ticket", "Existing unresolved ticket whose last message is from SMS channel".|  
-  | `timeToAutoAttachToTicket` | string | no |  Allowed values are "When the message is sent", "When contact replies the message". |  
-  | `contactFilterConditionMetType` | string | no |  Allowed values are "All", "Any", "Logical Expression". |  
+  | `preferredTicketToAutoAttach` | string | no |  Allowed values are "newTicket", "existing".|  
+  | `timeToAutoAttachToTicket` | string | no |  Allowed values are "whenTheMessageIsSent", "whenContactRepliesTheMessage". |  
+  | `contactFilterConditionMetType` | string | no |  Allowed values are "all", "any", "logicalExpression". |  
   | `contactFilterLogicalExpresssion` | string | no |  Contact Filter Logical Expresssion of this Condition. |  
   | `contactFilterConditions` | [ContactFilterCondition](#ContactFilterCondition-object)[] | no | An array of [ContactFilterCondition](#ContactFilterCondition-object)| 
   | `scheduledStartTime` | datetime | no |  Time when the schedule start. |  
@@ -1410,13 +1410,13 @@ Outreach Message is represented as simple flat JSON objects with the following k
   | `message` | string | yes |  Message. |  
   | `from` | string | yes |  Where the Outreach Message from. |  
   | `to` | string | yes |  Where the Outreach Message to. |  
-  | `status` | string | yes |  Status of the Outreach Message. Allowed values are `Queued`, `Sending`, `Sent`, `Failed`，`delivered`,`undelivered` |  
+  | `status` | string | yes |  Status of the Outreach Message. Allowed values are `queued`, `sending`, `sent`, `failed`，`delivered`,`undelivered` |  
   | `failedReason` | string | no |  The failed reason of the Outreach Message. |  
   | `campaignId` | Guid | no |  The Outreach Campaign id the Outreach Message. |  
   | `campaignSentTime` | datetime | no |  The sent time of the Outreach Campaign. |  
-  | `isMessageAutoAttachedToTicket` | string | no |  Whether a new ticket will be auto created or not for the message.`yes`, `no` |  
-  | `preferredTicketToAutoAttach` | string | no |  Allowed values are "New ticket", "Existing unresolved ticket whose last message is from SMS channel". |  
-  | `timeToAutoAttachToTicket` | string | no |   Allowed values are "When the message is sent", "When contact replies the message". |  
+  | `isMessageAutoAttachedToTicket` | bool | no |  Whether a new ticket will be auto created or not for the message.`yes`, `no` |  
+  | `preferredTicketToAutoAttach` | string | no |  Allowed values are "newTicket", "existing".|  
+  | `timeToAutoAttachToTicket` | string | no |  Allowed values are "whenTheMessageIsSent", "whenContactRepliesTheMessage". |  
   | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outreach Message. |  
   | `callbackURL` | string | no |  The callbackURL of the Outreach Message. |  
   
@@ -1496,7 +1496,7 @@ Outbound Message is represented as simple flat JSON objects with the following k
   | `attachments` | string | no |  attachment. |  
   | `from` | string | yes |  Where the Outbound Message from. |  
   | `to` | string | yes |  Where the Outbound Message to. |  
-  | `status` | string | yes |  Status of the Outbound Message. Allowed values are `Queued`, `Sending`, `Sent`, `Failed`，`delivered`,`undelivered` |  
+  | `status` | string | yes |  Status of the Outbound Message. Allowed values are `queued`, `sending`, `sent`, `failed`，`delivered`,`undelivered` |   
   | `failedReason` | string | no |  The failed reason of the Outbound Message. |  
   | `callbackURL` | string | no |  The callbackURL of the Outreach Message. |  
   
