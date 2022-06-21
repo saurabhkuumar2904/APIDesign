@@ -1014,7 +1014,8 @@ The request body contains data with the following structure:
   | Name | Type | Required | Description |     
   | - | - | - | - | 
   | `createdCount` | int | no | The count of new contacts created |   
-  | `updatedCount` | int | no | The count of exising contacts updated |     
+  | `updatedCount` | int | no | The count of exising contacts updated |   
+  | `skippedCount` | int | no | The count of skipped contacts |     
   | `failedCount`  | int | no | The count of importing contacts failed | 
   | `failedFileUrl` | string | no | The URL of failed file | 
 
