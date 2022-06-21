@@ -1008,12 +1008,14 @@ The request body contains data with the following structure:
   | Name | Type | Required | Description |     
   | - | - | - | - | 
   | `uploadFile` | file | yes | The import file URL |     
+  | `duplicateControl` | string | no | Avaiable options: `merge`,`replace`,`skip`, default is `merge` |   
 
 #### Response
   | Name | Type | Required | Description |     
   | - | - | - | - | 
-  | `status` | string | no | import result message |   
-  | `message` | string | no | import result message |     
+  | `createdCount` | int | no | The count of new contacts created |   
+  | `updatedCount` | int | no | The count of exising contacts updated |     
+  | `failedCount`  | int | no | The count of importing contacts failed | 
   | `failedFileUrl` | string | no | The URL of failed file | 
 
 ### Export Contacts
