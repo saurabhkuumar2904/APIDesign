@@ -67,7 +67,14 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
 `GET /outreach/campaigns/`
 
 #### Parameters
-No parameters
+Path parameters
+
+  | Name | Type | Required  | Description |     
+  | - | - | - | - | 
+  | `pageIndex` | int | No  | page index | 
+  | `pageSize` | int | No  | page size, default is 10, if the value is 0, will return all matched contacts. | 
+  | `sortBy` | string | No  | sort by | 
+  | `sortOrder` | string | No  | `asc`,`desc`, default `asc` |  
 
 #### Response
 The Response body contains data with the following structure:
@@ -167,7 +174,7 @@ The request body contains data with the following structure:
   | `contactFilterConditionMetType` | string | no |  Allowed values are "All", "Any", "Logical Expression". |  
   | `contactFilterLogicalExpresssion` | string | no |  Contact Filter Logical Expresssion of this Condition. |  
   | `contactFilterConditions` | [ContactFilterCondition](#ContactFilterCondition-object)[] | no | An array of [ContactFilterCondition](#ContactFilterCondition-object)| 
-  | `scheduledStartTime` | datetime | no |  Message of this Outreach Campaign. |  
+  | `scheduledStartTime` | datetime | no |  Time when the schedule start. |  
   
 example:
 ```Json 
@@ -248,7 +255,7 @@ The request body contains data with the following structure:
   | `contactFilterConditionMetType` | string | no |  Allowed values are "All", "Any", "Logical Expression". |  
   | `contactFilterLogicalExpresssion` | string | no |  Contact Filter Logical Expresssion of this Condition. |  
   | `contactFilterConditions` | [ContactFilterCondition](#ContactFilterCondition-object)[] | no | An array of [ContactFilterCondition](#ContactFilterCondition-object)| 
-  | `scheduledStartTime` | datetime | no |  Message of this Outreach Campaign. |  
+  | `scheduledStartTime` | datetime | no |  Time when the schedule start. |  
 
 example:
 ```Json 
@@ -374,6 +381,16 @@ parameters
 |`campaignRecordId` |Guid |No| The unique id of the Outreach Campaign |
 | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outreach Message. |  
 | `sentTime` | datetime | no |  The sent time the Outreach Message. |  
+
+Path parameters
+
+  | Name | Type | Required  | Description |     
+  | - | - | - | - | 
+  | `keywords` | string | No  | search scope includes: from/to/campaign.name/contact.name |
+  | `pageIndex` | int | No  | page index | 
+  | `pageSize` | int | No  | page size, default is 10, if the value is 0, will return all matched contacts. | 
+  | `sortBy` | string | No  | sort by | 
+  | `sortOrder` | string | No  | `asc`,`desc`, default `asc` | 
 #### Response
 The Response body contains data with the [OutreachMessage](#OutreachMessage-object) object structure:
 
@@ -1363,7 +1380,7 @@ Outreach Campaign is represented as simple flat JSON objects with the following 
   | `contactFilterConditionMetType` | string | no |  Allowed values are "All", "Any", "Logical Expression". |  
   | `contactFilterLogicalExpresssion` | string | no |  Contact Filter Logical Expresssion of this Condition. |  
   | `contactFilterConditions` | [ContactFilterCondition](#ContactFilterCondition-object)[] | no | An array of [ContactFilterCondition](#ContactFilterCondition-object)| 
-  | `scheduledStartTime` | datetime | no |  Message of this Outreach Campaign. |  
+  | `scheduledStartTime` | datetime | no |  Time when the schedule start. |  
   
 ### ContactFilterCondition Object
 Outreach Campaign Contact Filter Condition is represented as simple flat JSON objects with the following keys:
