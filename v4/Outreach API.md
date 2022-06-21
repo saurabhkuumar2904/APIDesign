@@ -408,7 +408,9 @@ parameters
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
-|`contactId` |Guid  |No| The unique id of the Contact  |
+  |`channelAccountId` | Guid | yes |  Channel account id. |  
+  |`channel` | string | yes|   |  
+  |`contactId` |Guid  |yes| The unique id of the Contact  |
 
 #### Response
 The Response body contains data with the [OutreachMessage](#outreachmessage-object) object structure:
