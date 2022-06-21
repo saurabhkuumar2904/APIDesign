@@ -74,7 +74,7 @@ The Response body contains data with the following structure:
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
-|`campaigns` |[campaign](#campaign-Object)[]  |Yes|  An array of [camgaign](#campaign-object)  |
+|`campaigns` |[OutreachCampaign](#OutreachCampaign-Object)[]  |Yes|  An array of [OutreachCampaign](#OutreachCampaign-object)  |
 
 ```Json 
   HTTP/1.1 200 OK
