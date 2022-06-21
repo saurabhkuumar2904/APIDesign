@@ -114,7 +114,7 @@ Path parameters
   | `id` | Guid | Yes  |  The unique id of the Outreach Campaign |  
 
 #### Response
-The Response body contains data with the [OutreachCampaign](#outreachcampaign-object) structure:
+The Response body contains data with the [OutreachCampaign](#OutreachCampaign-object) structure:
 
 
 ```Json 
@@ -190,7 +190,7 @@ example:
 ```
 
 #### Response
-The Response body contains data with the [campaign](#campaign-object) structure:
+The Response body contains data with the [OutreachCampaign](#OutreachCampaign-object) structure:
 
 
 ```Json 
@@ -272,7 +272,7 @@ example:
 ```
 
 #### Response
-The Response body contains data with the [campaign](#campaign-object) object structure:
+The Response body contains data with the [OutreachCampaign](#OutreachCampaign-object) object structure:
 
 ```Json 
   HTTP/1.1 200 Ok
@@ -327,7 +327,7 @@ Path parameters
   | `id` | Guid | Yes  |  The unique id of the Outreach Campaign |  
 
 #### Response
-The Response body contains data with the [campaignRecord](#campaignrecord-object) object structure:
+The Response body contains data with the [OutreachCampaignRecord](#OutreachCampaignRecord-object) object structure:
 
 ```Json 
   HTTP/1.1 200 Ok
@@ -372,7 +372,7 @@ parameters
 | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outreach Message. |  
 | `sentTime` | datetime | no |  The sent time the Outreach Message. |  
 #### Response
-The Response body contains data with the [Message](#message-object) object structure:
+The Response body contains data with the [OutreachMessage](#OutreachMessage-object) object structure:
 
 
 ```Json 
@@ -388,8 +388,8 @@ The Response body contains data with the [Message](#message-object) object struc
 		"to": "XXX University",
 		"status": "sent",
 		"failedReason": "",
-		"outreachCampaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
-		"outreachCampaignSentTime": "2022-05-22 03:00:36.277",
+		"campaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
+		"campaignSentTime": "2022-05-22 03:00:36.277",
 		"isMessageAutoAttachedToTicket": "Yes",
 		"preferredTicketToAutoAttach": "New ticket",
 		"timeToAutoAttachToTicket": "When the message is sent",
@@ -413,14 +413,14 @@ parameters
   |`contactId` |Guid  |yes| The unique id of the Contact  |
 
 #### Response
-The Response body contains data with the [OutreachMessage](#outreachmessage-object) object structure:
+The Response body contains data with the [OutreachMessage](#OutreachMessage-object) object structure:
 
 
 ```Json 
   HTTP/1.1 200 OK
   Content-Type: application/json
 {
-	"outreachMessages": [{
+	"messages": [{
 		"id": "11183a83-48e9-4d0d-a3bd-fb19ce5c12db",
 		"sentTime": "2022-05-23 03:00:36.277",
 		"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
@@ -429,8 +429,8 @@ The Response body contains data with the [OutreachMessage](#outreachmessage-obje
 		"to": "XXX University",
 		"status": "sent",
 		"failedReason": "",
-		"outreachCampaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
-		"outreachCampaignSentTime": "2022-05-22 03:00:36.277",
+		"campaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
+		"campaignSentTime": "2022-05-22 03:00:36.277",
 		"isMessageAutoAttachedToTicket": "Yes",
 		"preferredTicketToAutoAttach": "New ticket",
 		"timeToAutoAttachToTicket": "When the message is sent",
@@ -452,7 +452,7 @@ Path parameters
   | `id` | Guid | Yes  |  The unique id of the Outreach Message |  
 
 #### Response
-The Response body contains data with the [Message](#message-object) object structure:
+The Response body contains data with the [OutreachMessage](#OutreachMessage-object) object structure:
 
 ```Json 
   HTTP/1.1 200 OK
@@ -466,8 +466,8 @@ The Response body contains data with the [Message](#message-object) object struc
 	"to": "XXX University",
 	"status": "sent",
 	"failedReason": "",
-	"outreachCampaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
-	"outreachCampaignSentTime": "2022-05-22 03:00:36.277",
+	"campaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
+	"campaignSentTime": "2022-05-22 03:00:36.277",
 	"isMessageAutoAttachedToTicket": "Yes",
 	"preferredTicketToAutoAttach": "New ticket",
 	"timeToAutoAttachToTicket": "When the message is sent",
@@ -483,7 +483,7 @@ The Response body contains data with the [Message](#message-object) object struc
 No Parameters
 
 #### Request body
-The request body contains data with the [Message](#message-object) object structure:
+The request body contains data with the [OutreachMessage](#OutreachMessage-object) object structure:
   
 example:
 ```Json 
@@ -495,8 +495,8 @@ example:
 	"to": "XXX University",
 	"status": "sent",
 	"failedReason": "",
-	"outreachCampaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
-	"outreachCampaignSentTime": "2022-05-22 03:00:36.277",
+	"campaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
+	"campaignSentTime": "2022-05-22 03:00:36.277",
 	"isMessageAutoAttachedToTicket": "Yes",
 	"preferredTicketToAutoAttach": "New ticket",
 	"timeToAutoAttachToTicket": "When the message is sent",
@@ -506,7 +506,7 @@ example:
 ```
 
 #### Response
-The Response body contains data with the [Message](#message-object) object structure:
+The Response body contains data with the [OutreachMessage](#OutreachMessage-object) object structure:
 
 ```Json 
   HTTP/1.1 201 Created
@@ -520,8 +520,8 @@ The Response body contains data with the [Message](#message-object) object struc
 	"to": "XXX University",
 	"status": "sent",
 	"failedReason": "",
-	"outreachCampaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
-	"outreachCampaignSentTime": "2022-05-22 03:00:36.277",
+	"campaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
+	"campaignSentTime": "2022-05-22 03:00:36.277",
 	"isMessageAutoAttachedToTicket": "Yes",
 	"preferredTicketToAutoAttach": "New ticket",
 	"timeToAutoAttachToTicket": "When the message is sent",
@@ -583,7 +583,7 @@ example:
 ```
 
 #### Response
-The Response body contains data with the [Message](#message-object) object structure:
+The Response body contains data with the [OutreachMessage](#OutreachMessage-object) object structure:
 
 ```Json 
   HTTP/1.1 200 Ok
@@ -614,7 +614,7 @@ The Response body contains data with the [Message](#message-object) object struc
 No Parameters
 
 #### Request body
-The request body contains data with the [Message](#message-object) object structure:
+The request body contains data with the [OutreachMessage](#OutreachMessage-object) object structure:
 
 example:
 ```Json 
@@ -1376,7 +1376,7 @@ Outreach Campaign is represented as simple flat JSON objects with the following 
   | - | - | - | - | 
   | `id` | Guid | yes | The unique id of the Outreach Campaign Record. |  
   | `sentTime` | datetime | yes | The unique id of the Outreach Campaign. | 
-  | `outreachCampaign` |  [OutreachCampaign](#outreachcampaign-object) | yes | Outreach Campaign. |  
+  | `campaign` |  [OutreachCampaign](#outreachcampaign-object) | yes | Outreach Campaign. |  
   
   
 ### OutreachMessage Object
@@ -1393,8 +1393,8 @@ Outreach Message is represented as simple flat JSON objects with the following k
   | `to` | string | yes |  Where the Outreach Message to. |  
   | `status` | string | yes |  Status of the Outreach Message. Allowed values are `Queued`, `Sending`, `Sent`, `Failed`，`delivered`,`undelivered` |  
   | `failedReason` | string | no |  The failed reason of the Outreach Message. |  
-  | `outreachCampaignId` | Guid | no |  The Outreach Campaign id the Outreach Message. |  
-  | `outreachCampaignSentTime` | datetime | no |  The sent time of the Outreach Campaign. |  
+  | `campaignId` | Guid | no |  The Outreach Campaign id the Outreach Message. |  
+  | `campaignSentTime` | datetime | no |  The sent time of the Outreach Campaign. |  
   | `isMessageAutoAttachedToTicket` | string | no |  Whether a new ticket will be auto created or not for the message.`yes`, `no` |  
   | `preferredTicketToAutoAttach` | string | no |  Allowed values are "New ticket", "Existing unresolved ticket whose last message is from SMS channel". |  
   | `timeToAutoAttachToTicket` | string | no |   Allowed values are "When the message is sent", "When contact replies the message". |  
