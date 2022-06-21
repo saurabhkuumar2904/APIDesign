@@ -1325,7 +1325,7 @@ example:
 #### Parameters
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
-  |`id` | Guid | yes | ticket id. |  
+  |`id` | int | yes | ticket id. |  
 #### Request body 
 Request body the request body contains data with the [Ticket Message](#ticketmessage-object) object structure: 
 
@@ -1333,7 +1333,7 @@ Request body the request body contains data with the [Ticket Message](#ticketmes
 ```Json 
 {
 	"id": "3b6560d4-0f10-4652-a376-e590936d290e",
-	"ticketId": "100",
+	"ticketId": 100,
 	"parentId": "ef50cc68-5b88-4405-88f0-84334581246d",
 	"sentById": "31cb8d70-b5a6-4faa-b021-62335d6dcf6c",
 	"sentByType": "visitor",
