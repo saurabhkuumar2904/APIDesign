@@ -99,7 +99,10 @@ The Response body contains data with the following structure:
 			"Order": "0"
 		}],
 		"scheduledStartTime": ""
-	}]
+	}],
+	"previousPage":null,
+  	"nextPage":"http://demo.comm100.io/campaigns?pageIndex=2&pageSize=50&siteId=10100000",
+  	"total":255
 }
 ```
 
@@ -335,7 +338,7 @@ The Response body contains data with the [OutreachCampaignRecord](#OutreachCampa
 {
 	"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
 	"sentTime": "2022-05-23 03:00:36.277",
-	"outreachCampaign":{
+	"campaign":{
 		"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
 		"name": "test-campaign 2",
 		"description": "test campaign",
@@ -395,7 +398,10 @@ The Response body contains data with the [OutreachMessage](#OutreachMessage-obje
 		"timeToAutoAttachToTicket": "When the message is sent",
 		"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
 		"callbackURL": "https://domainname.com/sms/callback"
-	}]
+	}],
+	"previousPage":null,
+  	"nextPage":"http://demo.comm100.io/messages?pageIndex=2&pageSize=50&siteId=10100000",
+  	"total":255
 }
 ```
 
