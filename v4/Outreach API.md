@@ -96,10 +96,12 @@ The Response body contains data with the following structure:
 		"message": "Hello, please fill in your application form by the end of this week!",
 		"isMessageAutoAttachedToTicket": "yes",
 		"preferredTicketToAutoAttach": "newTicket",
-		"timeToAutoAttachToTicket": "When the message is sent",
+		"timeToAutoAttachToTicket": "whenTheMessageIsSent",
 		"contactFilterConditionMetType": "any",
 		"contactFilterLogicalExpresssion": "",
 		"contactFilterConditions": [{
+			"id":"6538285a-b00f-4063-b37a-cf14170aaa36",
+			"campaignId":"f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
 			"FieldName": "AAA",
 			"Operator": "is",
 			"Value": "BBBB",
@@ -143,6 +145,8 @@ The Response body contains data with the [OutreachCampaign](#OutreachCampaign-ob
 	"contactFilterConditionMetType": "any",
 	"contactFilterLogicalExpresssion": "",
 	"contactFilterConditions": [{
+		"id":"6538285a-b00f-4063-b37a-cf14170aaa36",
+		"campaignId":"f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
 		"FieldName": "AAA",
 		"Operator": "is",
 		"Value": "BBBB",
@@ -219,6 +223,8 @@ The Response body contains data with the [OutreachCampaign](#OutreachCampaign-ob
 	"contactFilterConditionMetType": "any",
 	"contactFilterLogicalExpresssion": "",
 	"contactFilterConditions": [{
+		"id":"6538285a-b00f-4063-b37a-cf14170aaa36",
+		"campaignId":"f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
 		"FieldName": "AAA",
 		"Operator": "is",
 		"Value": "BBBB",
@@ -272,6 +278,8 @@ example:
 	"contactFilterConditionMetType": "any",
 	"contactFilterLogicalExpresssion": "",
 	"contactFilterConditions": [{
+		"id":"6538285a-b00f-4063-b37a-cf14170aaa36",
+		"campaignId":"f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
 		"FieldName": "AAA",
 		"Operator": "is",
 		"Value": "BBBB",
@@ -300,6 +308,8 @@ The Response body contains data with the [OutreachCampaign](#OutreachCampaign-ob
 	"contactFilterConditionMetType": "any",
 	"contactFilterLogicalExpresssion": "",
 	"contactFilterConditions": [{
+		"id":"6538285a-b00f-4063-b37a-cf14170aaa36",
+		"campaignId":"f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
 		"FieldName": "AAA",
 		"Operator": "is",
 		"Value": "BBBB",
@@ -358,6 +368,8 @@ The Response body contains data with the [OutreachCampaignRecord](#OutreachCampa
 		"contactFilterConditionMetType": "any",
 		"contactFilterLogicalExpresssion": "",
 		"contactFilterConditions": [{
+			"id":"6538285a-b00f-4063-b37a-cf14170aaa36",
+			"campaignId":"f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
 			"FieldName": "AAA",
 			"Operator": "is",
 			"Value": "BBBB",
