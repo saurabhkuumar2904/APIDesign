@@ -2843,6 +2843,7 @@ HTTP/1.1 200 OK
   Content-Type:  application/json 
 {
 	"id": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
+	"originMessageid": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",	
 	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
 	"message": "Hello, please fill in your application form by the end of this week!",
 	"from": "+13453746564",
@@ -3051,6 +3052,7 @@ Outbound Message is represented as simple flat JSON objects with the following k
   | Name | Type | Required | Description                                           |     
   | - | - | - | - | 
   | `id` | Guid | yes | The unique id of the Outbound Message. |    
+  | `originMessageid` | Guid | yes | The origin channel unique id of the Outbound Message. |    
   | `channelAccountId` | Guid | yes |  Channel account id of this Outbound Campaign. |  
   | `contactId` | Guid | no |  Contact id of the Outbound Message. |  
   | `message` | string | yes |  Message. |  
