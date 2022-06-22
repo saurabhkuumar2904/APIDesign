@@ -1354,8 +1354,8 @@ example:
 `POST /ticketing/ticket/{id}/messages:attach`
 
 #### Parameters
-  | Name | Type | Required | Default | Description |    
-  | - | - | :-: | :-: | - | 
+  | Name | Type | Required |  Description |    
+  | - | - | :-: |  - | 
   |`ticketId` | selfIncrementId | yes | Id of the ticket which the message belongs to. |  
   |`parentId` | guid | no | Id of current message's parent. |
   |`sentById` | guid | yes | Id of the message sender. |
