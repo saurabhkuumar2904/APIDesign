@@ -428,7 +428,7 @@ parameters
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
   |`channelAccountId` | Guid | yes |  Channel account id. |  
-  |`channel` | string | yes|   |  
+  |`channel` | string | yes|   |  App channel of this Outreach Campaign. |
   |`contactId` |Guid  |yes| The unique id of the Contact  |
 
 #### Response
