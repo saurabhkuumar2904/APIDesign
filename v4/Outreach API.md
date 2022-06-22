@@ -1358,7 +1358,20 @@ example:
 #### Parameters
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
-  |`id` | int | yes | ticket id. |  
+  |`ticketId` | selfIncrementId | yes | Id of the ticket which the message belongs to. |  
+  |`parentId` | guid | no | Id of current message's parent. |
+  |`sentById` | guid | yes | Id of the message sender. |
+  |`sentByType` | string | yes | Role of the sender. Allowed values are "contact", "visitor", "chatbot", "channelAccount", "system", "agent". |
+  |`time` | datetime | no | Time when the message was created. |
+  |`type` | string | yes | Type of message content. Allowed values are "text", "html", "video", "audio", "image", "file", "location", "quickReply", "webView". |
+  |`metadata` | object | yes | Message metadata, Json format. |
+  |`originalId` | string | no | Id in original channel. |
+  |`channelId` | string | yes | Name of the message channel. |
+  |`body` | string | no | Content of the message. You can pass both plaintext and base64 encoded text. If the request containing plaintext is blocked by comm100 WAF, 	use base64 format. When using base64, add "data:text/plain;base64," before the content. |
+  |`ifDisplayInTicketCorrespondences` | bool | no | Whether a trigger email should be included within a ticket's correspondence thread or not. |
+  |`isRead` | string | no | Name of the message channel. |
+  |`messageDelivery` | [messageDelivery](#messageDelivery-object) | no | Delivery information of the message. |
+  |`channelId` | [attachments[]](#attachment-object) | no | The list of message attachment. |
 #### Request body 
 Request body the request body contains data with the [Ticket Message](#ticketmessage-object) object structure: 
 
