@@ -1370,8 +1370,8 @@ example:
   |`body` | string | no | Content of the message. You can pass both plaintext and base64 encoded text. If the request containing plaintext is blocked by comm100 WAF, 	use base64 format. When using base64, add "data:text/plain;base64," before the content. |
   |`ifDisplayInTicketCorrespondences` | bool | no | Whether a trigger email should be included within a ticket's correspondence thread or not. |
   |`isRead` | string | no | Name of the message channel. |
-  |`messageDelivery` | [messageDelivery](#messageDelivery-object) | no | Delivery information of the message. |
-  |`channelId` | [attachments[]](#attachment-object) | no | The list of message attachment. |
+  |`messageDelivery` | [messageDelivery](#MessageDelivery-object) | no | Delivery information of the message. |
+  |`channelId` | [attachments[]](#Attachment-object) | no | The list of message attachment. |
 #### Request body 
 Request body the request body contains data with the [Ticket Message](#ticketmessage-object) object structure: 
 
@@ -1554,3 +1554,16 @@ Attachment Object is represented as simple flat JSON objects with the following 
   | `url` | string | yes | Download URL of the attachment. |  
   | `size` | integer | no |  Size of the attachment. |  
   | `name` | string | no |  Name of the attachment. |  
+  
+ ### MessageDelivery Object
+MessageDelivery Object is represented as simple flat JSON objects with the following keys:
+
+  | Name | Type | Required | Description                                           |     
+  | - | - | - | - | 
+  | `messageId` | guid | yes |  Id of the message which the delivery belongs to. |  
+  | `status` | string | no |  Status of the delivery. Allowed values are "waitForSending", "sending", "failed", "success". |  
+  | `failReason` | string | no | Reason why the delivery failed. |  
+  | `time` | datetime | no | Time when message was delivered. |  
+  | `groupId` | guid | no |  The Id of the message group, it is used for bot message, it should be delivered in a group and one by one in order. |  
+  | `orderNum` | int | no |  Order of the delivery. |  
+
