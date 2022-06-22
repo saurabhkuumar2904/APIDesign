@@ -73,10 +73,10 @@ Path parameters
   | - | - | - | - | 
   | `channel` | string | no |  App channel of this Outreach Campaign, allowed value is "sms". |  
   | `channelAccountId` | Guid | no |  Channel account id of this Outreach Campaign. |  
-  | `pageIndex` | int | No  | page index | 
+  | `pageIndex` | int | No  | page index. | 
   | `pageSize` | int | No  | page size, default is 10, if the value is 0, will return all matched contacts. | 
-  | `sortBy` | string | No  | sort by | 
-  | `sortOrder` | string | No  | `asc`,`desc`, default `asc` |  
+  | `sortBy` | string | No  | sort by. | 
+  | `sortOrder` | string | No  | `asc`,`desc`, default `asc`. |  
 
 #### Response
 The Response body contains data with the following structure:
@@ -253,7 +253,7 @@ The request body contains data with the following structure:
 
   | Name | Type | Required | Description                                           |     
   | - | - | - | - | 
-  | `id` | Guid | Yes  |  The unique id of the Outreach Campaign |  
+  | `id` | Guid | Yes  |  The unique id of the Outreach Campaign. |  
   | `name` | string | yes |  Name of this Outreach Campaign. |  
   | `description` | string | no |  Description of this Outreach Campaign. |  
   | `channel` | string | no |  App channel of this Outreach Campaign, allowed value is "sms". |  
@@ -394,16 +394,16 @@ parameters
   | - | - | - | - | 
 | `channel` | string | no |  App channel of this Outreach Campaign, allowed value is "sms". |  
 | `channelAccountId` | Guid | no |  Channel account id of this Outreach Campaign. |  
-|`contactId` |Guid  |No| The unique id of the Contact  |
-|`campaignId` |Guid |No| The unique id of the Outreach Campaign |
-|`campaignRecordId` |Guid |No| The unique id of the Outreach Campaign Sending Record|
+|`contactId` |Guid  |No| The unique id of the Contact.  |
+|`campaignId` |Guid |No| The unique id of the Outreach Campaign. |
+|`campaignRecordId` |Guid |No| The unique id of the Outreach Campaign Sending Record.|
 | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outreach Message. |  
 | `sentTime` | datetime | no |  The time when the Outreach Message is sent. |  
 | `keywords` | string | No  | search scope includes: from/to/campaign.name/contact.name |
-| `pageIndex` | int | No  | page index | 
+| `pageIndex` | int | No  | page index. | 
 | `pageSize` | int | No  | page size, default is 10, if the value is 0, will return all matched contacts. | 
-| `sortBy` | string | No  | sort by | 
-| `sortOrder` | string | No  | `asc`,`desc`, default `asc` | 
+| `sortBy` | string | No  | sort by. | 
+| `sortOrder` | string | No  | `asc`,`desc`, default `asc`. | 
 
 #### Response
 The Response body contains data with the [OutreachMessage](#OutreachMessage-object) object structure:
@@ -449,7 +449,7 @@ parameters
   | - | - | - | - | 
   |`channelAccountId` | Guid | yes |  Channel account id. |  
   |`channel` | string | yes|  App channel of this Outreach Campaign, allowed value is "sms". |
-  |`contactId` |Guid  |yes| The unique id of the Contact  |
+  |`contactId` |Guid  |yes| The unique id of the Contact.  |
 
 #### Response
 The Response body contains data with the [OutreachMessage](#OutreachMessage-object) object structure:
@@ -593,12 +593,12 @@ The request body contains data with the following structure:
   | Name | Type | Required | Description                                           |     
   | - | - | - | - | 
   | `id` | Guid | yes | The unique id of the Outreach Message. |  
-  | `sentTime` | datetime | yes |  The sent time of the Outreach Message. |  
+  | `sentTime` | datetime | yes |  The time when the Outreach Message is sent. |  
   | `contactId` | Guid | yes |  Contact id of the Outreach Message. |  
   | `message` | string | yes |  Message. |  
   | `from` | string | yes |  Where the Outreach Message from. |  
   | `to` | string | yes |  Where the Outreach Message to. |  
-  | `status` | string | yes |  Status of the Outreach Message. Allowed values are `queued`, `sending`, `sent`, `failed`，`delivered`,`undelivered` |  
+  | `status` | string | yes |  Status of the Outreach Message. Allowed values are `queued`, `sending`, `sent`, `failed`，`delivered`,`undelivered`. |  
   | `failedReason` | string | no |  The failed reason of the Outreach Message. |  
   | `campaignId` | Guid | yes |  The outreach campaign id the Outreach Message. |  
   | `campaignSentTime` | datetime | no |  The sent time of the Outreach Campaign. |  
@@ -1439,13 +1439,13 @@ Outreach Message is represented as simple flat JSON objects with the following k
   | Name | Type | Required | Description                                           |     
   | - | - | - | - | 
   | `id` | Guid | yes | The unique id of the Outreach Message. |  
-  | `sentTime` | datetime | yes |  The sent time the Outreach Message. |  
+  | `sentTime` | datetime | yes |  The time when the Outreach Message is sent. |  
   | `contactId` | Guid | yes |  Contact id of the Outreach Message. |  
   | `channelAccountId` | Guid | yes |  Channel account id of this Outreach Campaign. |  
   | `message` | string | yes |  Message. |  
   | `from` | string | yes |  Where the Outreach Message from. |  
   | `to` | string | yes |  Where the Outreach Message to. |  
-  | `status` | string | yes |  Status of the Outreach Message. Allowed values are `queued`, `sending`, `sent`, `failed`，`delivered`,`undelivered` |  
+  | `status` | string | yes |  Status of the Outreach Message. Allowed values are `queued`, `sending`, `sent`, `failed`，`delivered`,`undelivered`. |  
   | `failedReason` | string | no |  The failed reason of the Outreach Message. |  
   | `campaignId` | Guid | no |  The Outreach Campaign id the Outreach Message. |  
   | `campaignSentTime` | datetime | no |  The sent time of the Outreach Campaign. |  
