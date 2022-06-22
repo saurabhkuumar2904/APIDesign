@@ -4,7 +4,7 @@
 
 ## Summary
 
-### Outreach API  
+### Outreach Call API  
 
 #### Outreach Campaign
   - GET /outreach/campaigns/ - [Get the list of Outreach Campaign](#get-the-list-of-outreach-campaign). 
@@ -71,6 +71,8 @@ Path parameters
 
   | Name | Type | Required  | Description |     
   | - | - | - | - | 
+  | `channel` | string | no |  App channel of this Outreach Campaign, allowed value is "sms". |  
+  | `channelAccountId` | Guid | no |  Channel account id of this Outreach Campaign. |  
   | `pageIndex` | int | No  | page index | 
   | `pageSize` | int | No  | page size, default is 10, if the value is 0, will return all matched contacts. | 
   | `sortBy` | string | No  | sort by | 
@@ -390,11 +392,13 @@ parameters
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
+| `channel` | string | no |  App channel of this Outreach Campaign, allowed value is "sms". |  
+| `channelAccountId` | Guid | no |  Channel account id of this Outreach Campaign. |  
 |`contactId` |Guid  |No| The unique id of the Contact  |
 |`campaignId` |Guid |No| The unique id of the Outreach Campaign |
 |`campaignRecordId` |Guid |No| The unique id of the Outreach Campaign Sending Record|
 | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outreach Message. |  
-| `sentTime` | datetime | no |  The sent time of the Outreach Message. |  
+| `sentTime` | datetime | no |  The time when the Outreach Message is sent. |  
 | `keywords` | string | No  | search scope includes: from/to/campaign.name/contact.name |
 | `pageIndex` | int | No  | page index | 
 | `pageSize` | int | No  | page size, default is 10, if the value is 0, will return all matched contacts. | 
@@ -412,6 +416,8 @@ The Response body contains data with the [OutreachMessage](#OutreachMessage-obje
 	"messages": [{
 		"id": "11183a83-48e9-4d0d-a3bd-fb19ce5c12db",
 		"sentTime": "2022-05-23 03:00:36.277",
+		"channel": "sms",
+		"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 		"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
 		"message": "Hello, please fill in your application form by the end of this week!",
 		"from": "Tom Cruise",
@@ -456,6 +462,8 @@ The Response body contains data with the [OutreachMessage](#OutreachMessage-obje
 	"messages": [{
 		"id": "11183a83-48e9-4d0d-a3bd-fb19ce5c12db",
 		"sentTime": "2022-05-23 03:00:36.277",
+		"channel": "sms",
+		"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 		"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
 		"message": "Hello, please fill in your application form by the end of this week!",
 		"from": "Tom Cruise",
@@ -493,6 +501,8 @@ The Response body contains data with the [OutreachMessage](#OutreachMessage-obje
 {
 	"id": "11183a83-48e9-4d0d-a3bd-fb19ce5c12db",
 	"sentTime": "2022-05-23 03:00:36.277",
+	"channel": "sms",
+	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
 	"message": "Hello, please fill in your application form by the end of this week!",
 	"from": "Tom Cruise",
@@ -522,6 +532,8 @@ example:
 ```Json 
 {
 	"sentTime": "2022-05-23 03:00:36.277",
+	"channel": "sms",
+	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
 	"message": "Hello, please fill in your application form by the end of this week!",
 	"from": "Tom Cruise",
@@ -547,6 +559,8 @@ The Response body contains data with the [OutreachMessage](#OutreachMessage-obje
 {
 	"id": "11183a83-48e9-4d0d-a3bd-fb19ce5c12db",
 	"sentTime": "2022-05-23 03:00:36.277",
+	"channel": "sms",
+	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
 	"message": "Hello, please fill in your application form by the end of this week!",
 	"from": "Tom Cruise",
@@ -599,6 +613,8 @@ example:
 {
 	"id": "11183a83-48e9-4d0d-a3bd-fb19ce5c12db",
 	"sentTime": "2022-05-23 03:00:36.277",
+	"channel": "sms",
+	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
 	"message": "Hello, please fill in your application form by the end of this week!",
 	"from": "Tom Cruise",
@@ -624,6 +640,8 @@ The Response body contains data with the [OutreachMessage](#OutreachMessage-obje
 {
 	"id": "11183a83-48e9-4d0d-a3bd-fb19ce5c12db",
 	"sentTime": "2022-05-23 03:00:36.277",
+	"channel": "sms",
+	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
 	"message": "Hello, please fill in your application form by the end of this week!",
 	"from": "Tom Cruise",
@@ -652,7 +670,11 @@ The request body contains data with the [OutreachMessage](#OutreachMessage-objec
 example:
 ```Json 
 {
+	"id": "11183a83-48e9-4d0d-a3bd-fb19ce5c12db",
+	"siteId":"10000",
 	"sentTime": "2022-04-26T10:52:24.336Z",
+	"channel": "sms",
+	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
 	"message": "Hello, please fill in your application form by the end of this week!",
 	"from": "Tom Cruise",
