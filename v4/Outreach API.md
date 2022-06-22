@@ -442,7 +442,7 @@ parameters
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
   |`channelAccountId` | Guid | yes |  Channel account id. |  
-  |`channel` | string | yes|   |  App channel of this Outreach Campaign, allowed value is "sms". |
+  |`channel` | string | yes|  App channel of this Outreach Campaign, allowed value is "sms". |
   |`contactId` |Guid  |yes| The unique id of the Contact  |
 
 #### Response
