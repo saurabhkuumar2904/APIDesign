@@ -172,7 +172,7 @@ The request body contains data with the following structure:
   | `channel` | string | no |  App channel of this Outreach Campaign. |  
   | `channelAccountId` | Guid | no |  Channel account id of this Outreach Campaign. |  
   | `message` | string | no |  Message of this Outreach Campaign. |  
-  | `isMessageAutoAttachedToTicket` | bool | no |  Whether a new ticket will be auto created or not for the message.|  
+  | `isMessageAutoAttachedToTicket` | bool | no |  Whether a message need to auto attached to ticket. |  
   | `preferredTicketToAutoAttach` | string | no |  Allowed values are "newTicket", "existing".|  
   | `timeToAutoAttachToTicket` | string | no |  Allowed values are "whenTheMessageIsSent", "whenContactRepliesTheMessage". |  
   | `contactFilterConditionMetType` | string | no |  Allowed values are "all", "any", "logicalExpression". |  
@@ -255,7 +255,7 @@ The request body contains data with the following structure:
   | `channel` | string | no |  App channel of this Outreach Campaign. |  
   | `channelAccountId` | Guid | no |  Channel account id of this Outreach Campaign. |  
   | `message` | string | no |  Message of this Outreach Campaign. |  
-  | `isMessageAutoAttachedToTicket` | bool | no |  Whether a new ticket will be auto created or not for the message.|  
+  | `isMessageAutoAttachedToTicket` | bool | no |  Whether a message need to auto attached to ticket. |  
   | `preferredTicketToAutoAttach` | string | no |  Allowed values are "newTicket", "existing".|  
   | `timeToAutoAttachToTicket` | string | no |  Allowed values are "whenTheMessageIsSent", "whenContactRepliesTheMessage". |  
   | `contactFilterConditionMetType` | string | no |  Allowed values are "all", "any", "logicalExpression". |  
@@ -586,7 +586,7 @@ The request body contains data with the following structure:
   | `failedReason` | string | no |  The failed reason of the Outreach Message. |  
   | `campaignId` | Guid | yes |  The outreach campaign id the Outreach Message. |  
   | `campaignSentTime` | datetime | no |  The sent time of the Outreach Campaign. |  
-  | `isMessageAutoAttachedToTicket` | bool | no |  Whether a new ticket will be auto created or not for the message. |  
+  | `isMessageAutoAttachedToTicket` | bool | no |  Whether a message need to auto attached to ticket. |  
   | `preferredTicketToAutoAttach` | string | no |  Allowed values are "newTicket", "existing".|  
   | `timeToAutoAttachToTicket` | string | no |  Allowed values are "whenTheMessageIsSent", "whenContactRepliesTheMessage". |  
   | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outreach Message. |  
@@ -1382,7 +1382,7 @@ Outreach Campaign is represented as simple flat JSON objects with the following 
   | `channel` | string | no |  App channel of this Outreach Campaign. |  
   | `channelAccountId` | Guid | yes |  Channel account id of this Outreach Campaign. |  
   | `message` | string | yes |  Message of this Outreach Campaign. |  
-  | `isMessageAutoAttachedToTicket` | bool | no |  Whether a new ticket will be auto created or not for the message.`yes`, `no`| 
+  | `isMessageAutoAttachedToTicket` | bool | no |  Whether a message need to auto attached to ticket. | 
   | `preferredTicketToAutoAttach` | string | no |  Allowed values are "newTicket", "existing".|  
   | `timeToAutoAttachToTicket` | string | no |  Allowed values are "whenTheMessageIsSent", "whenContactRepliesTheMessage". |  
   | `contactFilterConditionMetType` | string | no |  Allowed values are "all", "any", "logicalExpression". |  
@@ -1426,7 +1426,7 @@ Outreach Message is represented as simple flat JSON objects with the following k
   | `failedReason` | string | no |  The failed reason of the Outreach Message. |  
   | `campaignId` | Guid | no |  The Outreach Campaign id the Outreach Message. |  
   | `campaignSentTime` | datetime | no |  The sent time of the Outreach Campaign. |  
-  | `isMessageAutoAttachedToTicket` | bool | no |  Whether a new ticket will be auto created or not for the message.`yes`, `no` |  
+  | `isMessageAutoAttachedToTicket` | bool | no |  Whether a message need to auto attached to ticket. |  
   | `preferredTicketToAutoAttach` | string | no |  Allowed values are "newTicket", "existing".|  
   | `timeToAutoAttachToTicket` | string | no |  Allowed values are "whenTheMessageIsSent", "whenContactRepliesTheMessage". |  
   | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outreach Message. |  
