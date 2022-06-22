@@ -169,9 +169,9 @@ The request body contains data with the following structure:
   | - | - | - | - | 
   | `name` | string | yes |  Name of this Outreach Campaign. |  
   | `description` | string | no |  Description of this Outreach Campaign. |  
-  | `channel` | string | no |  App channel of this Outreach Campaign. |  
-  | `channelAccountId` | Guid | no |  Channel account id of this Outreach Campaign. |  
-  | `message` | string | no |  Message of this Outreach Campaign. |  
+  | `channel` | string | yes |  App channel of this Outreach Campaign, allowed value is "sms". |  
+  | `channelAccountId` | Guid | yes |  Channel account id of this Outreach Campaign. |  
+  | `message` | string | yes |  Message of this Outreach Campaign. |  
   | `isMessageAutoAttachedToTicket` | bool | no |  Whether a message need to auto attached to ticket. |  
   | `preferredTicketToAutoAttach` | string | no |  Allowed values are "newTicket", "existing".|  
   | `timeToAutoAttachToTicket` | string | no |  Allowed values are "whenTheMessageIsSent", "whenContactRepliesTheMessage". |  
@@ -185,7 +185,7 @@ example:
 {
 	"name": "test-campaign",
 	"description": "test campaign",
-	"channel": "ams",
+	"channel": "sms",
 	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"message": "Hello, please fill in your application form by the end of this week!",
 	"isMessageAutoAttachedToTicket": "yes",
@@ -194,6 +194,8 @@ example:
 	"contactFilterConditionMetType": "any",
 	"contactFilterLogicalExpresssion": "",
 	"contactFilterConditions": [{
+		"id":"6538285a-b00f-4063-b37a-cf14170aaa36",
+		"campaignId":"f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
 		"FieldName": "AAA",
 		"Operator": "is",
 		"Value": "BBBB",
@@ -252,7 +254,7 @@ The request body contains data with the following structure:
   | `id` | Guid | Yes  |  The unique id of the Outreach Campaign |  
   | `name` | string | yes |  Name of this Outreach Campaign. |  
   | `description` | string | no |  Description of this Outreach Campaign. |  
-  | `channel` | string | no |  App channel of this Outreach Campaign. |  
+  | `channel` | string | no |  App channel of this Outreach Campaign, allowed value is "sms". |  
   | `channelAccountId` | Guid | no |  Channel account id of this Outreach Campaign. |  
   | `message` | string | no |  Message of this Outreach Campaign. |  
   | `isMessageAutoAttachedToTicket` | bool | no |  Whether a message need to auto attached to ticket. |  
@@ -390,9 +392,9 @@ parameters
   | - | - | - | - | 
 |`contactId` |Guid  |No| The unique id of the Contact  |
 |`campaignId` |Guid |No| The unique id of the Outreach Campaign |
-|`campaignRecordId` |Guid |No| The unique id of the Outreach Campaign |
+|`campaignRecordId` |Guid |No| The unique id of the Outreach Campaign Sending Record|
 | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outreach Message. |  
-| `sentTime` | datetime | no |  The sent time the Outreach Message. |  
+| `sentTime` | datetime | no |  The time when the Outreach Message is sent. |  
 | `keywords` | string | No  | search scope includes: from/to/campaign.name/contact.name |
 | `pageIndex` | int | No  | page index | 
 | `pageSize` | int | No  | page size, default is 10, if the value is 0, will return all matched contacts. | 
@@ -440,7 +442,7 @@ parameters
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
   |`channelAccountId` | Guid | yes |  Channel account id. |  
-  |`channel` | string | yes|   |  App channel of this Outreach Campaign. |
+  |`channel` | string | yes|   |  App channel of this Outreach Campaign, allowed value is "sms". |
   |`contactId` |Guid  |yes| The unique id of the Contact  |
 
 #### Response
@@ -1379,7 +1381,7 @@ Outreach Campaign is represented as simple flat JSON objects with the following 
   | `id` | Guid | yes | The unique id of the Outreach Campaign. |  
   | `name` | string | yes |  Name of this Outreach Campaign. |  
   | `description` | string | no |  Description of this Outreach Campaign. |  
-  | `channel` | string | no |  App channel of this Outreach Campaign. |  
+  | `channel` | string | no |  App channel of this Outreach Campaign, allowed value is "sms". |  
   | `channelAccountId` | Guid | yes |  Channel account id of this Outreach Campaign. |  
   | `message` | string | yes |  Message of this Outreach Campaign. |  
   | `isMessageAutoAttachedToTicket` | bool | no |  Whether a message need to auto attached to ticket. | 
