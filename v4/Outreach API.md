@@ -1318,7 +1318,6 @@ HTTP/1.1 200 OK
 	"originMessageid": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",	
 	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
 	"message": "Hello, please fill in your application form by the end of this week!",
-	"from": "+13453746564",
 	"to": "+13453746564",
 	"status": "sent",
 	"failedReason": "",
@@ -1341,7 +1340,6 @@ example:
 	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
 	"message": "Hello, please fill in your application form by the end of this week!",
 	"attachments": []
-	"from": "+13453746564",
 	"to": "+13453746564",
 	"status": "sent",
 	"failedReason": "",
