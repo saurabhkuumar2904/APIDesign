@@ -394,7 +394,7 @@ parameters
 |`campaignId` |Guid |No| The unique id of the Outreach Campaign |
 |`campaignRecordId` |Guid |No| The unique id of the Outreach Campaign Sending Record|
 | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outreach Message. |  
-| `sentTime` | datetime | no |  The time when the Outreach Message is sent. |  
+| `sentTime` | datetime | no |  The sent time of the Outreach Message. |  
 | `keywords` | string | No  | search scope includes: from/to/campaign.name/contact.name |
 | `pageIndex` | int | No  | page index | 
 | `pageSize` | int | No  | page size, default is 10, if the value is 0, will return all matched contacts. | 
