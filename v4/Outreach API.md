@@ -1085,7 +1085,7 @@ The request body contains data with the following structure:
 
   | Name | Type | Required | Description |     
   | - | - | - | - | 
-  | `Ids` | guid[] | no | The selected Contact ID array. |   
+  | `ids` | guid[] | no | The selected Contact ID array. |   
 
 #### Response
 - Cvs file
