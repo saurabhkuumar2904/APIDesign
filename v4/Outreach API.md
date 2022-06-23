@@ -41,8 +41,10 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
   - GET /contact/importTemplate - [Download Template](#download-template). 
   - POST /contact/contacts:import - [Import Contacts](#import-contacts). 
   - POST /contact/contacts:export - [Export Contacts](#export-contacts). 
-  - GET /contact/contacts/contactIdentities - [Get the list of Contact Identities](#get-the-list-of-contact-Identities).    
-  - PUT /contact/contacts/contactIdentities/{id} - [Update contact identity](#update-contact-identity).  
+  
+####  Contact Identity
+  - Get /contact/contactIdentities/{id} - [Get contact identity](#get-contact-identity).  
+  - POST /contact/contactIdentities:identify - [Identify contact identities with type and value](#Identify-contact-identities-with-type-and-value).    
 
 ####  Contact Field
   - GET /contact/fields - [Get the list of Contact Field](#get-the-list-of-contact-field).
@@ -781,9 +783,9 @@ The Response body contains data with the following structure:
   | `sortBy` | string | No  | sort by | 
   | `sortOrder` | string | No  | `asc`,`desc`, default `asc` |  
   | `keywords` | string | No  | keywords |  
-  | `ContactFilterConditionMetType` | string | no |  Contact Filter Logical Expresssion of this Condition. `All`, `Any`, `LogicalExpression` | 
-  | `contactFilterLogicalExpresssion` | string | no |  Contact Filter Logical Expression | 
-  | `contactFilterConditions` | [ContactFilterCondition object](#contactFilterCondition-object)[] | no | An array of [ContactFilterCondition object](#contactFilterCondition-object)| 
+  | `filterConditionMetType` | string | no |  Contact Filter Logical Expresssion of this Condition. `All`, `Any`, `LogicalExpression` | 
+  | `filterLogicalExpresssion` | string | no |  Contact Filter Logical Expression | 
+  | `filterConditions` | [ContactFilterCondition object](#contactFilterCondition-object)[] | no | An array of [ContactFilterCondition object](#contactFilterCondition-object)| 
 
 #### Response
 The Response body contains data with the following structure:
@@ -1063,7 +1065,7 @@ The request body contains data with the following structure:
   | Name | Type | Required | Description |     
   | - | - | - | - | 
   | `uploadFile` | file | yes | The import file URL |     
-  | `duplicateControl` | string | no | Avaiable options: `merge`,`replace`,`skip`, default is `merge` |   
+  | `duplicateControlOption` | string | no | Avaiable options: `merge`,`replace`,`skip`, default is `merge` |   
 
 #### Response
   | Name | Type | Required | Description |     
@@ -1072,7 +1074,7 @@ The request body contains data with the following structure:
   | `updatedCount` | int | no | The count of exising contacts updated |   
   | `skippedCount` | int | no | The count of skipped contacts |     
   | `failedCount`  | int | no | The count of importing contacts failed | 
-  | `failedFileUrl` | string | no | The URL of failed file | 
+  | `failedRows` | array | no | The failed rows with json format | 
 
 ### Export Contacts
 `POST /contact/contacts:export`
@@ -1123,8 +1125,8 @@ The Response body contains data with the following structure:
   }]
 ```
 
-### Get the list of Contact Identities
-`GET /contact/ContactIdentities/`
+### Identify contact identities with type and value
+`POST /contact/ContactIdentities:identify`
 
 #### Parameters
 Path parameters
@@ -1157,15 +1159,15 @@ The Response body contains data with the following structure:
     }]
 ```
 
-### Update Contact Identities
-`PUT /contact/ContactIdentities/{id}`
+### Get Contact Identity
+`GET /contact/ContactIdentities/{id}`
 
 #### Parameters
 ##### Request parameters
 
   | Name | Type | Required  | Description |     
   | - | - | - | - | 
-  |`contact identity` |[Contact Identity](#contact-identity-object)  | Yes | Contact identity |
+  |`id` | guid | Yes | The ID of Contact identity |
 
 #### Response
 The Response body contains data with the following structure:
@@ -1487,11 +1489,10 @@ Contact Identity is represented as simple flat JSON objects with the following k
 | `id` | string | read-only, the id of identity |
 | `type` | string | required, contact identity type |
 | `value` | string | required, the value of one identity, should be unique |
-| `name` | string | required, the name of one identity |
 | `avatar` | string | optional, the avatar of one identity |
 | `identityInfoUrl` | string | optional, the original identity info url of one identity |
 | `originalContactPageUrl` | string | optional, the original contact page url |
-| `screenName` | string | optional, only for twitter |
+| `displayName` | string | optional, only for twitter |
 | `isDeleted` | boolean | if is deleted |
 
 
@@ -1510,6 +1511,7 @@ Contact Identity is represented as simple flat JSON objects with the following k
 | `isIdentity` | bool | Whether the field is an identity field or not. |
 | `identityType` | string | `visitor`, `email`, `SMS`, `facebook`, `twitter`, `wechat`, `SSOID`, `externalID`, `whatsApp`, `instagram`, `telegram`, `line`. Available when Is Identity is true. |
 | `isRequired` | bool | Whether the field is required or not. |
+| `isVisible` | bool | Whether the field is visible in UI or not. |
 | `isReadOnly` | string | Whether the field is readyonly or not. |
 | `type` | string | Type of the field. Allowed values are `text`, `textArea`, `email`, `url`, `date`, `date time`, `integer`, `float`, `radio`, `checkbox`, `dropdownlist`, `checkboxlist`, `timezone` |
 | `length` | integer | Field length |
