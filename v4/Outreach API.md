@@ -41,7 +41,7 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
   - GET /contact/importTemplate - [Download Template](#download-template). 
   - POST /contact/contacts:import - [Import Contacts](#import-contacts). 
   - POST /contact/contacts:export - [Export Contacts](#export-contacts). 
-  
+
 ####  Contact Identity
   - Get /contact/contactIdentities/{id} - [Get contact identity](#get-contact-identity).  
   - POST /contact/contactIdentities:identify - [Identify contact identities with type and value](#Identify-contact-identities-with-type-and-value).    
@@ -1085,9 +1085,7 @@ The request body contains data with the following structure:
 
   | Name | Type | Required | Description |     
   | - | - | - | - | 
-  | `selected` | guid[] | no | The selected Contact ID array. |  
-  | `timeZoneId` | string | yes | The ID of timezone. |   
-  | `utcOffset` | int | yes | The offset with UTC time. |   
+  | `Ids` | guid[] | no | The selected Contact ID array. |   
 
 #### Response
 - Cvs file
