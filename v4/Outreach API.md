@@ -69,8 +69,6 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
 `GET /outreach/campaigns/`
 
 #### Parameters
-Path parameters
-
   | Name | Type | Required  | Description |     
   | - | - | - | - | 
   | `channel` | string | no |  App channel of this Outreach Campaign, allowed value is "sms". |  
@@ -1363,9 +1361,15 @@ example:
 `POST /ticketing/ticket/{id}/messages:attach`
 
 #### Parameters
+Path parameters
+
+  | Name | Type | Required  | Description |     
+  | - | - | - | - | 
+  | `id` | Guid | Yes  |  The unique id of the ticket |  
+#### Request body 
+Request body the request body contains data with the [Ticket Message](#ticketmessage-object) object structure: 
   | Name | Type | Required |  Description |    
   | - | - | :-: |  - | 
-  |`ticketId` | selfIncrementId | yes | Id of the ticket which the message belongs to. |  
   |`parentId` | guid | no | Id of current message's parent. |
   |`sentById` | guid | yes | Id of the message sender. |
   |`sentByType` | string | yes | Role of the sender. Allowed values are "contact", "visitor", "chatbot", "channelAccount", "system", "agent". |
@@ -1379,14 +1383,9 @@ example:
   |`isRead` | string | no | Name of the message channel. |
   |`messageDelivery` | [messageDelivery](#MessageDelivery-object) | no | Delivery information of the message. |
   |`channelId` | [attachments[]](#Attachment-object) | no | The list of message attachment. |
-#### Request body 
-Request body the request body contains data with the [Ticket Message](#ticketmessage-object) object structure: 
-
   #### example:
 ```Json 
 {
-	"id": "3b6560d4-0f10-4652-a376-e590936d290e",
-	"ticketId": 100,
 	"parentId": "ef50cc68-5b88-4405-88f0-84334581246d",
 	"sentById": "31cb8d70-b5a6-4faa-b021-62335d6dcf6c",
 	"sentByType": "visitor",
