@@ -1538,6 +1538,7 @@ Outbound Message is represented as simple flat JSON objects with the following k
   | `contactId` | Guid | no |  Contact id of the Outbound Message. |  
   | `message` | string | yes |  Message. |  
   | `attachments` | string | no |  attachment. |  
+  | `from` | string | yes |  Where the Outbound Message from. |   
   | `to` | string | yes |  Where the Outbound Message to. |  
   | `status` | string | yes |  Status of the Outbound Message. Allowed values are `queued`, `sending`, `sent`, `failed`，`delivered`,`undelivered` |   
   | `failedReason` | string | no |  The failed reason of the Outbound Message. |  
