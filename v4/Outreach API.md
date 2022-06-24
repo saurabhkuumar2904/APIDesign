@@ -1293,7 +1293,6 @@ Request body the request body contains data with the following structure:
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
   |`channelAccountId` | Guid | yes |  Channel account id. |  
-  |`channelCarrier` | Guid | no | SMS Channel `telnyxsms`,`twilio` |  
   |`contactId`  | Guid | no |   |   | 
   |`to`  | string | yes |   |   |
   |`message`  | string | yes |   |   |
@@ -1320,13 +1319,14 @@ HTTP/1.1 200 OK
   Content-Type:  application/json 
 {
 	"id": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
-	"originMessageid": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",	
+	"originMessageid": "f9928d68-92e6-4487-a2e8-8234fc9d1f48", //This is a string type as different channel will return different type. 
 	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
 	"message": "Hello, please fill in your application form by the end of this week!",
+	"from" : "13312155802"
 	"to": "+13453746564",
 	"status": "sent",
 	"failedReason": "",
-	"sentTime": "2022-04-26T10:52:24.336Z",
+	"sentTime": "2022-04-26T10:52:24.336Z"
 }
 ```
 ### Outbound Message Callback
@@ -1346,6 +1346,7 @@ example:
 	"message": "Hello, please fill in your application form by the end of this week!",
 	"attachments": []
 	"to": "+13453746564",
+	"from" : "13312155802"
 	"status": "sent",
 	"failedReason": "",
 	"sentTime": "2022-04-26T10:52:24.336Z",
