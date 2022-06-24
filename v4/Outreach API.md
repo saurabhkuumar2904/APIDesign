@@ -432,7 +432,8 @@ The Response body contains data with the [OutreachMessage](#OutreachMessage-obje
 		"preferredTicketToAutoAttach": "newTicket",
 		"timeToAutoAttachToTicket": "whenTheMessageIsSent",
 		"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
-		"callbackURL": "https://domainname.com/sms/callback"
+		"callbackURL": "https://domainname.com/sms/callback",
+		"outboundMessageId": "d426e8b7-c83f-46f9-ad8b-0086813d8345"
 	}],
 	"previousPage":null,
   	"nextPage":"http://demo.comm100.io/messages?pageIndex=2&pageSize=50&siteId=10100000",
@@ -476,7 +477,8 @@ The Response body contains data with the [OutreachMessage](#OutreachMessage-obje
 		"preferredTicketToAutoAttach": "newTicket",
 		"timeToAutoAttachToTicket": "whenTheMessageIsSent",
 		"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
-		"callbackURL": "https://domainname.com/sms/callback"
+		"callbackURL": "https://domainname.com/sms/callback",
+		"outboundMessageId": "d426e8b7-c83f-46f9-ad8b-0086813d8345"
 	}]
 }
 ```
@@ -515,7 +517,8 @@ The Response body contains data with the [OutreachMessage](#OutreachMessage-obje
 	"preferredTicketToAutoAttach": "newTicket",
 	"timeToAutoAttachToTicket": "whenTheMessageIsSent",
 	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
-	"callbackURL": "https://domainname.com/sms/callback"
+	"callbackURL": "https://domainname.com/sms/callback",
+	"outboundMessageId": "d426e8b7-c83f-46f9-ad8b-0086813d8345"
 }
 ```
 
@@ -546,7 +549,8 @@ example:
 	"preferredTicketToAutoAttach": "newTicket",
 	"timeToAutoAttachToTicket": "whenTheMessageIsSent",
 	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
-	"callbackURL": "https://domainname.com/sms/callback"
+	"callbackURL": "https://domainname.com/sms/callback",
+	"outboundMessageId": "d426e8b7-c83f-46f9-ad8b-0086813d8345"
 }
 ```
 
@@ -573,7 +577,8 @@ The Response body contains data with the [OutreachMessage](#OutreachMessage-obje
 	"preferredTicketToAutoAttach": "newTicket",
 	"timeToAutoAttachToTicket": "whenTheMessageIsSent",
 	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
-	"callbackURL": "https://domainname.com/sms/callback"
+	"callbackURL": "https://domainname.com/sms/callback",
+	"outboundMessageId": "d426e8b7-c83f-46f9-ad8b-0086813d8345"
 }
 ```
 
@@ -606,7 +611,8 @@ The request body contains data with the following structure:
   | `preferredTicketToAutoAttach` | string | no |  Allowed values are "newTicket", "existing".|  
   | `timeToAutoAttachToTicket` | string | no |  Allowed values are "whenTheMessageIsSent", "whenContactRepliesTheMessage". |  
   | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outreach Message. |  
-  | `callbackURL` | string | no |  The callbackURL of the Outreach Message. |  
+  | `callbackURL` | string | no |  The callbackURL of the Outreach Message. |
+  | `outboundMessageId` | Guid | no |  The outbound message Id of the Outreach Message. |  
   
 example:
 ```Json 
@@ -627,7 +633,8 @@ example:
 	"preferredTicketToAutoAttach": "newTicket",
 	"timeToAutoAttachToTicket": "whenTheMessageIsSent",
 	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
-	"callbackURL": "https://domainname.com/sms/callback"
+	"callbackURL": "https://domainname.com/sms/callback",
+	"outboundMessageId": "d426e8b7-c83f-46f9-ad8b-0086813d8345"
 }
 ```
 
@@ -654,7 +661,8 @@ The Response body contains data with the [OutreachMessage](#OutreachMessage-obje
 	"preferredTicketToAutoAttach": "newTicket",
 	"timeToAutoAttachToTicket": "whenTheMessageIsSent",
 	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
-	"callbackURL": "https://domainname.com/sms/callback"
+	"callbackURL": "https://domainname.com/sms/callback",
+	"outboundMessageId": "d426e8b7-c83f-46f9-ad8b-0086813d8345"
 }
 ```
 
@@ -687,7 +695,8 @@ example:
 	"preferredTicketToAutoAttach": "newTicket",
 	"timeToAutoAttachToTicket": "whenTheMessageIsSent",
 	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
-	"callbackURL": "https://domainname.com/sms/callback"
+	"callbackURL": "https://domainname.com/sms/callback",
+	"outboundMessageId": "d426e8b7-c83f-46f9-ad8b-0086813d8345"
 }
 ```
 #### Response
@@ -1463,6 +1472,7 @@ Outreach Message is represented as simple flat JSON objects with the following k
   | `timeToAutoAttachToTicket` | string | no |  Allowed values are "whenTheMessageIsSent", "whenContactRepliesTheMessage". |  
   | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outreach Message. |  
   | `callbackURL` | string | no |  The callbackURL of the Outreach Message. |  
+  | `outboundMessageId` | Guid | no |  The outbound message Id of the Outreach Message. |  
   
 ### Contact Object
 Contact is represented as simple flat JSON objects with the following keys:
