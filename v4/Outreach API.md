@@ -44,7 +44,7 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
 
 ####  Contact Identity
   - Get /contact/contactIdentities/{id} - [Get contact identity](#get-contact-identity).  
-  - POST /contact/contactIdentities:identify - [Identify contact identities with type and value](#Identify-contact-identities-with-type-and-value).    
+  - GET /contact/contactIdentities:identify - [Identify contact identities with type and value](#Identify-contact-identities-with-type-and-value).    
 
 ####  Contact Field
   - GET /contact/fields - [Get the list of Contact Field](#get-the-list-of-contact-field).
@@ -739,12 +739,12 @@ The Response body contains data with the following structure:
 	{
     "id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
     "name": "Tom cruise",
+    "firstName": "Tom",
+    "lastName": "Cruise",
     "createTime": "2022-03-18 01:12:32.0000000",
     "lastUpdatedTime": "2022-03-18 01:12:32.0000000",
     "mergeToContactId": "00000000-0000-0000-0000-000000000000",
-    "customFields": {
-        "firstName": "Tom",
-        "lastName": "Cruise",
+    "customFields": { 
         "description": "Moive actor",
         "alias": "tomcruise",
         "title": "Senior Moive actor",
@@ -763,11 +763,10 @@ The Response body contains data with the following structure:
           "id":"760a3dfb-f776-4dc8-99cb-7fb288bdf1eb",
           "contactId":"d5a7c487-7ac8-4b07-99e6-b85c3c6e56ab",
           "contactIdentityType":"SMS",
-          "name":"+033214561",
           "value":"+033214561",
           "avatarUrl":"",
           "infoUrl":"",
-          "screenName":"",
+          "displayName":"",
           "originalContactPageUrl":""
       }]
 	}],
@@ -809,12 +808,12 @@ The Response body contains data with the following structure:
 	{
     "id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
     "name": "Tom cruise",
+    "firstName": "Tom",
+    "lastName": "Cruise",
     "createTime": "2022-03-18 01:12:32.0000000",
     "lastUpdatedTime": "2022-03-18 01:12:32.0000000",
     "mergeToContactId": "00000000-0000-0000-0000-000000000000",
-    "customFields": {
-        "firstName": "Tom",
-        "lastName": "Cruise",
+    "customFields": { 
         "description": "Moive actor",
         "alias": "tomcruise",
         "title": "Senior Moive actor",
@@ -833,11 +832,10 @@ The Response body contains data with the following structure:
           "id":"760a3dfb-f776-4dc8-99cb-7fb288bdf1eb",
           "contactId":"d5a7c487-7ac8-4b07-99e6-b85c3c6e56ab",
           "contactIdentityType":"SMS",
-          "name":"+033214561",
           "value":"+033214561",
           "avatarUrl":"",
           "infoUrl":"",
-          "screenName":"",
+          "displayName":"",
           "originalContactPageUrl":""
       }]
 	}],
@@ -866,12 +864,12 @@ The Response body contains data with the [Contact](#contact-object) object struc
 {
   "id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
   "name": "Tom cruise",
+  "firstName": "Tom",
+  "lastName": "Cruise",
   "createTime": "2022-03-18 01:12:32.0000000",
   "lastUpdatedTime": "2022-03-18 01:12:32.0000000",
   "mergeToContactId": "00000000-0000-0000-0000-000000000000",
   "customFields": {
-        "firstName": "Tom",
-        "lastName": "Cruise",
         "description": "Moive actor",
         "alias": "tomcruise",
         "title": "Senior Moive actor",
@@ -890,11 +888,10 @@ The Response body contains data with the [Contact](#contact-object) object struc
           "id":"760a3dfb-f776-4dc8-99cb-7fb288bdf1eb",
           "contactId":"d5a7c487-7ac8-4b07-99e6-b85c3c6e56ab",
           "contactIdentityType":"SMS",
-          "name":"+033214561",
           "value":"+033214561",
           "avatarUrl":"",
           "infoUrl":"",
-          "screenName":"",
+          "displayName":"",
           "originalContactPageUrl":""
       }]
 }
@@ -923,7 +920,6 @@ example:
         {
             "contactIdentityType":"Email",
             "value":"test@1234.com",
-            "name":"Test"
         }
     ],
     "customFields":{
@@ -953,11 +949,10 @@ The Response body contains data with the [Contact](#contact-object) object struc
         "id":"760a3dfb-f776-4dc8-99cb-7fb288bdf1eb",
         "contactId":"d5a7c487-7ac8-4b07-99e6-b85c3c6e56ab",
         "contactIdentityType":"Email",
-        "name":"Test",
         "value":"Test@1234.com",
         "avatarUrl":"",
         "infoUrl":"",
-        "screenName":"",
+        "displayName":"",
         "originalContactPageUrl":""
     }]
 }
@@ -997,11 +992,10 @@ example:
         "id":"760a3dfb-f776-4dc8-99cb-7fb288bdf1eb",
         "contactId":"d5a7c487-7ac8-4b07-99e6-b85c3c6e56ab",
         "contactIdentityType":"Email",
-        "name":"Test",
         "value":"Test@1234.com",
         "avatarUrl":"",
         "infoUrl":"",
-        "screenName":"",
+        "displayName":"",
         "originalContactPageUrl":""
     }]
 }
@@ -1131,7 +1125,7 @@ The Response body contains data with the following structure:
 ```
 
 ### Identify contact identities with type and value
-`POST /contact/ContactIdentities:identify`
+`GET /contact/ContactIdentities:identify`
 
 #### Parameters
 Path parameters
@@ -1159,7 +1153,7 @@ The Response body contains data with the following structure:
           "value":"+033214561",
           "avatarUrl":"",
           "infoUrl":"",
-          "screenName":"",
+          "displayName":"",
           "originalContactPageUrl":""
     }]
 ```
@@ -1192,7 +1186,7 @@ The Response body contains data with the following structure:
           "value":"+033214561",
           "avatarUrl":"",
           "infoUrl":"",
-          "screenName":"",
+          "displayName":"",
           "originalContactPageUrl":""
     }
 ```
@@ -1486,7 +1480,7 @@ Contact is represented as simple flat JSON objects with the following keys:
   | `createTime` | datetime | no |  The create time of the Contact. |  
   | `lastUpdatedTime` | datetime | no |  The last updated time of the Contact. |  
   | `mergeToContactId` | Guid | no |  The Contact id of merge to. |  
-  | `customFields` | [Contact Custom Field Value](#contact-custom-field-value-object)[] | no | custom field value array | 
+  | `customFields` | [Contact Custom Field Value](#contact-custom-field-value-object) | no | custom field value | 
   | `contactIdentities` | [Contact Identity](#contact-identity-object)[] | yes | custom field value array | 
 
 ### Contact Identity Object
