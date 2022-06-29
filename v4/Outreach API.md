@@ -52,6 +52,7 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
   - POST /contact/fields - [Create a new Contact Field](#create-a-new-contact-field).  
   - PUT /contact/fields/{id} - [Update a Contact Field](#update-a-contact-field).  
   - DELETE /contact/fields/{id} - [Delete a Contact Field](#delete-a-contact-field).  
+  - POST /contact/fields:reorder - [Reorder Contact Fields](#reorder-contact-fields).  
 
 ###  Outbound Unichannel API 
   - POST /outboundunichannel/messages/ - [Create a new Outbound message](#create-a-outbound-message). 
@@ -1277,6 +1278,17 @@ The Response body contains data with the [Contact Field](#contact-field-object) 
 
 #### Response
 No Response
+
+### Reorder Contact Fields
+`POST /contact/fields:reorder`
+#### Parameters
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+  |`id` | Guid[]  | Yes | contact field ID array |
+
+#### Response
+No Response
+
 
 ### Create a outbound message
 `POST /outboundunichannel/messages/`
