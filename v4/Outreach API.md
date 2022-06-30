@@ -62,7 +62,7 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
   - POST /{callbackURL} - [Outbound Message Callback](#outbound-message-callback). 
   
 ### Ticketing API 
-  - POST /ticketing/ticket/{id}/messages:attach - [attach a message to the ticket](#attach-a-message-to-the-ticket). 
+  - POST /ticketing/tickets/{id}/messages - [attach a message to the ticket](#attach-a-message-to-the-ticket). 
 
 ## Endpoints
 
@@ -1365,21 +1365,21 @@ example:
 ```
 
 ### Attach a message to the ticket
-`POST /ticketing/ticket/{id}/messages:attach`
+`POST /ticketing/tickets/{id}/messages`
 
 #### Parameters
 Path parameters
 
   | Name | Type | Required  | Description |     
   | - | - | - | - | 
-  | `id` | Guid | Yes  |  The unique id of the ticket |  
+  | `id` | int | Yes  |  The unique id of the ticket |  
 #### Request body 
 Request body the request body contains data with the [Ticket Message](#ticketmessage-object) object structure: 
   | Name | Type | Required |  Description |    
   | - | - | :-: |  - | 
   |`parentId` | guid | no | Id of current message's parent. |
   |`sentById` | guid | yes | Id of the message sender. |
-  |`sentByType` | string | yes | Role of the sender. Allowed values are "contact", "visitor", "chatbot", "channelAccount", "system", "agent". |
+  |`sentByType` | string | yes | Role of the sender. Allowed values are "contact", "visitor", "chatbot", "channelAccount", "system", "agent". For Outreach send value as "outreach." |
   |`time` | datetime | no | Time when the message was created. |
   |`type` | string | yes | Type of message content. Allowed values are "text", "html", "video", "audio", "image", "file", "location", "quickReply", "webView". |
   |`metadata` | object | yes | Message metadata, Json format. |
@@ -1549,7 +1549,7 @@ Outbound Message is represented as simple flat JSON objects with the following k
   | Name | Type | Required | Description                                           |     
   | - | - | - | - | 
   | `id` | Guid | yes | The unique id of the Outbound Message. |    
-  | `originMessageid` | string | yes | The origin channel unique id of the Outbound Message. |    
+  | `originMessageid` | Guid | yes | The origin channel unique id of the Outbound Message. |    
   | `channelAccountId` | Guid | yes |  Channel account id of this Outbound Campaign. |  
   | `contactId` | Guid | no |  Contact id of the Outbound Message. |  
   | `message` | string | yes |  Message. |  
