@@ -38,7 +38,7 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
   - DELETE /contact/contacts/{id} - [Delete the Contact](#delete-the-contact). 
   - DELETE /contact/contacts - [Batch delete contacts](#batch-delete-contacts). 
   - POST /contact/contacts/{id}:merge - [Merge Contact](#merge-contacts). 
-  - GET /contact/importTemplate - [Download Template](#download-template). 
+  - GET /contact/contacts/importTemplate - [Download Template](#download-template). 
   - POST /contact/contacts:import - [Import Contacts](#import-contacts). 
   - POST /contact/contacts:export - [Export Contacts](#export-contacts). 
 
@@ -1048,7 +1048,7 @@ The request body contains data with the following structure:
 No response
 
 ### Download Template
-`GET /contact/importTemplate`
+`GET /contact/contacts/importTemplate`
 
 #### Parameters
 No parameter
