@@ -44,7 +44,10 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
 
 ####  Contact Identity
   - Get /contact/contactIdentities/{id} - [Get contact identity](#get-contact-identity).  
-  - GET /contact/contactIdentities:identify - [Identify contact identities with type and value](#Identify-contact-identities-with-type-and-value).    
+  - GET /contact/contactIdentities:identify - [Identify contact identities with type and value](#Identify-contact-identities-with-type-and-value).
+  - POST /contact/contactIdentities - [Create a new Contact identity](#create-a-new-contact-identity).      
+  - PUT /contact/contactIdentities/{id} - [Update the Contact identity](#update-the-contact-identity). 
+  - DELETE /contact/contactIdentities/{id} - [Remove the Contact identity](#remove-the-contact-identity). 
 
 ####  Contact Field
   - GET /contact/fields - [Get the list of Contact Field](#get-the-list-of-contact-field).
@@ -1092,6 +1095,142 @@ The request body contains data with the following structure:
 #### Response
 - Cvs file
 
+### Get Contact Identity
+`GET /contact/ContactIdentities/{id}`
+
+#### Parameters
+##### Request parameters
+
+  | Name | Type | Required  | Description |     
+  | - | - | - | - | 
+  |`id` | guid | Yes | The ID of Contact identity |
+
+#### Response
+The Response body contains data with the following structure:
+
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+  |`contact identity` |[Contact Identity](#contact-identity-object)  | Yes | Contact identity |
+
+```Json 
+  HTTP/1.1 200 OK
+  Content-Type: application/json
+  {
+          "id":"760a3dfb-f776-4dc8-99cb-7fb288bdf1eb",
+          "contactId":"d5a7c487-7ac8-4b07-99e6-b85c3c6e56ab",
+          "contactIdentityType":"SMS",
+          "value":"+033214561",
+          "avatarUrl":"",
+          "infoUrl":"",
+          "displayName":"",
+          "originalContactPageUrl":""
+    }
+```
+
+### Identify contact identities with type and value
+`GET /contact/ContactIdentities:identify`
+#### Parameters
+Path parameters
+
+  | Name | Type | Required  | Description |     
+  | - | - | - | - | 
+  | `value` | string | Yes  |  Contact identity value, support fuzzy search |
+  | `identityType` | string | No |  Contact identity type |
+
+#### Response
+The Response body contains data with the following structure:
+
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+  |`contact identity` |[Contact Identity](#contact-identity-object)[] | Yes | Contact identity array |
+
+```Json 
+  HTTP/1.1 200 OK
+  Content-Type: application/json
+  [{
+      "id":"760a3dfb-f776-4dc8-99cb-7fb288bdf1eb",
+      "contactId":"d5a7c487-7ac8-4b07-99e6-b85c3c6e56ab",
+      "contactIdentityType":"SMS",
+      "value":"+033214561",
+      "avatarUrl":"",
+      "infoUrl":"",
+      "displayName":"",
+      "originalContactPageUrl":""
+    }]
+```
+
+### Create a new Contact identity
+`POST /contact/contactIdentities`
+#### Parameters
+
+  | Name | Type | Required  | Description |     
+  | - | - | - | - | 
+  |`contact identity` |[Contact Identity](#contact-identity-object) | Yes | Contact identity |
+
+#### Response
+The Response body contains data with the following structure:
+
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+  |`contact identity` |[Contact Identity](#contact-identity-object) | Yes | Contact identity |
+
+```Json 
+  HTTP/1.1 200 OK
+  Content-Type: application/json
+  {
+    "id":"760a3dfb-f776-4dc8-99cb-7fb288bdf1eb",
+    "contactId":"d5a7c487-7ac8-4b07-99e6-b85c3c6e56ab",
+    "contactIdentityType":"SMS",
+    "value":"+033214561",
+    "avatarUrl":"",
+    "infoUrl":"",
+    "displayName":"",
+    "originalContactPageUrl":""
+    }
+```
+
+### Update the Contact identity
+`PUT /contact/contactIdentities/{id}` 
+#### Parameters
+
+  | Name | Type | Required  | Description |     
+  | - | - | - | - | 
+  |`contact identity` |[Contact Identity](#contact-identity-object) | Yes | Contact identity |
+
+#### Response
+The Response body contains data with the following structure:
+
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+  |`contact identity` |[Contact Identity](#contact-identity-object) | Yes | Contact identity |
+
+```Json 
+  HTTP/1.1 200 OK
+  Content-Type: application/json
+  {
+    "id":"760a3dfb-f776-4dc8-99cb-7fb288bdf1eb",
+    "contactId":"d5a7c487-7ac8-4b07-99e6-b85c3c6e56ab",
+    "contactIdentityType":"SMS",
+    "value":"+033214561",
+    "avatarUrl":"",
+    "infoUrl":"",
+    "displayName":"",
+    "originalContactPageUrl":""
+    }
+```
+ 
+### Remove the Contact identity
+`DELETE /contact/contactIdentities/{id}` 
+#### Parameters
+
+  | Name | Type | Required  | Description |     
+  | - | - | - | - | 
+  |`id` | contact identity id | Yes | Contact identity ID |
+
+#### Response
+No response
+
+
 ### Get the list of contact field
 `GET /contact/fields/`
 
@@ -1123,73 +1262,6 @@ The Response body contains data with the following structure:
     "order": 5,
     "fieldOptions":[]
   }]
-```
-
-### Identify contact identities with type and value
-`GET /contact/ContactIdentities:identify`
-
-#### Parameters
-Path parameters
-
-  | Name | Type | Required  | Description |     
-  | - | - | - | - | 
-  | `value` | string | Yes  |  Contact identity value |
-  | `identityType` | string | No  |  Contact identity type |
-
-#### Response
-The Response body contains data with the following structure:
-
-  | Name  | Type | Required  | Description |     
-  | - | - | - | - | 
-  |`contact identity` |[Contact Identity](#contact-identity-object)[]  | Yes | Contact identity array |
-
-```Json 
-  HTTP/1.1 200 OK
-  Content-Type: application/json
-  [{
-          "id":"760a3dfb-f776-4dc8-99cb-7fb288bdf1eb",
-          "contactId":"d5a7c487-7ac8-4b07-99e6-b85c3c6e56ab",
-          "contactIdentityType":"SMS",
-          "name":"+033214561",
-          "value":"+033214561",
-          "avatarUrl":"",
-          "infoUrl":"",
-          "displayName":"",
-          "originalContactPageUrl":""
-    }]
-```
-
-### Get Contact Identity
-`GET /contact/ContactIdentities/{id}`
-
-#### Parameters
-##### Request parameters
-
-  | Name | Type | Required  | Description |     
-  | - | - | - | - | 
-  |`id` | guid | Yes | The ID of Contact identity |
-
-#### Response
-The Response body contains data with the following structure:
-
-  | Name  | Type | Required  | Description |     
-  | - | - | - | - | 
-  |`contact identity` |[Contact Identity](#contact-identity-object)  | Yes | Contact identity |
-
-```Json 
-  HTTP/1.1 200 OK
-  Content-Type: application/json
-  {
-          "id":"760a3dfb-f776-4dc8-99cb-7fb288bdf1eb",
-          "contactId":"d5a7c487-7ac8-4b07-99e6-b85c3c6e56ab",
-          "contactIdentityType":"SMS",
-          "name":"+033214561",
-          "value":"+033214561",
-          "avatarUrl":"",
-          "infoUrl":"",
-          "displayName":"",
-          "originalContactPageUrl":""
-    }
 ```
 
 ### Get a single contact field
