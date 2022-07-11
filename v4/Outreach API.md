@@ -18,7 +18,7 @@
   - GET /outreach/messages/ - [Get the list of Outreach Message](#get-the-list-of-outreach-message). 
   - GET /outreach/messages/{id} - [Get a single Outreach Message](#get-a-single-outreach-message). 
   - POST /outreach/messages - [Create a new Outreach Message](#create-a-new-outreach-message). 
-  - PUT /outreach/messages/{id} - [Update the Outreach Message](#update-the-outreach-message).  
+  ~~- PUT /outreach/messages/{id} - [Update the Outreach Message](#update-the-outreach-message).  ~~
   - GET /outreach/unattachedMessages/ - [Get the list of Outreach Message that needs to be attached by unichannel](#get-the-list-of-unattached-outreach-message). 
 <!--   - POST /outreach/campaigns/{id}/messages - [Create a new Outreach Message](#create-a-new-outreach-message).    -->
 
