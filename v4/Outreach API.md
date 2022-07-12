@@ -796,6 +796,7 @@ The Response body contains data with the following structure:
   | `filterConditionMetType` | string | no |  Contact Filter Logical Expresssion of this Condition. `All`, `Any`, `LogicalExpression` | 
   | `filterLogicalExpresssion` | string | no |  Contact Filter Logical Expression | 
   | `filterConditions` | [ContactFilterCondition object](#contactFilterCondition-object)[] | no | An array of [ContactFilterCondition object](#contactFilterCondition-object)| 
+  | `Ids` | guid[] | No  | Contact ID array, if pass this parameter, the keywords and filter conditions don't work | 
 
 #### Response
 The Response body contains data with the following structure:
