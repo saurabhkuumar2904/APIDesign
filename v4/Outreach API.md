@@ -1538,6 +1538,7 @@ Outreach Message is represented as simple flat JSON objects with the following k
   | `id` | Guid | yes | The unique id of the Outreach Message. |  
   | `sentTime` | datetime | yes |  The sent time the Outreach Message. |  
   | `contactId` | Guid | yes |  Contact id of the Outreach Message. |  
+  | `channel` | string | yes |  App channel of this Outreach Campaign, allowed value is "sms". |
   | `channelAccountId` | Guid | yes |  Channel account id of this Outreach Campaign. |  
   | `message` | string | yes |  Message. |  
   | `from` | string | yes |  Where the Outreach Message from. |  
