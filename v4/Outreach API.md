@@ -18,7 +18,7 @@
   - GET /outreach/messages/ - [Get the list of Outreach Message](#get-the-list-of-outreach-message). 
   - GET /outreach/messages/{id} - [Get a single Outreach Message](#get-a-single-outreach-message). 
   - POST /outreach/messages - [Create a new Outreach Message](#create-a-new-outreach-message). 
-  - ~~PUT /outreach/messages/{id} - [Update the Outreach Message](#update-the-outreach-message).~~
+  - PUT /outreach/messages/{id} - [Update the Outreach Message](#update-the-outreach-message).
   - GET /outreach/unattachedMessages/ - [Get the list of Outreach Message that needs to be attached by unichannel](#get-the-list-of-unattached-outreach-message). 
 <!--   - POST /outreach/campaigns/{id}/messages - [Create a new Outreach Message](#create-a-new-outreach-message).    -->
 
@@ -600,21 +600,9 @@ The request body contains data with the following structure:
   | Name | Type | Required | Description                                           |     
   | - | - | - | - | 
   | `id` | Guid | yes | The unique id of the Outreach Message. |  
-  | `sentTime` | datetime | yes |  The sent time of the Outreach Message. |  
-  | `contactId` | Guid | yes |  Contact id of the Outreach Message. |  
-  | `message` | string | yes |  Message. |  
-  | `from` | string | yes |  Where the Outreach Message from. |  
-  | `to` | string | yes |  Where the Outreach Message to. |  
   | `status` | string | yes |  Status of the Outreach Message. Allowed values are `queued`, `sending`, `sent`, `failed`，`delivered`,`undelivered` |  
   | `failedReason` | string | no |  The failed reason of the Outreach Message. |  
-  | `campaignId` | Guid | yes |  The outreach campaign id the Outreach Message. |  
-  | `campaignSentTime` | datetime | no |  The sent time of the Outreach Campaign. |  
-  | `isMessageAutoAttachedToTicket` | bool | no |  Whether a message need to auto attached to ticket. |  
-  | `preferredTicketToAutoAttach` | string | no |  Allowed values are "newTicket", "existing".|  
-  | `timeToAutoAttachToTicket` | string | no |  Allowed values are "whenTheMessageIsSent", "whenContactRepliesTheMessage". |  
   | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outreach Message. |  
-  | `callbackURL` | string | no |  The callbackURL of the Outreach Message. |
-  | `outboundMessageId` | Guid | no |  The outbound message Id of the Outreach Message. |  
   
 example:
 ```Json 
@@ -675,7 +663,18 @@ The Response body contains data with the [OutreachMessage](#OutreachMessage-obje
 No Parameters
 
 #### Request body
-The request body contains data with the [CallbackRequest](#CallbackRequest-object) object structure:
+  | Name | Type | Required | Description                                           |     
+  | - | - | - | - | 
+  | `id` | Guid | yes | The unique id of the Outreach Message. |  
+  | `sentTime` | datetime | yes |  The sent time the Outreach Message. |  
+  | `contactId` | Guid | yes |  Contact id of the Outreach Message. |  
+  | `from` | string | yes |  Where the Outreach Message from. |  
+  | `to` | string | yes |  Where the Outreach Message to. |  
+  | `status` | string | yes |  Status of the Outreach Message. Allowed values are `queued`, `sending`, `sent`, `failed`，`delivered`,`undelivered` |  
+  | `failedReason` | string | no |  The failed reason of the Outreach Message. |  
+  | `campaignId` | Guid | no |  The Outreach Campaign id the Outreach Message. |  
+  | `campaignSentTime` | datetime | no |  The sent time of the Outreach Campaign. |  
+  | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outreach Message. |  
 
 example:
 ```Json 
@@ -1399,6 +1398,16 @@ HTTP/1.1 200 OK
 No Parameters
 
 #### Request body
+Request body the request body contains data with the following structure: 
+  | Name | Type | Required | Description                                           |     
+  | - | - | - | - | 
+  | `id` | Guid | yes | The unique id of the Outbound Message. |    
+  | `originMessageid` | string | yes | The origin channel unique id of the Outbound Message. |    
+  | `contactId` | Guid | no |  Contact id of the Outbound Message. |  
+  | `from` | string | yes |  Where the Outbound Message from. |   
+  | `to` | string | yes |  Where the Outbound Message to. |  
+  | `status` | string | yes |  Status of the Outbound Message. Allowed values are `queued`, `sending`, `sent`, `failed`，`delivered`,`undelivered` |   
+  | `failedReason` | string | no |  The failed reason of the Outbound Message. |  
 The request body contains data with the [OutboundMessage](#OutboundMessage-object) object structure:
 
 example:
