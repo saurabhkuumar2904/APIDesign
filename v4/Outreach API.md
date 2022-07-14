@@ -1564,7 +1564,7 @@ Contact Identity is represented as simple flat JSON objects with the following k
 | `avatar` | string | optional, the avatar of one identity |
 | `identityInfoUrl` | string | optional, the original identity info url of one identity |
 | `originalContactPageUrl` | string | optional, the original contact page url |
-| `displayName` | string | optional, only for twitter |
+| `displayName` | string | the name of identity |
 | `isDeleted` | boolean | if is deleted |
 
 
