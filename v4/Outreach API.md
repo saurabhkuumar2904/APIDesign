@@ -680,8 +680,7 @@ The request body contains data with the [CallbackRequest](#CallbackRequest-objec
 example:
 ```Json 
 {
-	"id": "11183a83-48e9-4d0d-a3bd-fb19ce5c12db",
-	"siteId":"10000",	
+	"id": "11183a83-48e9-4d0d-a3bd-fb19ce5c12db",		
 	"status": "sent",
 	"failedReason": "",
 }
@@ -1646,7 +1645,7 @@ MessageDelivery Object is represented as simple flat JSON objects with the follo
 
   | Name | Type | Required | Description                                           |     
   | - | - | - | - | 
-  | `messageId` | guid | yes |  Id of the message which the delivery belongs to. |  
+  | `Id` | guid | yes |  The unique id of the Outreach Message. |  
   | `status` | string | no |  Status of the delivery. Allowed values are "waitForSending", "sending", "failed", "success". |  
   | `failReason` | string | no | Reason why the delivery failed. |    
 
