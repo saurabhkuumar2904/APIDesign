@@ -675,30 +675,15 @@ The Response body contains data with the [OutreachMessage](#OutreachMessage-obje
 No Parameters
 
 #### Request body
-The request body contains data with the [OutreachMessage](#OutreachMessage-object) object structure:
+The request body contains data with the [CallbackRequest](#CallbackRequest-object) object structure:
 
 example:
 ```Json 
 {
 	"id": "11183a83-48e9-4d0d-a3bd-fb19ce5c12db",
-	"siteId":"10000",
-	"sentTime": "2022-04-26T10:52:24.336Z",
-	"channel": "sms",
-	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
-	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
-	"message": "Hello, please fill in your application form by the end of this week!",
-	"from": "Tom Cruise",
-	"to": "XXX University",
+	"siteId":"10000",	
 	"status": "sent",
 	"failedReason": "",
-	"campaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
-	"campaignSentTime": "2021-04-26T10:52:24.336Z",
-	"isMessageAutoAttachedToTicket": "true",
-	"preferredTicketToAutoAttach": "newTicket",
-	"timeToAutoAttachToTicket": "whenTheMessageIsSent",
-	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
-	"callbackURL": "https://domainname.com/sms/callback",
-	"outboundMessageId": "d426e8b7-c83f-46f9-ad8b-0086813d8345"
 }
 ```
 #### Response
@@ -1655,4 +1640,13 @@ MessageDelivery Object is represented as simple flat JSON objects with the follo
   | `time` | datetime | no | Time when message was delivered. |  
   | `groupId` | guid | no |  The Id of the message group, it is used for bot message, it should be delivered in a group and one by one in order. |  
   | `orderNum` | int | no |  Order of the delivery. |  
+  
+  ### CallbackRequest Object
+MessageDelivery Object is represented as simple flat JSON objects with the following keys:
+
+  | Name | Type | Required | Description                                           |     
+  | - | - | - | - | 
+  | `messageId` | guid | yes |  Id of the message which the delivery belongs to. |  
+  | `status` | string | no |  Status of the delivery. Allowed values are "waitForSending", "sending", "failed", "success". |  
+  | `failReason` | string | no | Reason why the delivery failed. |    
 
