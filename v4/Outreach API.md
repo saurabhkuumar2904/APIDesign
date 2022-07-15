@@ -536,7 +536,6 @@ The request body contains data with the [OutreachMessage](#OutreachMessage-objec
 example:
 ```Json 
 {
-	"sentTime": "2022-05-23 03:00:36.277",
 	"channel": "sms",
 	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
