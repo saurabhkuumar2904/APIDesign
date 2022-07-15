@@ -531,7 +531,17 @@ The Response body contains data with the [OutreachMessage](#OutreachMessage-obje
 No Parameters
 
 #### Request body
-The request body contains data with the [OutreachMessage](#OutreachMessage-object) object structure:
+
+  | Name | Type | Required | Description                                           |     
+  | - | - | - | - |  
+  | `contactId` | Guid | yes |  Contact id of the Outreach Message. |  
+  | `channel` | string | yes |  App channel of this Outreach Campaign, allowed value is "sms". |
+  | `channelAccountId` | Guid | yes |  Channel account id of this Outreach Campaign. |  
+  | `message` | string | yes |  Message. |  
+  | `isMessageAutoAttachedToTicket` | bool | no |  Whether a message need to auto attached to ticket. |  
+  | `preferredTicketToAutoAttach` | string | no |  Allowed values are "newTicket", "existing".|  
+  | `timeToAutoAttachToTicket` | string | no |  Allowed values are "whenTheMessageIsSent", "whenContactRepliesTheMessage". |  
+  | `callbackURL` | string | no |  The callbackURL of the Outreach Message. |  
   
 example:
 ```Json 
