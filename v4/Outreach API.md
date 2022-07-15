@@ -598,9 +598,7 @@ Path parameters
 The request body contains data with the following structure:
 
   | Name | Type | Required | Description                                           |     
-  | - | - | - | - | 
-  | `status` | string | yes |  Status of the Outreach Message. Allowed values are `queued`, `sending`, `sent`, `failed`，`delivered`,`undelivered` |  
-  | `failedReason` | string | no |  The failed reason of the Outreach Message. |  
+  | - | - | - | - |   
   | `attachedToTicketId` | int | no |  The attached ticked Id of the Outreach Message. |  
   
 example:
