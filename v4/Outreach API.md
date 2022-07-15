@@ -605,24 +605,7 @@ The request body contains data with the following structure:
 example:
 ```Json 
 {
-	"id": "11183a83-48e9-4d0d-a3bd-fb19ce5c12db",
-	"sentTime": "2022-05-23 03:00:36.277",
-	"channel": "sms",
-	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
-	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
-	"message": "Hello, please fill in your application form by the end of this week!",
-	"from": "Tom Cruise",
-	"to": "XXX University",
-	"status": "sent",
-	"failedReason": "",
-	"campaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
-	"campaignSentTime": "2022-05-22 03:00:36.277",
-	"isMessageAutoAttachedToTicket": "true",
-	"preferredTicketToAutoAttach": "newTicket",
-	"timeToAutoAttachToTicket": "whenTheMessageIsSent",
-	"attachedToTicketId": 1,
-	"callbackURL": "https://domainname.com/sms/callback",
-	"outboundMessageId": "d426e8b7-c83f-46f9-ad8b-0086813d8345"
+	"attachedToTicketId": 1
 }
 ```
 
