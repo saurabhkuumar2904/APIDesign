@@ -401,7 +401,7 @@ parameters
 |`contactId` |Guid  |No| The unique id of the Contact  |
 |`campaignId` |Guid |No| The unique id of the Outreach Campaign |
 |`campaignRecordId` |Guid |No| The unique id of the Outreach Campaign Sending Record|
-| `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outreach Message. |  
+| `attachedToTicketId` | int | no |  The attached ticked Id of the Outreach Message. |  
 | `sentTime` | datetime | no |  The time when the Outreach Message is sent. |  
 | `keywords` | string | No  | search scope includes: from/to/campaign.name/contact.name |
 | `pageIndex` | int | No  | page index | 
@@ -433,7 +433,7 @@ The Response body contains data with the [OutreachMessage](#OutreachMessage-obje
 		"isMessageAutoAttachedToTicket": "true",
 		"preferredTicketToAutoAttach": "newTicket",
 		"timeToAutoAttachToTicket": "whenTheMessageIsSent",
-		"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
+		"attachedToTicketId": 1,
 		"callbackURL": "https://domainname.com/sms/callback",
 		"outboundMessageId": "d426e8b7-c83f-46f9-ad8b-0086813d8345"
 	}],
@@ -478,7 +478,7 @@ The Response body contains data with the [OutreachMessage](#OutreachMessage-obje
 		"isMessageAutoAttachedToTicket": "true",
 		"preferredTicketToAutoAttach": "newTicket",
 		"timeToAutoAttachToTicket": "whenTheMessageIsSent",
-		"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
+		"attachedToTicketId": 1,
 		"callbackURL": "https://domainname.com/sms/callback",
 		"outboundMessageId": "d426e8b7-c83f-46f9-ad8b-0086813d8345"
 	}]
@@ -518,7 +518,7 @@ The Response body contains data with the [OutreachMessage](#OutreachMessage-obje
 	"isMessageAutoAttachedToTicket": "true",
 	"preferredTicketToAutoAttach": "newTicket",
 	"timeToAutoAttachToTicket": "whenTheMessageIsSent",
-	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
+	"attachedToTicketId": 1,
 	"callbackURL": "https://domainname.com/sms/callback",
 	"outboundMessageId": "d426e8b7-c83f-46f9-ad8b-0086813d8345"
 }
@@ -550,7 +550,7 @@ example:
 	"isMessageAutoAttachedToTicket": "true",
 	"preferredTicketToAutoAttach": "newTicket",
 	"timeToAutoAttachToTicket": "whenTheMessageIsSent",
-	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
+	"attachedToTicketId": 1,
 	"callbackURL": "https://domainname.com/sms/callback",
 	"outboundMessageId": "d426e8b7-c83f-46f9-ad8b-0086813d8345"
 }
@@ -578,7 +578,7 @@ The Response body contains data with the [OutreachMessage](#OutreachMessage-obje
 	"isMessageAutoAttachedToTicket": "true",
 	"preferredTicketToAutoAttach": "newTicket",
 	"timeToAutoAttachToTicket": "whenTheMessageIsSent",
-	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
+	"attachedToTicketId": 1,
 	"callbackURL": "https://domainname.com/sms/callback",
 	"outboundMessageId": "d426e8b7-c83f-46f9-ad8b-0086813d8345"
 }
@@ -599,10 +599,9 @@ The request body contains data with the following structure:
 
   | Name | Type | Required | Description                                           |     
   | - | - | - | - | 
-  | `id` | Guid | yes | The unique id of the Outreach Message. |  
   | `status` | string | yes |  Status of the Outreach Message. Allowed values are `queued`, `sending`, `sent`, `failed`，`delivered`,`undelivered` |  
   | `failedReason` | string | no |  The failed reason of the Outreach Message. |  
-  | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outreach Message. |  
+  | `attachedToTicketId` | int | no |  The attached ticked Id of the Outreach Message. |  
   
 example:
 ```Json 
@@ -622,7 +621,7 @@ example:
 	"isMessageAutoAttachedToTicket": "true",
 	"preferredTicketToAutoAttach": "newTicket",
 	"timeToAutoAttachToTicket": "whenTheMessageIsSent",
-	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
+	"attachedToTicketId": 1,
 	"callbackURL": "https://domainname.com/sms/callback",
 	"outboundMessageId": "d426e8b7-c83f-46f9-ad8b-0086813d8345"
 }
@@ -650,7 +649,7 @@ The Response body contains data with the [OutreachMessage](#OutreachMessage-obje
 	"isMessageAutoAttachedToTicket": "true",
 	"preferredTicketToAutoAttach": "newTicket",
 	"timeToAutoAttachToTicket": "whenTheMessageIsSent",
-	"attachedToTicketId": "a1128d68-92e6-4487-a2e8-8234fc9d1f48",
+	"attachedToTicketId": 1,
 	"callbackURL": "https://domainname.com/sms/callback",
 	"outboundMessageId": "d426e8b7-c83f-46f9-ad8b-0086813d8345"
 }
@@ -674,7 +673,7 @@ No Parameters
   | `failedReason` | string | no |  The failed reason of the Outreach Message. |  
   | `campaignId` | Guid | no |  The Outreach Campaign id the Outreach Message. |  
   | `campaignSentTime` | datetime | no |  The sent time of the Outreach Campaign. |  
-  | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outreach Message. |  
+  | `attachedToTicketId` | int | no |  The attached ticked Id of the Outreach Message. |  
 
 example:
 ```Json 
@@ -1543,7 +1542,7 @@ Outreach Message is represented as simple flat JSON objects with the following k
   | `isMessageAutoAttachedToTicket` | bool | no |  Whether a message need to auto attached to ticket. |  
   | `preferredTicketToAutoAttach` | string | no |  Allowed values are "newTicket", "existing".|  
   | `timeToAutoAttachToTicket` | string | no |  Allowed values are "whenTheMessageIsSent", "whenContactRepliesTheMessage". |  
-  | `attachedToTicketId` | Guid | no |  The attached ticked Id of the Outreach Message. |  
+  | `attachedToTicketId` | int | no |  The attached ticked Id of the Outreach Message. |  
   | `callbackURL` | string | no |  The callbackURL of the Outreach Message. |  
   | `outboundMessageId` | Guid | no |  The outbound message Id of the Outreach Message. |  
   
