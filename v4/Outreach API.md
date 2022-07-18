@@ -257,8 +257,7 @@ Path parameters
 The request body contains data with the following structure:
 
   | Name | Type | Required | Description                                           |     
-  | - | - | - | - | 
-  | `id` | Guid | Yes  |  The unique id of the Outreach Campaign |  
+  | - | - | - | - |  
   | `name` | string | yes |  Name of this Outreach Campaign. |  
   | `description` | string | no |  Description of this Outreach Campaign. |  
   | `channel` | string | no |  App channel of this Outreach Campaign, allowed value is "sms". |  
@@ -399,10 +398,8 @@ parameters
   | - | - | - | - | 
 | `channel` | string | no |  App channel of this Outreach Campaign, allowed value is "sms". |  
 | `channelAccountId` | Guid | no |  Channel account id of this Outreach Campaign. |  
-|`contactId` |Guid  |No| The unique id of the Contact  |
-|`campaignId` |Guid |No| The unique id of the Outreach Campaign |
-|`campaignRecordId` |Guid |No| The unique id of the Outreach Campaign Sending Record|
-| `attachedToTicketId` | int | no |  The attached ticked Id of the Outreach Message. |  
+| `status` | string | no |  Status of the Outreach Message. Allowed values are `queued`, `sending`, `sent`, `failed`，`delivered`,`undelivered` |  
+|`campaignId` |Guid |No| The unique id of the Outreach Campaign | 
 | `sentTime` | datetime | no |  The time when the Outreach Message is sent. |  
 | `keywords` | string | No  | search scope includes: from/to/campaign.name/contact.name |
 | `pageIndex` | int | No  | page index | 
