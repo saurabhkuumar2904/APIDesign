@@ -1128,7 +1128,6 @@ The Response body contains data with the following structure:
 ### Query contact identities with conditions  
 `POST /contact/contactIdentities:query`
 #### Parameters
-Path parameters
 
   | Name | Type | Required  | Description |     
   | - | - | - | - | 
