@@ -45,6 +45,7 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
 ####  Contact Identity
   - Get /contact/contactIdentities/{id} - [Get contact identity](#get-contact-identity).  
   - GET /contact/contactIdentities:identify - [Identify contact identities with type and value](#Identify-contact-identities-with-type-and-value).
+  - POST /contact/contactIdentities:query - [Query contact identities with conditions](#query-contactidentities-with-conditions).  
   - POST /contact/contactIdentities - [Create a new Contact identity](#create-a-new-contact-identity).      
   - PUT /contact/contactIdentities/{id} - [Update the Contact identity](#update-the-contact-identity). 
   - DELETE /contact/contactIdentities/{id} - [Remove the Contact identity](#remove-the-contact-identity). 
@@ -1101,6 +1102,37 @@ Path parameters
   | - | - | - | - | 
   | `value` | string | Yes  |  Contact identity value, support fuzzy search |
   | `identityType` | string | No |  Contact identity type |
+
+#### Response
+The Response body contains data with the following structure:
+
+  | Name  | Type | Required  | Description |     
+  | - | - | - | - | 
+  |`contact identity` |[Contact Identity](#contact-identity-object)[] | Yes | Contact identity array |
+
+```Json 
+  HTTP/1.1 200 OK
+  Content-Type: application/json
+  [{
+      "id":"760a3dfb-f776-4dc8-99cb-7fb288bdf1eb",
+      "contactId":"d5a7c487-7ac8-4b07-99e6-b85c3c6e56ab",
+      "contactIdentityType":"SMS",
+      "value":"+033214561",
+      "avatarUrl":"",
+      "infoUrl":"",
+      "displayName":"",
+      "originalContactPageUrl":""
+    }]
+```
+
+### Query contact identities with conditions  
+`POST /contact/contactIdentities:query`
+#### Parameters
+Path parameters
+
+  | Name | Type | Required  | Description |     
+  | - | - | - | - | 
+  | `ids` | guid [] | Yes  |  Contact identity ID array |
 
 #### Response
 The Response body contains data with the following structure:
