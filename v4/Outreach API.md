@@ -758,6 +758,7 @@ The Response body contains data with the following structure:
   | `sortBy` | string | No  | sort by | 
   | `sortOrder` | string | No  | `asc`,`desc`, default `asc` |  
   | `keywords` | string | No  | keywords |  
+  | `contactIdentityType` | string | No  | contact identity type |  
   | `filterConditionMetType` | string | no |  Contact Filter Logical Expresssion of this Condition. `All`, `Any`, `LogicalExpression` | 
   | `filterLogicalExpresssion` | string | no |  Contact Filter Logical Expression | 
   | `filterConditions` | [ContactFilterCondition object](#contactFilterCondition-object)[] | no | An array of [ContactFilterCondition object](#contactFilterCondition-object)| 
