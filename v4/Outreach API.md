@@ -258,7 +258,7 @@ The request body contains data with the following structure:
 
   | Name | Type | Required | Description                                           |     
   | - | - | - | - |  
-  | `name` | string | yes |  Name of this Outreach Campaign. |  
+  | `name` | string | no |  Name of this Outreach Campaign. |  
   | `description` | string | no |  Description of this Outreach Campaign. |  
   | `channel` | string | no |  App channel of this Outreach Campaign, allowed value is "sms". |  
   | `channelAccountId` | Guid | no |  Channel account id of this Outreach Campaign. |  
