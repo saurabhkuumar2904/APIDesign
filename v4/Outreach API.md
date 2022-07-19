@@ -476,7 +476,7 @@ The Response body contains data with the [OutreachMessage](#OutreachMessage-obje
 		"isMessageAutoAttachedToTicket": "true",
 		"preferredTicketToAutoAttach": "newTicket",
 		"timeToAutoAttachToTicket": "whenTheMessageIsSent",
-		"attachedToTicketId": 1,
+		"attachedToTicketId": 0,
 		"callbackURL": "https://domainname.com/sms/callback",
 		"outboundMessageId": "d426e8b7-c83f-46f9-ad8b-0086813d8345"
 	}]
