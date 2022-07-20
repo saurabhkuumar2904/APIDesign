@@ -682,6 +682,7 @@ example:
   | `keywords` | string | No  | search scope includes: contact name/identity id/identity value |  
   | `contactIdentityType` | string | No  | contact identity type |  
   | `contactIdentityValue` | string | No  | contact identity value | 
+  | `isIncludeDeleted` | boolean | No  | if including the deleted contact, default value: `false` | 
   | `pageIndex` | int | No  | page index | 
   | `pageSize` | int | No  | page size, default is 10, if the value is 0, will return all matched contacts. | 
   | `sortBy` | string | No  | sort by | 
@@ -733,8 +734,10 @@ The Response body contains data with the following structure:
           "avatarUrl":"",
           "infoUrl":"",
           "displayName":"",
-          "originalContactPageUrl":""
-      }]
+          "originalContactPageUrl":"",
+          "isDeleted":false
+      }],
+      "isDeleted":false
 	}],
   "previousPage":null,
   "nextPage":"http://demo.comm100.io/contacts?pageIndex=2&pageSize=50&siteId=10100000",
@@ -760,6 +763,7 @@ The Response body contains data with the following structure:
   | `filterLogicalExpresssion` | string | no |  Contact Filter Logical Expression | 
   | `filterConditions` | [ContactFilterCondition object](#contactFilterCondition-object)[] | no | An array of [ContactFilterCondition object](#contactFilterCondition-object)| 
   | `Ids` | guid[] | No  | Contact ID array, if pass this parameter, the keywords and filter conditions don't work | 
+  | `isIncludeDeleted` | boolean | No  | if including the deleted contact, default value: `false` | 
 
 #### Response
 The Response body contains data with the following structure:
@@ -804,8 +808,10 @@ The Response body contains data with the following structure:
           "avatarUrl":"",
           "infoUrl":"",
           "displayName":"",
-          "originalContactPageUrl":""
-      }]
+          "originalContactPageUrl":"",
+          "isDeleted":false
+      }],
+    "isDeleted":false
 	}],
   "previousPage":null,
   "nextPage":"http://demo.comm100.io/contacts?pageIndex=2&pageSize=50&siteId=10100000",
@@ -822,6 +828,7 @@ Path parameters
   | Name | Type | Required  | Description |     
   | - | - | - | - | 
   | `id` | Guid | Yes  |  The unique id of the Contact |  
+  | `isIncludeDeleted` | boolean | No  | if including the deleted contact, default value: `false` | 
 
 #### Response
 The Response body contains data with the [Contact](#contact-object) object structure:
@@ -860,8 +867,10 @@ The Response body contains data with the [Contact](#contact-object) object struc
           "avatarUrl":"",
           "infoUrl":"",
           "displayName":"",
-          "originalContactPageUrl":""
-      }]
+          "originalContactPageUrl":"",
+          "isDeleted":false
+      }],
+    "isDeleted":false
 }
 ```
 
@@ -922,7 +931,8 @@ The Response body contains data with the [Contact](#contact-object) object struc
         "infoUrl":"",
         "displayName":"",
         "originalContactPageUrl":""
-    }]
+    }],
+    "isDeleted":false
 }
 ```
 
@@ -964,8 +974,10 @@ example:
         "avatarUrl":"",
         "infoUrl":"",
         "displayName":"",
-        "originalContactPageUrl":""
-    }]
+        "originalContactPageUrl":"",
+        "isDeleted":false
+    }],
+    "isDeleted":false
 }
 ```
 
@@ -1068,6 +1080,7 @@ The request body contains data with the following structure:
   | Name | Type | Required  | Description |     
   | - | - | - | - | 
   |`id` | guid | Yes | The ID of Contact identity |
+  | `isIncludeDeleted` | boolean | No  | if including the deleted contact, default value: `false` | 
 
 #### Response
 The Response body contains data with the following structure:
@@ -1087,7 +1100,8 @@ The Response body contains data with the following structure:
           "avatarUrl":"",
           "infoUrl":"",
           "displayName":"",
-          "originalContactPageUrl":""
+          "originalContactPageUrl":"",
+          "isDeleted":false
     }
 ```
 
@@ -1100,6 +1114,7 @@ Path parameters
   | - | - | - | - | 
   | `value` | string | Yes  |  Contact identity value, support fuzzy search |
   | `identityType` | string | No |  Contact identity type |
+  | `isIncludeDeleted` | boolean | No  | if including the deleted contact, default value: `false` | 
 
 #### Response
 The Response body contains data with the following structure:
@@ -1119,7 +1134,8 @@ The Response body contains data with the following structure:
       "avatarUrl":"",
       "infoUrl":"",
       "displayName":"",
-      "originalContactPageUrl":""
+      "originalContactPageUrl":"",
+      "isDeleted":false
     }]
 ```
 
@@ -1130,6 +1146,7 @@ The Response body contains data with the following structure:
   | Name | Type | Required  | Description |     
   | - | - | - | - | 
   | `ids` | guid [] | Yes  |  Contact identity ID array |
+  | `isIncludeDeleted` | boolean | No  | if including the deleted contact, default value: `false` | 
 
 #### Response
 The Response body contains data with the following structure:
@@ -1571,6 +1588,7 @@ Contact is represented as simple flat JSON objects with the following keys:
   | `mergeToContactId` | Guid | no |  The Contact id of merge to. |  
   | `customFields` | [Contact Custom Field Value](#contact-custom-field-value-object) | no | custom field value | 
   | `contactIdentities` | [Contact Identity](#contact-identity-object)[] | yes | custom field value array | 
+  | `isDeleted` | boolean | if is deleted |
 
 ### Contact Identity Object
 Contact Identity is represented as simple flat JSON objects with the following keys:
