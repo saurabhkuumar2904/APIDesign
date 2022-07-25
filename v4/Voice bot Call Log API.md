@@ -61,7 +61,7 @@ Response:
                               {'action':'Recording paused','time':'00:00:15.3423523'}
                               {'action':'Recording resumed','time':'00:00:15.3423523'}
                               {'action':'Recording stoped','time':'00:00:15.3423523'}
-                              {'role':'+18448586997','time':'00:00:15.3423523','dtmf':'1234'}]"
+                              {'role':'+18448586997','time':'00:00:15.3423523','dtmf':'1234'}]",
         }
     ],
     "nextPage": null,
@@ -120,7 +120,7 @@ Response:
                               {'action':'Recording paused','time':'00:00:15.3423523'}
                               {'action':'Recording resumed','time':'00:00:15.3423523'}
                               {'action':'Recording stoped','time':'00:00:15.3423523'}
-                              {'role':'+18448586997','time':'00:00:15.3423523','dtmf':'1234'}]"
+                              {'role':'+18448586997','time':'00:00:15.3423523','dtmf':'1234'}]",
         }
   ```
 
@@ -171,7 +171,7 @@ Response:
                               {'action':'Recording paused','time':'00:00:15.3423523'}
                               {'action':'Recording resumed','time':'00:00:15.3423523'}
                               {'action':'Recording stoped','time':'00:00:15.3423523'}
-                              {'role':'+18448586997','time':'00:00:15.3423523','dtmf':'1234'}]"
+                              {'role':'+18448586997','time':'00:00:15.3423523','dtmf':'1234'}]",
         }
     ],
     "nextPage": null,
@@ -228,7 +228,7 @@ Response:
                               {'action':'Recording paused','time':'00:00:15.3423523'}
                               {'action':'Recording resumed','time':'00:00:15.3423523'}
                               {'action':'Recording stoped','time':'00:00:15.3423523'}
-                              {'role':'+18448586997','time':'00:00:15.3423523','dtmf':'1234'}]"
+                              {'role':'+18448586997','time':'00:00:15.3423523','dtmf':'1234'}]",
         }
   ```
 
