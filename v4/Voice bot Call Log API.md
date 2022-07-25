@@ -79,6 +79,7 @@ Path parameters
   | - | - | :-: | - | 
   | `id` | string |  | Original Call ID |
 
+
 Request body 
 The request body contains data with the follow structure:  
   | Name | Type | Required | Default | Description |    
@@ -190,6 +191,7 @@ Path parameters
   | Name | Type | Required | Description |    
   | - | - | :-: | - | 
   | `id` | string |  | Voicebot Session ID |
+  
 Request body 
 The request body contains data with the follow structure:  
   | Name | Type | Required | Default | Description |    
