@@ -1,7 +1,7 @@
 
   | Change Version | API Version | Change nots | Change Date | Author |Architect Team Reviewer | 
   | - | - | - | - | - |- |
-  | 2.0 | v1 | Voice Call Log API | 2022-7-20 | Leon |  Allon|
+  | 2.0 | v1 | Voice bot Call Log API | 2022-7-20 | Leon |  Allon|
 
 ## Summary
 ### Voice Service Calllog API 
