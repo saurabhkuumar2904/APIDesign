@@ -40,7 +40,7 @@ Response:
   ```json
   {
     "voiceCallLogs": [
-        {
+       {
             "id": "eefe4538-bec3-47ef-89ea-879b59a16941",
             "from": "+184640930943",
             "to": "+184640930967",
@@ -50,18 +50,18 @@ Response:
             "startTime": "2021-05-06T08:29:00.973Z",
             "callDuration": 10,
             "recordingFileURL":"https://aws.amazone.com/eefe4538-bec3-47ef-89ea-879b59a16941.wav",
-            "transferredTo": "[{'role':'Voice Bot','time':'00:00:02.3423523','text':'Hello, this is echo bot. I'll repeat what you say. You can start talking now.'},
-{'role':'+18448586997','time':'00:00:05.3423523','text':'hello'},
-{'role':'Voice Bot','time':'00:00:05.3423523','text':'hello'},
-{'role':'+18448586997','time':'00:00:11.3423523','text':'nice to meet you'},
-{'role':'Voice Bot','time':'00:00:11.3423523','text':'nice to meet you'},
-{'role':'+18448586997','time':'00:00:15.3423523','text':' goodbye'},
-{'role':'Voice Bot','time':'00:00:15.3423523','text':' goodbye'},
-{'action':'Recording started','time':'00:00:15.3423523'},
-{'action':'Recording paused','time':'00:00:15.3423523'},
-{'action':'Recording resumed','time':'00:00:15.3423523'},
-{'action':'Recording stoped','time':'00:00:15.3423523'},
-{'role':'+18448586997','time':'00:00:15.3423523','dtmf':'1234'}",
+            "transferredTo": [{"role":"Voice Bot","time":"00:00:02.3423523","text":"Hello, this is echo bot. I\"ll repeat what you say. You can start talking now."},
+                              {"role":"+18448586997","time":"00:00:05.3423523","text":"hello"},
+                              {"role":"Voice Bot","time":"00:00:05.3423523","text":"hello"},
+                              {"role":"+18448586997","time":"00:00:11.3423523","text":"nice to meet you"},
+                              {"role":"Voice Bot","time":"00:00:11.3423523","text":"nice to meet you"},
+                              {"role":"+18448586997","time":"00:00:15.3423523","text":" goodbye"},
+                              {"role":"Voice Bot","time":"00:00:15.3423523","text":" goodbye"},
+                              {"action":"Recording started","time":"00:00:15.3423523"},
+                              {"action":"Recording paused","time":"00:00:15.3423523"},
+                              {"action":"Recording resumed","time":"00:00:15.3423523"},
+                              {"action":"Recording stoped","time":"00:00:15.3423523"},
+                              {"role":"+18448586997","time":"00:00:15.3423523","dtmf":"1234"}]
         }
     ],
     "nextPage": null,
@@ -109,18 +109,18 @@ Response:
             "startTime": "2021-05-06T08:29:00.973Z",
             "callDuration": 10,
             "recordingFileURL":"https://aws.amazone.com/eefe4538-bec3-47ef-89ea-879b59a16941.wav",
-            "transferredTo": "[{'role':'Voice Bot','time':'00:00:02.3423523','text':'Hello, this is echo bot. I'll repeat what you say. You can start talking now.'},
-{'role':'+18448586997','time':'00:00:05.3423523','text':'hello'},
-{'role':'Voice Bot','time':'00:00:05.3423523','text':'hello'},
-{'role':'+18448586997','time':'00:00:11.3423523','text':'nice to meet you'},
-{'role':'Voice Bot','time':'00:00:11.3423523','text':'nice to meet you'},
-{'role':'+18448586997','time':'00:00:15.3423523','text':' goodbye'},
-{'role':'Voice Bot','time':'00:00:15.3423523','text':' goodbye'},
-{'action':'Recording started','time':'00:00:15.3423523'},
-{'action':'Recording paused','time':'00:00:15.3423523'},
-{'action':'Recording resumed','time':'00:00:15.3423523'},
-{'action':'Recording stoped','time':'00:00:15.3423523'},
-{'role':'+18448586997','time':'00:00:15.3423523','dtmf':'1234'}",
+            "transferredTo": [{"role":"Voice Bot","time":"00:00:02.3423523","text":"Hello, this is echo bot. I\"ll repeat what you say. You can start talking now."},
+                              {"role":"+18448586997","time":"00:00:05.3423523","text":"hello"},
+                              {"role":"Voice Bot","time":"00:00:05.3423523","text":"hello"},
+                              {"role":"+18448586997","time":"00:00:11.3423523","text":"nice to meet you"},
+                              {"role":"Voice Bot","time":"00:00:11.3423523","text":"nice to meet you"},
+                              {"role":"+18448586997","time":"00:00:15.3423523","text":" goodbye"},
+                              {"role":"Voice Bot","time":"00:00:15.3423523","text":" goodbye"},
+                              {"action":"Recording started","time":"00:00:15.3423523"},
+                              {"action":"Recording paused","time":"00:00:15.3423523"},
+                              {"action":"Recording resumed","time":"00:00:15.3423523"},
+                              {"action":"Recording stoped","time":"00:00:15.3423523"},
+                              {"role":"+18448586997","time":"00:00:15.3423523","dtmf":"1234"}]
         }
   ```
 
@@ -150,7 +150,7 @@ Response:
   ```json
   {
     "voicebotCallLogs": [
-        {
+       {
             "id": "eefe4538-bec3-47ef-89ea-879b59a16941",
             "from": "+184640930943",
             "to": "+184640930967",
@@ -160,18 +160,18 @@ Response:
             "startTime": "2021-05-06T08:29:00.973Z",
             "callDuration": 10,
             "recordingFileURL":"https://aws.amazone.com/eefe4538-bec3-47ef-89ea-879b59a16941.wav",
-            "transferredTo": "[{'role':'Voice Bot','time':'00:00:02.3423523','text':'Hello, this is echo bot. I'll repeat what you say. You can start talking now.'},
-{'role':'+18448586997','time':'00:00:05.3423523','text':'hello'},
-{'role':'Voice Bot','time':'00:00:05.3423523','text':'hello'},
-{'role':'+18448586997','time':'00:00:11.3423523','text':'nice to meet you'},
-{'role':'Voice Bot','time':'00:00:11.3423523','text':'nice to meet you'},
-{'role':'+18448586997','time':'00:00:15.3423523','text':' goodbye'},
-{'role':'Voice Bot','time':'00:00:15.3423523','text':' goodbye'},
-{'action':'Recording started','time':'00:00:15.3423523'},
-{'action':'Recording paused','time':'00:00:15.3423523'},
-{'action':'Recording resumed','time':'00:00:15.3423523'},
-{'action':'Recording stoped','time':'00:00:15.3423523'},
-{'role':'+18448586997','time':'00:00:15.3423523','dtmf':'1234'}]",
+            "transferredTo": [{"role":"Voice Bot","time":"00:00:02.3423523","text":"Hello, this is echo bot. I\"ll repeat what you say. You can start talking now."},
+                              {"role":"+18448586997","time":"00:00:05.3423523","text":"hello"},
+                              {"role":"Voice Bot","time":"00:00:05.3423523","text":"hello"},
+                              {"role":"+18448586997","time":"00:00:11.3423523","text":"nice to meet you"},
+                              {"role":"Voice Bot","time":"00:00:11.3423523","text":"nice to meet you"},
+                              {"role":"+18448586997","time":"00:00:15.3423523","text":" goodbye"},
+                              {"role":"Voice Bot","time":"00:00:15.3423523","text":" goodbye"},
+                              {"action":"Recording started","time":"00:00:15.3423523"},
+                              {"action":"Recording paused","time":"00:00:15.3423523"},
+                              {"action":"Recording resumed","time":"00:00:15.3423523"},
+                              {"action":"Recording stoped","time":"00:00:15.3423523"},
+                              {"role":"+18448586997","time":"00:00:15.3423523","dtmf":"1234"}]
         }
     ],
     "nextPage": null,
@@ -207,7 +207,7 @@ Response:
 
    HTTP/1.1 200 OK
   ```json
-        {
+       {
             "id": "eefe4538-bec3-47ef-89ea-879b59a16941",
             "from": "+184640930943",
             "to": "+184640930967",
@@ -217,18 +217,18 @@ Response:
             "startTime": "2021-05-06T08:29:00.973Z",
             "callDuration": 10,
             "recordingFileURL":"https://aws.amazone.com/eefe4538-bec3-47ef-89ea-879b59a16941.wav",
-            "transferredTo": "[{'role':'Voice Bot','time':'00:00:02.3423523','text':'Hello, this is echo bot. I'll repeat what you say. You can start talking now.'},
-{'role':'+18448586997','time':'00:00:05.3423523','text':'hello'},
-{'role':'Voice Bot','time':'00:00:05.3423523','text':'hello'},
-{'role':'+18448586997','time':'00:00:11.3423523','text':'nice to meet you'},
-{'role':'Voice Bot','time':'00:00:11.3423523','text':'nice to meet you'},
-{'role':'+18448586997','time':'00:00:15.3423523','text':' goodbye'},
-{'role':'Voice Bot','time':'00:00:15.3423523','text':' goodbye'},
-{'action':'Recording started','time':'00:00:15.3423523'},
-{'action':'Recording paused','time':'00:00:15.3423523'},
-{'action':'Recording resumed','time':'00:00:15.3423523'},
-{'action':'Recording stoped','time':'00:00:15.3423523'},
-{'role':'+18448586997','time':'00:00:15.3423523','dtmf':'1234'}]",
+            "transferredTo": [{"role":"Voice Bot","time":"00:00:02.3423523","text":"Hello, this is echo bot. I\"ll repeat what you say. You can start talking now."},
+                              {"role":"+18448586997","time":"00:00:05.3423523","text":"hello"},
+                              {"role":"Voice Bot","time":"00:00:05.3423523","text":"hello"},
+                              {"role":"+18448586997","time":"00:00:11.3423523","text":"nice to meet you"},
+                              {"role":"Voice Bot","time":"00:00:11.3423523","text":"nice to meet you"},
+                              {"role":"+18448586997","time":"00:00:15.3423523","text":" goodbye"},
+                              {"role":"Voice Bot","time":"00:00:15.3423523","text":" goodbye"},
+                              {"action":"Recording started","time":"00:00:15.3423523"},
+                              {"action":"Recording paused","time":"00:00:15.3423523"},
+                              {"action":"Recording resumed","time":"00:00:15.3423523"},
+                              {"action":"Recording stoped","time":"00:00:15.3423523"},
+                              {"role":"+18448586997","time":"00:00:15.3423523","dtmf":"1234"}]
         }
   ```
 
