@@ -136,7 +136,7 @@ The request body contains data with the follow structure:
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
   | `voicebotId` | Guid | yes | |  Voicebot ID |
-  | `keyword` | string | yes | | the keyword of searching transript |
+  | `keyword` | string | no | | the keyword of searching transript |
 - #### Response:
 An array of [VoiceBot Call Log](#voicebot-call-log-json-format)
 
