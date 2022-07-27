@@ -76,7 +76,7 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
 #### Parameters
   | Name | Type | Required  | Description |     
   | - | - | - | - | 
-  | `channel` | string | no |  App channel of this Outreach Campaign, allowed value is "sms". |  
+  | `channel` | string | no |  App channel of this Outreach Campaign, allowed value is "SMS". |  
   | `channelAccountId` | Guid | no |  Channel account id of this Outreach Campaign. |  
   | `pageIndex` | int | No  | page index | 
   | `pageSize` | int | No  | page size, default is 10, if the value is 0, will return all matched contacts. | 
@@ -98,7 +98,7 @@ The Response body contains data with the following structure:
 		"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
 		"name": "test-campaign",
 		"description": "test campaign",
-		"channel": "sms",
+		"channel": "SMS",
 		"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 		"message": "Hello, please fill in your application form by the end of this week!",
 		"isMessageAutoAttachedToTicket": "true",
@@ -114,7 +114,8 @@ The Response body contains data with the following structure:
 			"Value": "BBBB",
 			"Order": "0"
 		}],
-		"scheduledStartTime": ""
+		"scheduledStartTime": "",
+		"lastUpdatedTime": "2022-07-26T09:31:36.693Z"
 	}],
 	"previousPage":null,
   	"nextPage":"http://demo.comm100.io/campaigns?pageIndex=2&pageSize=50&siteId=10100000",
@@ -143,7 +144,7 @@ The Response body contains data with the [OutreachCampaign](#OutreachCampaign-ob
 	"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
 	"name": "test-campaign",
 	"description": "test campaign",
-	"channel": "sms",
+	"channel": "SMS",
 	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"message": "Hello, please fill in your application form by the end of this week!",
 	"isMessageAutoAttachedToTicket": "true",
@@ -159,7 +160,8 @@ The Response body contains data with the [OutreachCampaign](#OutreachCampaign-ob
 		"Value": "BBBB",
 		"Order": "0"
 	}],
-	"scheduledStartTime": ""
+	"scheduledStartTime": "",
+	"lastUpdatedTime": "2022-07-26T09:31:36.693Z"
 }
 ```
 
@@ -176,7 +178,7 @@ The request body contains data with the following structure:
   | - | - | - | - | 
   | `name` | string | yes |  Name of this Outreach Campaign. |  
   | `description` | string | no |  Description of this Outreach Campaign. |  
-  | `channel` | string | yes |  App channel of this Outreach Campaign, allowed value is "sms". |  
+  | `channel` | string | yes |  App channel of this Outreach Campaign, allowed value is "SMS". |  
   | `channelAccountId` | Guid | yes |  Channel account id of this Outreach Campaign. |  
   | `message` | string | yes |  Message of this Outreach Campaign. |  
   | `isMessageAutoAttachedToTicket` | bool | no |  Whether a message need to auto attached to ticket. |  
@@ -192,7 +194,7 @@ example:
 {
 	"name": "test-campaign",
 	"description": "test campaign",
-	"channel": "sms",
+	"channel": "SMS",
 	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"message": "Hello, please fill in your application form by the end of this week!",
 	"isMessageAutoAttachedToTicket": "true",
@@ -208,7 +210,8 @@ example:
 		"Value": "BBBB",
 		"Order": "0"
 	}],
-	"scheduledStartTime": ""
+	"scheduledStartTime": "",
+	"lastUpdatedTime": "2022-07-26T09:31:36.693Z"
 }
 ```
 
@@ -223,7 +226,7 @@ The Response body contains data with the [OutreachCampaign](#OutreachCampaign-ob
 	"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
 	"name": "test-campaign",
 	"description": "test campaign",
-	"channel": "sms",
+	"channel": "SMS",
 	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"message": "Hello, please fill in your application form by the end of this week!",
 	"isMessageAutoAttachedToTicket": "true",
@@ -239,7 +242,8 @@ The Response body contains data with the [OutreachCampaign](#OutreachCampaign-ob
 		"Value": "BBBB",
 		"Order": "0"
 	}],
-	"scheduledStartTime": ""
+	"scheduledStartTime": "",
+	"lastUpdatedTime": "2022-07-26T09:31:36.693Z"
 }
 ```
 
@@ -260,7 +264,7 @@ The request body contains data with the following structure:
   | - | - | - | - |  
   | `name` | string | no |  Name of this Outreach Campaign. |  
   | `description` | string | no |  Description of this Outreach Campaign. |  
-  | `channel` | string | no |  App channel of this Outreach Campaign, allowed value is "sms". |  
+  | `channel` | string | no |  App channel of this Outreach Campaign, allowed value is "SMS". |  
   | `channelAccountId` | Guid | no |  Channel account id of this Outreach Campaign. |  
   | `message` | string | no |  Message of this Outreach Campaign. |  
   | `isMessageAutoAttachedToTicket` | bool | no |  Whether a message need to auto attached to ticket. |  
@@ -277,7 +281,7 @@ example:
 	"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
 	"name": "test-campaign 2",
 	"description": "test campaign",
-	"channel": "sms",
+	"channel": "SMS",
 	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"message": "Hello, please fill in your application form by the end of this week!",
 	"isMessageAutoAttachedToTicket": "true",
@@ -293,7 +297,8 @@ example:
 		"Value": "BBBB",
 		"Order": "0"
 	}],
-	"scheduledStartTime": ""
+	"scheduledStartTime": "",
+	"lastUpdatedTime": "2022-07-26T09:31:36.693Z"
 }
 ```
 
@@ -307,7 +312,7 @@ The Response body contains data with the [OutreachCampaign](#OutreachCampaign-ob
 	"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
 	"name": "test-campaign 2",
 	"description": "test campaign",
-	"channel": "sms",
+	"channel": "SMS",
 	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"message": "Hello, please fill in your application form by the end of this week!",
 	"isMessageAutoAttachedToTicket": "true",
@@ -323,7 +328,8 @@ The Response body contains data with the [OutreachCampaign](#OutreachCampaign-ob
 		"Value": "BBBB",
 		"Order": "0"
 	}],
-	"scheduledStartTime": ""
+	"scheduledStartTime": "",
+	"lastUpdatedTime": "2022-07-26T09:31:36.693Z"
 }
 ```
 
@@ -367,7 +373,7 @@ The Response body contains data with the [OutreachCampaignRecord](#OutreachCampa
 		"id": "f8383a83-48e9-4d0d-a3bd-fb19ce5c12db",
 		"name": "test-campaign 2",
 		"description": "test campaign",
-		"channel": "sms",
+		"channel": "SMS",
 		"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 		"message": "Hello, please fill in your application form by the end of this week!",
 		"isMessageAutoAttachedToTicket": "true",
@@ -396,7 +402,7 @@ parameters
 
   | Name  | Type | Required  | Description |     
   | - | - | - | - | 
-| `channel` | string | no |  App channel of this Outreach Campaign, allowed value is "sms". |  
+| `channel` | string | no |  App channel of this Outreach Campaign, allowed value is "SMS". |  
 | `channelAccountId` | Guid | no |  Channel account id of this Outreach Campaign. |  
 | `status` | string | no |  Status of the Outreach Message. Allowed values are `queued`, `sending`, `sent`, `failed`，`delivered`,`undelivered` |  
 |`campaignId` |Guid |No| The unique id of the Outreach Campaign | 
@@ -418,7 +424,7 @@ The Response body contains data with the [OutreachMessage](#OutreachMessage-obje
 	"messages": [{
 		"id": "11183a83-48e9-4d0d-a3bd-fb19ce5c12db",
 		"sentTime": "2022-05-23 03:00:36.277",
-		"channel": "sms",
+		"channel": "SMS",
 		"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 		"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
 		"message": "Hello, please fill in your application form by the end of this week!",
@@ -463,7 +469,7 @@ The Response body contains data with the [OutreachMessage](#OutreachMessage-obje
 	"messages": [{
 		"id": "11183a83-48e9-4d0d-a3bd-fb19ce5c12db",
 		"sentTime": "2022-05-23 03:00:36.277",
-		"channel": "sms",
+		"channel": "SMS",
 		"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 		"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
 		"message": "Hello, please fill in your application form by the end of this week!",
@@ -503,7 +509,7 @@ The Response body contains data with the [OutreachMessage](#OutreachMessage-obje
 {
 	"id": "11183a83-48e9-4d0d-a3bd-fb19ce5c12db",
 	"sentTime": "2022-05-23 03:00:36.277",
-	"channel": "sms",
+	"channel": "SMS",
 	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
 	"message": "Hello, please fill in your application form by the end of this week!",
@@ -533,7 +539,7 @@ No Parameters
   | Name | Type | Required | Description                                           |     
   | - | - | - | - |  
   | `contactId` | Guid | yes |  Contact id of the Outreach Message. |  
-  | `channel` | string | yes |  App channel of this Outreach Campaign, allowed value is "sms". |
+  | `channel` | string | yes |  App channel of this Outreach Campaign, allowed value is "SMS". |
   | `channelAccountId` | Guid | yes |  Channel account id of this Outreach Campaign. |  
   | `message` | string | yes |  Message. |  
   | `isMessageAutoAttachedToTicket` | bool | no |  Whether a message need to auto attached to ticket. |  
@@ -544,7 +550,7 @@ No Parameters
 example:
 ```Json 
 {
-	"channel": "sms",
+	"channel": "SMS",
 	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
 	"message": "Hello, please fill in your application form by the end of this week!",
@@ -564,7 +570,7 @@ The Response body contains data with the [OutreachMessage](#OutreachMessage-obje
 {
 	"id": "11183a83-48e9-4d0d-a3bd-fb19ce5c12db",
 	"sentTime": "2022-05-23 03:00:36.277",
-	"channel": "sms",
+	"channel": "SMS",
 	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
 	"message": "Hello, please fill in your application form by the end of this week!",
@@ -616,7 +622,7 @@ The Response body contains data with the [OutreachMessage](#OutreachMessage-obje
 {
 	"id": "11183a83-48e9-4d0d-a3bd-fb19ce5c12db",
 	"sentTime": "2022-05-23 03:00:36.277",
-	"channel": "sms",
+	"channel": "SMS",
 	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
 	"message": "Hello, please fill in your application form by the end of this week!",
@@ -1519,7 +1525,7 @@ Outreach Campaign is represented as simple flat JSON objects with the following 
   | `id` | Guid | yes | The unique id of the Outreach Campaign. |  
   | `name` | string | yes |  Name of this Outreach Campaign. |  
   | `description` | string | no |  Description of this Outreach Campaign. |  
-  | `channel` | string | no |  App channel of this Outreach Campaign, allowed value is "sms". |  
+  | `channel` | string | no |  App channel of this Outreach Campaign, allowed value is "SMS". |  
   | `channelAccountId` | Guid | yes |  Channel account id of this Outreach Campaign. |  
   | `message` | string | yes |  Message of this Outreach Campaign. |  
   | `isMessageAutoAttachedToTicket` | bool | no |  Whether a message need to auto attached to ticket. | 
@@ -1529,6 +1535,7 @@ Outreach Campaign is represented as simple flat JSON objects with the following 
   | `contactFilterLogicalExpresssion` | string | no |  Contact Filter Logical Expresssion of this Condition. |  
   | `contactFilterConditions` | [ContactFilterCondition](#ContactFilterCondition-object)[] | no | An array of [ContactFilterCondition](#ContactFilterCondition-object)| 
   | `scheduledStartTime` | datetime | no |  Time when the schedule start. |  
+  | `lastUpdatedTime` | datetime | no |  Time when the campaign last updated. |  
   
 ### ContactFilterCondition Object
 Outreach Campaign Contact Filter Condition is represented as simple flat JSON objects with the following keys:
