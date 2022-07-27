@@ -136,7 +136,9 @@ The request body contains data with the follow structure:
   | Name | Type | Required | Default | Description |    
   | - | - | :-: | :-: | - | 
   | `voicebotId` | Guid | yes | |  Voicebot ID |
-  | `keyword` | string | no | | the keyword of searching transript |
+  | `searchStartTime` | datetime | no | | the search starttime of calllogs |  
+  | `searchStartTime` | datetime | no | |  the search endtime of calllogs  |  
+  | `keyword` | string | no | | the search keyword of transript，Calling From/To and Transferred To |
 - #### Response:
 An array of [VoiceBot Call Log](#voicebot-call-log-json-format)
 
