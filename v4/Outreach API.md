@@ -102,7 +102,6 @@ The Response body contains data with the following structure:
 		"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 		"message": "Hello, please fill in your application form by the end of this week!",
 		"isMessageAutoAttachedToTicket": "true",
-<!-- 		"preferredTicketToAutoAttach": "newTicket", -->
 		"timeToAutoAttachToTicket": "whenTheMessageIsSent",
 		"contactFilterConditionMetType": "any",
 		"contactFilterLogicalExpresssion": "",
@@ -148,7 +147,6 @@ The Response body contains data with the [OutreachCampaign](#OutreachCampaign-ob
 	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"message": "Hello, please fill in your application form by the end of this week!",
 	"isMessageAutoAttachedToTicket": "true",
-	"preferredTicketToAutoAttach": "newTicket",
 	"timeToAutoCreateNewTicket": "whenTheMessageIsSent",
 	"contactFilterConditionMetType": "any",
 	"contactFilterLogicalExpresssion": "",
@@ -198,7 +196,6 @@ example:
 	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"message": "Hello, please fill in your application form by the end of this week!",
 	"isMessageAutoAttachedToTicket": "true",
-	"preferredTicketToAutoAttach": "newTicket",
 	"timeToAutoAttachToTicket": "whenTheMessageIsSent",
 	"contactFilterConditionMetType": "any",
 	"contactFilterLogicalExpresssion": "",
@@ -230,7 +227,6 @@ The Response body contains data with the [OutreachCampaign](#OutreachCampaign-ob
 	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"message": "Hello, please fill in your application form by the end of this week!",
 	"isMessageAutoAttachedToTicket": "true",
-	"preferredTicketToAutoAttach": "newTicket",
 	"timeToAutoAttachToTicket": "whenTheMessageIsSent",
 	"contactFilterConditionMetType": "any",
 	"contactFilterLogicalExpresssion": "",
@@ -285,7 +281,6 @@ example:
 	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"message": "Hello, please fill in your application form by the end of this week!",
 	"isMessageAutoAttachedToTicket": "true",
-	"preferredTicketToAutoAttach": "newTicket",
 	"timeToAutoAttachToTicket": "whenTheMessageIsSent",
 	"contactFilterConditionMetType": "any",
 	"contactFilterLogicalExpresssion": "",
@@ -316,7 +311,6 @@ The Response body contains data with the [OutreachCampaign](#OutreachCampaign-ob
 	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"message": "Hello, please fill in your application form by the end of this week!",
 	"isMessageAutoAttachedToTicket": "true",
-	"preferredTicketToAutoAttach": "newTicket",
 	"timeToAutoAttachToTicket": "whenTheMessageIsSent",
 	"contactFilterConditionMetType": "any",
 	"contactFilterLogicalExpresssion": "",
@@ -377,7 +371,6 @@ The Response body contains data with the [OutreachCampaignRecord](#OutreachCampa
 		"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 		"message": "Hello, please fill in your application form by the end of this week!",
 		"isMessageAutoAttachedToTicket": "true",
-		"preferredTicketToAutoAttach": "newTicket",
 		"timeToAutoAttachToTicket": "whenTheMessageIsSent",
 		"contactFilterConditionMetType": "any",
 		"contactFilterLogicalExpresssion": "",
@@ -435,7 +428,6 @@ The Response body contains data with the [OutreachMessage](#OutreachMessage-obje
 		"campaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
 		"campaignSentTime": "2022-05-22 03:00:36.277",
 		"isMessageAutoAttachedToTicket": "true",
-		"preferredTicketToAutoAttach": "newTicket",
 		"timeToAutoAttachToTicket": "whenTheMessageIsSent",
 		"attachedToTicketId": 1,
 		"callbackURL": "https://domainname.com/sms/callback",
@@ -480,7 +472,6 @@ The Response body contains data with the [OutreachMessage](#OutreachMessage-obje
 		"campaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
 		"campaignSentTime": "2022-05-22 03:00:36.277",
 		"isMessageAutoAttachedToTicket": "true",
-		"preferredTicketToAutoAttach": "newTicket",
 		"timeToAutoAttachToTicket": "whenTheMessageIsSent",
 		"attachedToTicketId": 0,
 		"callbackURL": "https://domainname.com/sms/callback",
@@ -520,7 +511,6 @@ The Response body contains data with the [OutreachMessage](#OutreachMessage-obje
 	"campaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
 	"campaignSentTime": "2022-05-22 03:00:36.277",
 	"isMessageAutoAttachedToTicket": "true",
-	"preferredTicketToAutoAttach": "newTicket",
 	"timeToAutoAttachToTicket": "whenTheMessageIsSent",
 	"attachedToTicketId": 1,
 	"callbackURL": "https://domainname.com/sms/callback",
@@ -543,7 +533,6 @@ No Parameters
   | `channelAccountId` | Guid | yes |  Channel account id of this Outreach Campaign. |  
   | `message` | string | yes |  Message. |  
   | `isMessageAutoAttachedToTicket` | bool | no |  Whether a message need to auto attached to ticket. |  
-  | `preferredTicketToAutoAttach` | string | no |  Allowed values are "newTicket", "existing".|  
   | `timeToAutoAttachToTicket` | string | no |  Allowed values are "whenTheMessageIsSent", "whenContactRepliesTheMessage". |  
   | `callbackURL` | string | no |  The callbackURL of the Outreach Message. |  
   
@@ -555,7 +544,6 @@ example:
 	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
 	"message": "Hello, please fill in your application form by the end of this week!",
 	"isMessageAutoAttachedToTicket": "true",
-	"preferredTicketToAutoAttach": "newTicket",
 	"timeToAutoAttachToTicket": "whenTheMessageIsSent",
 	"callbackURL": "https://domainname.com/sms/callback",
 }
@@ -581,7 +569,6 @@ The Response body contains data with the [OutreachMessage](#OutreachMessage-obje
 	"campaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
 	"campaignSentTime": "2022-05-23 03:00:36.277",
 	"isMessageAutoAttachedToTicket": "true",
-	"preferredTicketToAutoAttach": "newTicket",
 	"timeToAutoAttachToTicket": "whenTheMessageIsSent",
 	"attachedToTicketId": 0,
 	"callbackURL": "https://domainname.com/sms/callback",
@@ -633,7 +620,6 @@ The Response body contains data with the [OutreachMessage](#OutreachMessage-obje
 	"campaignId": "d3f5b968-ad51-42af-b759-64c0afc40b84",
 	"campaignSentTime": "2022-05-22 03:00:36.277",
 	"isMessageAutoAttachedToTicket": "true",
-	"preferredTicketToAutoAttach": "newTicket",
 	"timeToAutoAttachToTicket": "whenTheMessageIsSent",
 	"attachedToTicketId": 1,
 	"callbackURL": "https://domainname.com/sms/callback",
@@ -1529,7 +1515,6 @@ Outreach Campaign is represented as simple flat JSON objects with the following 
   | `channelAccountId` | Guid | yes |  Channel account id of this Outreach Campaign. |  
   | `message` | string | yes |  Message of this Outreach Campaign. |  
   | `isMessageAutoAttachedToTicket` | bool | no |  Whether a message need to auto attached to ticket. | 
-  | `preferredTicketToAutoAttach` | string | no |  Allowed values are "newTicket", "existing".|  
   | `timeToAutoAttachToTicket` | string | no |  Allowed values are "whenTheMessageIsSent", "whenContactRepliesTheMessage". |  
   | `contactFilterConditionMetType` | string | no |  Allowed values are "all", "any", "logicalExpression". |  
   | `contactFilterLogicalExpresssion` | string | no |  Contact Filter Logical Expresssion of this Condition. |  
@@ -1574,8 +1559,7 @@ Outreach Message is represented as simple flat JSON objects with the following k
   | `failedReason` | string | no |  The failed reason of the Outreach Message. |  
   | `campaignId` | Guid | no |  The Outreach Campaign id the Outreach Message. |  
   | `campaignSentTime` | datetime | no |  The sent time of the Outreach Campaign. |  
-  | `isMessageAutoAttachedToTicket` | bool | no |  Whether a message need to auto attached to ticket. |  
-  | `preferredTicketToAutoAttach` | string | no |  Allowed values are "newTicket", "existing".|  
+  | `isMessageAutoAttachedToTicket` | bool | no |  Whether a message need to auto attached to ticket. |    
   | `timeToAutoAttachToTicket` | string | no |  Allowed values are "whenTheMessageIsSent", "whenContactRepliesTheMessage". |  
   | `attachedToTicketId` | int | no |  The attached ticked Id of the Outreach Message. |  
   | `callbackURL` | string | no |  The callbackURL of the Outreach Message. |  
