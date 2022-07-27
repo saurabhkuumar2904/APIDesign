@@ -102,7 +102,7 @@ The Response body contains data with the following structure:
 		"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 		"message": "Hello, please fill in your application form by the end of this week!",
 		"isMessageAutoAttachedToTicket": "true",
-		"preferredTicketToAutoAttach": "newTicket",
+		//"preferredTicketToAutoAttach": "newTicket",
 		"timeToAutoAttachToTicket": "whenTheMessageIsSent",
 		"contactFilterConditionMetType": "any",
 		"contactFilterLogicalExpresssion": "",
