@@ -353,6 +353,7 @@ Path parameters
   | Name | Type | Required  | Description |     
   | - | - | - | - | 
   | `id` | Guid | Yes  |  The unique id of the Outreach Campaign |  
+  | `isScheduled` | bool | Yes  | Whether is scheduled | 
 
 #### Response
 The Response body contains data with the [OutreachCampaignRecord](#OutreachCampaignRecord-object) object structure:
