@@ -744,13 +744,17 @@ The Response body contains data with the following structure:
 
 #### Parameters
 
-#### Request Body
+##### Path Parameters
   | Name | Type | Required  | Description |     
   | - | - | - | - | 
   | `pageIndex` | int | No  | page index | 
-  | `pageSize` | int | No  | page size, default is 10, if the value is 0, will return all matched contacts. | 
+  | `pageSize` | int | No  | page size, default is 10, the max value is 500. | 
   | `sortBy` | string | No  | sort by | 
   | `sortOrder` | string | No  | `asc`,`desc`, default `asc` |  
+
+##### Request Body
+  | Name | Type | Required  | Description |     
+  | - | - | - | - | 
   | `keywords` | string | No  | keywords |  
   | `contactIdentityType` | string | No  | contact identity type |  
   | `filterConditionMetType` | string | no |  Contact Filter Logical Expresssion of this Condition. `All`, `Any`, `LogicalExpression` | 
