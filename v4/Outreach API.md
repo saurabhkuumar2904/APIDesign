@@ -1106,7 +1106,7 @@ Path parameters
 
   | Name | Type | Required  | Description |     
   | - | - | - | - | 
-  | `value` | string | Yes  |  Contact identity value, support fuzzy search |
+  | `value` | string | Yes  |  Contact identity value |
   | `identityType` | string | No |  Contact identity type |
   | `isIncludeDeleted` | boolean | No  | if including the deleted contact, default value: `false` | 
 
@@ -1133,13 +1133,15 @@ The Response body contains data with the following structure:
     }]
 ```
 
-### Query contact identities with conditions  
+### Query contactidentities with conditions  
 `POST /contact/contactIdentities:query`
 #### Parameters
 
   | Name | Type | Required  | Description |     
   | - | - | - | - | 
-  | `ids` | guid [] | Yes  |  Contact identity ID array |
+  | `ids` | guid [] | No  |  Contact identity ID array, if this parameter has value, the value and identityType will be ignored.|
+  | `value` | string | No  |  Contact identity value, support fuzzy search |
+  | `identityType` | string | No |  Contact identity type |
   | `isIncludeDeleted` | boolean | No  | if including the deleted contact, default value: `false` | 
 
 #### Response
