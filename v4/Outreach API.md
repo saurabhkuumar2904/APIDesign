@@ -1120,17 +1120,32 @@ The Response body contains data with the following structure:
 ```Json 
   HTTP/1.1 200 OK
   Content-Type: application/json
-  [{
-      "id":"760a3dfb-f776-4dc8-99cb-7fb288bdf1eb",
-      "contactId":"d5a7c487-7ac8-4b07-99e6-b85c3c6e56ab",
-      "contactIdentityType":"SMS",
-      "value":"+033214561",
-      "avatarUrl":"",
-      "infoUrl":"",
-      "displayName":"",
-      "originalContactPageUrl":"",
-      "isDeleted":false
-    }]
+    {
+        "contactIdentities": [
+            {
+                "id": "213c2529-0112-ed11-a83d-00155de0e608",
+                "contactId": "00a58408-ccb9-475c-ba6d-3c12e5317c9e",
+                "contactIdentityType": "SMS",
+                "value": "865550950",
+                "avatarUrl": "",
+                "infoUrl": "",
+                "displayName": "",
+                "originalContactPageUrl": "",
+                "isDeleted": false
+            },
+            {
+                "id": "223c2529-0112-ed11-a83d-00155de0e608",
+                "contactId": "c4f19620-b724-4619-9aec-bc6847436ef8",
+                "contactIdentityType": "SMS",
+                "value": "865550951",
+                "avatarUrl": "",
+                "infoUrl": "",
+                "displayName": "",
+                "originalContactPageUrl": "",
+                "isDeleted": false
+            }
+        ]
+    }
 ```
 
 ### Query contactidentities with conditions  
@@ -1154,16 +1169,32 @@ The Response body contains data with the following structure:
 ```Json 
   HTTP/1.1 200 OK
   Content-Type: application/json
-  [{
-      "id":"760a3dfb-f776-4dc8-99cb-7fb288bdf1eb",
-      "contactId":"d5a7c487-7ac8-4b07-99e6-b85c3c6e56ab",
-      "contactIdentityType":"SMS",
-      "value":"+033214561",
-      "avatarUrl":"",
-      "infoUrl":"",
-      "displayName":"",
-      "originalContactPageUrl":""
-    }]
+    {
+        "contactIdentities": [
+            {
+                "id": "213c2529-0112-ed11-a83d-00155de0e608",
+                "contactId": "00a58408-ccb9-475c-ba6d-3c12e5317c9e",
+                "contactIdentityType": "SMS",
+                "value": "865550950",
+                "avatarUrl": "",
+                "infoUrl": "",
+                "displayName": "",
+                "originalContactPageUrl": "",
+                "isDeleted": false
+            },
+            {
+                "id": "223c2529-0112-ed11-a83d-00155de0e608",
+                "contactId": "c4f19620-b724-4619-9aec-bc6847436ef8",
+                "contactIdentityType": "SMS",
+                "value": "865550951",
+                "avatarUrl": "",
+                "infoUrl": "",
+                "displayName": "",
+                "originalContactPageUrl": "",
+                "isDeleted": false
+            }
+        ]
+    }
 ```
 
 ### Create a new Contact identity
