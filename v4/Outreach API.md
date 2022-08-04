@@ -1059,7 +1059,9 @@ The request body contains data with the following structure:
 `GET /contact/contactsImportRecords`
 
 #### Parameters
- 
+   | Name | Type | Required | Description |     
+  | - | - | - | - | 
+  | `createdById` | guid | no | The ID of CreatedBy |  
 
 #### Response
   | Name | Type | Required | Description |     
@@ -1683,8 +1685,8 @@ Contact Identity is represented as simple flat JSON objects with the following k
 | Name | Type | Description | 
 | - | - | - | 
 | `id` | guid | Id of the field option. |
-| `createdById` | guid | The Agent ID. |
-| `status` | string | enum: `in-process`,`completed`,`timeout` |
+| `createdById` | guid | The Agent ID of createdBy. |
+| `status` | string | enum: `in-process`, `completed`, `error` |
 | `createdtime` | datetime | created time |
 | `completedtime` | datetime | completed time |
 | `result` | string | import result |
