@@ -1047,26 +1047,20 @@ The request body contains data with the following structure:
   | `duplicateControlOption` | string | no | Avaiable options: `merge`,`replace`,`skip`, default is `merge` |   
 
 #### Response
-  | Name | Type | Required | Description |     
-  | - | - | - | - | 
-  | `createdCount` | int | no | The count of new contacts created |   
-  | `updatedCount` | int | no | The count of exising contacts updated |   
-  | `skippedCount` | int | no | The count of skipped contacts |     
-  | `failedCount`  | int | no | The count of importing contacts failed | 
-  | `failedRows` | array | no | The failed rows with json format | 
+  HTTP STATUS 202 (Accepted), includes the import record URI and ID.
 
-### Get contact import records
-`GET /contact/contactsImportRecords`
+### Get contact import record
+`GET /contact/contactsImportRecords/{id}`
 
 #### Parameters
    | Name | Type | Required | Description |     
   | - | - | - | - | 
-  | `createdById` | guid | no | The ID of CreatedBy |  
+  | `id` | guid | no | The ID of contact import record, the response of contact import request contains this ID. |  
 
 #### Response
   | Name | Type | Required | Description |     
   | - | - | - | - | 
-  | `Contact import record` | [Contact import records](#contact-import-record-object) | no | Contact import record object array |   
+  | `Contact import record` | [Contact import record](#contact-import-record-object) | no | Contact import record object |   
 
 ### Export Contacts
 `POST /contact/contacts:export`
