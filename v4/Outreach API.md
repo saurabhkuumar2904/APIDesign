@@ -39,7 +39,7 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
   - POST /contact/contacts/{id}:merge - [Merge Contact](#merge-contacts). 
   - GET /contact/contacts/importTemplate - [Download Template](#download-template). 
   - POST /contact/contacts:import - [Import Contacts](#import-contacts). 
-  - Get /contact/contactImportRecords - [Get contact import records](#Get-contact-import-records). 
+  - Get /contact/contactImportRecords/{id} - [Get contact import record](#Get-contact-import-record). 
   - POST /contact/contacts:export - [Export Contacts](#export-contacts). 
 
 ####  Contact Identity
