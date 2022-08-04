@@ -263,7 +263,7 @@ VoiceBot Call Log is represented as simple flat JSON objects with the following 
 VoiceBot Call Log is represented as simple flat JSON objects with the following keys:
 |Name|Type|Description|
 |:---|:---|:----------|
-|`role`|enum|The role that generated this record.Allowed values are `voiceBot`, `visitor`, 'system'|
+|`role`|enum|The role that generated this record.Allowed values are `voiceBot`, `visitor`, `system`|
 |`name`|string|The name of role `Voice Bot` or or user `phonenumber` or user `sipuri`|
 |`text`|string|Text record content.|
 |`time`|time|start time.|
