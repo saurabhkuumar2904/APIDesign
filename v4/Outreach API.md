@@ -20,7 +20,6 @@
   - POST /outreach/messages - [Create a new Outreach Message](#create-a-new-outreach-message). 
   - PUT /outreach/messages/{id} - [Update the Outreach Message](#update-the-outreach-message).
   - GET /outreach/unattachedMessages/ - [Get the list of Outreach Message that needs to be attached by unichannel](#get-the-list-of-unattached-outreach-message). 
-<!--   - POST /outreach/campaigns/{id}/messages - [Create a new Outreach Message](#create-a-new-outreach-message).    -->
 
 ### Outreach Callback API 
 
@@ -40,6 +39,7 @@ The CallbackURL can be any valid URL that implements this API, and it is configu
   - POST /contact/contacts/{id}:merge - [Merge Contact](#merge-contacts). 
   - GET /contact/contacts/importTemplate - [Download Template](#download-template). 
   - POST /contact/contacts:import - [Import Contacts](#import-contacts). 
+  - Get /contact/contactImportRecords - [Get contact import records](#Get-contact-import-records). 
   - POST /contact/contacts:export - [Export Contacts](#export-contacts). 
 
 ####  Contact Identity
@@ -1055,6 +1055,17 @@ The request body contains data with the following structure:
   | `failedCount`  | int | no | The count of importing contacts failed | 
   | `failedRows` | array | no | The failed rows with json format | 
 
+### Get contact import records
+`GET /contact/contactsImportRecords`
+
+#### Parameters
+ 
+
+#### Response
+  | Name | Type | Required | Description |     
+  | - | - | - | - | 
+  | `Contact import record` | [Contact import records](#contact-import-record-object) | no | Contact import record object array |   
+
 ### Export Contacts
 `POST /contact/contacts:export`
 
@@ -1667,6 +1678,19 @@ Contact Identity is represented as simple flat JSON objects with the following k
 | `value` | string | Value of the option. |
 | `order` | integer | Order of the option. |
 | `displayText` | string | Display text of the option. |
+
+### Contact import record object
+| Name | Type | Description | 
+| - | - | - | 
+| `id` | guid | Id of the field option. |
+| `createdById` | guid | The Agent ID. |
+| `status` | string | enum: `in-process`,`completed`,`timeout` |
+| `createdtime` | datetime | created time |
+| `completedtime` | datetime | completed time |
+| `result` | string | import result |
+| `failedRecords` | string | json content of failed records |
+| `importFileUrl` | string | the URL of imported file. |
+
 
 ### OutboundMessage Object
 Outbound Message is represented as simple flat JSON objects with the following keys:
