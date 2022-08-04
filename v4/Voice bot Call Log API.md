@@ -62,7 +62,7 @@ Response:
                               {"role":"system","name":"","time":"00:00:15.3423523","text":"","type":"recordingPaused"},
                               {"role":"system","name":"","time":"00:00:15.3423523","text":"","type":"recordingResumed"},
                               {"role":"system","name":"","time":"00:00:15.3423523","text":"","type":"recordingStopped"},
-                              {"role":"visitor","name":"+18448586997","time":"00:00:15.3423523","dtmf":"1234","type":"dtmf"}]
+                              {"role":"visitor","name":"+18448586997","time":"00:00:15.3423523","text":"1234","type":"dtmf"}]
         }
     ],
     "nextPage": null,
@@ -123,7 +123,7 @@ Response:
                               {"role":"system","name":"","time":"00:00:15.3423523","text":"","type":"recordingPaused"},
                               {"role":"system","name":"","time":"00:00:15.3423523","text":"","type":"recordingResumed"},
                               {"role":"system","name":"","time":"00:00:15.3423523","text":"","type":"recordingStopped"},
-                              {"role":"visitor","name":"+18448586997","time":"00:00:15.3423523","dtmf":"1234","type":"dtmf"}]
+                              {"role":"visitor","name":"+18448586997","time":"00:00:15.3423523","text":"1234","type":"dtmf"}]
         }
   ```
 
@@ -178,7 +178,7 @@ Response:
                               {"role":"system","name":"","time":"00:00:15.3423523","text":"","type":"recordingPaused"},
                               {"role":"system","name":"","time":"00:00:15.3423523","text":"","type":"recordingResumed"},
                               {"role":"system","name":"","time":"00:00:15.3423523","text":"","type":"recordingStopped"},
-                              {"role":"visitor","name":"+18448586997","time":"00:00:15.3423523","dtmf":"1234","type":"dtmf"}]
+                              {"role":"visitor","name":"+18448586997","time":"00:00:15.3423523","text":"1234","type":"dtmf"}]
         }
     ],
     "nextPage": null,
@@ -237,7 +237,7 @@ Response:
                               {"role":"system","name":"","time":"00:00:15.3423523","text":"","type":"recordingPaused"},
                               {"role":"system","name":"","time":"00:00:15.3423523","text":"","type":"recordingResumed"},
                               {"role":"system","name":"","time":"00:00:15.3423523","text":"","type":"recordingStopped"},
-                              {"role":"visitor","name":"+18448586997","time":"00:00:15.3423523","dtmf":"1234","type":"dtmf"}]
+                              {"role":"visitor","name":"+18448586997","time":"00:00:15.3423523","text":"1234","type":"dtmf"}]
         }
   ```
 
@@ -264,7 +264,7 @@ VoiceBot Call Log is represented as simple flat JSON objects with the following 
 |Name|Type|Description|
 |:---|:---|:----------|
 |`role`|enum|The role that generated this record.Allowed values are `voiceBot`, `visitor`, `system`|
-|`name`|string|The name of role `Voice Bot` or or user `phonenumber` or user `sipuri`|
+|`name`|string|The name of role `Voice Bot` or user `phonenumber` or user `sipuri`|
 |`text`|string|Text record content.|
 |`time`|time|start time.|
 |`type`|enum|Allowed values are `recordingStarted`, `recordingPaused`, `recordingResumed`, `recordingStopped`，`text`，`dtmf`.|
