@@ -80,13 +80,6 @@ Path parameters
   | `id` | string |  | Original Call ID |
 
 
-Request body 
-The request body contains data with the follow structure:  
-  | Name | Type | Required | Default | Description |    
-  | - | - | :-: | :-: | - | 
-  | `channel` | enum | yes | |   type of the channel, including `Twilio`, `SIP` |
-  |`channelIdentifier`  |  string  |yes |   | The Unique ID corresponding to voicebotId,such as phone number，SIP URI  |
-
 - #### Response:
 [VoiceBot Call Log](#voicebot-call-log-json-format)
 
