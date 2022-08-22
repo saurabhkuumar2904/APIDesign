@@ -258,6 +258,6 @@ VoiceBot Call Log is represented as simple flat JSON objects with the following 
 |:---|:---|:----------|
 |`role`|enum|The role that generated this record.Allowed values are `voiceBot`, `visitor`, `system`|
 |`name`|string|The name of role `Voice Bot` or user `phonenumber` or user `sipuri`|
-|`text`|string|Text record content.|
+|`text`|string|Record content.  when type is `text`,it represents text record content;when type is `dtmf`,it represents dtmf input;when type is `audio`, it represents audio name.|
 |`time`|time|start time.|
 |`type`|enum|Allowed values are `recordingStarted`, `recordingPaused`, `recordingResumed`, `recordingStopped`，`text`，`dtmf`,`audio`.|
