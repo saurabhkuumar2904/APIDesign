@@ -1425,6 +1425,7 @@ Request body the request body contains data with the following structure:
   |`message`  | string | yes |   |   |
   |`attachments`  | [Attachment](#attachment-object)[] object | no |  the attachments of message|   
   | `callbackURL` | string | no |  The callbackURL of the Outbound Message. |  
+   |`email`  |  [EmailMetaData](#EmailMetaData-object) | no |  email properties for outbound email| 
   #### example:
 ```Json 
  {
