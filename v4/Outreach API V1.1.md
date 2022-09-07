@@ -684,15 +684,15 @@ Request body the request body contains data with the following structure:
   #### example:
 ```Json 
  {
-    "channelAccountId":"q3f5b438-xw31-44af-b729-64swaf3d0b56",
-    "to": "+19857473632", 
-    "contactId":"q3f5b438-xw31-44af-b729-64swaf3d0b56",
-    "message":"hello!Leon",
-    "callbackURL":"https://domainname.com/callback/",
-	  "email":{
-        "reference":"outreach-f9928d68-92e6-4487-a2e8-8234fc9d1f48",
-        "subject":"test subject"
-	      }
+	"channelAccountId":"q3f5b438-xw31-44af-b729-64swaf3d0b56",
+	"to": "+19857473632", 
+	"contactId":"q3f5b438-xw31-44af-b729-64swaf3d0b56",
+	"message":"hello!Leon",
+	"callbackURL":"https://domainname.com/callback/",
+	"email":{
+		"reference":"outreach-f9928d68-92e6-4487-a2e8-8234fc9d1f48",
+		"subject":"test subject"
+	}
   } 
 ```
 
@@ -709,7 +709,7 @@ HTTP/1.1 200 OK
 	"originMessageid": "f9928d68-92e6-4487-a2e8-8234fc9d1f48", //This is a string type as different channel will return different type. 
 	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
 	"message": "Hello, please fill in your application form by the end of this week!",
-	"channelAttributes":{
+	"email":{
 		"reference":"outreach-f9928d68-92e6-4487-a2e8-8234fc9d1f48",
 		"subject":"test subject"
 	},
