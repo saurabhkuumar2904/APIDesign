@@ -399,11 +399,11 @@ The Response body contains data with the [OutreachMessage](#outreachmessage-obje
 		"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 		"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
 		"message": "Hello, please fill in your application form by the end of this week!",
-    "channelAttributes":
-    {
-        "subject":"Test subject",
-        "reference":"outreach-f9928d68-92e6-4487-a2e8-8234fc9d1f48"
-    },
+		"channelAttributes":
+		{
+			"subject":"Test subject",
+			"reference":"outreach-f9928d68-92e6-4487-a2e8-8234fc9d1f48"
+		},
 		"from": "13312145080",
 		"to": "+19085520595",
 		"status": "sent",
@@ -449,10 +449,10 @@ The Response body contains data with the [OutreachMessage](#outreachmessage-obje
 		"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 		"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
 		"message": "Hello, please fill in your application form by the end of this week!",
-    "channelAttributes":{
-        "subject":"Test subject",
-        "reference":"outreach-f9928d68-92e6-4487-a2e8-8234fc9d1f48"
-    },
+		"channelAttributes":{
+			"subject":"Test subject",
+			"reference":"outreach-f9928d68-92e6-4487-a2e8-8234fc9d1f48"
+		},
 		"from": "13312145080",
 		"to": "+19085520595",
 		"status": "sent",
@@ -492,10 +492,10 @@ The Response body contains data with the [OutreachMessage](#outreachmessage-obje
 	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
 	"message": "Hello, please fill in your application form by the end of this week!",
-  "channelAttributes":{
-        "subject":"Test subject",
-        "reference":"outreach-11183a83-48e9-4d0d-a3bd-fb19ce5c12db"
-  },
+	"channelAttributes":{
+		"subject":"Test subject",
+		"reference":"outreach-11183a83-48e9-4d0d-a3bd-fb19ce5c12db"
+	},
 	"from": "13312145080",
 	"to": "+19085520595",
 	"status": "sent",
@@ -558,10 +558,10 @@ The Response body contains data with the [OutreachMessage](#outreachmessage-obje
 	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
 	"message": "Hello, please fill in your application form by the end of this week!",
-  "channelAttributes":{
-      "subject":"Test subject",
-      "reference":"outreach-11183a83-48e9-4d0d-a3bd-fb19ce5c12db"
-  },
+	"channelAttributes":{
+		"subject":"Test subject",
+		"reference":"outreach-11183a83-48e9-4d0d-a3bd-fb19ce5c12db"
+	},
 	"from": "13312145080",
 	"to": "+19085520595",
 	"status": "queued",
@@ -613,10 +613,10 @@ The Response body contains data with the [OutreachMessage](#outreachmessage-obje
 	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
 	"message": "Hello, please fill in your application form by the end of this week!",
-  "channelAttributes":{
-      "subject":"Test subject",
-      "reference":"outreach-11183a83-48e9-4d0d-a3bd-fb19ce5c12db"
-  },
+	"channelAttributes":{
+		"subject":"Test subject",
+		"reference":"outreach-11183a83-48e9-4d0d-a3bd-fb19ce5c12db"
+	},
 	"from": "Tom Cruise",
 	"to": "XXX University",
 	"status": "sent",
@@ -709,10 +709,10 @@ HTTP/1.1 200 OK
 	"originMessageid": "f9928d68-92e6-4487-a2e8-8234fc9d1f48", //This is a string type as different channel will return different type. 
 	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
 	"message": "Hello, please fill in your application form by the end of this week!",
-  "channelAttributes":{
-    "reference":"outreach-f9928d68-92e6-4487-a2e8-8234fc9d1f48",
-    "subject":"test subject"
-  },
+	"channelAttributes":{
+		"reference":"outreach-f9928d68-92e6-4487-a2e8-8234fc9d1f48",
+		"subject":"test subject"
+	},
 	"from" : "13312155802",
 	"to": "+13453746564",
 	"status": "sent",
