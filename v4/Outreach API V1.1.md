@@ -536,9 +536,9 @@ example:
 	"channelAccountId": "647277e8-06a5-4eec-ba66-1cdd617dc778",
 	"contactId": "f9928d68-92e6-4487-a2e8-8234fc9d1f48",
 	"message": "Hello, please fill in your application form by the end of this week!",
-  "channelAttributes":{
-      "subject":"Test subject"
-  },
+	"channelAttributes":{
+		"subject":"Test subject"
+	},
 	"isMessageAutoAttachedToTicket": "true",
 	"timeToAutoAttachToTicket": "whenTheMessageIsSent",
 	"callbackURL": "https://domainname.com/sms/callback",
