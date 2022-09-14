@@ -150,7 +150,7 @@ The request body contains data with the following structure:
   | `channel` | string | yes |  App channel of this Outreach Campaign, allowed values: `SMS`,`Email`,`WhatsApp`. |  
   | `channelAccountId` | Guid | yes |  Channel account id of this Outreach Campaign. |  
   | `message` | string | yes |  Message of this Outreach Campaign. |  
-  | `subject` | string | yes |  Email subject of this Outreach Campaign. |  
+  | `subject` | string | no |  Email subject of this Outreach Campaign. |  
   | `isMessageAutoAttachedToTicket` | bool | no |  Whether a message need to auto attached to ticket. |   
   | `timeToAutoAttachToTicket` | string | no |  Allowed values are "whenTheMessageIsSent", "whenContactRepliesTheMessage". |  
   | `contactFilterConditionMetType` | string | no |  Allowed values are "all", "any", "logicalExpression". |  
