@@ -680,7 +680,7 @@ Request body the request body contains data with the following structure:
   |`message`  | string | yes |   |   |
   |`attachments`  | [Attachment](#attachment-object)[] object | no |  the attachments of message|   
   |`callbackURL` | string | no |  The callbackURL of the Outbound Message. |  
-  |`email` | [Outbound Email Object](#outbound-email-object) | no |  extra properties for outbound email|
+  |`metadata` | [Outbound Email Object](#outbound-email-object) | no |  extra properties for outbound email|
   #### example:
 ```Json 
  {
